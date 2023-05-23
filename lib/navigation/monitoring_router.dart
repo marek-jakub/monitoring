@@ -36,8 +36,29 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
   @override
   Widget build(BuildContext context) {
     return Navigator(
-        // TODO: add path to screens
-        );
+      key: navigatorKey,
+      onPopPage: _handlePopPage,
+    );
+  }
+
+  bool _handlePopPage(Route<dynamic> route, result) {
+    if (!route.didPop(result)) {
+      return false;
+    }
+
+    if (route.settings.name == MonitoRingPages.onboardingPath) {
+      monStateManager.logout();
+    }
+
+    if (route.settings.name == MonitoRingPages.profilePath) {
+      profileManager.tapOnProfile(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.euringCodePath) {
+      profileManager.tapOnEuringCode(false);
+    }
+
+    return true;
   }
 
   @override
