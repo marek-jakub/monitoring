@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import 'navigation/monitoring_route_parser.dart';
-import 'navigation/monitoring_router.dart';
+import '../models/models.dart';
+
+import '../navigation/monitoring_route_parser.dart';
+import '../navigation/monitoring_router.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -18,9 +20,9 @@ class MonitoRing extends StatefulWidget {
 }
 
 class _MonitoRingState extends State<MonitoRing> {
-  final _appStateManager = MonitoringStateManager();
+  final _appStateManager = MonitoRingStateManager();
   final _ringDataManager = RingDataManager();
-  late MonitorRingRouter _monitoringRouter;
+  late MonitoRingRouter _monitoringRouter;
   final routerParser = MonitoRingRouteParser();
   @override
   Widget build(BuildContext context) {
