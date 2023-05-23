@@ -38,6 +38,14 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
     return Navigator(
       key: navigatorKey,
       onPopPage: _handlePopPage,
+      pages: [
+        if (!monStateManager.isInitialized) ...[
+          SplashScreen.page(),
+        ] else if (monStateManager.isInitialized &&
+            !monStateManager.isLoggedIn) ...[
+          LoginScreen.page(),
+        ]
+      ],
     );
   }
 
