@@ -1,12 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'navigation/monitoring_route_parser.dart';
+import 'navigation/monitoring_router.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
+
   runApp(const MonitoRing());
 }
 
-class MonitoRing extends StatelessWidget {
+class MonitoRing extends StatefulWidget {
   const MonitoRing({super.key});
 
+  @override
+  State<MonitoRing> createState() => _MonitoRingState();
+}
+
+class _MonitoRingState extends State<MonitoRing> {
+  final _appStateManager = MonitoringStateManager();
+  final _ringDataManager = RingDataManager();
+  late MonitorRingRouter _monitoringRouter;
+  final routerParser = MonitoRingRouteParser();
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
