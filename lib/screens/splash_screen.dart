@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 
+/// Application splash screen.
 class SplashScreen extends StatefulWidget {
   static MaterialPage page() {
     return MaterialPage(
