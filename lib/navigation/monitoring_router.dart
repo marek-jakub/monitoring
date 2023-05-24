@@ -5,13 +5,21 @@ import '../screens/screens.dart';
 
 import 'monitoring_link.dart';
 
+/// A notifier and delegate for screen routing.
+///
+/// Requires screen access.
 class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
     with ChangeNotifier, PopNavigatorRouterDelegateMixin {
   @override
   final GlobalKey<NavigatorState> navigatorKey;
 
+  /// App state manager.
   final MonitoRingStateManager monStateManager;
+
+  /// User profile manager.
   final ProfileManager profileManager;
+
+  /// Ringer data manager.
   final RingDataManager ringDataManager;
 
   MonitoRingRouter({
@@ -49,6 +57,10 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
     );
   }
 
+  /// Defines what happens on pop page by the user.
+  ///
+  /// @param route The navigator route.
+  /// @param result The pop page destination.
   bool _handlePopPage(Route<dynamic> route, result) {
     if (!route.didPop(result)) {
       return false;
@@ -69,6 +81,9 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
     return true;
   }
 
+  /// Sets url path routing.
+  ///
+  /// @param configuration The link holding location and tab.
   @override
   Future<void> setNewRoutePath(MonitoRingLink configuration) async {
     switch (configuration.location) {
