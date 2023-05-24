@@ -15,8 +15,12 @@ dependencies:
   google_fonts: ^4.0.4
   # provider allows alocation/disposal of resources
   provider: ^6.0.5
-  # manage user log in status
+  # manage user login status
   shared_preferences: ^2.1.1 
+  # path provider for database
+  path_provider: ^2.0.15
+  # data persistence using sqlite
+  drift: ^2.8.0
 
 
   cupertino_icons: ^1.0.2
