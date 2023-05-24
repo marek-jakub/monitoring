@@ -1,3 +1,4 @@
+/// String representation of app pages.
 class MonitoRingPages {
   static String splashPath = '/splash';
   static String loginPath = '/login';
