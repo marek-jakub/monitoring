@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 
 import '../navigation/monitoring_route_parser.dart';
 import '../navigation/monitoring_router.dart';
+import 'monitoring_theme.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -20,66 +22,56 @@ class MonitoRing extends StatefulWidget {
 }
 
 class _MonitoRingState extends State<MonitoRing> {
+  final _monRingDb = MonRingDb();
   final _appStateManager = MonitoRingStateManager();
+  final _profileManager = ProfileManager();
   final _ringDataManager = RingDataManager();
   late MonitoRingRouter _monitoringRouter;
   final routerParser = MonitoRingRouteParser();
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-        useMaterial3: true,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
+  void initState() {
+    super.initState();
+    _monitoringRouter = MonitoRingRouter(
+        monStateManager: _appStateManager,
+        profileManager: _profileManager,
+        ringDataManager: _ringDataManager);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
-            ),
-          ],
+    return MultiProvider(
+      providers: [
+        Provider<MonRingDb>(
+          create: (context) => _monRingDb,
+          //dispose: (context, db) => db.close(),
         ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+        ChangeNotifierProxyProvider<MonRingDb, RingDataManager>(
+            create: (context) => _ringDataManager,
+            update: (context, db, notifier) => notifier!..initDb(db)
+            //..getSessionStream()
+            ),
+        ChangeNotifierProvider(create: (context) => _appStateManager),
+        ChangeNotifierProvider(create: (context) => _profileManager),
+      ],
+      child: Consumer<ProfileManager>(
+        builder: (context, profileManager, child) {
+          ThemeData theme;
+          if (profileManager.darkMode) {
+            theme = MonitoRingTheme.dark();
+          } else {
+            theme = MonitoRingTheme.light();
+          }
+
+          return MaterialApp.router(
+            theme: theme,
+            title: 'MonitoRing',
+            backButtonDispatcher: RootBackButtonDispatcher(),
+            debugShowCheckedModeBanner: false,
+            routeInformationParser: routerParser,
+            routerDelegate: _monitoringRouter,
+          );
+        },
       ),
     );
   }
