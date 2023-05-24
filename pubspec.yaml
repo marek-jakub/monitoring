@@ -21,6 +21,8 @@ dependencies:
   path_provider: ^2.0.15
   # data persistence using sqlite
   drift: ^2.8.0
+  # path for database file access
+  path: ^1.8.3
 
 
   cupertino_icons: ^1.0.2
@@ -31,6 +33,8 @@ dev_dependencies:
 
 
   flutter_lints: ^2.0.0
+  build_runner: ^2.4.4
+  drift_dev: ^2.8.2
 
 
 
