@@ -50,6 +50,10 @@ class MonitoRingStateManager extends ChangeNotifier {
     });
   }
 
+  /// Stores login credentials.
+  ///
+  /// @param username The ringer ID.
+  /// @param password The ringer password.
   void login(String username, String password) async {
     _loggedIn = true;
     await _appCache.cacheRinger();
