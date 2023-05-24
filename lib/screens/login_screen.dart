@@ -3,6 +3,9 @@ import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 
+/// Application login screen.
+///
+///
 class LoginScreen extends StatelessWidget {
   static MaterialPage page() {
     return MaterialPage(
@@ -12,6 +15,7 @@ class LoginScreen extends StatelessWidget {
     );
   }
 
+  /// Holds ringer ID.
   final String? username;
 
   const LoginScreen({
