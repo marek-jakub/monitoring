@@ -1,3 +1,4 @@
+/// Holder of application internal links.
 class MonitoRingLink {
   static const String keyLoginPath = '/login';
   static const String keyOnboardingPath = '/onboarding';
@@ -6,7 +7,10 @@ class MonitoRingLink {
 
   static const String keyTabParam = 'tab';
 
+  /// Holds location used in routing.
   String? location;
+
+  /// Holds the value of currently selected tab.
   int? currentTab;
 
   MonitoRingLink({
@@ -14,6 +18,9 @@ class MonitoRingLink {
     this.currentTab,
   });
 
+  /// Returns uri representation of location.
+  ///
+  /// @param location The name of location.
   static MonitoRingLink fromLocation(String? location) {
     location = Uri.decodeFull(location ?? '');
     final uri = Uri.parse(location);
@@ -29,6 +36,7 @@ class MonitoRingLink {
     return link;
   }
 
+  /// Returns path to location.
   String toLocation() {
     // Can be used to return a path to a ring or session, using their IDs
     // String addKeyValuePair({
