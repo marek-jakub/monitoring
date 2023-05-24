@@ -11,11 +11,24 @@ class MonitoRingTab {
   static const int map = 3;
 }
 
+/// Information for app initialization, onboarding, login and tab
+/// selection.
+///
+/// Application splash, login and onboarding screens.
 class MonitoRingStateManager extends ChangeNotifier {
+  /// On app first start it is false to show initialization screen.
   bool _initialized = false;
+
+  /// On first login it is false to let user login.
   bool _loggedIn = false;
+
+  /// On first app start it is false to show onborading messages.
   bool _onboardingComplete = false;
+
+  /// The value of selected tab.
   int _selectedTab = MonitoRingTab.data;
+
+  /// Holds app state.
   final _appCache = AppCache();
 
   bool get isInitialized => _initialized;
@@ -23,6 +36,10 @@ class MonitoRingStateManager extends ChangeNotifier {
   bool get isOnboardingComplete => _onboardingComplete;
   int get getSelectedTab => _selectedTab;
 
+  /// Shows initialization message on app start.
+  ///
+  /// If the user is not logged in, shows login screen.
+  /// If the user hasn't gone through onboarding, shows onboarding messages.
   void initializeApp() async {
     _loggedIn = await _appCache.isRingerLoggedIn();
     _onboardingComplete = await _appCache.isOnboardingComplete();
