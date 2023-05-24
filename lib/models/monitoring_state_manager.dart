@@ -60,17 +60,22 @@ class MonitoRingStateManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Marks onboarding to be complete.
   void completeOnboarding() async {
     _onboardingComplete = true;
     await _appCache.onboardingCompleted();
     notifyListeners();
   }
 
+  /// Selects tab to be displayed.
+  ///
+  /// @param index The value of tab.
   void goToTab(index) {
     _selectedTab = index;
     notifyListeners();
   }
 
+  /// Sets user to be logged out and selects home tab as last visited screen.
   void logout() async {
     _loggedIn = false;
     _selectedTab = 0;
