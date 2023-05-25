@@ -61,9 +61,26 @@ class MonitoRingTheme {
     ),
   );
 
-  // TODO: define light and dark mode settings
   static ThemeData light() {
-    return ThemeData();
+    return ThemeData(
+      brightness: Brightness.light,
+      checkboxTheme:
+          CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
+        return Colors.black;
+      })),
+      appBarTheme: AppBarTheme(
+        foregroundColor: Colors.grey[800],
+        backgroundColor: Colors.white,
+      ),
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.grey[800],
+      ),
+      bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+        selectedItemColor: Colors.green,
+      ),
+      textTheme: lightTextTheme,
+    );
   }
 
   static ThemeData dark() {
