@@ -6,4 +6,5 @@ class MonitoRingPages {
   static String home = '/';
   static String profilePath = '/profile';
   static String euringCodePath = '/euring';
+  static String sessionsPath = '/sessions';
 }
