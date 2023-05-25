@@ -33,7 +33,33 @@ class MonitoRingTheme {
     ),
   );
 
-  static TextTheme darkTextTheme = TextTheme();
+  static TextTheme darkTextTheme = TextTheme(
+    bodyLarge: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
+    headlineLarge: GoogleFonts.openSans(
+      fontSize: 32.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+    headlineMedium: GoogleFonts.openSans(
+      fontSize: 21.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
+    headlineSmall: GoogleFonts.openSans(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    titleMedium: GoogleFonts.openSans(
+      fontSize: 20.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+  );
 
   // TODO: define light and dark mode settings
   static ThemeData light() {
