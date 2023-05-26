@@ -1,5 +1,6 @@
 export 'splash_screen.dart';
 export 'login_screen.dart';
+export 'onboarding_screen.dart';
 export 'home_screen.dart';
 export 'sessions_screen.dart';
 export 'retraps_screen.dart';
