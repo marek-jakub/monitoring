@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monitoring/screens/onboarding_screen.dart';
 
 import '../models/models.dart';
 import '../screens/screens.dart';
@@ -52,6 +53,9 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
         ] else if (monStateManager.isInitialized &&
             !monStateManager.isLoggedIn) ...[
           LoginScreen.page(),
+        ] else if (monStateManager.isLoggedIn &&
+            !monStateManager.isOnboardingComplete) ...[
+          OnboardingScreen.page(),
         ]
       ],
     );
