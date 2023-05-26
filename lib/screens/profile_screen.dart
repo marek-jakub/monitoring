@@ -53,6 +53,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: buildMenu(),
             ),
+            // TODO: add buttons to add ring series, lost rings and make orders.
           ],
         ),
       ),
