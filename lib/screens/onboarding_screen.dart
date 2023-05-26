@@ -62,6 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         // TODO: Add onboarding pages
         //onboardPage(),
         pageIndicator(),
+        pageActionButtons(),
       ],
     );
   }
@@ -105,6 +106,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       controller: controller,
       count: 3,
       effect: WormEffect(activeDotColor: messageColor),
+    );
+  }
+
+  Widget pageActionButtons() {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        MaterialButton(
+            child: const Text('Skip'),
+            onPressed: () {
+              Provider.of<MonitoRingStateManager>(context, listen: false)
+                  .completeOnboarding();
+            })
+      ],
     );
   }
 }
