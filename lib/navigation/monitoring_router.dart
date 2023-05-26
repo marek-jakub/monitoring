@@ -56,6 +56,10 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
         ] else if (monStateManager.isLoggedIn &&
             !monStateManager.isOnboardingComplete) ...[
           OnboardingScreen.page(),
+        ] else ...[
+          Home.page(monStateManager.getSelectedTab),
+          if (profileManager.didSelectRinger)
+            ProfileScreen.page(profileManager.getRinger),
         ]
       ],
     );
