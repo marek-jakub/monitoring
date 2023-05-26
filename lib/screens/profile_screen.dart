@@ -45,9 +45,26 @@ class _ProfileScreenState extends State<ProfileScreen> {
       body: Center(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [],
+          children: [
+            const SizedBox(
+              height: 10.0,
+            ),
+            buildProfile(),
+          ],
         ),
       ),
+    );
+  }
+
+  /// A text giving ringer information.
+  Widget buildProfile() {
+    return Column(
+      children: [
+        Text(
+          widget.ringer.ringerId,
+          style: const TextStyle(fontSize: 21),
+        ),
+      ],
     );
   }
 }
