@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:monitoring/screens/onboarding_screen.dart';
 
 import '../models/models.dart';
 import '../screens/screens.dart';
@@ -88,6 +87,24 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
 
     return true;
   }
+
+  /// Returns path according to application state
+  MonitoRingLink getCurrentPath() {
+    if (!monStateManager.isLoggedIn) {
+      return MonitoRingLink(location: MonitoRingLink.keyLoginPath);
+    } else if (!monStateManager.isOnboardingComplete) {
+      return MonitoRingLink(location: MonitoRingLink.keyOnboardingPath);
+    } else if (profileManager.didSelectRinger) {
+      return MonitoRingLink(location: MonitoRingLink.keyProfilePath);
+    } else {
+      return MonitoRingLink(
+          location: MonitoRingLink.keyHomePath,
+          currentTab: monStateManager.getSelectedTab);
+    }
+  }
+
+  @override
+  MonitoRingLink get currentConfiguration => getCurrentPath();
 
   /// Sets url path routing.
   ///
