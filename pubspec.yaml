@@ -23,6 +23,8 @@ dependencies:
   drift: ^2.8.0
   # path for database file access
   path: ^1.8.3
+  # google maps
+  google_maps_flutter: ^2.2.8
 
 
   cupertino_icons: ^1.0.2
