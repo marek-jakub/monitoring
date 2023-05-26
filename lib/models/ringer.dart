@@ -1,4 +1,4 @@
-/// Ringer information and profile settins.
+/// Ringer information and profile settings.
 class Ringer {
   /// The user ID.
   final String ringerId;
