@@ -50,6 +50,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
               height: 10.0,
             ),
             buildProfile(),
+            Expanded(
+              child: buildMenu(),
+            ),
           ],
         ),
       ),
@@ -65,6 +68,52 @@ class _ProfileScreenState extends State<ProfileScreen> {
           style: const TextStyle(fontSize: 21),
         ),
       ],
+    );
+  }
+
+  /// A listview holding profile menu.
+  ///
+  /// Access to dar mode, EURING code and logout.
+  Widget buildMenu() {
+    return ListView(
+      children: [
+        showDarkModeRow(),
+        ListTile(
+          title: const Text('View Euring Code 2020'),
+          onTap: () {
+            Provider.of<ProfileManager>(context, listen: false)
+                .tapOnEuringCode(true);
+          },
+        ),
+        ListTile(
+          title: const Text('Logout'),
+          onTap: () {
+            Provider.of<ProfileManager>(context, listen: false)
+                .tapOnProfile(false);
+            Provider.of<MonitoRingStateManager>(context, listen: false)
+                .logout();
+          },
+        ),
+      ],
+    );
+  }
+
+  /// A dark mode switch.
+  Widget showDarkModeRow() {
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        children: [
+          const Text('Dark mode'),
+          Switch(
+              value: widget.ringer.darkMode,
+              onChanged: (value) {
+                Provider.of<ProfileManager>(context, listen: false).darkMode =
+                    value;
+              })
+        ],
+      ),
     );
   }
 }
