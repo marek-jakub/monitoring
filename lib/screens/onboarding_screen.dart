@@ -61,6 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       children: [
         // TODO: Add onboarding pages
         //onboardPage(),
+        pageIndicator(),
       ],
     );
   }
@@ -95,6 +96,15 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           ),
         ],
       ),
+    );
+  }
+
+  /// Page indicator effect.
+  Widget pageIndicator() {
+    return SmoothPageIndicator(
+      controller: controller,
+      count: 3,
+      effect: WormEffect(activeDotColor: messageColor),
     );
   }
 }
