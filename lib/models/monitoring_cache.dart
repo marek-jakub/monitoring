@@ -1,7 +1,14 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
+/// A cache holding information about users having logged in and done
+/// onboarding.
+///
+/// On user loggin out, cache values are invalidated.
 class AppCache {
+  /// Key used to access ringer's login  state.
   static const keyRinger = 'ringer';
+
+  /// Key used to access ringers onboarding state.
   static const keyOnboarding = 'onboarding';
 
   Future<void> invalidate() async {
