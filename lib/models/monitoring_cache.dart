@@ -11,12 +11,14 @@ class AppCache {
   /// Key used to access ringers onboarding state.
   static const keyOnboarding = 'onboarding';
 
+  /// On logout the cache holding ringer's status is invalidated.
   Future<void> invalidate() async {
     final preferences = await SharedPreferences.getInstance();
     await preferences.setBool(keyRinger, false);
     await preferences.setBool(keyOnboarding, false);
   }
 
+  /// On login the app's login state is set to true.
   Future<void> cacheRinger() async {
     final preferences = await SharedPreferences.getInstance();
     await preferences.setBool(keyRinger, true);
