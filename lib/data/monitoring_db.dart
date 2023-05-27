@@ -9,7 +9,9 @@ import '../models/models.dart';
 
 part 'monitoring_db.g.dart';
 
-// TODO: create table entities
+/// An sqlite database, used for offline data persistence.
+///
+/// Utilizes table entities given in [tables]
 @DriftDatabase(tables: [], views: [])
 class MonRingDb extends _$MonRingDb {
   MonRingDb() : super(_openConnection());
@@ -20,6 +22,7 @@ class MonRingDb extends _$MonRingDb {
   // TODO: define database access methods
 }
 
+/// Access to the file holding ringing data.
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
