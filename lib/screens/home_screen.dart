@@ -21,6 +21,7 @@ class Home extends StatefulWidget {
     required this.currentTab,
   }) : super(key: key);
 
+  /// The current screen tab.
   final int currentTab;
 
   @override
