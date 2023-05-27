@@ -24,16 +24,19 @@ class AppCache {
     await preferences.setBool(keyRinger, true);
   }
 
+  /// On completed onboarding the app's onboarding state is set to true.
   Future<void> onboardingCompleted() async {
     final preferences = await SharedPreferences.getInstance();
     await preferences.setBool(keyOnboarding, true);
   }
 
+  /// On return and app start returns true if previous login true.
   Future<bool> isRingerLoggedIn() async {
     final preferences = await SharedPreferences.getInstance();
     return preferences.getBool(keyRinger) ?? false;
   }
 
+  /// On return and app start returns true if onboarding for ringer completed.
   Future<bool> isOnboardingComplete() async {
     final preferences = await SharedPreferences.getInstance();
     return preferences.getBool(keyOnboarding) ?? false;
