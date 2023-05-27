@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'monitoring_cache.dart';
 
+/// An int representing four main application tabs.
 class MonitoRingTab {
   static const int data = 0;
   static const int retraps = 1;
