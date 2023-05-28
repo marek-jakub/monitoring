@@ -1,5 +1,6 @@
 import 'package:drift/drift.dart';
 
+/// A model of location, place where ringing session occurs.
 class LocationEntity extends Table {
   // non-nullable
   IntColumn get id => integer().autoIncrement()();
