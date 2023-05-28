@@ -22,7 +22,9 @@ part 'monitoring_db.g.dart';
   RingseriesEntity,
   SessionEntity,
   UsedRingEntity
-], views: [])
+], views: [
+  SessionLocationView
+])
 class MonRingDb extends _$MonRingDb {
   MonRingDb() : super(_openConnection());
 
@@ -41,4 +43,38 @@ LazyDatabase _openConnection() {
     //return NativeDatabase.createInBackground(file);
     return NativeDatabase(file);
   });
+}
+
+/// A view of joined tables SessionEntity and LocationEntity.
+abstract class SessionLocationView extends View {
+  SessionEntity get aSession;
+  LocationEntity get aLocation;
+
+  Expression<int> get locationId => aLocation.id;
+  Expression<String> get locationLocality => aLocation.locality;
+  Expression<String> get locationPlaceCode => aLocation.placeCode;
+  Expression<String> get locationLat => aLocation.latitude;
+  Expression<String> get locationLon => aLocation.longitude;
+  Expression<String> get locationCoordAccuracy => aLocation.coordinatesAccuracy;
+  Expression<String> get locationInfo => aLocation.localeInfo;
+
+  @override
+  Query as() => select([
+        aSession.id,
+        aSession.ringerId,
+        aSession.date,
+        aSession.dateAccuracy,
+        aSession.location,
+        aSession.startTime,
+        aSession.endTime,
+        locationId,
+        locationLocality,
+        locationPlaceCode,
+        locationLat,
+        locationLon,
+        locationCoordAccuracy,
+        locationInfo,
+      ]).from(aSession).join([
+        leftOuterJoin(aLocation, aSession.location.equalsExp(aLocation.id))
+      ]);
 }
