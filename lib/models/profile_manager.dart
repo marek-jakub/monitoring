@@ -38,7 +38,18 @@ class ProfileManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// A variable used in showing profile screen.
+  ///
+  /// If true, profile screen is shown.
   var _didSelectRinger = false;
+
+  /// A variable used to set application mode.
+  ///
+  /// If true, dark mode is set.
   var _darkMode = false;
+
+  /// A variable used in showing EURING code pdf file.
+  ///
+  /// If true, EURING code pdf file is shown, needs online access.
   var _tapOnEuringCode = false;
 }
