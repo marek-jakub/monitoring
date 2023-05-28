@@ -5,6 +5,7 @@ export 'monitoring_pages.dart';
 export 'monitoring_state_manager.dart';
 export 'order_entity.dart';
 export 'profile_manager.dart';
+export 'report_entity.dart';
 export 'ring_data_manager.dart';
 export 'ringer.dart';
 export 'session_entity.dart';
