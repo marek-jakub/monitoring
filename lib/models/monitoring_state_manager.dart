@@ -23,7 +23,7 @@ class MonitoRingStateManager extends ChangeNotifier {
   /// On first login it is false to let user login.
   bool _loggedIn = false;
 
-  /// On first app start it is false to show onborading messages.
+  /// On first app start it is false to show onboarding messages.
   bool _onboardingComplete = false;
 
   /// The value of selected tab.
