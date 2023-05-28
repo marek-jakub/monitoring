@@ -9,4 +9,5 @@ class MonitoRingPages {
   static String sessionsPath = '/sessions';
   static String retrapsPath = '/retraps';
   static String searchPath = '/search';
+  static String mapPath = '/map';
 }
