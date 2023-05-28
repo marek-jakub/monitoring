@@ -12,7 +12,17 @@ part 'monitoring_db.g.dart';
 /// An sqlite database, used for offline data persistence.
 ///
 /// Utilizes table entities given in [tables]
-@DriftDatabase(tables: [], views: [])
+@DriftDatabase(tables: [
+  LocationEntity,
+  LostRingEntity,
+  OrderEntity,
+  ReportEntity,
+  RetrapEntity,
+  RingEntity,
+  RingseriesEntity,
+  SessionEntity,
+  UsedRingEntity
+], views: [])
 class MonRingDb extends _$MonRingDb {
   MonRingDb() : super(_openConnection());
 
