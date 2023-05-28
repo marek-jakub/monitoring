@@ -17,7 +17,7 @@ class MonitoRingTab {
 ///
 /// Application splash, login and onboarding screens.
 class MonitoRingStateManager extends ChangeNotifier {
-  /// On app first start it is false to show initialization screen.
+  /// On app first start it is false so as to show initialization screen.
   bool _initialized = false;
 
   /// On first login it is false to let user login.
