@@ -50,6 +50,6 @@ class ProfileManager extends ChangeNotifier {
 
   /// A variable used in showing EURING code pdf file.
   ///
-  /// If true, EURING code pdf file is shown, needs online access.
+  /// If true, EURING code pdf file is downloaded, needs online access.
   var _tapOnEuringCode = false;
 }
