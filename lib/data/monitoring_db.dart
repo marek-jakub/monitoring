@@ -31,6 +31,18 @@ class MonRingDb extends _$MonRingDb {
   @override
   int get schemaVersion => 1;
 
+  ////////// SESSION ENTITY
+
+  /// Saves session data.
+  ///
+  /// @param companion A session entity companion.
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveSession(SessionEntityCompanion companion) async {
+    return await into(sessionEntity).insert(companion);
+  }
+
   // TODO: define database access methods
 }
 
