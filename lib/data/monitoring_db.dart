@@ -51,6 +51,13 @@ class MonRingDb extends _$MonRingDb {
         .getSingle();
   }
 
+  /// Updates session data.
+  ///
+  /// @param companion A session entity companion.
+  Future<bool> updateSession(SessionEntityCompanion companion) async {
+    return await update(sessionEntity).replace(companion);
+  }
+
   // TODO: define database access methods
 }
 
