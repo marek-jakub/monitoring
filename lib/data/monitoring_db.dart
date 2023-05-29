@@ -87,6 +87,13 @@ class MonRingDb extends _$MonRingDb {
         .getSingle();
   }
 
+  /// Updates location data.
+  ///
+  /// @param companion A location entity companion.
+  Future<bool> updateLocation(LocationEntityCompanion companion) async {
+    return await update(locationEntity).replace(companion);
+  }
+
   // TODO: define database access methods
 }
 
