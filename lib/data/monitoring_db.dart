@@ -67,6 +67,18 @@ class MonRingDb extends _$MonRingDb {
     return (delete(sessionEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
+  ////////// LOCATION ENTITY
+
+  /// Saves location data.
+  ///
+  /// @param companion A location entity companion.
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveLocation(LocationEntityCompanion companion) async {
+    return await into(locationEntity).insert(companion);
+  }
+
   // TODO: define database access methods
 }
 
