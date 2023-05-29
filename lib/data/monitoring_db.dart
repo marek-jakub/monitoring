@@ -113,7 +113,7 @@ class MonRingDb extends _$MonRingDb {
     return await into(ringEntity).insert(companion);
   }
 
-  /// Returns a stream of ring data as a list for a given session.
+  /// Returns a stream of ring data for a given session as a list.
   ///
   /// @param id A session id.
   Stream<List<RingEntityData>> watchSessionRings(int id) {
@@ -153,6 +153,14 @@ class MonRingDb extends _$MonRingDb {
   /// returns 0.
   Future<int> saveRetrap(RetrapEntityCompanion companion) async {
     return await into(retrapEntity).insert(companion);
+  }
+
+  /// Returns a stream of retrap data for a given session as a list.
+  ///
+  /// @param id A session id.
+  Stream<List<RetrapEntityData>> watchSessionRetraps(int id) {
+    return (select(retrapEntity)..where((tbl) => tbl.sessionId.equals(id)))
+        .watch();
   }
 
   // TODO: define database access methods
