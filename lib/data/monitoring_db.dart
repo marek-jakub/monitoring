@@ -185,7 +185,20 @@ class MonRingDb extends _$MonRingDb {
     return (delete(retrapEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
-  // TODO: define database access methods
+  ////////// RINGSERIES ENTITY
+  // TODO: define ringseries access methods
+
+  ////////// USEDRING ENTITY
+  // TODO: define used ring access methods
+
+  ////////// ORDER ENTITY
+  // TODO: define order access methods
+
+  ////////// LOSTRING ENTITY
+  // TODO: define lost ring access methods
+
+  ////////// REPORT ENTITY
+  // TODO: define report access methods
 }
 
 /// Access to the file holding ringing data.
