@@ -79,6 +79,14 @@ class MonRingDb extends _$MonRingDb {
     return await into(locationEntity).insert(companion);
   }
 
+  /// Returns location data.
+  ///
+  /// @param id A location id.
+  Future<LocationEntityData> getLocationById(int id) async {
+    return await (select(locationEntity)..where((tbl) => tbl.id.equals(id)))
+        .getSingle();
+  }
+
   // TODO: define database access methods
 }
 
