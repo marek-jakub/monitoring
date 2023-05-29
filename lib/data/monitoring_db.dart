@@ -121,6 +121,14 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
+  /// Returns ring data.
+  ///
+  /// @param id A ring id.
+  Future<RingEntityData> getRing(int id) async {
+    return await (select(ringEntity)..where((tbl) => tbl.id.equals(id)))
+        .getSingle();
+  }
+
   // TODO: define database access methods
 }
 
