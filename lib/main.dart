@@ -44,7 +44,7 @@ class _MonitoRingState extends State<MonitoRing> {
       providers: [
         Provider<MonRingDb>(
           create: (context) => _monRingDb,
-          //dispose: (context, db) => db.close(),
+          dispose: (context, db) => db.close(),
         ),
         ChangeNotifierProxyProvider<MonRingDb, RingDataManager>(
             create: (context) => _ringDataManager,
