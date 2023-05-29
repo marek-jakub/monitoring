@@ -143,6 +143,18 @@ class MonRingDb extends _$MonRingDb {
     return (delete(ringEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
+  ////////// RETRAP ENTITY
+
+  /// Saves retrap ring data.
+  ///
+  /// @param companion A retrap entity companion.
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveRetrap(RetrapEntityCompanion companion) async {
+    return await into(retrapEntity).insert(companion);
+  }
+
   // TODO: define database access methods
 }
 
