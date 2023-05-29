@@ -171,6 +171,13 @@ class MonRingDb extends _$MonRingDb {
         .getSingle();
   }
 
+  /// Updates retrap data.
+  ///
+  /// @param companion A retrap entity companion.
+  Future<bool> updateRetrap(RetrapEntityCompanion companion) async {
+    return await update(retrapEntity).replace(companion);
+  }
+
   // TODO: define database access methods
 }
 
