@@ -178,6 +178,13 @@ class MonRingDb extends _$MonRingDb {
     return await update(retrapEntity).replace(companion);
   }
 
+  /// Deletes retrap data.
+  ///
+  /// @param id A retrap id.
+  Future<int> deleteRetrap(int id) async {
+    return (delete(retrapEntity)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
   // TODO: define database access methods
 }
 
