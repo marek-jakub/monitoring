@@ -191,6 +191,54 @@ class _SessionsScreenState extends State<SessionsScreen> {
                   },
                 ),
                 const Text('Session rings'),
+                Expanded(
+                  child: dataManager.sessionTapped
+                      ? dataManager.sessionRingStream.isNotEmpty
+                          ? Selector<RingDataManager, List<RingEntityData>>(
+                              selector: (context, notifier) =>
+                                  notifier.sessionRingStream,
+                              builder: (context, rings, child) {
+                                return ListView.builder(
+                                  itemCount: rings.length,
+                                  itemBuilder: (context, index) {
+                                    final ring = rings[index];
+                                    return GestureDetector(
+                                      onTap: () {
+                                        // call get ring by id
+                                        // call edit ring
+                                        // call selected ring id
+                                      },
+                                      child: Card(
+                                        color: Colors.blueGrey.shade100,
+                                        shape: const RoundedRectangleBorder(
+                                          side: BorderSide(
+                                            color: Colors.green,
+                                            style: BorderStyle.solid,
+                                            width: 1.0,
+                                          ),
+                                          borderRadius: BorderRadius.all(
+                                              Radius.circular(10.0)),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Text(ring.id.toString()),
+                                            Text(ring.ringIdNumber),
+                                            Text(ring.species),
+                                          ],
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            )
+                          : const Center(
+                              child: Text('Session does not contain rings'),
+                            )
+                      : const Center(
+                          child: Text('Session not selected'),
+                        ),
+                ),
               ],
             ),
           ),
