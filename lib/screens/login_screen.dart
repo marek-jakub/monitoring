@@ -37,7 +37,12 @@ class LoginScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              // TODO: add app image
+              const SizedBox(
+                height: 200,
+                child: Image(
+                  image: AssetImage('assets/images/mon_ring_logo.png'),
+                ),
+              ),
               const SizedBox(
                 height: 16.0,
               ),
