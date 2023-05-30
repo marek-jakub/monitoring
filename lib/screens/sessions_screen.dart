@@ -87,7 +87,9 @@ class _SessionsScreenState extends State<SessionsScreen> {
           body: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(
-              children: [],
+              children: [
+                const Text('Ringing sessions'),
+              ],
             ),
           ),
         );
