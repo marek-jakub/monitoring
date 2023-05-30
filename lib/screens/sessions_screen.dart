@@ -36,6 +36,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
+                    // Go to add_session_screen.
                     dataManager.setNewSession(true);
                   },
                   style:
@@ -45,6 +46,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (_selectedId > -1) {
+                      // Go to add_ring screen.
                       dataManager.setNewRing(true);
                     } else {
                       ScaffoldMessenger.of(context).showMaterialBanner(
@@ -76,6 +78,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
+                    // Go to report_screen.
                     dataManager.setNewReport(true);
                   },
                   style:
