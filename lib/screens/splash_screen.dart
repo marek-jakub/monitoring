@@ -33,7 +33,10 @@ class SplashScreenState extends State<SplashScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            // TODO: add image - MonitoRing app
+            Image(
+              height: 200,
+              image: AssetImage('assets/images/mon_ring_logo.png'),
+            ),
             Text('Initializing...')
           ],
         ),
