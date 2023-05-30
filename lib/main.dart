@@ -47,10 +47,11 @@ class _MonitoRingState extends State<MonitoRing> {
           dispose: (context, db) => db.close(),
         ),
         ChangeNotifierProxyProvider<MonRingDb, RingDataManager>(
-            create: (context) => _ringDataManager,
-            update: (context, db, notifier) => notifier!..initDb(db)
-            //..getSessionStream()
-            ),
+          create: (context) => _ringDataManager,
+          update: (context, db, notifier) => notifier!
+            ..initDb(db)
+            ..getSessionLocationViewStream(),
+        ),
         ChangeNotifierProvider(create: (context) => _appStateManager),
         ChangeNotifierProvider(create: (context) => _profileManager),
       ],
