@@ -13,7 +13,7 @@ class RingDataManager extends ChangeNotifier {
     _monRingDb = db;
   }
 
-  ///////////////////// PRIVATE MEMBERS /////////////////////
+  // PRIVATE MEMBERS /////////////////////
   // Session
   bool _newSession = false;
   List<SessionLocationViewData> _sessionLocationViewStream = [];
@@ -42,7 +42,7 @@ class RingDataManager extends ChangeNotifier {
   /// If true, show circular loading indicator.
   bool get isLoading => _isLoading;
 
-  ///////////////////// SESSION /////////////////////////////
+  // SESSION /////////////////////////////
   /// The access to add session screen.
   ///
   /// True for accessing add_session screen, false for pop page.
@@ -58,7 +58,7 @@ class RingDataManager extends ChangeNotifier {
   List<SessionLocationViewData> get sessionLocationViewStream =>
       _sessionLocationViewStream;
 
-  ///////////////////// RING ////////////////////////////////
+  // RING ////////////////////////////////
   /// The access to add ring screen.
   ///
   /// True for accessing add_ring screen, false for pop page.
@@ -68,7 +68,7 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  ///////////////////// REPORT /////////////////////////////
+  // REPORT /////////////////////////////
   /// The access to create report screen.
   ///
   /// True for accessing report screen, false for pop page.
@@ -78,8 +78,8 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  ///////////////////// DATABASE ACCESS /////////////////////
-  ///
+  // DATABASE ACCESS /////////////////////
+  /// A stream of session - location view.
   void getSessionLocationViewStream() {
     _isLoading = true;
 
