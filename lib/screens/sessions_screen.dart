@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart';
 import 'package:provider/provider.dart';
 
 import '../data/monitoring_db.dart';
@@ -89,6 +90,14 @@ class _SessionsScreenState extends State<SessionsScreen> {
             child: Column(
               children: [
                 const Text('Ringing sessions'),
+                Selector<RingDataManager, List<SessionLocationViewData>>(
+                  selector: (context, notifier) =>
+                      notifier.sessionLocationViewStream,
+                  shouldRebuild: (previous, next) => true,
+                  builder: (context, sessions, child) {
+                    return Row();
+                  },
+                ),
               ],
             ),
           ),
