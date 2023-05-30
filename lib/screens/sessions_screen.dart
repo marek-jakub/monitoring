@@ -44,7 +44,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 ElevatedButton(
                   onPressed: () {
                     if (_selectedId > -1) {
-                      // TODO: set new ring
+                      dataManager.setNewRing(true);
                     } else {
                       ScaffoldMessenger.of(context).showMaterialBanner(
                         MaterialBanner(
