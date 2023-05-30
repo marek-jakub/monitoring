@@ -16,6 +16,7 @@ class RingDataManager extends ChangeNotifier {
   // PRIVATE MEMBERS /////////////////////
   // Session
   bool _newSession = false;
+  bool _sessionTapped = false;
   List<SessionLocationViewData> _sessionLocationViewStream = [];
 
   // Location
@@ -49,6 +50,15 @@ class RingDataManager extends ChangeNotifier {
   bool get newSession => _newSession;
   void setNewSession(bool create) {
     _newSession = create;
+    notifyListeners();
+  }
+
+  /// Access to session tapped value.
+  ///
+  /// True on session tap, else false.
+  bool get sessionTapped => _sessionTapped;
+  void setSessionTapped(bool value) {
+    _sessionTapped = value;
     notifyListeners();
   }
 
