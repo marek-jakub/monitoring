@@ -31,6 +31,18 @@ class MonRingDb extends _$MonRingDb {
   @override
   int get schemaVersion => 1;
 
+  ////////// SESSION - LOCATION VIEW
+
+  /// Returns a stream of list containing session - location view.
+  ///
+  /// The data is ordered on session id, descending.
+  Stream<List<SessionLocationViewData>> watchSessionLocationView() {
+    return (select(sessionLocationView)
+          ..orderBy(
+              [(t) => OrderingTerm(expression: t.id, mode: OrderingMode.desc)]))
+        .watch();
+  }
+
   ////////// SESSION ENTITY
 
   /// Saves session data.
