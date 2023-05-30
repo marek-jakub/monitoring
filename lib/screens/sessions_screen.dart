@@ -75,7 +75,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: set new report
+                    dataManager.setNewReport(true);
                   },
                   style:
                       ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
