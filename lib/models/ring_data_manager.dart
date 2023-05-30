@@ -34,6 +34,14 @@ class RingDataManager extends ChangeNotifier {
 
   // Ring orders
 
+  // If loading data from database takes longer.
+  bool _isLoading = false;
+
+  /// A value signifying busy database.
+  ///
+  /// If true, show circular loading indicator.
+  bool get isLoading => _isLoading;
+
   ///////////////////// SESSION /////////////////////////////
   /// The access to add session screen.
   ///
@@ -68,5 +76,33 @@ class RingDataManager extends ChangeNotifier {
   void setNewReport(bool create) {
     _newReport = create;
     notifyListeners();
+  }
+
+  ///////////////////// DATABASE ACCESS /////////////////////
+  ///
+  void getSessionLocationViewStream() {
+    _isLoading = true;
+
+    _monRingDb?.watchSessionLocationView().listen((event) {
+      _sessionLocationViewStream = event;
+      debugPrint('=========================================');
+      debugPrint('LOCATION VIEW STREAM SIZE: ${event.length}');
+      debugPrint('session manager calling location view: $event');
+      debugPrint('=========================================');
+      _isLoading = false;
+      notifyListeners();
+    });
+
+    // _appdb?.watchAllSessions().listen((event) {
+    //   debugPrint('SESSIONS STREAM SIZE: ${event.length}');
+    //   debugPrint('session manager calling sessions: $event');
+    //   debugPrint('=========================================');
+    // });
+
+    // _appdb?.watchAllLocations().listen((event) {
+    //   debugPrint('LOCATIONS STREAM SIZE: ${event.length}');
+    //   debugPrint('session manager calling locations: $event');
+    //   debugPrint('=========================================');
+    // });
   }
 }
