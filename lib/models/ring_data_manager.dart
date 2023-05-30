@@ -23,6 +23,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Ring
   bool _newRing = false;
+  List<RingEntityData> _sessionRingStream = [];
 
   // Retrap
 
@@ -78,6 +79,11 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Access to ring stream list of a given session.
+  ///
+  /// ...
+  List<RingEntityData> get sessionRingStream => _sessionRingStream;
+
   // REPORT /////////////////////////////
   /// The access to create report screen.
   ///
@@ -114,5 +120,22 @@ class RingDataManager extends ChangeNotifier {
     //   debugPrint('session manager calling locations: $event');
     //   debugPrint('=========================================');
     // });
+  }
+
+  /// A stream of rings of a given session.
+  ///
+  /// @param id A session id.
+  void getSessionRingStream(int id) {
+    _isLoading = true;
+
+    _monRingDb?.watchSessionRings(id).listen((event) {
+      _sessionRingStream = event;
+      debugPrint('=========================================');
+      debugPrint('SESSION RINGS STREAM SIZE: ${event.length}');
+      debugPrint('session manager calling session rings: $event');
+      debugPrint('=========================================');
+      _isLoading = false;
+      notifyListeners();
+    });
   }
 }
