@@ -25,6 +25,7 @@ class RingDataManager extends ChangeNotifier {
   // Retrap
 
   // Report
+  bool _newReport = false;
 
   // RingSeries
 
@@ -49,6 +50,16 @@ class RingDataManager extends ChangeNotifier {
   bool get newRing => _newRing;
   void setNewRing(bool create) {
     _newRing = create;
+    notifyListeners();
+  }
+
+  ///////////////////// REPORT /////////////////////////////
+  /// The access to create report screen.
+  ///
+  /// True for accessing report screen, false for pop page.
+  bool get newReport => _newReport;
+  void setNewReport(bool create) {
+    _newReport = create;
     notifyListeners();
   }
 }
