@@ -1,1 +1,25 @@
-// TODO: create add session screen.
+import 'package:flutter/material.dart';
+
+import '../models/models.dart';
+
+class AddSessionScreen extends StatefulWidget {
+  static MaterialPage page() {
+    return MaterialPage(
+      name: MonitoRingPages.addSessionPath,
+      key: ValueKey(MonitoRingPages.addSessionPath),
+      child: const AddSessionScreen(),
+    );
+  }
+
+  const AddSessionScreen({super.key});
+
+  @override
+  State<AddSessionScreen> createState() => _AddSessionScreenState();
+}
+
+class _AddSessionScreenState extends State<AddSessionScreen> {
+  @override
+  Widget build(BuildContext contex) {
+    return Scaffold();
+  }
+}
