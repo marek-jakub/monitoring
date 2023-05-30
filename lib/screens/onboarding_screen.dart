@@ -109,6 +109,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
+  /// A button for skipping onboarding.
   Widget pageActionButtons() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.end,
