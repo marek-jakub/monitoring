@@ -5,7 +5,7 @@ import '../models/models.dart';
 
 /// Application login screen.
 ///
-///
+/// ...
 class LoginScreen extends StatelessWidget {
   static MaterialPage page() {
     return MaterialPage(
