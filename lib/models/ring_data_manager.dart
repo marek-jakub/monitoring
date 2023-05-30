@@ -16,6 +16,7 @@ class RingDataManager extends ChangeNotifier {
   ///////////////////// PRIVATE MEMBERS /////////////////////
   // Session
   bool _newSession = false;
+  List<SessionLocationViewData> _sessionLocationViewStream = [];
 
   // Location
 
@@ -42,6 +43,12 @@ class RingDataManager extends ChangeNotifier {
     _newSession = create;
     notifyListeners();
   }
+
+  /// Access to session - location combined view.
+  ///
+  /// A stream of list of joined tables session and location.
+  List<SessionLocationViewData> get sessionLocationViewStream =>
+      _sessionLocationViewStream;
 
   ///////////////////// RING ////////////////////////////////
   /// The access to add ring screen.
