@@ -33,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: const Text('MonitoRing'),
+        title: const Text('MonitoRing application'),
         leading: GestureDetector(
           child: const Icon(
             Icons.chevron_left,
@@ -48,6 +48,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: Column(
           children: [
             Expanded(child: onboardingPages()),
+            pageIndicator(),
+            pageActionButtons(),
           ],
         ),
       ),
@@ -59,10 +61,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     return PageView(
       controller: controller,
       children: [
-        // TODO: Add onboarding pages
-        //onboardPage(),
-        pageIndicator(),
-        pageActionButtons(),
+        onboardPage(
+          const AssetImage('assets/images/onboarding_1.png'),
+          '''Easy acces to ringing data!''',
+        ),
+        onboardPage(
+          const AssetImage('assets/images/onboarding_2.png'),
+          '''Offline data input and editing!''',
+        ),
+        onboardPage(
+          const AssetImage('assets/images/onboarding_3.png'),
+          '''EURING Code compatible!''',
+        ),
       ],
     );
   }
