@@ -14,7 +14,23 @@ class RingDataManager extends ChangeNotifier {
   }
 
   ///////////////////// PRIVATE MEMBERS /////////////////////
+  // Session
   bool _newSession = false;
+
+  // Location
+
+  // Ring
+  bool _newRing = false;
+
+  // Retrap
+
+  // Report
+
+  // RingSeries
+
+  // Lost ring
+
+  // Ring orders
 
   ///////////////////// SESSION /////////////////////////////
   /// The access to add session screen.
@@ -23,6 +39,16 @@ class RingDataManager extends ChangeNotifier {
   bool get newSession => _newSession;
   void setNewSession(bool create) {
     _newSession = create;
+    notifyListeners();
+  }
+
+  ///////////////////// RING ////////////////////////////////
+  /// The access to add ring screen.
+  ///
+  /// True for accessing add_ring screen, false for pop page.
+  bool get newRing => _newRing;
+  void setNewRing(bool create) {
+    _newRing = create;
     notifyListeners();
   }
 }
