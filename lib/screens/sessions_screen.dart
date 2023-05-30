@@ -98,7 +98,96 @@ class _SessionsScreenState extends State<SessionsScreen> {
                       notifier.sessionLocationViewStream,
                   shouldRebuild: (previous, next) => true,
                   builder: (context, sessions, child) {
-                    return Row();
+                    return Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          onPressed: () {
+                            if (_selectedId > -1) {
+                              // call get session by id
+                              // call edit session method
+                            } else {
+                              ScaffoldMessenger.of(context).showMaterialBanner(
+                                MaterialBanner(
+                                  content: const Text(
+                                    'Session not selected',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  backgroundColor: Colors.brown,
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        ScaffoldMessenger.of(context)
+                                            .hideCurrentMaterialBanner();
+                                      },
+                                      child: const Text(
+                                        'Close',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                        Expanded(
+                          child: SizedBox(
+                            height: 150.0,
+                            child: ListView.builder(
+                              itemCount: sessions.length,
+                              itemBuilder: (context, index) {
+                                final session = sessions[index];
+                                return GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      if (_selectedId == session.id) {
+                                        _selectedId = -1;
+                                        // call set current session to null
+                                        // call set current locatio to null
+                                        // call set session tapped to false
+                                      } else {
+                                        _selectedId = session.id;
+                                        // get ring stream for given session
+                                        // set current session id to given session id
+                                        // set current location id to session's location id
+                                        // get session - location view by id
+                                        // get session's retrap stream
+                                        // set session tapped to true
+                                      }
+                                    });
+                                  },
+                                  child: Card(
+                                      key: ValueKey(session.id),
+                                      color: Colors.blueGrey.shade100,
+                                      shape: const RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color: Colors.green,
+                                          style: BorderStyle.solid,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0)),
+                                      ),
+                                      child: Container(
+                                        color: session.id == _selectedId
+                                            ? Colors.amber
+                                            : Colors.cyan,
+                                        child: Row(
+                                          children: [
+                                            Text('${session.date} - '),
+                                            Text(
+                                                session.locationLocality ?? ''),
+                                          ],
+                                        ),
+                                      )),
+                                );
+                              },
+                            ),
+                          ),
+                        ),
+                      ],
+                    );
                   },
                 ),
               ],
