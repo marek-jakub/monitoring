@@ -35,7 +35,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
               children: [
                 ElevatedButton(
                   onPressed: () {
-                    // TODO: set new session
+                    dataManager.setNewSession(true);
                   },
                   style:
                       ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
