@@ -158,29 +158,29 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                     });
                                   },
                                   child: Card(
-                                      key: ValueKey(session.id),
-                                      color: Colors.blueGrey.shade100,
-                                      shape: const RoundedRectangleBorder(
-                                        side: BorderSide(
-                                          color: Colors.green,
-                                          style: BorderStyle.solid,
-                                          width: 1.0,
-                                        ),
-                                        borderRadius: BorderRadius.all(
-                                            Radius.circular(10.0)),
+                                    key: ValueKey(session.id),
+                                    color: Colors.blueGrey.shade100,
+                                    shape: const RoundedRectangleBorder(
+                                      side: BorderSide(
+                                        color: Colors.green,
+                                        style: BorderStyle.solid,
+                                        width: 1.0,
                                       ),
-                                      child: Container(
-                                        color: session.id == _selectedId
-                                            ? Colors.amber
-                                            : Colors.cyan,
-                                        child: Row(
-                                          children: [
-                                            Text('${session.date} - '),
-                                            Text(
-                                                session.locationLocality ?? ''),
-                                          ],
-                                        ),
-                                      )),
+                                      borderRadius: BorderRadius.all(
+                                          Radius.circular(10.0)),
+                                    ),
+                                    child: Container(
+                                      color: session.id == _selectedId
+                                          ? Colors.amber
+                                          : Colors.cyan,
+                                      child: Row(
+                                        children: [
+                                          Text('${session.date} - '),
+                                          Text(session.locationLocality ?? ''),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
                                 );
                               },
                             ),
@@ -190,6 +190,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                     );
                   },
                 ),
+                const Text('Session rings'),
               ],
             ),
           ),
