@@ -31,7 +31,7 @@ class MonRingDb extends _$MonRingDb {
   @override
   int get schemaVersion => 1;
 
-  ////////// SESSION - LOCATION VIEW
+  // SESSION - LOCATION VIEW
 
   /// Returns a stream of list containing session - location view.
   ///
@@ -43,7 +43,7 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
-  ////////// SESSION ENTITY
+  // SESSION ENTITY
 
   /// Saves session data.
   ///
@@ -79,7 +79,7 @@ class MonRingDb extends _$MonRingDb {
     return (delete(sessionEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
-  ////////// LOCATION ENTITY
+  // LOCATION ENTITY
 
   /// Saves location data.
   ///
@@ -113,7 +113,7 @@ class MonRingDb extends _$MonRingDb {
     return (delete(locationEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
-  ////////// RING ENTITY
+  // RING ENTITY
 
   /// Saves ring data.
   ///
@@ -155,7 +155,7 @@ class MonRingDb extends _$MonRingDb {
     return (delete(ringEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
-  ////////// RETRAP ENTITY
+  // RETRAP ENTITY
 
   /// Saves retrap ring data.
   ///
@@ -197,19 +197,19 @@ class MonRingDb extends _$MonRingDb {
     return (delete(retrapEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
-  ////////// RINGSERIES ENTITY
+  // RINGSERIES ENTITY
   // TODO: define ringseries access methods
 
-  ////////// USEDRING ENTITY
+  // USEDRING ENTITY
   // TODO: define used ring access methods
 
-  ////////// ORDER ENTITY
+  // ORDER ENTITY
   // TODO: define order access methods
 
-  ////////// LOSTRING ENTITY
+  // LOSTRING ENTITY
   // TODO: define lost ring access methods
 
-  ////////// REPORT ENTITY
+  // REPORT ENTITY
   // TODO: define report access methods
 }
 
