@@ -59,6 +59,7 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
           Home.page(monStateManager.getSelectedTab),
           if (profileManager.didSelectRinger)
             ProfileScreen.page(profileManager.getRinger),
+          if (ringDataManager.newSession) AddSessionScreen.page(),
         ]
       ],
     );
