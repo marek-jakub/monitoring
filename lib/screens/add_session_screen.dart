@@ -6,6 +6,8 @@ import 'package:geolocator/geolocator.dart';
 import '../data/monitoring_db.dart';
 import '../models/models.dart';
 
+import '../widgets/custom_text_form_field.dart';
+
 class AddSessionScreen extends StatefulWidget {
   static MaterialPage page() {
     return MaterialPage(
@@ -122,7 +124,15 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
       body: SingleChildScrollView(
         child: Form(
           key: _sessionFormKey,
-          child: Column(),
+          child: Column(
+            children: [
+              CustomTextFormField(
+                controller: _ringerId,
+                txtLabel: 'Ringer ID',
+                keyboard: 'text',
+              ),
+            ],
+          ),
         ),
       ),
     );
