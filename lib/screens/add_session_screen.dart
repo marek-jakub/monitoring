@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
+import 'package:geolocator/geolocator.dart';
 
 import '../data/monitoring_db.dart';
 import '../models/models.dart';
