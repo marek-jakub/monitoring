@@ -238,4 +238,43 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
       ),
     );
   }
+
+  /// Returns GPS position of the location.
+  ///
+  /// User geolocation permissions required.
+  Future<Position> determineLatLon() async {
+    serviceStatus = await Geolocator.isLocationServiceEnabled();
+    if (!serviceStatus) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Enable location services.')),
+        );
+      }
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Location permissions have been denied.')),
+          );
+        }
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Location permissions are permanently denied.')),
+        );
+      }
+    }
+
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best);
+  }
 }
