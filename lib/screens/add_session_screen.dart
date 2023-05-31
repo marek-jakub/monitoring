@@ -119,6 +119,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
               icon: const Icon(Icons.save)),
         ],
       ),
+      body: SingleChildScrollView(),
     );
   }
 
