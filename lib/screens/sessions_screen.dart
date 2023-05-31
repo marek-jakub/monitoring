@@ -144,7 +144,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                       if (_selectedId == session.id) {
                                         _selectedId = -1;
                                         // call set current session to null
-                                        // call set current locatio to null
+                                        // call set current location to null
                                         // call set session tapped to false
                                       } else {
                                         _selectedId = session.id;
