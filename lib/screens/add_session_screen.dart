@@ -97,7 +97,29 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
   @override
   Widget build(BuildContext contex) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'MonitoRing: Session',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            Provider.of<RingDataManager>(context, listen: false)
+                .setNewSession(false);
+          },
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                //addSession();
+              },
+              icon: const Icon(Icons.save)),
+        ],
+      ),
+    );
   }
 
   /// Listens to change notifier save session success or error.
