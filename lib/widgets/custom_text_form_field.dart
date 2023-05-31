@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A text form field, requires text controller [_controller],
+/// a label [_label] and a string signifying what keyboard to show [_keyboard].
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField(
       {Key? key,
