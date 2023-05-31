@@ -136,6 +136,17 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Locality name',
                 keyboard: 'text',
               ),
+              ElevatedButton(
+                onPressed: () async {
+                  // Future<Position> location = determineLatLon();
+                  // position = await location;
+                  // setState(() {
+                  //   _latController.text = position.latitude.toString();
+                  //   _lonController.text = position.longitude.toString();
+                  // });
+                },
+                child: const Text('Current latitude and longitude'),
+              ),
               Row(
                 children: [
                   Expanded(
