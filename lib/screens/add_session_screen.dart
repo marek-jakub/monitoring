@@ -144,6 +144,13 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Locality name',
                 keyboard: 'text',
               ),
+              CustomDatePickerField(
+                controller: _dateController,
+                txtLabel: 'Date',
+                callback: () {
+                  //pickDate(context);
+                },
+              ),
               CustomDropdownButtonFormField(
                 controller: _accuracyOfDateController,
                 txtLabel: 'Accuracy of date',
