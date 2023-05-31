@@ -37,7 +37,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Ring orders
 
-  // If loading data from database takes longer.
+  /// Whether loading data from database takes longer.
   bool _isLoading = false;
 
   /// A value signifying busy database.
