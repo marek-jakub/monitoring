@@ -40,10 +40,20 @@ class RingDataManager extends ChangeNotifier {
   /// Whether loading data from database takes longer.
   bool _isLoading = false;
 
+  /// Holding error message if occuring during database access.
+  String _error = '';
+
   /// A value signifying busy database.
   ///
   /// If true, show circular loading indicator.
   bool get isLoading => _isLoading;
+
+  /// A value holding any error message if occuring on database access.
+  String get error => _error;
+  void setError(String value) {
+    _error = value;
+    notifyListeners();
+  }
 
   // SESSION /////////////////////////////
 
