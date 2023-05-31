@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A date picker, requires a text controller [_controller],
+/// a label [_label] and a callback method [_callback].
 class CustomDatePickerField extends StatelessWidget {
   const CustomDatePickerField(
       {Key? key,
