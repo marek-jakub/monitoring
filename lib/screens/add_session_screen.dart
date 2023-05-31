@@ -149,7 +149,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 controller: _dateController,
                 txtLabel: 'Date',
                 callback: () {
-                  //pickDate(context);
+                  pickDate(context);
                 },
               ),
               CustomDropdownButtonFormField(
