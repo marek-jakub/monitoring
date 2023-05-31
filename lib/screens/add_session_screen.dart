@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
 import 'package:geolocator/geolocator.dart';
+import 'package:intl/intl.dart';
 
 import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
@@ -264,9 +265,38 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     );
   }
 
+  /// A date picker widget.
+  Future<void> pickDate(BuildContext context) async {
+    final initialDate = DateTime.now();
+    final newDate = await showDatePicker(
+      context: context,
+      initialDate: _currDate ?? initialDate,
+      firstDate: DateTime(DateTime.now().year - 99),
+      lastDate: DateTime(DateTime.now().year + 1),
+      builder: (context, child) => Theme(
+          data: ThemeData().copyWith(
+              colorScheme: const ColorScheme.light(
+                  primary: Colors.green,
+                  onPrimary: Colors.white,
+                  onSurface: Colors.black),
+              dialogBackgroundColor: Colors.white),
+          child: child ?? const Text('')),
+    );
+
+    if (newDate == null) {
+      return;
+    }
+
+    setState(() {
+      _currDate = newDate;
+      String date = DateFormat('dd-MM-yyyy').format(newDate);
+      _dateController.text = date;
+    });
+  }
+
   /// Returns GPS position of the location.
   ///
-  /// User geolocation permissions required, else show permissions denied
+  /// User geolocation permissions required, else shows permissions denied
   /// message.
   Future<Position> determineLatLon() async {
     serviceStatus = await Geolocator.isLocationServiceEnabled();
