@@ -61,7 +61,7 @@ const List<String> accuracyOfDate = <String>[
 
 /// A list holding EURING Code values of place code.
 ///
-/// Currently not complete.
+/// Not complete.
 const List<String> placeCode = <String>[
   '',
   'GB--',
