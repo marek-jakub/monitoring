@@ -29,6 +29,8 @@ dependencies:
   google_maps_flutter: ^2.2.8
   # animation and page changes
   smooth_page_indicator: ^1.1.0
+  # GPS access
+  geolocator: ^9.0.2
 
 
   cupertino_icons: ^1.0.2
