@@ -27,6 +27,38 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   /// Focus to be able to distinguish between start and end time fields
   bool _startTimeFieldFocus = false;
 
+  // Session information controllers
+  //  final TextEditingController _ringingSchemeController =
+  //    TextEditingController();
+  final TextEditingController _ringerId = TextEditingController();
+  final TextEditingController _placeCodeController = TextEditingController();
+  final TextEditingController _localityController = TextEditingController();
+  final TextEditingController _dateController = TextEditingController();
+  final TextEditingController _accuracyOfDateController =
+      TextEditingController();
+  final TextEditingController _latController = TextEditingController();
+  final TextEditingController _lonController = TextEditingController();
+  final TextEditingController _coordAccuracyController =
+      TextEditingController();
+  final TextEditingController _startTimeController = TextEditingController();
+  final TextEditingController _endTimeController = TextEditingController();
+  final TextEditingController _localeInfoController = TextEditingController();
+
+  /// Current date.
+  DateTime? _currDate;
+
+  /// Current time.
+  TimeOfDay? _currTime;
+
+  /// A state of the GPS sensor service.
+  bool serviceStatus = false;
+
+  /// User permission to access GPS sensor service.
+  bool hasPermission = false;
+
+  //late LocationPermission permission;
+  //late Position position;
+
   @override
   Widget build(BuildContext contex) {
     return Scaffold();
