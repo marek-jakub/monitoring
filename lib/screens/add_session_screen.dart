@@ -128,6 +128,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
           key: _sessionFormKey,
           child: Column(
             children: [
+              // TODO: populate with signed in ringer's ID
               CustomTextFormField(
                 controller: _ringerId,
                 txtLabel: 'Ringer ID',
