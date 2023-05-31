@@ -21,6 +21,9 @@ class AddSessionScreen extends StatefulWidget {
 }
 
 class _AddSessionScreenState extends State<AddSessionScreen> {
+  /// Form key for accessing and checking form attributes' state.
+  final _sessionFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext contex) {
     return Scaffold();
