@@ -154,6 +154,11 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   ),
                 ],
               ),
+              CustomTextFormField(
+                controller: _localeInfoController,
+                txtLabel: 'Locality information',
+                keyboard: 'text',
+              ),
             ],
           ),
         ),
