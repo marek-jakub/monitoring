@@ -21,6 +21,8 @@ dependencies:
   path_provider: ^2.0.15
   # data persistence using sqlite
   drift: ^2.8.0
+  # drift initiation libraries
+  sqlite3_flutter_libs: ^0.5.15
   # path for database file access
   path: ^1.8.3
   # google maps
