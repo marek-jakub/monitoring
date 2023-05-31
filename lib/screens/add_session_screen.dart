@@ -176,6 +176,11 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   ),
                 ],
               ),
+              CustomDropdownButtonFormField(
+                controller: _coordAccuracyController,
+                txtLabel: 'Co-ordinates accuracy',
+                listValues: accuracyOfCoordinates,
+              ),
               CustomTextFormField(
                 controller: _localeInfoController,
                 txtLabel: 'Locality information',
