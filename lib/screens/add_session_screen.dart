@@ -136,6 +136,24 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Locality name',
                 keyboard: 'text',
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextFormField(
+                      controller: _latController,
+                      txtLabel: 'Latitude',
+                      keyboard: 'number',
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTextFormField(
+                      controller: _lonController,
+                      txtLabel: 'Longitude',
+                      keyboard: 'number',
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
