@@ -17,6 +17,7 @@ class RingDataManager extends ChangeNotifier {
   // Session
   bool _newSession = false;
   bool _sessionTapped = false;
+  bool _isSessionAdded = false;
   List<SessionLocationViewData> _sessionLocationViewStream = [];
 
   // Location
@@ -45,6 +46,7 @@ class RingDataManager extends ChangeNotifier {
   bool get isLoading => _isLoading;
 
   // SESSION /////////////////////////////
+
   /// The access to add session screen.
   ///
   /// True for accessing add_session screen, false for pop page.
@@ -63,13 +65,16 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Access to session - location combined view.
+  /// Access to session-location combined view.
   ///
   /// A stream of list of joined tables session and location.
   List<SessionLocationViewData> get sessionLocationViewStream =>
       _sessionLocationViewStream;
 
+  ///
+
   // RING ////////////////////////////////
+
   /// The access to add ring screen.
   ///
   /// True for accessing add_ring screen, false for pop page.
@@ -85,6 +90,7 @@ class RingDataManager extends ChangeNotifier {
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
 
   // REPORT /////////////////////////////
+
   /// The access to create report screen.
   ///
   /// True for accessing report screen, false for pop page.
@@ -95,7 +101,8 @@ class RingDataManager extends ChangeNotifier {
   }
 
   // DATABASE ACCESS /////////////////////
-  /// A stream of session - location view.
+
+  /// A stream of session-location view.
   void getSessionLocationViewStream() {
     _isLoading = true;
 
@@ -122,9 +129,7 @@ class RingDataManager extends ChangeNotifier {
     // });
   }
 
-  /// A stream of rings of a given session.
-  ///
-  /// @param id A session id.
+  /// A stream of rings of a session with identifier [id].
   void getSessionRingStream(int id) {
     _isLoading = true;
 
