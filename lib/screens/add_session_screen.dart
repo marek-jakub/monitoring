@@ -142,6 +142,11 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Locality name',
                 keyboard: 'text',
               ),
+              CustomDropdownButtonFormField(
+                controller: _accuracyOfDateController,
+                txtLabel: 'Accuracy of date',
+                listValues: accuracyOfDate,
+              ),
               ElevatedButton(
                 onPressed: () async {
                   Future<Position> location = determineLatLon();
