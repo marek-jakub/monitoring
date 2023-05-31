@@ -119,7 +119,12 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
               icon: const Icon(Icons.save)),
         ],
       ),
-      body: SingleChildScrollView(),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _sessionFormKey,
+          child: Column(),
+        ),
+      ),
     );
   }
 
