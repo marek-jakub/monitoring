@@ -131,6 +131,11 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Ringer ID',
                 keyboard: 'text',
               ),
+              CustomTextFormField(
+                controller: _localityController,
+                txtLabel: 'Locality name',
+                keyboard: 'text',
+              ),
             ],
           ),
         ),
