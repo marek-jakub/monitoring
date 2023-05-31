@@ -133,6 +133,10 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Ringer ID',
                 keyboard: 'text',
               ),
+              CustomDropdownButtonFormField(
+                  controller: _placeCodeController,
+                  txtLabel: 'Place code',
+                  listValues: placeCode),
               CustomTextFormField(
                 controller: _localityController,
                 txtLabel: 'Locality name',
