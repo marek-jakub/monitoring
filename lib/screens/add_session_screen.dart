@@ -57,8 +57,11 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   /// User permission to access GPS sensor service.
   bool hasPermission = false;
 
-  //late LocationPermission permission;
-  //late Position position;
+  /// Permission to access user's location services
+  late LocationPermission permission;
+
+  /// User's geographical position.
+  late Position position;
 
   @override
   Widget build(BuildContext contex) {
