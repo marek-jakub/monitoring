@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+/// A time picker, requires a text controller [_controller],
+/// a label [_label] and a callback method [_callback].
 class CustomTimePickerField extends StatefulWidget {
   const CustomTimePickerField(
       {Key? key,
