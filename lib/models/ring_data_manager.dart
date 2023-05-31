@@ -71,7 +71,12 @@ class RingDataManager extends ChangeNotifier {
   List<SessionLocationViewData> get sessionLocationViewStream =>
       _sessionLocationViewStream;
 
-  ///
+  /// Whether the session has been succesfully saved in the database.
+  bool get isSessionAdded => _isSessionAdded;
+  void setIsSessionAdded(bool value) {
+    _isSessionAdded = value;
+    notifyListeners();
+  }
 
   // RING ////////////////////////////////
 
