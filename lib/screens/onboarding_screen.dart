@@ -33,7 +33,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0.0,
-        title: const Text('MonitoRing application'),
+        title: const Text('MonitoRing sign in'),
         leading: GestureDetector(
           child: const Icon(
             Icons.chevron_left,
