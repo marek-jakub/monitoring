@@ -241,7 +241,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
   /// Returns GPS position of the location.
   ///
-  /// User geolocation permissions required.
+  /// User geolocation permissions required, else show permissions denied
+  /// message.
   Future<Position> determineLatLon() async {
     serviceStatus = await Geolocator.isLocationServiceEnabled();
     if (!serviceStatus) {
