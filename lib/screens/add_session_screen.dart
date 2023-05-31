@@ -24,6 +24,9 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   /// Form key for accessing and checking form attributes' state.
   final _sessionFormKey = GlobalKey<FormState>();
 
+  /// Focus to be able to distinguish between start and end time fields
+  bool _startTimeFieldFocus = false;
+
   @override
   Widget build(BuildContext contex) {
     return Scaffold();
