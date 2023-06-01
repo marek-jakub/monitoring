@@ -203,6 +203,11 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     );
   }
 
+  /// Saves session information in the database.
+  void addSession() {
+    final isValid = _sessionFormKey.currentState?.validate();
+  }
+
   /// Listens to change notifier save session success or error.
   void providerListener() {
     if (_dataManager.isSessionAdded) {
