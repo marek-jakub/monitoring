@@ -205,7 +205,32 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
   /// Saves session information in the database.
   void addSession() {
+    /// Checks for input validity.
     final isValid = _sessionFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final locationEntity = LocationEntityCompanion(
+        locality: d.Value(_localityController.text),
+        placeCode: d.Value(_placeCodeController.text),
+        latitude: d.Value(_latController.text),
+        longitude: d.Value(_lonController.text),
+        coordinatesAccuracy: d.Value(_coordAccuracyController.text),
+        localeInfo: d.Value(_localeInfoController.text),
+      );
+
+      final sessionEntity = SessionEntityCompanion(
+        date: d.Value(_dateController.text),
+        dateAccuracy: d.Value(_accuracyOfDateController.text),
+        location: const d.Value(-1),
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        startTime: d.Value(_startTimeController.text),
+        endTime: d.Value(_endTimeController.text),
+      );
+
+      context
+          .read<RingDataManager>()
+          .saveSession(locationEntity, sessionEntity);
+    }
   }
 
   /// Listens to change notifier save session success or error.
