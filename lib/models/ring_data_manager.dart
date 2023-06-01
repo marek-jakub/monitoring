@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/foundation.dart';
 import 'package:monitoring/data/monitoring_db.dart';
+import 'package:drift/drift.dart' as d;
 
 /// Notifier for ringing data and database access.
 ///
@@ -155,6 +156,35 @@ class RingDataManager extends ChangeNotifier {
       debugPrint('session manager calling session rings: $event');
       debugPrint('=========================================');
       _isLoading = false;
+      notifyListeners();
+    });
+  }
+
+  /// Saving location [locCompanion] in the database, if successful using
+  /// returned location's id to save session [sesCompanion].
+  void saveSession(LocationEntityCompanion locCompanion,
+      SessionEntityCompanion sesCompanion) {
+    _monRingDb?.saveLocation(locCompanion).then((value) {
+      if (value > 0) {
+        final sessionEntity = SessionEntityCompanion(
+          date: sesCompanion.date,
+          dateAccuracy: sesCompanion.dateAccuracy,
+          location: d.Value(value),
+          ringerId: sesCompanion.ringerId,
+          startTime: sesCompanion.startTime,
+          endTime: sesCompanion.endTime,
+        );
+        _monRingDb?.saveSession(sessionEntity).then((val) {
+          _isSessionAdded = val > 0 ? true : false;
+          notifyListeners();
+        }).onError((error, stackTrace) {
+          _error = error.toString();
+          notifyListeners();
+        });
+      }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
       notifyListeners();
     });
   }
