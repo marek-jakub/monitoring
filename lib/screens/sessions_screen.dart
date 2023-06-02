@@ -104,7 +104,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                           onPressed: () {
                             if (_selectedId > -1) {
                               dataManager.getSessionLocationById(_selectedId);
-                              // call edit session method
+                              dataManager.setEditSession(true);
                             } else {
                               ScaffoldMessenger.of(context).showMaterialBanner(
                                 MaterialBanner(
