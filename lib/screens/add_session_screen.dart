@@ -246,6 +246,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
         date: d.Value(_dateController.text),
         dateAccuracy: d.Value(_accuracyOfDateController.text),
         location: const d.Value(-1),
+        // TODO: if different from the signed in ringer id, use that one.
         ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         startTime: d.Value(_startTimeController.text),
         endTime: d.Value(_endTimeController.text),
