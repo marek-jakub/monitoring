@@ -92,6 +92,12 @@ class RingDataManager extends ChangeNotifier {
   List<SessionLocationViewData> get sessionLocationViewStream =>
       _sessionLocationViewStream;
 
+  /// Access to session-location view entry.
+  ///
+  /// An entry of joined tables session and location.
+  SessionLocationViewData? get sessionLocationViewData =>
+      _sessionLocationViewData;
+
   // RING ////////////////////////////////
 
   /// The access to add ring screen.
@@ -136,6 +142,7 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
+  /// Fetches an entry from session-location view, given by [id].
   void getSessionLocationById(int id) {
     _isLoading = true;
 
