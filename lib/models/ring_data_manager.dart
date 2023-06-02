@@ -87,6 +87,13 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Whether the session data is to be edited.
+  bool get editSession => _editSession;
+  void setEditSession(bool selected) {
+    _editSession = selected;
+    notifyListeners();
+  }
+
   /// Access to session-location combined view.
   ///
   /// A stream of list of joined tables session and location.
