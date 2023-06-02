@@ -19,6 +19,7 @@ class RingDataManager extends ChangeNotifier {
   bool _newSession = false;
   bool _sessionTapped = false;
   bool _isSessionAdded = false;
+  bool _editSession = false;
 
   // Location
 
