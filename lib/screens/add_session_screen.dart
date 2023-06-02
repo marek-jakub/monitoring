@@ -200,7 +200,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                       txtLabel: 'Start time',
                       callback: () {
                         _startTimeFieldFocus = true;
-                        //pickTime(context);
+                        pickTime(context);
                       },
                     ),
                   ),
@@ -209,7 +209,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                       controller: _endTimeController,
                       txtLabel: 'End time',
                       callback: () {
-                        //pickTime(context);
+                        pickTime(context);
                       },
                     ),
                   ),
