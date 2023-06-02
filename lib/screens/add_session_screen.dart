@@ -13,6 +13,7 @@ import '../widgets/custom_dropdown_form_field.dart';
 import '../widgets/custom_date_picker_field.dart';
 import '../widgets/custom_time_picker_field.dart';
 
+/// A form to create a ringing session.
 class AddSessionScreen extends StatefulWidget {
   static MaterialPage page() {
     return MaterialPage(
