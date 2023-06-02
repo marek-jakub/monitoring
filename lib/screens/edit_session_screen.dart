@@ -111,7 +111,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   void providerListener() {
     if (_dataManager.isSessionAdded) {
       listenEditSession();
-      context.read<RingDataManager>().setIsSessionAdded(false);
+      // TODO: call set session edited
     }
 
     if (_dataManager.error != '') {
@@ -132,7 +132,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              context.read<RingDataManager>().setIsSessionAdded(false);
+              // TODO: call session edited
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
             },
             child: const Text(
