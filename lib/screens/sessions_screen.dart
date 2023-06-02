@@ -103,7 +103,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                           icon: const Icon(Icons.edit),
                           onPressed: () {
                             if (_selectedId > -1) {
-                              // call get session by id
+                              dataManager.getSessionLocationById(_selectedId);
                               // call edit session method
                             } else {
                               ScaffoldMessenger.of(context).showMaterialBanner(
