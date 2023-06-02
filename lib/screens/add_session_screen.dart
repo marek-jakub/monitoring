@@ -120,7 +120,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                //addSession();
+                addSession();
               },
               icon: const Icon(Icons.save)),
         ],
