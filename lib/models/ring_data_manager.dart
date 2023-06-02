@@ -19,9 +19,12 @@ class RingDataManager extends ChangeNotifier {
   bool _newSession = false;
   bool _sessionTapped = false;
   bool _isSessionAdded = false;
-  List<SessionLocationViewData> _sessionLocationViewStream = [];
 
   // Location
+
+  // Session-location view
+  List<SessionLocationViewData> _sessionLocationViewStream = [];
+  SessionLocationViewData? _sessionLocationViewData;
 
   // Ring
   bool _newRing = false;
@@ -76,18 +79,18 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
-  /// Access to session-location combined view.
-  ///
-  /// A stream of list of joined tables session and location.
-  List<SessionLocationViewData> get sessionLocationViewStream =>
-      _sessionLocationViewStream;
-
   /// Whether the session has been succesfully saved in the database.
   bool get isSessionAdded => _isSessionAdded;
   void setIsSessionAdded(bool value) {
     _isSessionAdded = value;
     notifyListeners();
   }
+
+  /// Access to session-location combined view.
+  ///
+  /// A stream of list of joined tables session and location.
+  List<SessionLocationViewData> get sessionLocationViewStream =>
+      _sessionLocationViewStream;
 
   // RING ////////////////////////////////
 
@@ -128,6 +131,20 @@ class RingDataManager extends ChangeNotifier {
       debugPrint('SESSION-LOCATION VIEW STREAM SIZE: ${event.length}');
       debugPrint('session manager calling location view: $event');
       debugPrint('=========================================');
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
+
+  void getSessionLocationById(int id) {
+    _isLoading = true;
+
+    _monRingDb?.getSessionLocationById(id).then((value) {
+      _sessionLocationViewData = value;
+      _isLoading = false;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
       _isLoading = false;
       notifyListeners();
     });
