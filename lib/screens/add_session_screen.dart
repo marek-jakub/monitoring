@@ -263,6 +263,19 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   void providerListener() {
     if (_dataManager.isSessionAdded) {
       listenAddSession();
+      // Clear data to allow another entry
+      setState(() {
+        _placeCodeController.clear();
+        _localityController.clear();
+        _dateController.clear();
+        _accuracyOfDateController.clear();
+        _latController.clear();
+        _lonController.clear();
+        _coordAccuracyController.clear();
+        _startTimeController.clear();
+        _endTimeController.clear();
+        _localeInfoController.clear();
+      });
       context.read<RingDataManager>().setIsSessionAdded(false);
     }
 
