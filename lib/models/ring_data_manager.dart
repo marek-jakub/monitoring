@@ -131,18 +131,6 @@ class RingDataManager extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     });
-
-    // _appdb?.watchAllSessions().listen((event) {
-    //   debugPrint('SESSIONS STREAM SIZE: ${event.length}');
-    //   debugPrint('session manager calling sessions: $event');
-    //   debugPrint('=========================================');
-    // });
-
-    // _appdb?.watchAllLocations().listen((event) {
-    //   debugPrint('LOCATIONS STREAM SIZE: ${event.length}');
-    //   debugPrint('session manager calling locations: $event');
-    //   debugPrint('=========================================');
-    // });
   }
 
   /// A stream of rings of a session with identifier [id].
