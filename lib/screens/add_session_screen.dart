@@ -348,6 +348,41 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     });
   }
 
+  /// A time picker widget.
+  Future<void> pickTime(BuildContext context) async {
+    final initialTime = TimeOfDay.now();
+    final newTime = await showTimePicker(
+      context: context,
+      initialTime: _currTime ?? initialTime,
+      builder: (context, child) => Theme(
+        data: ThemeData().copyWith(
+          colorScheme: const ColorScheme.light(
+              primary: Colors.green,
+              onPrimary: Colors.white,
+              onSurface: Colors.black),
+          dialogBackgroundColor: Colors.white,
+        ),
+        child: child ?? const Text(''),
+      ),
+    );
+
+    if (newTime == null) {
+      return;
+    }
+
+    setState(() {
+      _currTime = newTime;
+      String time = _currTime!.format(context);
+      if (_startTimeFieldFocus) {
+        _startTimeController.text = time;
+        _endTimeController.text = time;
+        _startTimeFieldFocus = false;
+      } else {
+        _endTimeController.text = time;
+      }
+    });
+  }
+
   /// Returns GPS position of the location.
   ///
   /// User geolocation permissions required, else shows permissions denied
