@@ -110,18 +110,18 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   /// Listens to change notifier save session success or error.
   void providerListener() {
     if (_dataManager.isSessionAdded) {
-      listenAddSession();
+      listenEditSession();
       context.read<RingDataManager>().setIsSessionAdded(false);
     }
 
     if (_dataManager.error != '') {
-      listenAddSessionError(_dataManager.error);
+      listenEditSessionError(_dataManager.error);
       context.read<RingDataManager>().setError('');
     }
   }
 
   /// Shows scaffold messenger on successfuly saved session data.
-  void listenAddSession() {
+  void listenEditSession() {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: const Text(
@@ -146,7 +146,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   }
 
   /// Shows scaffold messenger with error on saving error.
-  void listenAddSessionError(String errorMsg) {
+  void listenEditSessionError(String errorMsg) {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: Text(
