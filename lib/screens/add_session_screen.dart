@@ -192,7 +192,29 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Co-ordinates accuracy',
                 listValues: accuracyOfCoordinates,
               ),
-
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTimePickerField(
+                      controller: _startTimeController,
+                      txtLabel: 'Start time',
+                      callback: () {
+                        _startTimeFieldFocus = true;
+                        //pickTime(context);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTimePickerField(
+                      controller: _endTimeController,
+                      txtLabel: 'End time',
+                      callback: () {
+                        //pickTime(context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
               CustomTextFormField(
                 controller: _localeInfoController,
                 txtLabel: 'Locality information',
