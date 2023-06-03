@@ -31,7 +31,7 @@ class EditSessionScreen extends StatefulWidget {
 
 class _EditSessionScreenState extends State<EditSessionScreen> {
   /// Form key for accessing and checking form attributes' state.
-  final _sessionFormKey = GlobalKey<FormState>();
+  final _editSessionFormKey = GlobalKey<FormState>();
 
   /// Focus to be able to distinguish between start and end time fields.
   bool _startTimeFieldFocus = false;
@@ -130,101 +130,107 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         ],
       ),
       body: SingleChildScrollView(
-        child: Form(
-          key: _sessionFormKey,
-          child: Column(
-            children: [
-              // TODO: populate with signed in ringer's ID
-              CustomTextFormField(
-                controller: _ringerId,
-                txtLabel: 'Ringer ID',
-                keyboard: 'text',
-              ),
-              CustomDropdownButtonFormField(
-                  controller: _placeCodeController,
-                  txtLabel: 'Place code',
-                  listValues: placeCode),
-              CustomTextFormField(
-                controller: _localityController,
-                txtLabel: 'Locality name',
-                keyboard: 'text',
-              ),
-              CustomDatePickerField(
-                controller: _dateController,
-                txtLabel: 'Date',
-                callback: () {
-                  pickDate(context);
-                },
-              ),
-              CustomDropdownButtonFormField(
-                controller: _accuracyOfDateController,
-                txtLabel: 'Accuracy of date',
-                listValues: accuracyOfDate,
-              ),
-              ElevatedButton(
-                onPressed: () async {
-                  Future<Position> location = determineLatLon();
-                  position = await location;
-                  setState(() {
-                    _latController.text = position.latitude.toString();
-                    _lonController.text = position.longitude.toString();
-                  });
-                },
-                child: const Text('Current latitude and longitude'),
-              ),
-              Row(
+        child: Selector<RingDataManager, SessionLocationViewData?>(
+          selector: (context, notifier) => notifier.sessionLocationViewData,
+          builder: (context, data, child) {
+            //setSession(data);
+            return Form(
+              key: _editSessionFormKey,
+              child: Column(
                 children: [
-                  Expanded(
-                    child: CustomTextFormField(
-                      controller: _latController,
-                      txtLabel: 'Latitude',
-                      keyboard: 'number',
-                    ),
+                  CustomTextFormField(
+                    controller: _ringerId,
+                    txtLabel: 'Ringer ID',
+                    keyboard: 'text',
                   ),
-                  Expanded(
-                    child: CustomTextFormField(
-                      controller: _lonController,
-                      txtLabel: 'Longitude',
-                      keyboard: 'number',
-                    ),
+                  CustomDropdownButtonFormField(
+                      controller: _placeCodeController,
+                      txtLabel: 'Place code',
+                      listValues: placeCode),
+                  CustomTextFormField(
+                    controller: _localityController,
+                    txtLabel: 'Locality name',
+                    keyboard: 'text',
+                  ),
+                  CustomDatePickerField(
+                    controller: _dateController,
+                    txtLabel: 'Date',
+                    callback: () {
+                      pickDate(context);
+                    },
+                  ),
+                  CustomDropdownButtonFormField(
+                    controller: _accuracyOfDateController,
+                    txtLabel: 'Accuracy of date',
+                    listValues: accuracyOfDate,
+                  ),
+                  ElevatedButton(
+                    onPressed: () async {
+                      Future<Position> location = determineLatLon();
+                      position = await location;
+
+                      setState(() {
+                        _latController.text = position.latitude.toString();
+                        _lonController.text = position.longitude.toString();
+                      });
+                    },
+                    child: const Text('Add current latitude and longitude'),
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextFormField(
+                          controller: _latController,
+                          txtLabel: 'Latitude',
+                          keyboard: 'number',
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTextFormField(
+                          controller: _lonController,
+                          txtLabel: 'Longitude',
+                          keyboard: 'number',
+                        ),
+                      ),
+                    ],
+                  ),
+                  CustomDropdownButtonFormField(
+                    controller: _coordAccuracyController,
+                    txtLabel: 'Co-ordinates accuracy',
+                    listValues: accuracyOfCoordinates,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTimePickerField(
+                          controller: _startTimeController,
+                          txtLabel: 'Start time',
+                          callback: () {
+                            _startTimeFieldFocus = true;
+                            pickTime(context);
+                          },
+                        ),
+                      ),
+                      Expanded(
+                        child: CustomTimePickerField(
+                          controller: _endTimeController,
+                          txtLabel: 'End time',
+                          callback: () {
+                            pickTime(context);
+                          },
+                        ),
+                      ),
+                    ],
+                  ),
+                  CustomTextFormField(
+                    controller: _localeInfoController,
+                    txtLabel: 'Locality information',
+                    keyboard: 'text',
                   ),
                 ],
               ),
-              CustomDropdownButtonFormField(
-                controller: _coordAccuracyController,
-                txtLabel: 'Co-ordinates accuracy',
-                listValues: accuracyOfCoordinates,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomTimePickerField(
-                      controller: _startTimeController,
-                      txtLabel: 'Start time',
-                      callback: () {
-                        _startTimeFieldFocus = true;
-                        pickTime(context);
-                      },
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomTimePickerField(
-                      controller: _endTimeController,
-                      txtLabel: 'End time',
-                      callback: () {
-                        pickTime(context);
-                      },
-                    ),
-                  ),
-                ],
-              ),
-              CustomTextFormField(
-                controller: _localeInfoController,
-                txtLabel: 'Locality information',
-                keyboard: 'text',
-              ),
-            ],
-          ),
+            );
+          },
         ),
       ),
     );
