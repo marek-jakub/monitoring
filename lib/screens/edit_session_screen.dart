@@ -133,7 +133,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         child: Selector<RingDataManager, SessionLocationViewData?>(
           selector: (context, notifier) => notifier.sessionLocationViewData,
           builder: (context, data, child) {
-            //setSession(data);
+            setSession(data);
             return Form(
               key: _editSessionFormKey,
               child: Column(
@@ -400,5 +400,21 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
 
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
+  }
+
+  void setSession(SessionLocationViewData? data) {
+    if (data != null) {
+      _ringerId.text = data.ringerId;
+      _placeCodeController.text = data.locationPlaceCode ?? '';
+      _localityController.text = data.locationLocality ?? '';
+      _dateController.text = data.date;
+      _accuracyOfDateController.text = data.dateAccuracy;
+      _latController.text = data.locationLat ?? '';
+      _lonController.text = data.locationLon ?? '';
+      _coordAccuracyController.text = data.locationCoordAccuracy ?? '';
+      _startTimeController.text = data.startTime;
+      _endTimeController.text = data.endTime;
+      _localeInfoController.text = data.locationInfo ?? '';
+    }
   }
 }
