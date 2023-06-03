@@ -20,6 +20,7 @@ class RingDataManager extends ChangeNotifier {
   bool _sessionTapped = false;
   bool _isSessionAdded = false;
   bool _editSession = false;
+  int _currentSessionId = -1;
 
   // Location
 
@@ -91,6 +92,13 @@ class RingDataManager extends ChangeNotifier {
   bool get editSession => _editSession;
   void setEditSession(bool selected) {
     _editSession = selected;
+    notifyListeners();
+  }
+
+  /// An id of selected session.
+  int get currentSessionId => _currentSessionId;
+  void setCurrentSessionId(int id) {
+    _currentSessionId = id;
     notifyListeners();
   }
 
