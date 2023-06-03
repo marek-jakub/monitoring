@@ -23,6 +23,7 @@ class RingDataManager extends ChangeNotifier {
   int _currentSessionId = -1;
 
   // Location
+  int _currentLocationId = -1;
 
   // Session-location view
   List<SessionLocationViewData> _sessionLocationViewStream = [];
@@ -101,6 +102,17 @@ class RingDataManager extends ChangeNotifier {
     _currentSessionId = id;
     notifyListeners();
   }
+
+  // LOCATION ///////////////////////////
+
+  /// An id of selected location.
+  int get currentLocationId => _currentLocationId;
+  void setCurrentLocationId(int id) {
+    _currentLocationId = id;
+    notifyListeners();
+  }
+
+  // SESSION-LOCATION VIEW //////////////
 
   /// Access to session-location combined view.
   ///
