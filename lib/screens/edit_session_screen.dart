@@ -104,7 +104,127 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'MonitoRing: Session',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            Provider.of<RingDataManager>(context, listen: false)
+                .setNewSession(false);
+          },
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                //editSession();
+              },
+              icon: const Icon(Icons.save)),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _sessionFormKey,
+          child: Column(
+            children: [
+              // TODO: populate with signed in ringer's ID
+              CustomTextFormField(
+                controller: _ringerId,
+                txtLabel: 'Ringer ID',
+                keyboard: 'text',
+              ),
+              CustomDropdownButtonFormField(
+                  controller: _placeCodeController,
+                  txtLabel: 'Place code',
+                  listValues: placeCode),
+              CustomTextFormField(
+                controller: _localityController,
+                txtLabel: 'Locality name',
+                keyboard: 'text',
+              ),
+              CustomDatePickerField(
+                controller: _dateController,
+                txtLabel: 'Date',
+                callback: () {
+                  pickDate(context);
+                },
+              ),
+              CustomDropdownButtonFormField(
+                controller: _accuracyOfDateController,
+                txtLabel: 'Accuracy of date',
+                listValues: accuracyOfDate,
+              ),
+              ElevatedButton(
+                onPressed: () async {
+                  Future<Position> location = determineLatLon();
+                  position = await location;
+                  setState(() {
+                    _latController.text = position.latitude.toString();
+                    _lonController.text = position.longitude.toString();
+                  });
+                },
+                child: const Text('Current latitude and longitude'),
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextFormField(
+                      controller: _latController,
+                      txtLabel: 'Latitude',
+                      keyboard: 'number',
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTextFormField(
+                      controller: _lonController,
+                      txtLabel: 'Longitude',
+                      keyboard: 'number',
+                    ),
+                  ),
+                ],
+              ),
+              CustomDropdownButtonFormField(
+                controller: _coordAccuracyController,
+                txtLabel: 'Co-ordinates accuracy',
+                listValues: accuracyOfCoordinates,
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTimePickerField(
+                      controller: _startTimeController,
+                      txtLabel: 'Start time',
+                      callback: () {
+                        _startTimeFieldFocus = true;
+                        pickTime(context);
+                      },
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTimePickerField(
+                      controller: _endTimeController,
+                      txtLabel: 'End time',
+                      callback: () {
+                        pickTime(context);
+                      },
+                    ),
+                  ),
+                ],
+              ),
+              CustomTextFormField(
+                controller: _localeInfoController,
+                txtLabel: 'Locality information',
+                keyboard: 'text',
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 
   /// Listens to change notifier save session success or error.
@@ -167,5 +287,109 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         ],
       ),
     );
+  }
+
+  /// A date picker widget.
+  Future<void> pickDate(BuildContext context) async {
+    final initialDate = DateTime.now();
+    final newDate = await showDatePicker(
+      context: context,
+      initialDate: _currDate ?? initialDate,
+      firstDate: DateTime(DateTime.now().year - 99),
+      lastDate: DateTime(DateTime.now().year + 1),
+      builder: (context, child) => Theme(
+          data: ThemeData().copyWith(
+              colorScheme: const ColorScheme.light(
+                  primary: Colors.green,
+                  onPrimary: Colors.white,
+                  onSurface: Colors.black),
+              dialogBackgroundColor: Colors.white),
+          child: child ?? const Text('')),
+    );
+
+    if (newDate == null) {
+      return;
+    }
+
+    setState(() {
+      _currDate = newDate;
+      String date = DateFormat('dd-MM-yyyy').format(newDate);
+      _dateController.text = date;
+    });
+  }
+
+  /// A time picker widget.
+  Future<void> pickTime(BuildContext context) async {
+    final initialTime = TimeOfDay.now();
+    final newTime = await showTimePicker(
+      context: context,
+      initialTime: _currTime ?? initialTime,
+      builder: (context, child) => Theme(
+        data: ThemeData().copyWith(
+          colorScheme: const ColorScheme.light(
+              primary: Colors.green,
+              onPrimary: Colors.white,
+              onSurface: Colors.black),
+          dialogBackgroundColor: Colors.white,
+        ),
+        child: child ?? const Text(''),
+      ),
+    );
+
+    if (newTime == null) {
+      return;
+    }
+
+    setState(() {
+      _currTime = newTime;
+      String time = _currTime!.format(context);
+      if (_startTimeFieldFocus) {
+        _startTimeController.text = time;
+        _endTimeController.text = time;
+        _startTimeFieldFocus = false;
+      } else {
+        _endTimeController.text = time;
+      }
+    });
+  }
+
+  /// Returns GPS position of the location.
+  ///
+  /// User geolocation permissions required, else shows permissions denied
+  /// message.
+  Future<Position> determineLatLon() async {
+    serviceStatus = await Geolocator.isLocationServiceEnabled();
+    if (!serviceStatus) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(content: Text('Enable location services.')),
+        );
+      }
+    }
+
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        if (context.mounted) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            const SnackBar(
+                content: Text('Location permissions have been denied.')),
+          );
+        }
+      }
+    }
+
+    if (permission == LocationPermission.deniedForever) {
+      if (context.mounted) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          const SnackBar(
+              content: Text('Location permissions are permanently denied.')),
+        );
+      }
+    }
+
+    return await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.best);
   }
 }
