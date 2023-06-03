@@ -53,6 +53,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   final TextEditingController _endTimeController = TextEditingController();
   final TextEditingController _localeInfoController = TextEditingController();
 
+  // TODO: create a pathway for user to be able to assign another location
+  // to the session.
+
   /// Current date.
   DateTime? _currDate;
 
