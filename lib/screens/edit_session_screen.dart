@@ -110,7 +110,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'MonitoRing: Session',
+          'MonitoRing: Edit session',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
@@ -118,7 +118,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
           icon: const BackButtonIcon(),
           onPressed: () {
             Provider.of<RingDataManager>(context, listen: false)
-                .setNewSession(false);
+                .setEditSession(false);
           },
         ),
         actions: [
