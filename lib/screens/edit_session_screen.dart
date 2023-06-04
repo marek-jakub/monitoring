@@ -36,6 +36,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   /// Focus to be able to distinguish between start and end time fields.
   bool _startTimeFieldFocus = false;
 
+  /// Set session data once on entering the page, not on later manual changes.
+  bool firstSet = true;
+
   // Session information controllers
   //  final TextEditingController _ringingSchemeController =
   //    TextEditingController();
@@ -133,7 +136,10 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         child: Selector<RingDataManager, SessionLocationViewData?>(
           selector: (context, notifier) => notifier.sessionLocationViewData,
           builder: (context, data, child) {
-            setSession(data);
+            if (firstSet) {
+              setSession(data);
+              firstSet = false;
+            }
             return Form(
               key: _editSessionFormKey,
               child: Column(
