@@ -298,6 +298,22 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
       // TODO: call set session edited
     }
 
+    if (_dataManager.isSessionDeleted) {
+      listenDeleteSession();
+      _ringerId.clear();
+      _placeCodeController.clear();
+      _localityController.clear();
+      _dateController.clear();
+      _accuracyOfDateController.clear();
+      _latController.clear();
+      _lonController.clear();
+      _coordAccuracyController.clear();
+      _startTimeController.clear();
+      _endTimeController.clear();
+      _localeInfoController.clear();
+      context.read<RingDataManager>().setIsSessionDeleted(false);
+    }
+
     if (_dataManager.error != '') {
       listenEditSessionError(_dataManager.error);
       context.read<RingDataManager>().setError('');
@@ -317,6 +333,31 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
           TextButton(
             onPressed: () {
               // TODO: call session edited
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Shows scaffold messenger on successfuly deleting session data.
+  void listenDeleteSession() {
+    //context.read<SessionManager>().setIsSessionCurrentlyDeleted(true);
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Session data deleted',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
             },
             child: const Text(
