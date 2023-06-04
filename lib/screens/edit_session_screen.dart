@@ -126,10 +126,17 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {
-                editSession();
-              },
-              icon: const Icon(Icons.save)),
+            onPressed: () {
+              editSession();
+            },
+            icon: const Icon(Icons.save),
+          ),
+          IconButton(
+            onPressed: () {
+              //deleteSession();
+            },
+            icon: const Icon(Icons.delete),
+          ),
         ],
       ),
       body: SingleChildScrollView(
