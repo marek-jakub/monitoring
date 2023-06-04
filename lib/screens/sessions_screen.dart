@@ -150,7 +150,8 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         // get ring stream for given session
                                         dataManager
                                             .setCurrentSessionId(session.id);
-                                        // set current location id to session's location id
+                                        dataManager.setCurrentLocationId(
+                                            session.location);
                                         // get session - location view by id
                                         // get session's retrap stream
                                         // set session tapped to true
