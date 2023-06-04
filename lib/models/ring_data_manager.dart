@@ -20,6 +20,7 @@ class RingDataManager extends ChangeNotifier {
   bool _sessionTapped = false;
   bool _isSessionAdded = false;
   bool _isSessionUpdated = false;
+  bool _isSessionDeleted = false;
   bool _editSession = false;
   int _currentSessionId = -1;
 
@@ -102,6 +103,13 @@ class RingDataManager extends ChangeNotifier {
   bool get editSession => _editSession;
   void setEditSession(bool selected) {
     _editSession = selected;
+    notifyListeners();
+  }
+
+  /// Whether the selected session has been removed form the database.
+  bool get isSessionDeleted => _isSessionDeleted;
+  void setIsSessionDeleted(bool value) {
+    _isSessionDeleted = value;
     notifyListeners();
   }
 
@@ -260,6 +268,23 @@ class RingDataManager extends ChangeNotifier {
   void updateLocation(LocationEntityCompanion companion) {
     _monRingDb?.updateLocation(companion).then((value) {
       _isLocationUpdated = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Deletes session information from the database.
+  ///
+  /// Id of the session to be deleted is stored in the [_currentSessionId].
+  void deleteSession() {
+    _monRingDb?.deleteSession(_currentSessionId).then((value) {
+      if (value == 0) {
+        _error = 'Record not found';
+      } else {
+        _isSessionDeleted = true;
+      }
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
