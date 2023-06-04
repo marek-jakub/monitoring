@@ -34,6 +34,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Ring
   bool _newRing = false;
+  bool _isRingAdded = false;
   List<RingEntityData> _sessionRingStream = [];
 
   // Retrap
@@ -158,6 +159,13 @@ class RingDataManager extends ChangeNotifier {
   bool get newRing => _newRing;
   void setNewRing(bool create) {
     _newRing = create;
+    notifyListeners();
+  }
+
+  /// Whether a new ring has been successfully saved in the database.
+  bool get isRingAdded => _isRingAdded;
+  void setIsRingAdded(bool create) {
+    _isRingAdded = create;
     notifyListeners();
   }
 
