@@ -19,10 +19,12 @@ class RingDataManager extends ChangeNotifier {
   bool _newSession = false;
   bool _sessionTapped = false;
   bool _isSessionAdded = false;
+  bool _isSessionUpdated = false;
   bool _editSession = false;
   int _currentSessionId = -1;
 
   // Location
+  bool _isLocationUpdated = false;
   int _currentLocationId = -1;
 
   // Session-location view
@@ -89,6 +91,13 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Whether selected session has been successfully updated in the database.
+  bool get isSessionUpdated => _isSessionUpdated;
+  void setIsSessionUpdated(bool value) {
+    _isSessionUpdated = value;
+    notifyListeners();
+  }
+
   /// Whether the session data is to be edited.
   bool get editSession => _editSession;
   void setEditSession(bool selected) {
@@ -109,6 +118,13 @@ class RingDataManager extends ChangeNotifier {
   int get currentLocationId => _currentLocationId;
   void setCurrentLocationId(int id) {
     _currentLocationId = id;
+    notifyListeners();
+  }
+
+  /// Whether selected location has been successfully updated in the database.
+  bool get isLocationUpdated => _isLocationUpdated;
+  void setIsLocationUpdated(bool value) {
+    _isLocationUpdated = value;
     notifyListeners();
   }
 
@@ -222,6 +238,28 @@ class RingDataManager extends ChangeNotifier {
           notifyListeners();
         });
       }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Updates session information as given in the [companion].
+  void updateSession(SessionEntityCompanion companion) {
+    _monRingDb?.updateSession(companion).then((value) {
+      _isSessionUpdated = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Updated location information as given in the [companion].
+  void updateLocation(LocationEntityCompanion companion) {
+    _monRingDb?.updateLocation(companion).then((value) {
+      _isLocationUpdated = value;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
