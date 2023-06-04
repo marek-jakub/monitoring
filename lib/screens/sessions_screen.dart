@@ -144,7 +144,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         _selectedId = -1;
                                         dataManager.setCurrentSessionId(-1);
                                         dataManager.setCurrentLocationId(-1);
-                                        // call set session tapped to false
+                                        dataManager.setSessionTapped(false);
                                       } else {
                                         _selectedId = session.id;
                                         // get ring stream for given session
