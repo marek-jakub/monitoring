@@ -30,6 +30,15 @@ class AddRingScreen extends StatefulWidget {
 }
 
 class _AddRingScreenState extends State<AddRingScreen> {
+  /// Form key for accessing, checking required data.
+  final _requiredDataFormKey = GlobalKey<FormState>();
+
+  /// Form key for accessing, checking bird's body data values.
+  final _bodyMeasurementsFormKey = GlobalKey<FormState>();
+
+  /// Form key for accessing, checking circumstances information.
+  final _circumstancesFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
