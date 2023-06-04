@@ -133,7 +133,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
           ),
           IconButton(
             onPressed: () {
-              //deleteSession();
+              deleteSession();
             },
             icon: const Icon(Icons.delete),
           ),
@@ -283,6 +283,12 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         context.read<RingDataManager>().updateSession(sessionEntity);
       }
     }
+  }
+
+  /// Removes session information from the database.
+  void deleteSession() {
+    // TODO: add warning and implement deleting all rings in session
+    context.read<RingDataManager>().deleteSession();
   }
 
   /// Listens to change notifier save session success or error.
