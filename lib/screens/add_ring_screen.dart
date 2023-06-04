@@ -51,6 +51,21 @@ class _AddRingScreenState extends State<AddRingScreen> {
   final TextEditingController _ageController = TextEditingController();
   final TextEditingController _sexController = TextEditingController();
 
+  // Information not required - circumstances
+  final TextEditingController _sexingMethodController = TextEditingController();
+  final TextEditingController _catchingMethodController =
+      TextEditingController();
+  final TextEditingController _catchingLuresController =
+      TextEditingController();
+  final TextEditingController _conditionController = TextEditingController();
+  final TextEditingController _statusController = TextEditingController();
+  final TextEditingController _timeController = TextEditingController();
+  final TextEditingController _circumstancesController =
+      TextEditingController();
+  final TextEditingController _circumstancesPresumedController =
+      TextEditingController();
+  final TextEditingController _otherMarksController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
