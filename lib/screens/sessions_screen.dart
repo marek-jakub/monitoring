@@ -143,7 +143,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                       if (_selectedId == session.id) {
                                         _selectedId = -1;
                                         dataManager.setCurrentSessionId(-1);
-                                        // call set current location to null
+                                        dataManager.setCurrentLocationId(-1);
                                         // call set session tapped to false
                                       } else {
                                         _selectedId = session.id;
