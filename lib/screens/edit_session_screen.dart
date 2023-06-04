@@ -124,7 +124,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                //editSession();
+                editSession();
               },
               icon: const Icon(Icons.save)),
         ],
@@ -234,6 +234,42 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         ),
       ),
     );
+  }
+
+  /// Updates ringing session information according to input in the form.
+  void editSession() {
+    final isValid = _editSessionFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final locationEntity = LocationEntityCompanion(
+        id: d.Value(context.read<RingDataManager>().currentLocationId),
+        locality: d.Value(_localityController.text),
+        placeCode: d.Value(_placeCodeController.text),
+        latitude: d.Value(_latController.text),
+        longitude: d.Value(_lonController.text),
+        coordinatesAccuracy: d.Value(_coordAccuracyController.text),
+        localeInfo: d.Value(_localeInfoController.text),
+      );
+
+      context.read<RingDataManager>().updateLocation(locationEntity);
+
+      // Currently, session update is trigerred on successfull location update.
+      // Option should be offered to choose different location for the session.
+      if (context.read<RingDataManager>().isLocationUpdated) {
+        final sessionEntity = SessionEntityCompanion(
+          id: d.Value(context.read<RingDataManager>().currentSessionId),
+          date: d.Value(_dateController.text),
+          dateAccuracy: d.Value(_accuracyOfDateController.text),
+          location: d.Value(context.read<RingDataManager>().currentLocationId),
+          // TODO: if input different from signed in ringer, used that one
+          ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+          startTime: d.Value(_startTimeController.text),
+          endTime: d.Value(_endTimeController.text),
+        );
+
+        context.read<RingDataManager>().updateSession(sessionEntity);
+      }
+    }
   }
 
   /// Listens to change notifier save session success or error.
@@ -402,6 +438,8 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         desiredAccuracy: LocationAccuracy.best);
   }
 
+  /// Populates form fields with selected session information provided in
+  /// [data].
   void setSession(SessionLocationViewData? data) {
     if (data != null) {
       _ringerId.text = data.ringerId;
