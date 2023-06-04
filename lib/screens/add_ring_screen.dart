@@ -100,6 +100,9 @@ class _AddRingScreenState extends State<AddRingScreen> {
   /// Current time.
   TimeOfDay? _currTime;
 
+  /// Provider and notifier access to data manager.
+  late RingDataManager _dataManager;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
