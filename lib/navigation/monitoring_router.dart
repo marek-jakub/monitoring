@@ -61,6 +61,7 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
             ProfileScreen.page(profileManager.getRinger),
           if (ringDataManager.newSession) AddSessionScreen.page(),
           if (ringDataManager.editSession) EditSessionScreen.page(),
+          if (ringDataManager.newRing) AddRingScreen.page(),
         ]
       ],
     );
