@@ -66,6 +66,37 @@ class _AddRingScreenState extends State<AddRingScreen> {
       TextEditingController();
   final TextEditingController _otherMarksController = TextEditingController();
 
+  // Information not required - body measurements
+  final TextEditingController _wingLengthController = TextEditingController();
+  final TextEditingController _thirdPrimaryController = TextEditingController();
+  final TextEditingController _wingPointStateController =
+      TextEditingController();
+  final TextEditingController _massController = TextEditingController();
+  final TextEditingController _moultController = TextEditingController();
+  final TextEditingController _plumageCodeController = TextEditingController();
+  final TextEditingController _hindClawController = TextEditingController();
+  final TextEditingController _billLengthController = TextEditingController();
+  final TextEditingController _billMethodController = TextEditingController();
+  final TextEditingController _headLengthTotalController =
+      TextEditingController();
+  final TextEditingController _tarsusController = TextEditingController();
+  final TextEditingController _tarsusMethodController = TextEditingController();
+  final TextEditingController _tailLengthController = TextEditingController();
+  final TextEditingController _tailDifferenceController =
+      TextEditingController();
+  final TextEditingController _fatScoreController = TextEditingController();
+  final TextEditingController _fatScoreMethodController =
+      TextEditingController();
+  final TextEditingController _pectoralMuscleController =
+      TextEditingController();
+  final TextEditingController _broodPatchController = TextEditingController();
+  final TextEditingController _primaryScoreController = TextEditingController();
+  final TextEditingController _primaryMoultController = TextEditingController();
+  final TextEditingController _oldGreaterCovertsController =
+      TextEditingController();
+  final TextEditingController _alulaController = TextEditingController();
+  final TextEditingController _carpalCovertController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
