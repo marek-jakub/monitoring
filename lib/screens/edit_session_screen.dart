@@ -293,9 +293,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
 
   /// Listens to change notifier save session success or error.
   void providerListener() {
-    if (_dataManager.isSessionAdded) {
+    if (_dataManager.isSessionUpdated) {
       listenEditSession();
-      // TODO: call set session edited
+      context.read<RingDataManager>().setIsSessionUpdated(false);
     }
 
     if (_dataManager.isSessionDeleted) {
@@ -332,7 +332,6 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
         actions: [
           TextButton(
             onPressed: () {
-              // TODO: call session edited
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
             },
             child: const Text(
