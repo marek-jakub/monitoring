@@ -104,7 +104,27 @@ class _AddRingScreenState extends State<AddRingScreen> {
   late RingDataManager _dataManager;
 
   @override
+  void initState() {
+    super.initState();
+
+    _dataManager = Provider.of<RingDataManager>(context, listen: false);
+    _dataManager.addListener(addRingListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold();
+  }
+
+  void addRingListener() {
+    if (_dataManager.isRingAdded) {
+      //listenRingAdd();
+      _dataManager.setIsRingAdded(false);
+    }
+
+    if (_dataManager.error != '') {
+      //listenRingError(_sessionManager.error);
+      _dataManager.setError('');
+    }
   }
 }
