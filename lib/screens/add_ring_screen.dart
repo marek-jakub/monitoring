@@ -39,6 +39,18 @@ class _AddRingScreenState extends State<AddRingScreen> {
   /// Form key for accessing, checking circumstances information.
   final _circumstancesFormKey = GlobalKey<FormState>();
 
+  // Required identification data controllers
+  final TextEditingController _primaryIDMethodController =
+      TextEditingController();
+  final TextEditingController _ringSeriesCodeController =
+      TextEditingController();
+  final TextEditingController _ringIdNumberController = TextEditingController();
+  final TextEditingController _metalRingInfoController =
+      TextEditingController();
+  final TextEditingController _speciesController = TextEditingController();
+  final TextEditingController _ageController = TextEditingController();
+  final TextEditingController _sexController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
