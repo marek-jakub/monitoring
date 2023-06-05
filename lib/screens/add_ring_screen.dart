@@ -784,6 +784,13 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             ),
                           ],
                         ),
+                        CustomTimePickerField(
+                          controller: _timeController,
+                          txtLabel: 'Time',
+                          callback: () {
+                            //pickTime(context);
+                          },
+                        ),
                       ],
                     ),
                   ),
