@@ -35,6 +35,7 @@ class RingDataManager extends ChangeNotifier {
   // Ring
   bool _newRing = false;
   bool _isRingAdded = false;
+  RingEntityData? _ringEntityData;
   List<RingEntityData> _sessionRingStream = [];
 
   // Retrap
@@ -174,6 +175,9 @@ class RingDataManager extends ChangeNotifier {
   /// ...
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
 
+  /// Access to a ring information.
+  RingEntityData? get ringEntityData => _ringEntityData;
+
   // REPORT /////////////////////////////
 
   /// The access to create report screen.
@@ -304,6 +308,17 @@ class RingDataManager extends ChangeNotifier {
   void saveRing(RingEntityCompanion companion) {
     _monRingDb?.saveRing(companion).then((value) {
       _isRingAdded = value > 0 ? true : false;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Fetches ring information from the database, identified by ring [id].
+  void getRingById(int id) {
+    _monRingDb?.getRing(id).then((value) {
+      _ringEntityData = value;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
