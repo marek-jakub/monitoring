@@ -683,6 +683,26 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              // TODO: There are finite number of alula values,
+                              // use a dropdown with a list holding the values.
+                              child: CustomTextFormField(
+                                controller: _alulaController,
+                                txtLabel: 'Alula',
+                                keyboard: 'text',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _carpalCovertController,
+                                txtLabel: 'Carpal covert',
+                                listValues: carpalCovert,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
