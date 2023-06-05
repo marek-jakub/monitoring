@@ -791,6 +791,11 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             //pickTime(context);
                           },
                         ),
+                        CustomTextFormField(
+                          controller: _otherMarksController,
+                          txtLabel: 'Other marks',
+                          keyboard: 'text',
+                        ),
                       ],
                     ),
                   ),
