@@ -59,6 +59,19 @@ const List<String> accuracyOfDate = <String>[
   '9',
 ];
 
+/// A list holding EURING Code metal ring information values.
+const List<String> metalRingInfo = <String>[
+  '',
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+];
+
 /// A list holding EURING Code values of place code.
 ///
 /// Not complete.
