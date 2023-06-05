@@ -232,7 +232,7 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
-  /// Saving location [locCompanion] in the database, if successful using
+  /// Saves location [locCompanion] in the database, if successful using
   /// returned location's id to save session [sesCompanion].
   void saveSession(LocationEntityCompanion locCompanion,
       SessionEntityCompanion sesCompanion) {
@@ -293,6 +293,17 @@ class RingDataManager extends ChangeNotifier {
       } else {
         _isSessionDeleted = true;
       }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Saves ring entity [companion] data in the database.
+  void saveRing(RingEntityCompanion companion) {
+    _monRingDb?.saveRing(companion).then((value) {
+      _isRingAdded = value > 0 ? true : false;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
