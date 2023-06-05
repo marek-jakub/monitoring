@@ -1,6 +1,7 @@
 export 'add_ring_screen.dart';
 export 'add_session_screen.dart';
 export 'edit_session_screen.dart';
+export 'edit_ring_screen.dart';
 export 'euring_code_screen.dart';
 export 'home_screen.dart';
 export 'login_screen.dart';
