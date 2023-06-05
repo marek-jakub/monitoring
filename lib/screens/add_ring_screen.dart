@@ -161,7 +161,29 @@ class _AddRingScreenState extends State<AddRingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'MonitoRing: Ring',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            Provider.of<RingDataManager>(context, listen: false)
+                .setNewRing(false);
+          },
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                //addRing();
+              },
+              icon: const Icon(Icons.save)),
+        ],
+      ),
+    );
   }
 
   void addRingListener() {
