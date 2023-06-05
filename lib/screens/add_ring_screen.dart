@@ -310,33 +310,60 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 children: [
                   Form(
                     key: _bodyMeasurementsFormKey,
-                    child: Column(children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: CustomTextFormField(
-                              controller: _wingLengthController,
-                              txtLabel: 'Wing Length',
-                              keyboard: 'number',
+                    child: Column(
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _wingLengthController,
+                                txtLabel: 'Wing Length',
+                                keyboard: 'number',
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: CustomTextFormField(
-                              controller: _thirdPrimaryController,
-                              txtLabel: 'Third Primary',
-                              keyboard: 'number',
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _thirdPrimaryController,
+                                txtLabel: 'Third Primary',
+                                keyboard: 'number',
+                              ),
                             ),
-                          ),
-                          Expanded(
-                            child: CustomTextFormField(
-                              controller: _massController,
-                              txtLabel: 'Mass',
-                              keyboard: 'number',
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _massController,
+                                txtLabel: 'Mass',
+                                keyboard: 'number',
+                              ),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _billLengthController,
+                                txtLabel: 'Bill Length',
+                                keyboard: 'number',
+                              ),
                             ),
-                          )
-                        ],
-                      ),
-                    ]),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _hindClawController,
+                                txtLabel: 'Hind Claw',
+                                keyboard: 'number',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _headLengthTotalController,
+                                txtLabel: 'Total Head Length',
+                                keyboard: 'number',
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
                   ),
                 ],
               ),
