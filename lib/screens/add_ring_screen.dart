@@ -708,6 +708,15 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                 ],
               ),
+              ExpansionTile(
+                title: const Text(
+                  'Circumstances',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ],
           ),
         ),
