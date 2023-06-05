@@ -179,7 +179,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
         actions: [
           IconButton(
               onPressed: () {
-                //addRing();
+                addRing();
               },
               icon: const Icon(Icons.save)),
         ],
@@ -806,6 +806,67 @@ class _AddRingScreenState extends State<AddRingScreen> {
         ),
       ),
     );
+  }
+
+  /// Saves ring data in the database.
+  void addRing() {
+    final isRequiredValid = _requiredDataFormKey.currentState?.validate();
+    // TODO: create central hub for validationg form input values.
+    // final areBodyMeasurementsValid =
+    //     _bodyMeasurementsFormKey.currentState?.validate();
+    // final areCircumstancesValid =
+    //     _circumstancesFormKey.currentState?.validate();
+
+    // if ((isRequiredValid != null && isRequiredValid) &&
+    //     (areBodyMeasurementsValid != null && areBodyMeasurementsValid) &&
+    //     (areCircumstancesValid != null && areCircumstancesValid))
+
+    if (isRequiredValid != null && isRequiredValid) {
+      final ringEntity = RingEntityCompanion(
+        sessionId: d.Value(context.read<RingDataManager>().currentSessionId),
+        primaryIdMethod: d.Value(_primaryIDMethodController.text),
+        ringSeriesCode: d.Value(_ringSeriesCodeController.text),
+        ringIdNumber: d.Value(_ringIdNumberController.text),
+        metalRingInfo: d.Value(_metalRingInfoController.text),
+        species: d.Value(_speciesController.text),
+        age: d.Value(_ageController.text),
+        sex: d.Value(_sexController.text),
+        sexingMethod: d.Value(_sexingMethodController.text),
+        otherMarks: d.Value(_otherMarksController.text),
+        catchingMethod: d.Value(_catchingMethodController.text),
+        catchingLures: d.Value(_catchingLuresController.text),
+        condition: d.Value(_conditionController.text),
+        circumstances: d.Value(_circumstancesController.text),
+        circumstancesPresumed: d.Value(_circumstancesPresumedController.text),
+        status: d.Value(_statusController.text),
+        time: d.Value(_timeController.text),
+        wingLength: d.Value(_wingLengthController.text),
+        thirdPrimary: d.Value(_thirdPrimaryController.text),
+        wingPointState: d.Value(_wingPointStateController.text),
+        mass: d.Value(_massController.text),
+        moult: d.Value(_moultController.text),
+        plumageCode: d.Value(_plumageCodeController.text),
+        hindClaw: d.Value(_hindClawController.text),
+        billLength: d.Value(_billLengthController.text),
+        billMethod: d.Value(_billMethodController.text),
+        headLengthTotal: d.Value(_headLengthTotalController.text),
+        tarsus: d.Value(_tarsusController.text),
+        tarsusMethod: d.Value(_tarsusMethodController.text),
+        tailLength: d.Value(_tailLengthController.text),
+        tailDifference: d.Value(_tailDifferenceController.text),
+        fatScore: d.Value(_fatScoreController.text),
+        fatScoreMethod: d.Value(_fatScoreMethodController.text),
+        pectoralMuscle: d.Value(_pectoralMuscleController.text),
+        broodPatch: d.Value(_broodPatchController.text),
+        primaryScore: d.Value(_primaryScoreController.text),
+        primaryMoult: d.Value(_primaryMoultController.text),
+        oldGreaterCoverts: d.Value(_oldGreaterCovertsController.text),
+        alula: d.Value(_alulaController.text),
+        carpalCovert: d.Value(_carpalCovertController.text),
+      );
+
+      context.read<RingDataManager>().saveRing(ringEntity);
+    }
   }
 
   void addRingListener() {
