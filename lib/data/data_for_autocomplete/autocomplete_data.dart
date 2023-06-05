@@ -147,6 +147,13 @@ const List<String> circumstances = <String>[
   '99',
 ];
 
+/// A list holding EURING code circumstances presumed values.
+const List<String> circumstancesPresumed = <String>[
+  '',
+  '0',
+  '1',
+];
+
 /// A list holding EURING code condition values.
 const List<String> condition = <String>[
   '',
