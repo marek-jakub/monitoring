@@ -127,4 +127,29 @@ class _AddRingScreenState extends State<AddRingScreen> {
       _dataManager.setError('');
     }
   }
+
+  /// Shows scaffold messenger on successfuly saved ring data.
+  void listenRingAdd() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Ring data saved',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                //_dataManager.setRingAdded(false);
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
+  }
 }
