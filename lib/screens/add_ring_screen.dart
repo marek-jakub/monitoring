@@ -152,4 +152,28 @@ class _AddRingScreenState extends State<AddRingScreen> {
       ),
     );
   }
+
+  /// Shows scaffold messenger containing text in [errorMsg].
+  void listenRingError(String errorMsg) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(
+          errorMsg,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
+  }
 }
