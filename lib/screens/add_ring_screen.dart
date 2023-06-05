@@ -186,7 +186,28 @@ class _AddRingScreenState extends State<AddRingScreen> {
       body: SingleChildScrollView(
         child: Form(
           key: _requiredDataFormKey,
-          child: Column(),
+          child: Column(
+            children: <Widget>[
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomDropdownButtonFormField(
+                      controller: _primaryIDMethodController,
+                      txtLabel: 'Primary ID method',
+                      listValues: primaryIdMethod,
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomDropdownButtonFormField(
+                      controller: _metalRingInfoController,
+                      txtLabel: 'Metal ring information',
+                      listValues: metalRingInfo,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
       ),
     );
