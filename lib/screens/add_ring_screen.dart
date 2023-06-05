@@ -12,6 +12,7 @@ import '../widgets/custom_text_form_field.dart';
 import '../widgets/custom_dropdown_form_field.dart';
 import '../widgets/custom_date_picker_field.dart';
 import '../widgets/custom_time_picker_field.dart';
+import '../widgets/custom_typeahead_field.dart';
 
 /// A form to input and save bird information as a ring entity.
 class AddRingScreen extends StatefulWidget {
@@ -224,6 +225,10 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                 ],
               ),
+              CustomTypeaheadFormfield(
+                  controller: _speciesController,
+                  txtLabel: 'Species',
+                  listValues: species),
             ],
           ),
         ),
