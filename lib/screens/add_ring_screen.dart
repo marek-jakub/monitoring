@@ -292,6 +292,11 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                 ),
               ),
+              CustomDropdownButtonFormField(
+                controller: _ageController,
+                txtLabel: 'Age',
+                listValues: age,
+              ),
             ],
           ),
         ),
