@@ -117,3 +117,36 @@ const List<String> primaryIdMethod = <String>[
   'R0',
   'T0',
 ];
+
+/// A list holding species encoding values.
+///
+/// Not complete.
+///
+/// This is a six letter version, requires translating to EURING code five
+/// digit values.
+const List<String> species = <String>[
+  'ACROLA',
+  'ACRUST',
+  'ACRENO',
+  'ACRIRP',
+  'CALLBA',
+  'CALPIN',
+  'CALUTA',
+  'CALTIL',
+  'CARINA',
+  'CARLIS',
+  'CARMEA',
+  'CARVIR',
+  'CORRAX',
+  'CORONE',
+  'EMBLLA',
+  'EMBICA',
+  'LANNOR',
+  'LARNUT',
+  'MERGAN',
+  'MERRAT',
+  'MILANS',
+  'MILVUS',
+  'OENURA',
+  'OENYGA',
+];
