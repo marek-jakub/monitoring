@@ -252,3 +252,19 @@ const List<String> species = <String>[
   'OENURA',
   'OENYGA',
 ];
+
+/// A list holding EURING code status values.
+const List<String> status = <String>[
+  '',
+  '-',
+  'U',
+  'N',
+  'R',
+  'K',
+  'M',
+  'T',
+  'L',
+  'W',
+  'P',
+  'S',
+];
