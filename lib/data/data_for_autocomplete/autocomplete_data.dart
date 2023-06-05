@@ -148,6 +148,21 @@ const List<String> primaryIdMethod = <String>[
   'T0',
 ];
 
+/// A list holding EURING code sexing method values.
+const List<String> sexingMethod = <String>[
+  '',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'L',
+  'P',
+  'S',
+  'T',
+  'U',
+];
+
 /// A list holding species encoding values.
 ///
 /// Not complete.
