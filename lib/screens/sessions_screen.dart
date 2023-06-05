@@ -206,7 +206,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                     final ring = rings[index];
                                     return GestureDetector(
                                       onTap: () {
-                                        // call get ring by id
+                                        dataManager.getRingById(ring.id);
                                         // call edit ring
                                         // call selected ring id
                                       },
