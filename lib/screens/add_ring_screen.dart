@@ -229,6 +229,69 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   controller: _speciesController,
                   txtLabel: 'Species',
                   listValues: species),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                        color: Colors.grey, width: 1, style: BorderStyle.solid),
+                    borderRadius: BorderRadius.circular(5.0),
+                  ),
+                  child: Column(
+                    children: [
+                      Text(
+                        'Sex',
+                        style: TextStyle(color: Colors.grey[600]),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CheckboxListTile(
+                              title: const Text(
+                                'F',
+                              ),
+                              value: _sexController.text == 'F' ? true : false,
+                              controlAffinity: ListTileControlAffinity.leading,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  _sexController.text = value! ? 'F' : '';
+                                });
+                              },
+                            ),
+                          ),
+                          Expanded(
+                              child: CheckboxListTile(
+                            title: const Text(
+                              'M',
+                            ),
+                            value: _sexController.text == 'M' ? true : false,
+                            controlAffinity: ListTileControlAffinity.leading,
+                            onChanged: (bool? value) {
+                              setState(() {
+                                _sexController.text = value! ? 'M' : '';
+                              });
+                            },
+                          )),
+                          Expanded(
+                            child: CheckboxListTile(
+                              title: const Text(
+                                'U',
+                              ),
+                              value: _sexController.text == 'U' ? true : false,
+                              controlAffinity: ListTileControlAffinity.leading,
+                              onChanged: (bool? value) {
+                                setState(() {
+                                  _sexController.text = value! ? 'U' : '';
+                                });
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
         ),
