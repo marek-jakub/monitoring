@@ -131,6 +131,22 @@ const List<String> catchingMethod = <String>[
   'Z',
 ];
 
+/// A list holding EURING code circumstances values.
+const List<String> circumstances = <String>[
+  '',
+  '0',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+  '8',
+  '9',
+  '99',
+];
+
 /// A list holding EURING code condition values.
 const List<String> condition = <String>[
   '',
