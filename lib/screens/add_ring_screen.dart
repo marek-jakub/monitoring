@@ -748,6 +748,24 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _conditionController,
+                                txtLabel: 'Condition',
+                                listValues: condition,
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _statusController,
+                                txtLabel: 'Status',
+                                listValues: status,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
