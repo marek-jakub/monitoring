@@ -36,6 +36,7 @@ class RingDataManager extends ChangeNotifier {
   bool _newRing = false;
   bool _editRing = false;
   bool _isRingAdded = false;
+  int _selectedRingId = -1;
   RingEntityData? _ringEntityData;
   List<RingEntityData> _sessionRingStream = [];
 
@@ -177,6 +178,13 @@ class RingDataManager extends ChangeNotifier {
   bool get isRingAdded => _isRingAdded;
   void setIsRingAdded(bool create) {
     _isRingAdded = create;
+    notifyListeners();
+  }
+
+  /// An id of selected ring.
+  int get selectedRingId => _selectedRingId;
+  void setSelectedRingId(int id) {
+    _selectedRingId = id;
     notifyListeners();
   }
 
