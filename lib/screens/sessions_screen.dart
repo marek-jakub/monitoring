@@ -223,6 +223,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         ),
                                         child: Column(
                                           children: [
+                                            // TODO: show more info about rings.
                                             Text(ring.id.toString()),
                                             Text(ring.ringIdNumber),
                                             Text(ring.species),
