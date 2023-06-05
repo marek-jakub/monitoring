@@ -140,7 +140,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
         actions: [
           TextButton(
               onPressed: () {
-                //_dataManager.setRingAdded(false);
+                _dataManager.setIsRingAdded(false);
                 //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
                 ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
               },
