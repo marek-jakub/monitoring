@@ -718,7 +718,14 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 ),
                 collapsedBackgroundColor: Colors.grey[300],
                 backgroundColor: Colors.grey[300],
-                children: [],
+                children: [
+                  Form(
+                    key: _circumstancesFormKey,
+                    child: Column(
+                      children: [],
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
