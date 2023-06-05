@@ -82,6 +82,13 @@ const List<String> age = <String>[
   'H',
 ];
 
+/// A list holding EURING code carpal covert values.
+const List<String> carpalCovert = <String>[
+  '',
+  '0',
+  '1',
+];
+
 /// A list holding EURING Code metal ring information values.
 const List<String> metalRingInfo = <String>[
   '',
