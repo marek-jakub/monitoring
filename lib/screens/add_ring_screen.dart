@@ -183,6 +183,12 @@ class _AddRingScreenState extends State<AddRingScreen> {
               icon: const Icon(Icons.save)),
         ],
       ),
+      body: SingleChildScrollView(
+        child: Form(
+          key: _requiredDataFormKey,
+          child: Column(),
+        ),
+      ),
     );
   }
 
