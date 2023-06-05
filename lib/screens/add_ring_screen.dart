@@ -871,12 +871,12 @@ class _AddRingScreenState extends State<AddRingScreen> {
 
   void addRingListener() {
     if (_dataManager.isRingAdded) {
-      //listenRingAdd();
+      listenRingAdd();
       _dataManager.setIsRingAdded(false);
     }
 
     if (_dataManager.error != '') {
-      //listenRingError(_sessionManager.error);
+      listenRingError(_dataManager.error);
       _dataManager.setError('');
     }
   }
