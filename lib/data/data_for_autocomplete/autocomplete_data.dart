@@ -87,3 +87,20 @@ const List<String> placeCode = <String>[
   'GBPP',
   'GBL',
 ];
+
+/// A list holding EURING Code primary identification method values.
+const List<String> primaryIdMethod = <String>[
+  '',
+  'A0',
+  'B0',
+  'C0',
+  'D0',
+  'E0',
+  'F0',
+  'G0',
+  'H0',
+  'K0',
+  'L0',
+  'R0',
+  'T0',
+];
