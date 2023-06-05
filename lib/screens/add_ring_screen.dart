@@ -556,6 +556,31 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             ),
                           ),
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _fatScoreController,
+                                txtLabel: 'Fat Score',
+                                keyboard: 'number',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _pectoralMuscleController,
+                                txtLabel: 'Pectoral Muscle Score',
+                                keyboard: 'number',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _primaryScoreController,
+                                txtLabel: 'Primary Score',
+                                keyboard: 'number',
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
