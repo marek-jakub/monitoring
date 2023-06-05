@@ -454,6 +454,31 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             ),
                           ),
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _tarsusController,
+                                txtLabel: 'Tarsus',
+                                keyboard: 'number',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _tailLengthController,
+                                txtLabel: 'Tail Length',
+                                keyboard: 'number',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _tailDifferenceController,
+                                txtLabel: 'Tail Difference',
+                                keyboard: 'number',
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
