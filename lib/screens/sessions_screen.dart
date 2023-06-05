@@ -208,7 +208,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                       onTap: () {
                                         dataManager.getRingById(ring.id);
                                         dataManager.setEditRing(true);
-                                        // call selected ring id
+                                        dataManager.setSelectedRingId(ring.id);
                                       },
                                       child: Card(
                                         color: Colors.blueGrey.shade100,
