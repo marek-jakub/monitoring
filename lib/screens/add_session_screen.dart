@@ -263,7 +263,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   void providerListener() {
     if (_dataManager.isSessionAdded) {
       listenAddSession();
-      // Clear data to allow another entry.
+      // Clear data to allow another entry input.
       setState(() {
         _placeCodeController.clear();
         _localityController.clear();
