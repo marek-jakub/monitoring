@@ -89,6 +89,23 @@ const List<String> carpalCovert = <String>[
   '1',
 ];
 
+/// A list holding EURING code catching lures values.
+const List<String> catchingLures = <String>[
+  '',
+  '-',
+  'U',
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'M',
+  'N',
+];
+
 /// A list holding EURING code catching method values.
 const List<String> catchingMethod = <String>[
   '',
