@@ -658,6 +658,31 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             ),
                           ),
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _broodPatchController,
+                                txtLabel: 'Brood Patch',
+                                keyboard: 'text',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _primaryMoultController,
+                                txtLabel: 'Primary Moult',
+                                keyboard: 'text',
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomTextFormField(
+                                controller: _oldGreaterCovertsController,
+                                txtLabel: 'Old Greater Coverts',
+                                keyboard: 'text',
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     ),
                   ),
