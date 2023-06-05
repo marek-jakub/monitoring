@@ -206,6 +206,24 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                 ],
               ),
+              Row(
+                children: [
+                  Expanded(
+                    child: CustomTextFormField(
+                      controller: _ringSeriesCodeController,
+                      txtLabel: 'Ring series',
+                      keyboard: 'text',
+                    ),
+                  ),
+                  Expanded(
+                    child: CustomTextFormField(
+                      controller: _ringIdNumberController,
+                      txtLabel: 'ID number',
+                      keyboard: 'number',
+                    ),
+                  ),
+                ],
+              ),
             ],
           ),
         ),
