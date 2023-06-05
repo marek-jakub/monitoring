@@ -34,6 +34,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Ring
   bool _newRing = false;
+  bool _editRing = false;
   bool _isRingAdded = false;
   RingEntityData? _ringEntityData;
   List<RingEntityData> _sessionRingStream = [];
@@ -160,6 +161,15 @@ class RingDataManager extends ChangeNotifier {
   bool get newRing => _newRing;
   void setNewRing(bool create) {
     _newRing = create;
+    notifyListeners();
+  }
+
+  /// Access to edit ring screen.
+  ///
+  /// True for entering edit ring screen, false for pop page.
+  bool get editRing => _editRing;
+  void setEditRing(bool selected) {
+    _editRing = selected;
     notifyListeners();
   }
 
