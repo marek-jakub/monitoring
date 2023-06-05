@@ -310,7 +310,33 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 children: [
                   Form(
                     key: _bodyMeasurementsFormKey,
-                    child: Column(children: []),
+                    child: Column(children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _wingLengthController,
+                              txtLabel: 'Wing Length',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _thirdPrimaryController,
+                              txtLabel: 'Third Primary',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _massController,
+                              txtLabel: 'Mass',
+                              keyboard: 'number',
+                            ),
+                          )
+                        ],
+                      ),
+                    ]),
                   ),
                 ],
               ),
