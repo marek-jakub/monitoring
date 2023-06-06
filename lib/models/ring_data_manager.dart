@@ -310,7 +310,7 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
-  /// Updated location information as given in the [companion].
+  /// Updates location information as given in the [companion].
   void updateLocation(LocationEntityCompanion companion) {
     _monRingDb?.updateLocation(companion).then((value) {
       _isLocationUpdated = value;
@@ -353,6 +353,19 @@ class RingDataManager extends ChangeNotifier {
   void getRingById(int id) {
     _monRingDb?.getRing(id).then((value) {
       _ringEntityData = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Updates ring information as given in the [companion].
+  ///
+  /// Id of the ring to be updated is stored in the [_selectedRingId].
+  void updateRing(RingEntityCompanion companion) {
+    _monRingDb?.updateRing(companion).then((value) {
+      _isRingUpdated = value;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
