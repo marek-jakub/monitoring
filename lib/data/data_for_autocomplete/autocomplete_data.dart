@@ -276,6 +276,17 @@ const List<String> species = <String>[
   'OENYGA',
 ];
 
+/// EURING code state of wing point values.
+const List<String> stateOfWingPoint = <String>[
+  '',
+  'U',
+  'A',
+  'B',
+  'G',
+  'M',
+  'V',
+];
+
 /// A list holding EURING code status values.
 const List<String> status = <String>[
   '',
