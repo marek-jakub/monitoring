@@ -372,4 +372,22 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Deletes ring information from the database.
+  ///
+  /// Id of the ring to be deleted is stored in the [_selectedRingId].
+  void deleteRing() {
+    _monRingDb?.deleteRing(selectedRingId).then((value) {
+      if (value == 0) {
+        _error = 'Record not found';
+      } else {
+        _isRingDeleted = true;
+        setSelectedRingId(-1);
+      }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
