@@ -185,7 +185,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
           ),
           IconButton(
             onPressed: () {
-              //deleteRing();
+              deleteRing();
             },
             icon: const Icon(Icons.delete),
           ),
@@ -925,6 +925,11 @@ class _EditRingScreenState extends State<EditRingScreen> {
     }
   }
 
+  /// Removes ring data from the database.
+  void deleteRing() {
+    context.read<RingDataManager>().deleteRing();
+  }
+
   /// Listens to update success on error.
   void editRingListener() {
     if (_dataManager.isRingUpdated) {
@@ -935,6 +940,50 @@ class _EditRingScreenState extends State<EditRingScreen> {
     if (_dataManager.isRingDeleted) {
       listenRingDeleted();
       _dataManager.setIsRingDeleted(false);
+      // Clear data on delete success.
+      setState(
+        () {
+          _primaryIDMethodController.clear();
+          _ringSeriesCodeController.clear();
+          _ringIdNumberController.clear();
+          _metalRingInfoController.clear();
+          _speciesController.clear();
+          _ageController.clear();
+          _sexController.clear();
+          _sexingMethodController.clear();
+          _catchingMethodController.clear();
+          _catchingLuresController.clear();
+          _conditionController.clear();
+          _statusController.clear();
+          _timeController.clear();
+          _circumstancesController.clear();
+          _circumstancesPresumedController.clear();
+          _otherMarksController.clear();
+          _wingLengthController.clear();
+          _thirdPrimaryController.clear();
+          _wingPointStateController.clear();
+          _massController.clear();
+          _moultController.clear();
+          _plumageCodeController.clear();
+          _hindClawController.clear();
+          _billLengthController.clear();
+          _billMethodController.clear();
+          _headLengthTotalController.clear();
+          _tarsusController.clear();
+          _tarsusMethodController.clear();
+          _tailLengthController.clear();
+          _tailDifferenceController.clear();
+          _fatScoreController.clear();
+          _fatScoreMethodController.clear();
+          _pectoralMuscleController.clear();
+          _broodPatchController.clear();
+          _primaryScoreController.clear();
+          _primaryMoultController.clear();
+          _oldGreaterCovertsController.clear();
+          _alulaController.clear();
+          _carpalCovertController.clear();
+        },
+      );
     }
 
     if (_dataManager.error != '') {
