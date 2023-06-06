@@ -37,6 +37,7 @@ class RingDataManager extends ChangeNotifier {
   bool _editRing = false;
   bool _isRingAdded = false;
   bool _isRingUpdated = false;
+  bool _isRingDeleted = false;
   int _selectedRingId = -1;
   RingEntityData? _ringEntityData;
   List<RingEntityData> _sessionRingStream = [];
@@ -186,6 +187,13 @@ class RingDataManager extends ChangeNotifier {
   bool get isRingUpdated => _isRingUpdated;
   void setIsRingUpdated(bool updated) {
     _isRingUpdated = updated;
+    notifyListeners();
+  }
+
+  /// Whether a selected ring has been successfuly deleted.
+  bool get isRingDeleted => _isRingDeleted;
+  void setIsRingDeleted(bool deleted) {
+    _isRingDeleted = deleted;
     notifyListeners();
   }
 
