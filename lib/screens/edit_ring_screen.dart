@@ -165,7 +165,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'MonitoRing: Ring',
+          'MonitoRing: Edit ring',
           style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
