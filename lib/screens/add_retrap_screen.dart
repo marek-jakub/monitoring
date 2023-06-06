@@ -28,6 +28,15 @@ class AddRetrapScreen extends StatefulWidget {
 }
 
 class _AddRetrapScreenState extends State<AddRetrapScreen> {
+  /// Form key for accessing, checking required data.
+  final _requiredDataFormKey = GlobalKey<FormState>();
+
+  /// Form key for accessing, checking bird's body data values.
+  final _bodyMeasurementsFormKey = GlobalKey<FormState>();
+
+  /// Form key for accessing, checking circumstances information.
+  final _circumstancesFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
