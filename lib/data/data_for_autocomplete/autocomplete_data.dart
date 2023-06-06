@@ -222,6 +222,27 @@ const List<String> placeCode = <String>[
   'GBL',
 ];
 
+/// EURING code plumage code values.
+const List<String> plumageCode = <String>[
+  '',
+  'U',
+  'A',
+  'B',
+  'D',
+  'E',
+  'F',
+  'I',
+  'J',
+  'W',
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+  '7',
+];
+
 /// A list holding EURING Code primary identification method values.
 const List<String> primaryIdMethod = <String>[
   '',
