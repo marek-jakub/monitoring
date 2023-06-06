@@ -162,7 +162,706 @@ class _EditRingScreenState extends State<EditRingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'MonitoRing: Ring',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            Provider.of<RingDataManager>(context, listen: false)
+                .setEditRing(false);
+          },
+        ),
+        actions: [
+          IconButton(
+            onPressed: () {
+              //updateRing();
+            },
+            icon: const Icon(Icons.save),
+          ),
+          IconButton(
+            onPressed: () {
+              //deleteRing();
+            },
+            icon: const Icon(Icons.delete),
+          ),
+        ],
+      ),
+      body: SingleChildScrollView(
+        child: Selector<RingDataManager, RingEntityData?>(
+          selector: (context, notifier) => notifier.ringEntityData,
+          builder: (context, data, child) {
+            if (firstSet) {
+              //setRing(data);
+              firstSet = false;
+            }
+            return Column(
+              children: <Widget>[
+                Form(
+                  key: _requiredDataFormKey,
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomDropdownButtonFormField(
+                            controller: _primaryIDMethodController,
+                            txtLabel: 'Primary ID method',
+                            listValues: primaryIdMethod,
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomDropdownButtonFormField(
+                            controller: _metalRingInfoController,
+                            txtLabel: 'Metal ring information',
+                            listValues: metalRingInfo,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomTextFormField(
+                            controller: _ringSeriesCodeController,
+                            txtLabel: 'Ring series',
+                            keyboard: 'text',
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomTextFormField(
+                            controller: _ringIdNumberController,
+                            txtLabel: 'ID number',
+                            keyboard: 'number',
+                          ),
+                        ),
+                      ],
+                    ),
+                    CustomTypeaheadFormfield(
+                        controller: _speciesController,
+                        txtLabel: 'Species',
+                        listValues: species),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                              color: Colors.grey,
+                              width: 1,
+                              style: BorderStyle.solid),
+                          borderRadius: BorderRadius.circular(5.0),
+                        ),
+                        child: Column(
+                          children: [
+                            Text(
+                              'Sex',
+                              style: TextStyle(color: Colors.grey[600]),
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CheckboxListTile(
+                                    title: const Text(
+                                      'F',
+                                    ),
+                                    value: _sexController.text == 'F'
+                                        ? true
+                                        : false,
+                                    controlAffinity:
+                                        ListTileControlAffinity.leading,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        _sexController.text = value! ? 'F' : '';
+                                      });
+                                    },
+                                  ),
+                                ),
+                                Expanded(
+                                    child: CheckboxListTile(
+                                  title: const Text(
+                                    'M',
+                                  ),
+                                  value:
+                                      _sexController.text == 'M' ? true : false,
+                                  controlAffinity:
+                                      ListTileControlAffinity.leading,
+                                  onChanged: (bool? value) {
+                                    setState(() {
+                                      _sexController.text = value! ? 'M' : '';
+                                    });
+                                  },
+                                )),
+                                Expanded(
+                                  child: CheckboxListTile(
+                                    title: const Text(
+                                      'U',
+                                    ),
+                                    value: _sexController.text == 'U'
+                                        ? true
+                                        : false,
+                                    controlAffinity:
+                                        ListTileControlAffinity.leading,
+                                    onChanged: (bool? value) {
+                                      setState(() {
+                                        _sexController.text = value! ? 'U' : '';
+                                      });
+                                    },
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                    CustomDropdownButtonFormField(
+                      controller: _ageController,
+                      txtLabel: 'Age',
+                      listValues: age,
+                    ),
+                  ]),
+                ),
+                ExpansionTile(
+                  title: const Text(
+                    'Body measurements',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  collapsedBackgroundColor: Colors.grey[500],
+                  backgroundColor: Colors.grey[500],
+                  children: [
+                    Form(
+                      key: _bodyMeasurementsFormKey,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _wingLengthController,
+                                  txtLabel: 'Wing Length',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _thirdPrimaryController,
+                                  txtLabel: 'Third Primary',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _massController,
+                                  txtLabel: 'Mass',
+                                  keyboard: 'number',
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _wingPointStateController,
+                                  txtLabel: 'State of Wing Point',
+                                  listValues: stateOfWingPoint,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _moultController,
+                                  txtLabel: 'Moult',
+                                  listValues: moult,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _plumageCodeController,
+                                  txtLabel: 'Plumage code',
+                                  listValues: plumageCode,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _billLengthController,
+                                  txtLabel: 'Bill Length',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _hindClawController,
+                                  txtLabel: 'Hind Claw',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _headLengthTotalController,
+                                  txtLabel: 'Total Head Length',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: Colors.grey,
+                                    width: 1,
+                                    style: BorderStyle.solid),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Bill Method',
+                                    style: TextStyle(color: Colors.grey[600]),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('C'),
+                                          value:
+                                              _billMethodController.text == 'C'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _billMethodController.text =
+                                                  value! ? 'C' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('F'),
+                                          value:
+                                              _billMethodController.text == 'F'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _billMethodController.text =
+                                                  value! ? 'F' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('N'),
+                                          value:
+                                              _billMethodController.text == 'N'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _billMethodController.text =
+                                                  value! ? 'N' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('S'),
+                                          value:
+                                              _billMethodController.text == 'S'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _billMethodController.text =
+                                                  value! ? 'S' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _tarsusController,
+                                  txtLabel: 'Tarsus',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _tailLengthController,
+                                  txtLabel: 'Tail Length',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _tailDifferenceController,
+                                  txtLabel: 'Tail Difference',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: Colors.grey,
+                                    width: 1,
+                                    style: BorderStyle.solid),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Tarsus Method',
+                                    style: TextStyle(color: Colors.grey[600]),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('M'),
+                                          value: _tarsusMethodController.text ==
+                                                  'M'
+                                              ? true
+                                              : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _tarsusMethodController.text =
+                                                  value! ? 'M' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('S'),
+                                          value: _tarsusMethodController.text ==
+                                                  'S'
+                                              ? true
+                                              : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _tarsusMethodController.text =
+                                                  value! ? 'S' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('T'),
+                                          value: _tarsusMethodController.text ==
+                                                  'T'
+                                              ? true
+                                              : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _tarsusMethodController.text =
+                                                  value! ? 'T' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _fatScoreController,
+                                  txtLabel: 'Fat Score',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _pectoralMuscleController,
+                                  txtLabel: 'Pectoral Muscle Score',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _primaryScoreController,
+                                  txtLabel: 'Primary Score',
+                                  keyboard: 'number',
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                            child: DecoratedBox(
+                              decoration: BoxDecoration(
+                                color: Colors.white,
+                                border: Border.all(
+                                    color: Colors.grey,
+                                    width: 1,
+                                    style: BorderStyle.solid),
+                                borderRadius: BorderRadius.circular(5.0),
+                              ),
+                              child: Column(
+                                children: [
+                                  Text(
+                                    'Fat Score Method',
+                                    style: TextStyle(color: Colors.grey[600]),
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('B'),
+                                          value:
+                                              _fatScoreMethodController.text ==
+                                                      'B'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _fatScoreMethodController.text =
+                                                  value! ? 'B' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('E'),
+                                          value:
+                                              _fatScoreMethodController.text ==
+                                                      'E'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _fatScoreMethodController.text =
+                                                  value! ? 'E' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                      Expanded(
+                                        child: CheckboxListTile(
+                                          title: const Text('P'),
+                                          value:
+                                              _fatScoreMethodController.text ==
+                                                      'P'
+                                                  ? true
+                                                  : false,
+                                          controlAffinity:
+                                              ListTileControlAffinity.leading,
+                                          onChanged: (bool? value) {
+                                            setState(() {
+                                              _fatScoreMethodController.text =
+                                                  value! ? 'P' : '';
+                                            });
+                                          },
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _broodPatchController,
+                                  txtLabel: 'Brood Patch',
+                                  keyboard: 'text',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _primaryMoultController,
+                                  txtLabel: 'Primary Moult',
+                                  keyboard: 'text',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _oldGreaterCovertsController,
+                                  txtLabel: 'Old Greater Coverts',
+                                  keyboard: 'text',
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _alulaController,
+                                  txtLabel: 'Alula',
+                                  keyboard: 'text',
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _carpalCovertController,
+                                  txtLabel: 'Carpal covert',
+                                  listValues: carpalCovert,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+                ExpansionTile(
+                  title: const Text(
+                    'Circumstances',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                    ),
+                  ),
+                  collapsedBackgroundColor: Colors.grey[300],
+                  backgroundColor: Colors.grey[300],
+                  children: [
+                    Form(
+                      key: _circumstancesFormKey,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _sexingMethodController,
+                                  txtLabel: 'Sexing method',
+                                  listValues: sexingMethod,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _catchingMethodController,
+                                  txtLabel: 'Catching method',
+                                  listValues: catchingMethod,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _catchingLuresController,
+                                  txtLabel: 'Catching lures',
+                                  listValues: catchingLures,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _conditionController,
+                                  txtLabel: 'Condition',
+                                  listValues: condition,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _statusController,
+                                  txtLabel: 'Status',
+                                  listValues: status,
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _circumstancesController,
+                                  txtLabel: 'Circumstances',
+                                  listValues: circumstances,
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _circumstancesPresumedController,
+                                  txtLabel: 'Circumstances presumed',
+                                  listValues: circumstancesPresumed,
+                                ),
+                              ),
+                            ],
+                          ),
+                          CustomTimePickerField(
+                            controller: _timeController,
+                            txtLabel: 'Time',
+                            callback: () {
+                              //pickTime(context);
+                            },
+                          ),
+                          CustomTextFormField(
+                            controller: _otherMarksController,
+                            txtLabel: 'Other marks',
+                            keyboard: 'text',
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            );
+          },
+        ),
+      ),
+    );
   }
 
   /// Listens to update success on error.
