@@ -37,6 +37,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
   /// Form key for accessing, checking circumstances information.
   final _circumstancesFormKey = GlobalKey<FormState>();
 
+  /// Set ring data once on entering the page, not on later manual changes.
+  bool firstSet = true;
+
   // Required identification data controllers
   final TextEditingController _primaryIDMethodController =
       TextEditingController();
