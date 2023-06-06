@@ -196,7 +196,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
           selector: (context, notifier) => notifier.ringEntityData,
           builder: (context, data, child) {
             if (firstSet) {
-              //setRing(data);
+              setRing(data);
               firstSet = false;
             }
             return Column(
@@ -1065,5 +1065,53 @@ class _EditRingScreenState extends State<EditRingScreen> {
         ],
       ),
     );
+  }
+
+  /// Populates form fields with selected ring information provided in
+  /// [data].
+  void setRing(RingEntityData? data) {
+    if (data != null) {
+      _primaryIDMethodController.text = data.primaryIdMethod;
+      _ringSeriesCodeController.text = data.ringSeriesCode;
+      _ringIdNumberController.text = data.ringIdNumber;
+      _metalRingInfoController.text = data.metalRingInfo;
+      _speciesController.text = data.species;
+      _ageController.text = data.age;
+      _sexController.text = data.sex;
+
+      _sexingMethodController.text = data.sexingMethod;
+      _catchingMethodController.text = data.catchingMethod;
+      _catchingLuresController.text = data.catchingLures;
+      _conditionController.text = data.condition;
+      _statusController.text = data.status;
+      _timeController.text = data.time;
+      _circumstancesController.text = data.circumstances;
+      _circumstancesPresumedController.text = data.circumstancesPresumed;
+      _otherMarksController.text = data.otherMarks;
+
+      _wingLengthController.text = data.wingLength;
+      _thirdPrimaryController.text = data.thirdPrimary;
+      _wingPointStateController.text = data.wingPointState;
+      _massController.text = data.mass;
+      _moultController.text = data.moult;
+      _plumageCodeController.text = data.plumageCode;
+      _hindClawController.text = data.hindClaw;
+      _billLengthController.text = data.billLength;
+      _billMethodController.text = data.billMethod;
+      _headLengthTotalController.text = data.headLengthTotal;
+      _tarsusController.text = data.tarsus;
+      _tarsusMethodController.text = data.tarsusMethod;
+      _tailLengthController.text = data.tailLength;
+      _tailDifferenceController.text = data.tailDifference;
+      _fatScoreController.text = data.fatScore;
+      _fatScoreMethodController.text = data.fatScoreMethod;
+      _pectoralMuscleController.text = data.pectoralMuscle;
+      _broodPatchController.text = data.broodPatch;
+      _primaryScoreController.text = data.primaryScore;
+      _primaryMoultController.text = data.primaryMoult;
+      _oldGreaterCovertsController.text = data.oldGreaterCoverts;
+      _alulaController.text = data.alula;
+      _carpalCovertController.text = data.carpalCovert;
+    }
   }
 }
