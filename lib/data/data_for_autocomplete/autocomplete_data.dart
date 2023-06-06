@@ -182,6 +182,17 @@ const List<String> metalRingInfo = <String>[
   '7',
 ];
 
+/// EURING code moult values.
+const List<String> moult = <String>[
+  '',
+  'B',
+  'J',
+  'M',
+  'P',
+  'X',
+  'U',
+];
+
 /// A list holding EURING Code values of place code.
 ///
 /// Not complete.
