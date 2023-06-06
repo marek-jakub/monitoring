@@ -105,7 +105,108 @@ class _EditRingScreenState extends State<EditRingScreen> {
   late RingDataManager _dataManager;
 
   @override
+  void initState() {
+    super.initState();
+
+    _dataManager = Provider.of<RingDataManager>(context, listen: false);
+    _dataManager.addListener(editRingListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold();
+  }
+
+  /// Listens to update success on error.
+  void editRingListener() {
+    if (_dataManager.isRingUpdated) {
+      listenRingUpdated();
+      _dataManager.setIsRingUpdated(false);
+    }
+
+    if (_dataManager.isRingDeleted) {
+      listenRingDeleted();
+      _dataManager.setIsRingDeleted(false);
+    }
+
+    if (_dataManager.error != '') {
+      listenRingError(_dataManager.error);
+      _dataManager.setError('');
+    }
+  }
+
+  /// A scaffold messenger showing a text message on ring data update success.
+  void listenRingUpdated() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Ring data updated',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                _dataManager.setIsRingUpdated(false);
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
+  }
+
+  /// A scaffold messenger showing textual message on ring data being deleted.
+  void listenRingDeleted() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Ring data deleted',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                _dataManager.setIsRingDeleted(false);
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
+  }
+
+  /// A scaffold messenger showing textual message [errorMsg] on ring data
+  /// updage error.
+  void listenRingError(String errorMsg) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(
+          errorMsg,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
   }
 }
