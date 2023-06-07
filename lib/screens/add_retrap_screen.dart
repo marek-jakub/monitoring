@@ -163,7 +163,28 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
+    return Scaffold(
+      appBar: AppBar(
+        title: Text(
+          'MonitoRing: Retrap',
+          style: Theme.of(context).textTheme.headlineSmall,
+        ),
+        centerTitle: true,
+        leading: IconButton(
+          icon: const BackButtonIcon(),
+          onPressed: () {
+            _dataManager.setNewRetrap(false);
+          },
+        ),
+        actions: [
+          IconButton(
+              onPressed: () {
+                //addRetrap();
+              },
+              icon: const Icon(Icons.save)),
+        ],
+      ),
+    );
   }
 
   /// Change notifier listener, reacts to retrap data saving action.
