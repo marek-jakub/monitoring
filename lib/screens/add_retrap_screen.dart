@@ -165,4 +165,17 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
   Widget build(BuildContext context) {
     return Scaffold();
   }
+
+  /// Change notifier listener, reacts to retrap data saving action.
+  void addRetrapListener() {
+    if (_dataManager.isRetrapAdded) {
+      //listenRetrapAdd();
+      _dataManager.setIsRetrapAdded(false);
+    }
+
+    if (_dataManager.error != '') {
+      //listenRetrapError(_sessionManager.error);
+      _dataManager.setError('');
+    }
+  }
 }
