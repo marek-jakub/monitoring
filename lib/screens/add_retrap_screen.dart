@@ -174,7 +174,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
     }
 
     if (_dataManager.error != '') {
-      //listenRetrapError(_sessionManager.error);
+      listenRetrapError(_dataManager.error);
       _dataManager.setError('');
     }
   }
@@ -192,6 +192,30 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
           TextButton(
               onPressed: () {
                 _dataManager.setIsRetrapAdded(false);
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
+  }
+
+  /// A scaffold messenger showing [errorMsg] on retrap save erorr.
+  void listenRetrapError(String errorMsg) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(
+          errorMsg,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
                 //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
                 ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
               },
