@@ -157,7 +157,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
     _alulaController.dispose();
     _carpalCovertController.dispose();
 
-    //_dataManager.removeListener(addRetrapListener);
+    _dataManager.removeListener(addRetrapListener);
     super.dispose();
   }
 
