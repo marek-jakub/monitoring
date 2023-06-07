@@ -22,52 +22,102 @@ class RetrapsScreen extends StatefulWidget {
 class _RetrapsScreenState extends State<RetrapsScreen> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      persistentFooterButtons: [
-        Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                if (context.read<RingDataManager>().currentSessionId > -1) {
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .setNewRetrap(true);
-                } else {
-                  ScaffoldMessenger.of(context).showMaterialBanner(
-                    MaterialBanner(
-                      content: const Text(
-                        'Session not selected',
-                        style: TextStyle(color: Colors.white),
-                      ),
-                      backgroundColor: Colors.brown,
-                      actions: [
-                        TextButton(
-                          onPressed: () {
-                            ScaffoldMessenger.of(context)
-                                .hideCurrentMaterialBanner();
-                          },
-                          child: const Text(
-                            'Close',
-                            style: TextStyle(color: Colors.white),
-                          ),
+    return Consumer<RingDataManager>(builder: (context, dataManager, child) {
+      return Scaffold(
+        persistentFooterButtons: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  if (dataManager.currentSessionId > -1) {
+                    dataManager.setNewRetrap(true);
+                  } else {
+                    ScaffoldMessenger.of(context).showMaterialBanner(
+                      MaterialBanner(
+                        content: const Text(
+                          'Session not selected',
+                          style: TextStyle(color: Colors.white),
                         ),
-                      ],
-                    ),
-                  );
-                }
-              },
-              style: ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
-              child: const Text('Retrap'),
-            ),
-          ],
+                        backgroundColor: Colors.brown,
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              ScaffoldMessenger.of(context)
+                                  .hideCurrentMaterialBanner();
+                            },
+                            child: const Text(
+                              'Close',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                },
+                style: ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
+                child: const Text('Retrap'),
+              ),
+            ],
+          ),
+        ],
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Column(
+            children: [
+              const Text('Retraps'),
+              Expanded(
+                child: dataManager.sessionTapped
+                    ? dataManager.sessionRetrapStream.isNotEmpty
+                        ? Selector<RingDataManager, List<RetrapEntityData>>(
+                            selector: (context, notifier) =>
+                                notifier.sessionRetrapStream,
+                            builder: (context, retraps, child) {
+                              debugPrint(
+                                  'Sessions screen rings stream: ${retraps.isNotEmpty}');
+                              return ListView.builder(
+                                itemCount: retraps.length,
+                                itemBuilder: (context, index) {
+                                  final retrap = retraps[index];
+                                  return GestureDetector(
+                                    onTap: () {},
+                                    child: Card(
+                                      color: Colors.blueGrey.shade100,
+                                      shape: const RoundedRectangleBorder(
+                                        side: BorderSide(
+                                          color: Colors.green,
+                                          style: BorderStyle.solid,
+                                          width: 1.0,
+                                        ),
+                                        borderRadius: BorderRadius.all(
+                                            Radius.circular(10.0)),
+                                      ),
+                                      child: Column(
+                                        children: [
+                                          Text(retrap.id.toString()),
+                                          Text(retrap.ringIdNumber),
+                                          Text(retrap.ringScheme),
+                                          Text(retrap.condition),
+                                        ],
+                                      ),
+                                    ),
+                                  );
+                                },
+                              );
+                            },
+                          )
+                        : const Center(
+                            child: Text('Session does not contain retraps'),
+                          )
+                    : const Center(
+                        child: Text('Session not selected'),
+                      ),
+              ),
+            ],
+          ),
         ),
-      ],
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: Column(children: [
-          const Text('Retraps'),
-        ]),
-      ),
-    );
+      );
+    });
   }
 }
