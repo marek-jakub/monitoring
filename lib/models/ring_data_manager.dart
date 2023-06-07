@@ -43,6 +43,7 @@ class RingDataManager extends ChangeNotifier {
   List<RingEntityData> _sessionRingStream = [];
 
   // Retrap
+  bool _newRetrap = false;
 
   // Report
   bool _newReport = false;
@@ -211,6 +212,17 @@ class RingDataManager extends ChangeNotifier {
 
   /// Access to a ring information.
   RingEntityData? get ringEntityData => _ringEntityData;
+
+  // RETRAP /////////////////////////////
+
+  /// Access to add retrap screen.
+  ///
+  /// True for entering add retrap screen, false for pop page.
+  bool get newRetrap => _newRetrap;
+  void setNewRetrap(bool create) {
+    _newRetrap = create;
+    notifyListeners();
+  }
 
   // REPORT /////////////////////////////
 
