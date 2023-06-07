@@ -79,7 +79,11 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                 itemBuilder: (context, index) {
                                   final retrap = retraps[index];
                                   return GestureDetector(
-                                    onTap: () {},
+                                    onTap: () {
+                                      // set selected retrap id
+                                      // call get selected retrap by id
+                                      // call set edit retrap to true
+                                    },
                                     child: Card(
                                       color: Colors.blueGrey.shade100,
                                       shape: const RoundedRectangleBorder(
