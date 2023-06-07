@@ -187,7 +187,26 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
       body: SingleChildScrollView(
         child: Form(
             child: Column(
-          children: [],
+          children: [
+            Row(
+              children: [
+                Expanded(
+                  child: CustomTextFormField(
+                    controller: _ringSeriesCodeController,
+                    txtLabel: 'Ring series',
+                    keyboard: 'text',
+                  ),
+                ),
+                Expanded(
+                  child: CustomTextFormField(
+                    controller: _ringIdNumberController,
+                    txtLabel: 'ID number',
+                    keyboard: 'number',
+                  ),
+                ),
+              ],
+            ),
+          ],
         )),
       ),
     );
