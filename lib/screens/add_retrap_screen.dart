@@ -206,6 +206,24 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                 ),
               ],
             ),
+            Row(
+              children: [
+                Expanded(
+                  child: CustomDropdownButtonFormField(
+                    controller: _ringSchemeController,
+                    txtLabel: 'Ringing scheme',
+                    listValues: ringingSchemes,
+                  ),
+                ),
+                Expanded(
+                  child: CustomDropdownButtonFormField(
+                    controller: _conditionController,
+                    txtLabel: 'Condition',
+                    listValues: condition,
+                  ),
+                ),
+              ],
+            ),
           ],
         )),
       ),
