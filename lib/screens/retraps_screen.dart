@@ -74,8 +74,6 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                             selector: (context, notifier) =>
                                 notifier.sessionRetrapStream,
                             builder: (context, retraps, child) {
-                              debugPrint(
-                                  'Sessions screen rings stream: ${retraps.isNotEmpty}');
                               return ListView.builder(
                                 itemCount: retraps.length,
                                 itemBuilder: (context, index) {
@@ -110,10 +108,10 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                             },
                           )
                         : const Center(
-                            child: Text('Session does not contain retraps'),
+                            child: Text('Session does not contain retraps!'),
                           )
                     : const Center(
-                        child: Text('Session not selected'),
+                        child: Text('Session is not selected.'),
                       ),
               ),
             ],
