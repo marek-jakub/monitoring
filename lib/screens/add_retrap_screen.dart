@@ -184,6 +184,12 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
               icon: const Icon(Icons.save)),
         ],
       ),
+      body: SingleChildScrollView(
+        child: Form(
+            child: Column(
+          children: [],
+        )),
+      ),
     );
   }
 
