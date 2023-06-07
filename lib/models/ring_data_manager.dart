@@ -288,6 +288,17 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
+  /// A stream of retraps of a session identified by [id].
+  void getSessionRetrapStream(int id) {
+    _isLoading = true;
+
+    _monRingDb?.watchSessionRetraps(id).listen((event) {
+      _sessionRetrapStream = event;
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
+
   /// Saves location [locCompanion] in the database, if successful using
   /// returned location's id to save session [sesCompanion].
   void saveSession(LocationEntityCompanion locCompanion,
