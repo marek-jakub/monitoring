@@ -62,6 +62,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
           ],
         ),
       ],
+      body: Padding(padding: const EdgeInsets.all(8.0)),
     );
   }
 }
