@@ -44,6 +44,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Retrap
   bool _newRetrap = false;
+  List<RetrapEntityData> _sessionRetrapStream = [];
 
   // Report
   bool _newReport = false;
