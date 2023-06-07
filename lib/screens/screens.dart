@@ -1,3 +1,4 @@
+export 'add_retrap_screen.dart';
 export 'add_ring_screen.dart';
 export 'add_session_screen.dart';
 export 'edit_session_screen.dart';
