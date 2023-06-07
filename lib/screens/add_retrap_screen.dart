@@ -105,6 +105,14 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
   late RingDataManager _dataManager;
 
   @override
+  void initState() {
+    super.initState();
+
+    _dataManager = Provider.of<RingDataManager>(context, listen: false);
+    //_dataManager.addListener(addRetrapListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold();
   }
