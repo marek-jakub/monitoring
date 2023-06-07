@@ -225,6 +225,11 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Access to retrap stream list of a given session.
+  ///
+  /// Session is identified by [_currentSessionId].
+  List<RetrapEntityData> get sessionRetrapStream => _sessionRetrapStream;
+
   // REPORT /////////////////////////////
 
   /// The access to create report screen.
