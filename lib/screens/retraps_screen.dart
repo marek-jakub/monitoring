@@ -23,7 +23,45 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        // TODO: build retraps GUI
-        );
+      persistentFooterButtons: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          children: [
+            ElevatedButton(
+              onPressed: () {
+                if (context.read<RingDataManager>().currentSessionId > -1) {
+                  Provider.of<RingDataManager>(context, listen: false)
+                      .setNewRetrap(true);
+                } else {
+                  ScaffoldMessenger.of(context).showMaterialBanner(
+                    MaterialBanner(
+                      content: const Text(
+                        'Session not selected',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                      backgroundColor: Colors.brown,
+                      actions: [
+                        TextButton(
+                          onPressed: () {
+                            ScaffoldMessenger.of(context)
+                                .hideCurrentMaterialBanner();
+                          },
+                          child: const Text(
+                            'Close',
+                            style: TextStyle(color: Colors.white),
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                }
+              },
+              style: ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
+              child: const Text('Retrap'),
+            ),
+          ],
+        ),
+      ],
+    );
   }
 }
