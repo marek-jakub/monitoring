@@ -891,6 +891,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
     }
   }
 
+  /// Change notifier listener, reacts to ring data saving action.
   void addRingListener() {
     if (_dataManager.isRingAdded) {
       listenRingAdd();
