@@ -260,6 +260,45 @@ const List<String> primaryIdMethod = <String>[
   'T0',
 ];
 
+/// EURING code ringing scheme values.
+const List<String> ringingSchemes = <String>[
+  '',
+  'ABT',
+  'BLB',
+  'BGS',
+  'CIJ',
+  'HRZ',
+  'CYC',
+  'CZP',
+  'DKC',
+  'ETM',
+  'SFH',
+  'FRP',
+  'DEW',
+  'DEH',
+  'DER',
+  'HGB',
+  'ISR',
+  'IAB',
+  'LIK',
+  'MKS',
+  'MLV',
+  'NLA',
+  'PLG',
+  'POL',
+  'RSB',
+  'SKB',
+  'ESI',
+  'ESA',
+  'SVS',
+  'HES',
+  'TUA',
+  'GBT',
+  'UKK',
+  'ILT',
+  'USA',
+];
+
 /// A list holding EURING code sexing method values.
 const List<String> sexingMethod = <String>[
   '',
