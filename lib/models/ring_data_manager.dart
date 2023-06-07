@@ -208,7 +208,7 @@ class RingDataManager extends ChangeNotifier {
 
   /// Access to ring stream list of a given session.
   ///
-  /// ...
+  /// Session is identified by [_currentSessionId].
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
 
   /// Access to a ring information.
