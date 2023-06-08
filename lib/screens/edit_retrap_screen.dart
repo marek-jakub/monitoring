@@ -101,6 +101,9 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   /// Current time.
   TimeOfDay? _currTime;
 
+  /// Change notifier access.
+  late RingDataManager _dataManager;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
