@@ -338,6 +338,11 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                           ),
                         ),
                       ),
+                      CustomDropdownButtonFormField(
+                        controller: _ageController,
+                        txtLabel: 'Age',
+                        listValues: age,
+                      ),
                     ],
                   ),
                 ),
