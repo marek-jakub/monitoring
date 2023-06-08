@@ -393,6 +393,31 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _billLengthController,
+                              txtLabel: 'Bill Length',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _hindClawController,
+                              txtLabel: 'Hind Claw',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _headLengthTotalController,
+                              txtLabel: 'Total Head Length',
+                              keyboard: 'number',
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
