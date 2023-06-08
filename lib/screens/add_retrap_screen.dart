@@ -109,7 +109,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
-    //_dataManager.addListener(addRetrapListener);
+    _dataManager.addListener(addRetrapListener);
   }
 
   @override
