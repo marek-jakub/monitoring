@@ -829,7 +829,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         controller: _timeController,
                         txtLabel: 'Time',
                         callback: () {
-                          //pickTime(context);
+                          pickTime(context);
                         },
                       ),
                       CustomTextFormField(
@@ -908,5 +908,34 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
         ],
       ),
     );
+  }
+
+  /// A time picker widget.
+  Future<void> pickTime(BuildContext context) async {
+    final initialTime = TimeOfDay.now();
+    final newTime = await showTimePicker(
+      context: context,
+      initialTime: _currTime ?? initialTime,
+      builder: (context, child) => Theme(
+        data: ThemeData().copyWith(
+          colorScheme: const ColorScheme.light(
+              primary: Colors.green,
+              onPrimary: Colors.white,
+              onSurface: Colors.black),
+          dialogBackgroundColor: Colors.white,
+        ),
+        child: child ?? const Text(''),
+      ),
+    );
+
+    if (newTime == null) {
+      return;
+    }
+
+    setState(() {
+      _currTime = newTime;
+      String time = _currTime!.format(context);
+      _timeController.text = time;
+    });
   }
 }
