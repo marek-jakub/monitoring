@@ -44,6 +44,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Retrap
   bool _newRetrap = false;
+  bool _editRetrap = false;
   bool _isRetrapAdded = false;
   List<RetrapEntityData> _sessionRetrapStream = [];
 
@@ -223,6 +224,15 @@ class RingDataManager extends ChangeNotifier {
   bool get newRetrap => _newRetrap;
   void setNewRetrap(bool create) {
     _newRetrap = create;
+    notifyListeners();
+  }
+
+  /// Access to edit retrap screen.
+  ///
+  /// True for entering edit retrap screen, false for pop page.
+  bool get editRetrap => _editRetrap;
+  void setEditRetrap(bool selected) {
+    _editRetrap = selected;
     notifyListeners();
   }
 
