@@ -113,6 +113,55 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   }
 
   @override
+  void dispose() {
+    _ringSchemeController.dispose();
+    _primaryIDMethodController.dispose();
+    _ringSeriesCodeController.dispose();
+    _ringIdNumberController.dispose();
+    _metalRingInfoController.dispose();
+    _speciesController.dispose();
+    _ageController.dispose();
+    _sexController.dispose();
+
+    _sexingMethodController.dispose();
+    _catchingMethodController.dispose();
+    _catchingLuresController.dispose();
+    _conditionController.dispose();
+    _statusController.dispose();
+    _timeController.dispose();
+    _circumstancesController.dispose();
+    _circumstancesPresumedController.dispose();
+    _otherMarksController.dispose();
+
+    _wingLengthController.dispose();
+    _thirdPrimaryController.dispose();
+    _wingPointStateController.dispose();
+    _massController.dispose();
+    _moultController.dispose();
+    _plumageCodeController.dispose();
+    _hindClawController.dispose();
+    _billLengthController.dispose();
+    _billMethodController.dispose();
+    _headLengthTotalController.dispose();
+    _tarsusController.dispose();
+    _tarsusMethodController.dispose();
+    _tailLengthController.dispose();
+    _tailDifferenceController.dispose();
+    _fatScoreController.dispose();
+    _fatScoreMethodController.dispose();
+    _pectoralMuscleController.dispose();
+    _broodPatchController.dispose();
+    _primaryScoreController.dispose();
+    _primaryMoultController.dispose();
+    _oldGreaterCovertsController.dispose();
+    _alulaController.dispose();
+    _carpalCovertController.dispose();
+
+    //_dataManager.removeListener(updateRetrapListener);
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold();
   }
