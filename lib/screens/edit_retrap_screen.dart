@@ -98,6 +98,9 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   final TextEditingController _alulaController = TextEditingController();
   final TextEditingController _carpalCovertController = TextEditingController();
 
+  /// Current time.
+  TimeOfDay? _currTime;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold();
