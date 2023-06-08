@@ -368,6 +368,31 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                           )
                         ],
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _wingPointStateController,
+                              txtLabel: 'State of Wing Point',
+                              listValues: stateOfWingPoint,
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _moultController,
+                              txtLabel: 'Moult',
+                              listValues: moult,
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _plumageCodeController,
+                              txtLabel: 'Plumage code',
+                              listValues: plumageCode,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
