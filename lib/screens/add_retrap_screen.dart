@@ -534,6 +534,79 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                           ),
                         ],
                       ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            border: Border.all(
+                                color: Colors.grey,
+                                width: 1,
+                                style: BorderStyle.solid),
+                            borderRadius: BorderRadius.circular(5.0),
+                          ),
+                          child: Column(
+                            children: [
+                              Text(
+                                'Tarsus Method',
+                                style: TextStyle(color: Colors.grey[600]),
+                              ),
+                              Row(
+                                children: [
+                                  Expanded(
+                                    child: CheckboxListTile(
+                                      title: const Text('M'),
+                                      value: _tarsusMethodController.text == 'M'
+                                          ? true
+                                          : false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                      onChanged: (bool? value) {
+                                        setState(() {
+                                          _tarsusMethodController.text =
+                                              value! ? 'M' : '';
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: CheckboxListTile(
+                                      title: const Text('S'),
+                                      value: _tarsusMethodController.text == 'S'
+                                          ? true
+                                          : false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                      onChanged: (bool? value) {
+                                        setState(() {
+                                          _tarsusMethodController.text =
+                                              value! ? 'S' : '';
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                  Expanded(
+                                    child: CheckboxListTile(
+                                      title: const Text('T'),
+                                      value: _tarsusMethodController.text == 'T'
+                                          ? true
+                                          : false,
+                                      controlAffinity:
+                                          ListTileControlAffinity.leading,
+                                      onChanged: (bool? value) {
+                                        setState(() {
+                                          _tarsusMethodController.text =
+                                              value! ? 'T' : '';
+                                        });
+                                      },
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
                     ],
                   ),
                 ),
