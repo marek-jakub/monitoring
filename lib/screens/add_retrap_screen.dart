@@ -796,6 +796,17 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _statusController,
+                                txtLabel: 'Status',
+                                listValues: status,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     )),
               ],
