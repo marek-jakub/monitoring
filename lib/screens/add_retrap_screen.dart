@@ -770,7 +770,33 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                 Form(
                     key: _circumstancesFormKey,
                     child: Column(
-                      children: [],
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _sexingMethodController,
+                                txtLabel: 'Sexing method',
+                                listValues: sexingMethod,
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _catchingMethodController,
+                                txtLabel: 'Catching method',
+                                listValues: catchingMethod,
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _catchingLuresController,
+                                txtLabel: 'Catching lures',
+                                listValues: catchingLures,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ],
                     )),
               ],
             ),
