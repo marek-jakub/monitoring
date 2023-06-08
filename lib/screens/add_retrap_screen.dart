@@ -756,6 +756,17 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                 ),
               ],
             ),
+            ExpansionTile(
+              title: const Text(
+                'Circumstances',
+                style: TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              collapsedBackgroundColor: Colors.grey[300],
+              backgroundColor: Colors.grey[300],
+            ),
           ],
         )),
       ),
