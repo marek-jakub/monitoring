@@ -733,6 +733,24 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                           ),
                         ],
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _alulaController,
+                              txtLabel: 'Alula',
+                              keyboard: 'text',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _carpalCovertController,
+                              txtLabel: 'Carpal covert',
+                              listValues: carpalCovert,
+                            ),
+                          ),
+                        ],
+                      ),
                     ],
                   ),
                 ),
