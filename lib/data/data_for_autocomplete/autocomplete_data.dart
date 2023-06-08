@@ -3,7 +3,7 @@
 ///
 /// Current access: https://euring.org/files/documents/E2020ExchangeCodeV201.pdf
 
-/// A list holding EURING Code accuracy of coordinates values.
+/// EURING Code accuracy of coordinates values.
 const List<String> accuracyOfCoordinates = <String>[
   '',
   '0',
@@ -44,7 +44,7 @@ const List<String> accuracyOfCoordinates = <String>[
   'Z',
 ];
 
-/// A list holding EURING Code accuracy of date values.
+/// EURING Code accuracy of date values.
 const List<String> accuracyOfDate = <String>[
   '',
   '0',
@@ -59,7 +59,7 @@ const List<String> accuracyOfDate = <String>[
   '9',
 ];
 
-/// A list holding EURING code age values.
+/// EURING code age values.
 const List<String> age = <String>[
   '',
   '0',
@@ -82,14 +82,14 @@ const List<String> age = <String>[
   'H',
 ];
 
-/// A list holding EURING code carpal covert values.
+/// EURING code carpal covert values.
 const List<String> carpalCovert = <String>[
   '',
   '0',
   '1',
 ];
 
-/// A list holding EURING code catching lures values.
+/// EURING code catching lures values.
 const List<String> catchingLures = <String>[
   '',
   '-',
@@ -106,7 +106,7 @@ const List<String> catchingLures = <String>[
   'N',
 ];
 
-/// A list holding EURING code catching method values.
+/// EURING code catching method values.
 const List<String> catchingMethod = <String>[
   '',
   '-',
@@ -131,7 +131,7 @@ const List<String> catchingMethod = <String>[
   'Z',
 ];
 
-/// A list holding EURING code circumstances values.
+/// EURING code circumstances values.
 const List<String> circumstances = <String>[
   '',
   '0',
@@ -147,14 +147,14 @@ const List<String> circumstances = <String>[
   '99',
 ];
 
-/// A list holding EURING code circumstances presumed values.
+/// EURING code circumstances presumed values.
 const List<String> circumstancesPresumed = <String>[
   '',
   '0',
   '1',
 ];
 
-/// A list holding EURING code condition values.
+/// EURING code condition values.
 const List<String> condition = <String>[
   '',
   '0',
@@ -169,7 +169,7 @@ const List<String> condition = <String>[
   '9',
 ];
 
-/// A list holding EURING Code metal ring information values.
+/// EURING Code metal ring information values.
 const List<String> metalRingInfo = <String>[
   '',
   '0',
@@ -193,7 +193,7 @@ const List<String> moult = <String>[
   'U',
 ];
 
-/// A list holding EURING Code values of place code.
+/// EURING Code values of place code.
 ///
 /// Not complete.
 const List<String> placeCode = <String>[
@@ -243,7 +243,7 @@ const List<String> plumageCode = <String>[
   '7',
 ];
 
-/// A list holding EURING Code primary identification method values.
+/// EURING Code primary identification method values.
 const List<String> primaryIdMethod = <String>[
   '',
   'A0',
@@ -299,7 +299,7 @@ const List<String> ringingSchemes = <String>[
   'USA',
 ];
 
-/// A list holding EURING code sexing method values.
+/// EURING code sexing method values.
 const List<String> sexingMethod = <String>[
   '',
   'A',
@@ -314,7 +314,7 @@ const List<String> sexingMethod = <String>[
   'U',
 ];
 
-/// A list holding species encoding values.
+/// Species encoding values.
 ///
 /// Not complete.
 ///
@@ -358,7 +358,7 @@ const List<String> stateOfWingPoint = <String>[
   'V',
 ];
 
-/// A list holding EURING code status values.
+/// EURING code status values.
 const List<String> status = <String>[
   '',
   '-',
