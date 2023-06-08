@@ -237,7 +237,26 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
               children: [
                 Form(
                   key: _bodyMeasurementsFormKey,
-                  child: Column(children: []),
+                  child: Column(children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomDropdownButtonFormField(
+                            controller: _primaryIDMethodController,
+                            txtLabel: 'Primary ID method',
+                            listValues: primaryIdMethod,
+                          ),
+                        ),
+                        Expanded(
+                          child: CustomDropdownButtonFormField(
+                            controller: _metalRingInfoController,
+                            txtLabel: 'Metal ring information',
+                            listValues: metalRingInfo,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ]),
                 ),
               ],
             ),
