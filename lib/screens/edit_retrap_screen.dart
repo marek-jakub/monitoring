@@ -165,4 +165,17 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   Widget build(BuildContext context) {
     return Scaffold();
   }
+
+  /// Change notifier listener, reacts to retrap data saving action.
+  void updateRetrapListener() {
+    if (_dataManager.isRetrapUpdated) {
+      //listenRetrapUpdate();
+      _dataManager.setIsRetrapUpdated(false);
+    }
+
+    if (_dataManager.error != '') {
+      //listenRetrapError(_dataManager.error);
+      _dataManager.setError('');
+    }
+  }
 }
