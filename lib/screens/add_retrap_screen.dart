@@ -768,65 +768,73 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
               backgroundColor: Colors.grey[300],
               children: [
                 Form(
-                    key: _circumstancesFormKey,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _sexingMethodController,
-                                txtLabel: 'Sexing method',
-                                listValues: sexingMethod,
-                              ),
+                  key: _circumstancesFormKey,
+                  child: Column(
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _sexingMethodController,
+                              txtLabel: 'Sexing method',
+                              listValues: sexingMethod,
                             ),
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _catchingMethodController,
-                                txtLabel: 'Catching method',
-                                listValues: catchingMethod,
-                              ),
+                          ),
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _catchingMethodController,
+                              txtLabel: 'Catching method',
+                              listValues: catchingMethod,
                             ),
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _catchingLuresController,
-                                txtLabel: 'Catching lures',
-                                listValues: catchingLures,
-                              ),
+                          ),
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _catchingLuresController,
+                              txtLabel: 'Catching lures',
+                              listValues: catchingLures,
                             ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _statusController,
-                                txtLabel: 'Status',
-                                listValues: status,
-                              ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _statusController,
+                              txtLabel: 'Status',
+                              listValues: status,
                             ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _circumstancesController,
-                                txtLabel: 'Circumstances',
-                                listValues: circumstances,
-                              ),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _circumstancesController,
+                              txtLabel: 'Circumstances',
+                              listValues: circumstances,
                             ),
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _circumstancesPresumedController,
-                                txtLabel: 'Circumstances presumed',
-                                listValues: circumstancesPresumed,
-                              ),
+                          ),
+                          Expanded(
+                            child: CustomDropdownButtonFormField(
+                              controller: _circumstancesPresumedController,
+                              txtLabel: 'Circumstances presumed',
+                              listValues: circumstancesPresumed,
                             ),
-                          ],
-                        ),
-                      ],
-                    )),
+                          ),
+                        ],
+                      ),
+                      CustomTimePickerField(
+                        controller: _timeController,
+                        txtLabel: 'Time',
+                        callback: () {
+                          //pickTime(context);
+                        },
+                      ),
+                    ],
+                  ),
+                ),
               ],
             ),
           ],
