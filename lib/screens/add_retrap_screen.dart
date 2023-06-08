@@ -832,6 +832,11 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                           //pickTime(context);
                         },
                       ),
+                      CustomTextFormField(
+                        controller: _otherMarksController,
+                        txtLabel: 'Other marks',
+                        keyboard: 'text',
+                      ),
                     ],
                   ),
                 ),
