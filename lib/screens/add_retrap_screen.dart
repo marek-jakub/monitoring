@@ -807,6 +807,24 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                             ),
                           ],
                         ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _circumstancesController,
+                                txtLabel: 'Circumstances',
+                                listValues: circumstances,
+                              ),
+                            ),
+                            Expanded(
+                              child: CustomDropdownButtonFormField(
+                                controller: _circumstancesPresumedController,
+                                txtLabel: 'Circumstances presumed',
+                                listValues: circumstancesPresumed,
+                              ),
+                            ),
+                          ],
+                        ),
                       ],
                     )),
               ],
