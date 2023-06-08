@@ -343,6 +343,31 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         txtLabel: 'Age',
                         listValues: age,
                       ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _wingLengthController,
+                              txtLabel: 'Wing Length',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _thirdPrimaryController,
+                              txtLabel: 'Third Primary',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _massController,
+                              txtLabel: 'Mass',
+                              keyboard: 'number',
+                            ),
+                          )
+                        ],
+                      ),
                     ],
                   ),
                 ),
