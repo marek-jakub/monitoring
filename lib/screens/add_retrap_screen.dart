@@ -766,7 +766,13 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
               ),
               collapsedBackgroundColor: Colors.grey[300],
               backgroundColor: Colors.grey[300],
-              children: [],
+              children: [
+                Form(
+                    key: _circumstancesFormKey,
+                    child: Column(
+                      children: [],
+                    )),
+              ],
             ),
           ],
         )),
