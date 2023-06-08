@@ -9,6 +9,7 @@ class MonitoRingPages {
   static String addRingPath = '/addRing';
   static String editRingPath = '/editRing';
   static String addRetrapPath = '/addRetrap';
+  static String editRetrapPath = '/editRetrap';
   static String profilePath = '/profile';
   static String euringCodePath = '/euring';
   static String sessionsPath = '/sessions';
