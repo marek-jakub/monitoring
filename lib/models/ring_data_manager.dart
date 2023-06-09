@@ -464,4 +464,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Updated retrap entity [companion] in the database.
+  void updateRetrap(RetrapEntityCompanion companion) {
+    _monRingDb?.updateRetrap(companion).then((value) {
+      _isRetrapUpdated = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
