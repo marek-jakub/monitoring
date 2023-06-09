@@ -178,10 +178,17 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
         ),
         actions: [
           IconButton(
-              onPressed: () {
-                updateRetrap();
-              },
-              icon: const Icon(Icons.save)),
+            onPressed: () {
+              updateRetrap();
+            },
+            icon: const Icon(Icons.save),
+          ),
+          IconButton(
+            onPressed: () {
+              //deleteRetrap();
+            },
+            icon: const Icon(Icons.delete),
+          ),
         ],
       ),
       body: SingleChildScrollView(
