@@ -185,7 +185,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
           ),
           IconButton(
             onPressed: () {
-              //deleteRetrap();
+              deleteRetrap();
             },
             icon: const Icon(Icons.delete),
           ),
@@ -930,6 +930,11 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
 
       context.read<RingDataManager>().updateRetrap(retrapEntity);
     }
+  }
+
+  /// Removes retrap data from the database.
+  void deleteRetrap() {
+    context.read<RingDataManager>().deleteRetrap();
   }
 
   /// Change notifier listener, reacts to retrap data saving action.
