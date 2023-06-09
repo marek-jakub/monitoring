@@ -173,6 +173,11 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
       _dataManager.setIsRetrapUpdated(false);
     }
 
+    if (_dataManager.isRetrapDeleted) {
+      listenRetrapDelete();
+      _dataManager.setIsRetrapDeleted(false);
+    }
+
     if (_dataManager.error != '') {
       listenRetrapError(_dataManager.error);
       _dataManager.setError('');
@@ -192,6 +197,31 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
           TextButton(
               onPressed: () {
                 _dataManager.setIsRetrapUpdated(false);
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
+  }
+
+  /// A scaffold messenger shown on successful ratrap delete.
+  void listenRetrapDelete() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Retrap data deleted',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                _dataManager.setIsRetrapDeleted(false);
                 //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
                 ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
               },
