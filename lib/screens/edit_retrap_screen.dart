@@ -937,7 +937,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
     context.read<RingDataManager>().deleteRetrap();
   }
 
-  /// Change notifier listener, reacts to retrap data saving action.
+  /// Change notifier listener, reacts to retrap data editing action.
   void updateRetrapListener() {
     if (_dataManager.isRetrapUpdated) {
       listenRetrapUpdate();
