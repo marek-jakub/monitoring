@@ -933,12 +933,12 @@ class _EditRingScreenState extends State<EditRingScreen> {
   /// Listens to update success on error.
   void editRingListener() {
     if (_dataManager.isRingUpdated) {
-      listenRingUpdated();
+      listenRingUpdate();
       _dataManager.setIsRingUpdated(false);
     }
 
     if (_dataManager.isRingDeleted) {
-      listenRingDeleted();
+      listenRingDelete();
       _dataManager.setIsRingDeleted(false);
       // Clear data on delete success.
       setState(
@@ -993,7 +993,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
   }
 
   /// A scaffold messenger showing a text message on ring data update success.
-  void listenRingUpdated() {
+  void listenRingUpdate() {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: const Text(
@@ -1018,7 +1018,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
   }
 
   /// A scaffold messenger showing textual message on ring data being deleted.
-  void listenRingDeleted() {
+  void listenRingDelete() {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: const Text(
