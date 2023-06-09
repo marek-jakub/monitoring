@@ -48,6 +48,7 @@ class RingDataManager extends ChangeNotifier {
   bool _isRetrapAdded = false;
   bool _isRetrapUpdated = false;
   bool _isRetrapDeleted = false;
+  int _selectedRetrapId = -1;
   List<RetrapEntityData> _sessionRetrapStream = [];
 
   // Report
@@ -256,6 +257,13 @@ class RingDataManager extends ChangeNotifier {
   bool get isRetrapDeleted => _isRetrapDeleted;
   void setIsRetrapDeleted(bool deleted) {
     _isRetrapDeleted = deleted;
+    notifyListeners();
+  }
+
+  /// An id of selected retrap.
+  int get selectedRetrapId => _selectedRetrapId;
+  void setSelectedRetrapId(int id) {
+    _selectedRetrapId = id;
     notifyListeners();
   }
 
