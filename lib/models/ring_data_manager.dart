@@ -483,4 +483,22 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Deletes retrap information from the database.
+  ///
+  /// Id of the retrap to be deleted is stored in the [_selectedRetrapId].
+  void deleteRetrap() {
+    _monRingDb?.deleteRetrap(selectedRetrapId).then((value) {
+      if (value == 0) {
+        _error = 'Record not found';
+      } else {
+        _isRetrapDeleted = true;
+        setSelectedRetrapId(-1);
+      }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
