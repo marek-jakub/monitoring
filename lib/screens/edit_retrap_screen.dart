@@ -169,7 +169,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   /// Change notifier listener, reacts to retrap data saving action.
   void updateRetrapListener() {
     if (_dataManager.isRetrapUpdated) {
-      //listenRetrapUpdate();
+      listenRetrapUpdate();
       _dataManager.setIsRetrapUpdated(false);
     }
 
@@ -179,5 +179,30 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
       //listenRetrapError(_dataManager.error);
       _dataManager.setError('');
     }
+  }
+
+  /// A scaffold messenger with text shown on successful retrap update.
+  void listenRetrapUpdate() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Retrap data updated',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+              onPressed: () {
+                _dataManager.setIsRetrapUpdated(false);
+                //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+                ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+              },
+              child: const Text(
+                'Close',
+                style: TextStyle(color: Colors.white),
+              ))
+        ],
+      ),
+    );
   }
 }
