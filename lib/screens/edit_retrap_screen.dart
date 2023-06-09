@@ -968,7 +968,6 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
           _circumstancesController.clear();
           _circumstancesPresumedController.clear();
           _otherMarksController.clear();
-
           _wingLengthController.clear();
           _thirdPrimaryController.clear();
           _wingPointStateController.clear();
