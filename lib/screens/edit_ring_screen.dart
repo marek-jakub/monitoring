@@ -940,7 +940,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
     if (_dataManager.isRingDeleted) {
       listenRingDelete();
       _dataManager.setIsRingDeleted(false);
-      // Clear data on delete success.
+      // Clear data fields on delete success.
       setState(
         () {
           _primaryIDMethodController.clear();
