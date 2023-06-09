@@ -952,7 +952,6 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
           _circumstancesController.clear();
           _circumstancesPresumedController.clear();
           _otherMarksController.clear();
-
           _wingLengthController.clear();
           _thirdPrimaryController.clear();
           _wingPointStateController.clear();
