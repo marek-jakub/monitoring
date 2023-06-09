@@ -896,7 +896,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
     if (_dataManager.isRingAdded) {
       listenRingAdd();
       _dataManager.setIsRingAdded(false);
-      // Clear data to allow another entry input.
+      // Clear data fields to allow another entry input.
       setState(
         () {
           _primaryIDMethodController.clear();
