@@ -173,10 +173,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
       _dataManager.setIsRetrapUpdated(false);
     }
 
-    // TODO: add on delete call
-
     if (_dataManager.error != '') {
-      //listenRetrapError(_dataManager.error);
+      listenRetrapError(_dataManager.error);
       _dataManager.setError('');
     }
   }
