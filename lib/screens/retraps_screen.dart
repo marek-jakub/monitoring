@@ -80,7 +80,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                   final retrap = retraps[index];
                                   return GestureDetector(
                                     onTap: () {
-                                      // set selected retrap id
+                                      dataManager.getRetrapById(retrap.id);
                                       // call get selected retrap by id
                                       // call set edit retrap to true
                                     },
