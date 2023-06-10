@@ -99,7 +99,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                       child: Column(
                                         children: [
                                           // TODO: adjust what retrap attributes
-                                          // to be shown.
+                                          // to be shown and describe them.
                                           //Text(retrap.id.toString()),
                                           Text(retrap.ringIdNumber),
                                           Text(retrap.ringScheme),
