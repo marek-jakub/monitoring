@@ -902,6 +902,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
 
     if (isRequiredValid != null && isRequiredValid) {
       final retrapEntity = RetrapEntityCompanion(
+        id: d.Value(_dataManager.selectedRetrapId),
         sessionId: d.Value(context.read<RingDataManager>().currentSessionId),
         ringScheme: d.Value(_ringSchemeController.text),
         primaryIdMethod: d.Value(_primaryIDMethodController.text),
@@ -946,6 +947,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
       );
 
       context.read<RingDataManager>().updateRetrap(retrapEntity);
+      debugPrint('In update retrap');
     }
   }
 
