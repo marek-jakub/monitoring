@@ -947,7 +947,6 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
       );
 
       context.read<RingDataManager>().updateRetrap(retrapEntity);
-      debugPrint('In update retrap');
     }
   }
 
