@@ -37,6 +37,9 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   /// Form key for accessing, checking circumstances information.
   final _circumstancesFormKey = GlobalKey<FormState>();
 
+  /// Set ring data once on entering the page, not on later manual changes.
+  bool firstSet = true;
+
   // Required identification Data controllers
   final TextEditingController _ringSchemeController = TextEditingController();
   final TextEditingController _ringSeriesCodeController =
