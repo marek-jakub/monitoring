@@ -49,6 +49,7 @@ class RingDataManager extends ChangeNotifier {
   bool _isRetrapUpdated = false;
   bool _isRetrapDeleted = false;
   int _selectedRetrapId = -1;
+  RetrapEntityData? _retrapEntityData;
   List<RetrapEntityData> _sessionRetrapStream = [];
 
   // Report
@@ -266,6 +267,11 @@ class RingDataManager extends ChangeNotifier {
     _selectedRetrapId = id;
     notifyListeners();
   }
+
+  /// Access to a retrap information.
+  ///
+  /// Retrap entity data is identified by [_selectedRetrapId].
+  RetrapEntityData? get retrapEntityData => _retrapEntityData;
 
   /// Access to retrap stream list of a given session.
   ///
