@@ -509,4 +509,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Fetches retrap information from the database, identified by retrap [id].
+  void getRetrapById(int id) {
+    _monRingDb?.getRetrap(id).then((value) {
+      _retrapEntityData = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
