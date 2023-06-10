@@ -81,7 +81,8 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                   return GestureDetector(
                                     onTap: () {
                                       dataManager.getRetrapById(retrap.id);
-                                      // call get selected retrap by id
+                                      dataManager
+                                          .setSelectedRetrapId(retrap.id);
                                       // call set edit retrap to true
                                     },
                                     child: Card(
