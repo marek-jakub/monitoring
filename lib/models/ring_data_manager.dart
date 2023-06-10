@@ -265,7 +265,7 @@ class RingDataManager extends ChangeNotifier {
   int get selectedRetrapId => _selectedRetrapId;
   void setSelectedRetrapId(int id) {
     _selectedRetrapId = id;
-    notifyListeners();
+    //notifyListeners();
   }
 
   /// Access to a retrap information.
