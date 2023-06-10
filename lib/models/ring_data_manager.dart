@@ -271,8 +271,6 @@ class RingDataManager extends ChangeNotifier {
   }
 
   /// Access to a retrap information.
-  ///
-  /// Retrap entity data is identified by [_selectedRetrapId].
   RetrapEntityData? get retrapEntityData => _retrapEntityData;
 
   /// Access to retrap stream list of a given session.
