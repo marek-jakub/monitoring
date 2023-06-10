@@ -83,7 +83,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                       dataManager.getRetrapById(retrap.id);
                                       dataManager
                                           .setSelectedRetrapId(retrap.id);
-                                      // call set edit retrap to true
+                                      dataManager.setEditRetrap(true);
                                     },
                                     child: Card(
                                       color: Colors.blueGrey.shade100,
