@@ -218,6 +218,8 @@ class RingDataManager extends ChangeNotifier {
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
 
   /// Access to a ring information.
+  ///
+  /// Ring entity data is identified by [_selectedRingId].
   RingEntityData? get ringEntityData => _ringEntityData;
 
   // RETRAP /////////////////////////////
