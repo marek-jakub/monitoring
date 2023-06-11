@@ -65,6 +65,7 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
           if (ringDataManager.editRing) EditRingScreen.page(),
           if (ringDataManager.newRetrap) AddRetrapScreen.page(),
           if (ringDataManager.editRetrap) EditRetrapScreen.page(),
+          if (ringDataManager.newRingSeries) AddRingSeriesScreen.page(),
         ]
       ],
     );
