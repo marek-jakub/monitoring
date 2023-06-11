@@ -66,7 +66,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const Text('Retraps'),
+              const Text('Session retraps'),
               Expanded(
                 child: dataManager.sessionTapped
                     ? dataManager.sessionRetrapStream.isNotEmpty
