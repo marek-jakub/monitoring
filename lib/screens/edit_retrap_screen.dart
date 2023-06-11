@@ -168,11 +168,9 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MonitoRing: Retrap',
-          style: Theme.of(context).textTheme.headlineSmall,
         ),
-        centerTitle: true,
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
