@@ -89,7 +89,8 @@ class MonitoRingTheme {
     return ThemeData(
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
-        titleTextStyle: const TextStyle(fontSize: 12.0),
+        titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
+        centerTitle: true,
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[800],
       ),
