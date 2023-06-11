@@ -41,11 +41,9 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MonitoRing',
-          style: Theme.of(context).textTheme.headlineSmall,
         ),
-        centerTitle: true,
         actions: [
           profileButton(),
         ],
