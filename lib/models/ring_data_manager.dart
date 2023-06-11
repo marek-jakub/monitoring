@@ -56,6 +56,7 @@ class RingDataManager extends ChangeNotifier {
   bool _newReport = false;
 
   // RingSeries
+  bool _newRingSeries = false;
 
   // Lost ring
 
@@ -284,6 +285,17 @@ class RingDataManager extends ChangeNotifier {
   bool get newReport => _newReport;
   void setNewReport(bool create) {
     _newReport = create;
+    notifyListeners();
+  }
+
+  // RINGSERIES /////////////////////////
+
+  /// Access to add ring series screen.
+  ///
+  /// True for entering add ring series screen, false for pop page.
+  bool get newRingSeries => _newRingSeries;
+  void setNewRingSeries(bool create) {
+    _newRingSeries = create;
     notifyListeners();
   }
 
