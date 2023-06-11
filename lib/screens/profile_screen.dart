@@ -53,7 +53,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: buildMenu(),
             ),
-            // TODO: add buttons to add ring series, lost rings and make orders.
+            ElevatedButton(
+              onPressed: () {
+                Provider.of<RingDataManager>(context, listen: false)
+                    .setNewRingSeries(true);
+              },
+              child: const Text('Add ring series'),
+            ),
+            ElevatedButton(
+              onPressed: () {
+                Provider.of<RingDataManager>(context, listen: false)
+                    .setNewLostRing(true);
+              },
+              child: const Text('Add lost ring'),
+            ),
           ],
         ),
       ),
