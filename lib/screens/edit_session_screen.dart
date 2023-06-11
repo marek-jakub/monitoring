@@ -112,11 +112,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MonitoRing: Edit session',
-          style: Theme.of(context).textTheme.headlineSmall,
         ),
-        centerTitle: true,
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
