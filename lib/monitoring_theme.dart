@@ -70,6 +70,7 @@ class MonitoRingTheme {
       })),
       appBarTheme: AppBarTheme(
         titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.black),
+        centerTitle: true,
         foregroundColor: Colors.grey[800],
         backgroundColor: Colors.white,
       ),
