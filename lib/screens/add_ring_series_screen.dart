@@ -24,7 +24,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MonitoRing: Ring Series',
         ),
         centerTitle: true,
