@@ -162,7 +162,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MonitoRing: Ring',
+          'MonitoRing: ring',
         ),
         leading: IconButton(
           icon: const BackButtonIcon(),
