@@ -4,8 +4,6 @@ import 'package:provider/provider.dart';
 import '../models/models.dart';
 
 /// A screen holding ringer profile information.
-///
-/// Offers access to add ring series, lost rings and make orders screens.
 class ProfileScreen extends StatefulWidget {
   static MaterialPage page(Ringer ringer) {
     return MaterialPage(
