@@ -69,6 +69,7 @@ class MonitoRingTheme {
         return Colors.black;
       })),
       appBarTheme: AppBarTheme(
+        titleTextStyle: const TextStyle(fontSize: 12.0),
         foregroundColor: Colors.grey[800],
         backgroundColor: Colors.white,
       ),
@@ -87,6 +88,7 @@ class MonitoRingTheme {
     return ThemeData(
       brightness: Brightness.dark,
       appBarTheme: AppBarTheme(
+        titleTextStyle: const TextStyle(fontSize: 12.0),
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[800],
       ),
