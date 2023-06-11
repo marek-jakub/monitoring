@@ -62,6 +62,7 @@ class RingDataManager extends ChangeNotifier {
   bool _newLostRing = false;
 
   // Ring orders
+  bool _makeOrder = false;
 
   /// Whether loading data from database takes longer.
   bool _isLoading = false;
@@ -308,6 +309,17 @@ class RingDataManager extends ChangeNotifier {
   bool get newLostRing => _newLostRing;
   void setNewLostRing(bool create) {
     _newLostRing = create;
+    notifyListeners();
+  }
+
+  // ORDER ///////////////////////////////
+
+  /// Access to orders screen.
+  ///
+  /// True for entering the make order screen, false for pop page.
+  bool get makeOrder => _makeOrder;
+  void setMakeOrder(bool create) {
+    _makeOrder = create;
     notifyListeners();
   }
 
