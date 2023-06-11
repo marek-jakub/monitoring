@@ -33,7 +33,6 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('MonitoRing - ringer profile'),
-        centerTitle: true,
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () {
