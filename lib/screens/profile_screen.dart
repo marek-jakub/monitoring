@@ -30,7 +30,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('MonitoRing - profile'),
+        title: const Text('MonitoRing: profile'),
         leading: IconButton(
           icon: const Icon(Icons.close),
           onPressed: () {
