@@ -25,7 +25,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MonitoRing: Ring Series',
+          'MonitoRing: ring series',
         ),
         centerTitle: true,
         leading: IconButton(
