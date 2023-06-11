@@ -67,6 +67,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
               },
               child: const Text('Add lost ring'),
             ),
+            ElevatedButton(
+              onPressed: () {
+                Provider.of<RingDataManager>(context, listen: false)
+                    .setMakeOrder(true);
+              },
+              child: const Text('Order rings'),
+            ),
           ],
         ),
       ),
