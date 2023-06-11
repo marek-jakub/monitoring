@@ -108,7 +108,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MonitoRing: Session',
+          'MonitoRing: session',
         ),
         leading: IconButton(
           icon: const BackButtonIcon(),
