@@ -169,7 +169,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MonitoRing: Retrap',
+          'MonitoRing: retrap',
         ),
         leading: IconButton(
           icon: const BackButtonIcon(),
