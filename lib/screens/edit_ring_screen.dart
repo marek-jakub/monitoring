@@ -165,7 +165,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MonitoRing: Edit ring',
+          'MonitoRing: edit ring',
         ),
         leading: IconButton(
           icon: const BackButtonIcon(),
