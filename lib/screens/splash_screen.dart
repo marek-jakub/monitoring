@@ -37,7 +37,7 @@ class SplashScreenState extends State<SplashScreen> {
               height: 200,
               image: AssetImage('assets/images/mon_ring_logo.png'),
             ),
-            Text('Initializing...')
+            Text('Initializing...'),
           ],
         ),
       ),
