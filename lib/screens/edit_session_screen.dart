@@ -113,7 +113,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'MonitoRing: Edit session',
+          'MonitoRing: edit session',
         ),
         leading: IconButton(
           icon: const BackButtonIcon(),
