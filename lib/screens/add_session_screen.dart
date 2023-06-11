@@ -107,11 +107,9 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   Widget build(BuildContext contex) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
+        title: const Text(
           'MonitoRing: Session',
-          style: Theme.of(context).textTheme.headlineSmall,
         ),
-        centerTitle: true,
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
