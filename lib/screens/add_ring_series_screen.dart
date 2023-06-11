@@ -26,7 +26,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       appBar: AppBar(
         title: Text(
           'MonitoRing: Ring Series',
-          style: Theme.of(context).textTheme.headlineSmall,
         ),
         centerTitle: true,
         leading: IconButton(
