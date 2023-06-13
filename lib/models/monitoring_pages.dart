@@ -14,6 +14,7 @@ class MonitoRingPages {
   static String euringCodePath = '/euring';
   static String addRingSeriesPath = '/addSeries';
   static String addLostRingPath = '/addLostRing';
+  static String orderRingsPath = '/orderRings';
   static String sessionsPath = '/sessions';
   static String retrapsPath = '/retraps';
   static String searchPath = '/search';
