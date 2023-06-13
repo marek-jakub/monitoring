@@ -96,6 +96,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return ListView(
       children: [
         showDarkModeRow(),
+        // TODO: set text style for list tiles
         ListTile(
           title: const Text('View Euring Code 2020'),
           onTap: () {
