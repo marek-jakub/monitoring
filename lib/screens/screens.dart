@@ -13,6 +13,7 @@ export 'map_screen.dart';
 export 'onboarding_screen.dart';
 export 'order_rings_screen.dart';
 export 'profile_screen.dart';
+export 'report_screen.dart';
 export 'retraps_screen.dart';
 export 'search_screen.dart';
 export 'sessions_screen.dart';
