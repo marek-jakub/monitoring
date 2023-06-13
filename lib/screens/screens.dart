@@ -1,3 +1,4 @@
+export 'add_lost_ring_screen.dart';
 export 'add_retrap_screen.dart';
 export 'add_ring_screen.dart';
 export 'add_ring_series_screen.dart';
