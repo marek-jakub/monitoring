@@ -26,7 +26,9 @@ part 'monitoring_db.g.dart';
   SessionLocationView
 ])
 class MonRingDb extends _$MonRingDb {
-  MonRingDb() : super(_openConnection());
+  // MonRingDb() : super(_openConnection());
+  // For testing purposes
+  MonRingDb(QueryExecutor e) : super(e);
 
   @override
   int get schemaVersion => 1;
