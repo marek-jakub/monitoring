@@ -20,3 +20,14 @@ List<SessionEntityCompanion> sessions = [
     endTime: d.Value('11:00'),
   ),
 ];
+
+List<LocationEntityCompanion> locations = [
+  const LocationEntityCompanion(
+    locality: d.Value('London'),
+    placeCode: d.Value('GB'),
+    latitude: d.Value('49.00'),
+    longitude: d.Value('0.012'),
+    coordinatesAccuracy: d.Value('0'),
+    localeInfo: d.Value('Nature reserve Thames'),
+  ),
+];
