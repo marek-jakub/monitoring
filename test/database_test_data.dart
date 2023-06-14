@@ -30,4 +30,12 @@ List<LocationEntityCompanion> locations = [
     coordinatesAccuracy: d.Value('0'),
     localeInfo: d.Value('Nature reserve Thames'),
   ),
+  const LocationEntityCompanion(
+    locality: d.Value('Paris'),
+    placeCode: d.Value('FR'),
+    latitude: d.Value('41.00'),
+    longitude: d.Value('7.012'),
+    coordinatesAccuracy: d.Value('1'),
+    localeInfo: d.Value('Blue Forest'),
+  ),
 ];
