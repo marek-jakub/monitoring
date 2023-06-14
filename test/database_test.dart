@@ -18,11 +18,8 @@ void main() {
   });
 
   group('Session data can be saved, updated and retrieved.', () {
-    // Session id to be used when updating session data.
-    int id = -1;
-
     test('Session can be saved.', () async {
-      id = await monRingDb.saveSession(sessions[0]);
+      final id = await monRingDb.saveSession(sessions[0]);
       final session = await monRingDb.getSession(id);
 
       expect(session.id, id);
@@ -35,7 +32,7 @@ void main() {
     });
 
     test('Another session can be saved and updated.', () async {
-      id = await monRingDb.saveSession(sessions[1]);
+      final id = await monRingDb.saveSession(sessions[1]);
       final session = await monRingDb.getSession(id);
 
       expect(session.id, id);
