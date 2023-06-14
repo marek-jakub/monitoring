@@ -91,6 +91,27 @@ void main() {
       expect(location.longitude.toString(), '7.012');
       expect(location.coordinatesAccuracy.toString(), '1');
       expect(location.localeInfo.toString(), 'Blue Forest');
+
+      final updated = await monRingDb.updateLocation(
+        LocationEntityCompanion(
+          id: d.Value(id),
+          locality: const d.Value('Rome'),
+          placeCode: const d.Value('ITA'),
+          latitude: const d.Value('36.00'),
+          longitude: const d.Value('19.25'),
+          coordinatesAccuracy: const d.Value('2'),
+          localeInfo: const d.Value('Dulle terraces'),
+        ),
+      );
+      final updatedLocation = await monRingDb.getLocationById(id);
+
+      expect(updated, true);
+      expect(updatedLocation.locality.toString(), 'Rome');
+      expect(updatedLocation.placeCode.toString(), 'ITA');
+      expect(updatedLocation.latitude, '36.00');
+      expect(updatedLocation.longitude.toString(), '19.25');
+      expect(updatedLocation.coordinatesAccuracy.toString(), '2');
+      expect(updatedLocation.localeInfo.toString(), 'Dulle terraces');
     });
   });
 }
