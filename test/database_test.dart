@@ -34,11 +34,18 @@ void main() {
     monRingDb.close();
   });
 
-  test('session can be created', () async {
-    final id = await monRingDb.saveSession(sessions[0]);
-    final session = await monRingDb.getSession(id);
+  group('Session data can be saved and retrieved', () {
+    test('session can be saved', () async {
+      final id = await monRingDb.saveSession(sessions[0]);
+      final session = await monRingDb.getSession(id);
 
-    expect(session.id, id);
-    expect(session.date.toString(), '06-06-2023');
+      expect(session.id, id);
+      expect(session.date.toString(), '06-06-2023');
+      expect(session.dateAccuracy.toString(), '0');
+      expect(session.location, 1);
+      expect(session.ringerId.toString(), '6000');
+      expect(session.startTime.toString(), '04:00');
+      expect(session.endTime.toString(), '10:00');
+    });
   });
 }
