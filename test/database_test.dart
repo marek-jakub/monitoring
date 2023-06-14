@@ -79,5 +79,18 @@ void main() {
       expect(location.coordinatesAccuracy.toString(), '0');
       expect(location.localeInfo.toString(), 'Nature reserve Thames');
     });
+
+    test('Another location can be saved and updated.', () async {
+      final id = await monRingDb.saveLocation(locations[1]);
+      final location = await monRingDb.getLocationById(id);
+
+      expect(location.id, id);
+      expect(location.locality.toString(), 'Paris');
+      expect(location.placeCode.toString(), 'FR');
+      expect(location.latitude.toString(), '41.00');
+      expect(location.longitude.toString(), '7.012');
+      expect(location.coordinatesAccuracy.toString(), '1');
+      expect(location.localeInfo.toString(), 'Blue Forest');
+    });
   });
 }
