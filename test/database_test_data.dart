@@ -39,3 +39,5 @@ List<LocationEntityCompanion> locations = [
     localeInfo: d.Value('Blue Forest'),
   ),
 ];
+
+List<RingEntityCompanion> rings = [];
