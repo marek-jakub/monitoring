@@ -65,4 +65,19 @@ void main() {
       expect(updatedSession.endTime.toString(), '12:00');
     });
   });
+
+  group('Location data can be saved, updated and retrieved.', () {
+    test('Location can be saved.', () async {
+      final id = await monRingDb.saveLocation(locations[0]);
+      final location = await monRingDb.getLocationById(id);
+
+      expect(location.id, id);
+      expect(location.locality.toString(), 'London');
+      expect(location.placeCode.toString(), 'GB');
+      expect(location.latitude.toString(), '49.00');
+      expect(location.longitude.toString(), '0.012');
+      expect(location.coordinatesAccuracy.toString(), '0');
+      expect(location.localeInfo.toString(), 'Nature reserve Thames');
+    });
+  });
 }
