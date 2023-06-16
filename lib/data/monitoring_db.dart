@@ -27,7 +27,8 @@ part 'monitoring_db.g.dart';
 ])
 class MonRingDb extends _$MonRingDb {
   // MonRingDb() : super(_openConnection());
-  // For testing purposes
+
+  // The initiator with QueryExecutor is for testing purposes
   MonRingDb(QueryExecutor e) : super(e);
 
   @override
