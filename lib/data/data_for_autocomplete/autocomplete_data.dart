@@ -316,11 +316,10 @@ const List<String> sexingMethod = <String>[
 
 /// Species encoding values.
 ///
-/// Not complete.
-///
 /// This is a six letter version, requires translating to EURING code five
 /// digit values.
 const List<String> species = <String>[
+  // TODO: Complete the list!
   'ACROLA',
   'ACRUST',
   'ACRENO',
