@@ -74,9 +74,7 @@ class MonRingDb extends _$MonRingDb {
     return await update(sessionEntity).replace(companion);
   }
 
-  /// Deletes session data.
-  ///
-  /// @param id A session id.
+  /// Deletes session data identified by [id].
   Future<int> deleteSession(int id) async {
     // Delete all rings with the session's id.
     //(delete(ringEntity)..where((tbl) => tbl.sessionId.equals(id))).go();
