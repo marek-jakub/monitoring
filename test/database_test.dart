@@ -70,7 +70,7 @@ void main() {
     });
   });
 
-  group('Location data can be saved, updated and retrieved.', () {
+  group('Location data can be saved, updated, retrieved and deleted.', () {
     test('Location can be saved.', () async {
       final id = await monRingDb.saveLocation(locations[0]);
       final location = await monRingDb.getLocationById(id);
@@ -84,7 +84,7 @@ void main() {
       expect(location.localeInfo.toString(), 'Nature reserve Thames');
     });
 
-    test('Another location can be saved and updated.', () async {
+    test('Another location can be saved, updated and deleted.', () async {
       final id = await monRingDb.saveLocation(locations[1]);
       final location = await monRingDb.getLocationById(id);
 
@@ -116,10 +116,14 @@ void main() {
       expect(updatedLocation.longitude.toString(), '19.25');
       expect(updatedLocation.coordinatesAccuracy.toString(), '2');
       expect(updatedLocation.localeInfo.toString(), 'Dulle terraces');
+
+      final deleted = await monRingDb.deleteLocation(id);
+
+      expect(deleted, id);
     });
   });
 
-  group('Ring data can be saved, updated and retrieved.', () {
+  group('Ring data can be saved, updated, retrieved and deleted.', () {
     test('Ring data can be saved.', () async {
       final id = await monRingDb.saveRing(rings[0]);
       final ring = await monRingDb.getRing(id);
@@ -167,7 +171,7 @@ void main() {
       expect(ring.carpalCovert.toString(), '1');
     });
 
-    test('Anogher ring data can be saved and updated.', () async {
+    test('Anogher ring data can be saved, updated and deleted.', () async {
       final id = await monRingDb.saveRing(rings[1]);
       final ring = await monRingDb.getRing(id);
 
@@ -304,7 +308,7 @@ void main() {
     });
   });
 
-  group('Retrap data can be saved, updated and retrieved.', () {
+  group('Retrap data can be saved, updated, retrieved and deleted.', () {
     test('Retrap data can be saved.', () async {
       final id = await monRingDb.saveRetrap(retraps[0]);
       final retrap = await monRingDb.getRetrap(id);
