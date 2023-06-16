@@ -102,9 +102,7 @@ class MonRingDb extends _$MonRingDb {
     return await update(locationEntity).replace(companion);
   }
 
-  /// Deletes location data.
-  ///
-  /// @param id A location id.
+  /// Deletes location data identified by [id].
   Future<int> deleteLocation(int id) async {
     return (delete(locationEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
