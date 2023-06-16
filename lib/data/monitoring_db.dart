@@ -83,9 +83,7 @@ class MonRingDb extends _$MonRingDb {
 
   // LOCATION ENTITY
 
-  /// Saves location data.
-  ///
-  /// @param companion A location entity companion.
+  /// Saves location data in the [companion].
   ///
   /// Returns an integer, on success an ID of the saved companion, otherwise
   /// returns 0.
