@@ -114,4 +114,6 @@ void main() {
       expect(updatedLocation.localeInfo.toString(), 'Dulle terraces');
     });
   });
+
+  group('Ring data can be saved, updated and retrieved.', () {});
 }
