@@ -117,9 +117,7 @@ class MonRingDb extends _$MonRingDb {
     return await into(ringEntity).insert(companion);
   }
 
-  /// Returns a stream of ring data for a given session as a list.
-  ///
-  /// @param id A session id.
+  /// Returns a stream of ring data for a given session identified by [id].
   Stream<List<RingEntityData>> watchSessionRings(int id) {
     return (select(ringEntity)..where((tbl) => tbl.sessionId.equals(id)))
         .watch();
