@@ -195,9 +195,8 @@ const List<String> moult = <String>[
 ];
 
 /// EURING Code values of place code.
-///
-/// Not complete.
 const List<String> placeCode = <String>[
+  // TODO: Complete the list!
   '',
   'GB--',
   'GBMB',
