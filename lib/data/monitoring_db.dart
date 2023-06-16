@@ -54,9 +54,7 @@ class MonRingDb extends _$MonRingDb {
 
   // SESSION ENTITY
 
-  /// Saves session data.
-  ///
-  /// @param companion A session entity companion.
+  /// Saves session data in the [companion].
   ///
   /// Returns an integer, on success an ID of the saved companion, otherwise
   /// returns 0.
