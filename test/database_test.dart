@@ -209,7 +209,7 @@ void main() {
       expect(ring.alula.toString(), '0');
       expect(ring.carpalCovert.toString(), '0');
 
-      final updated = monRingDb.updateRing(
+      final updated = await monRingDb.updateRing(
         RingEntityCompanion(
           id: d.Value(id),
           sessionId: const d.Value(3),
@@ -257,47 +257,46 @@ void main() {
       final updatedRing = await monRingDb.getRing(id);
 
       expect(updated, true);
-      expect(updatedRing.id, id);
-      expect(updatedRing.sessionId, 2);
-      expect(updatedRing.primaryIdMethod.toString(), 'B0');
-      expect(updatedRing.ringSeriesCode.toString(), 'D');
-      expect(updatedRing.ringIdNumber.toString(), '14');
-      expect(updatedRing.metalRingInfo.toString(), '2');
-      expect(updatedRing.species.toString(), 'EMBLLA');
-      expect(updatedRing.age.toString(), '4');
-      expect(updatedRing.sex.toString(), 'M');
-      expect(updatedRing.sexingMethod.toString(), 'U');
-      expect(updatedRing.otherMarks.toString(), 'BB');
-      expect(updatedRing.catchingMethod.toString(), 'A');
-      expect(updatedRing.catchingLures.toString(), 'F');
-      expect(updatedRing.condition.toString(), '6');
-      expect(updatedRing.circumstances.toString(), '44');
-      expect(updatedRing.circumstancesPresumed.toString(), '1');
-      expect(updatedRing.status.toString(), 'N');
-      expect(updatedRing.time.toString(), '05:55');
-      expect(updatedRing.wingLength.toString(), '142.2');
-      expect(updatedRing.thirdPrimary.toString(), '80.5');
-      expect(updatedRing.wingPointState.toString(), 'U');
-      expect(updatedRing.mass.toString(), '32.5');
-      expect(updatedRing.moult.toString(), 'P');
-      expect(updatedRing.plumageCode.toString(), 'D');
-      expect(updatedRing.hindClaw.toString(), '22.1');
-      expect(updatedRing.billLength.toString(), '30.2');
-      expect(updatedRing.billMethod.toString(), 'S');
-      expect(updatedRing.headLengthTotal.toString(), '43.5');
-      expect(updatedRing.tarsus.toString(), '36.7');
-      expect(updatedRing.tarsusMethod.toString(), 'S');
-      expect(updatedRing.tailLength.toString(), '55.5');
-      expect(updatedRing.tailDifference.toString(), '6.5');
-      expect(updatedRing.fatScore.toString(), '3');
-      expect(updatedRing.fatScoreMethod.toString(), 'E');
-      expect(updatedRing.pectoralMuscle.toString(), '2');
-      expect(updatedRing.broodPatch.toString(), '3');
-      expect(updatedRing.primaryScore.toString(), '55');
-      expect(updatedRing.primaryMoult.toString(), '1');
-      expect(updatedRing.oldGreaterCoverts.toString(), '9');
-      expect(updatedRing.alula.toString(), '0');
-      expect(updatedRing.carpalCovert.toString(), '0');
+      expect(updatedRing.sessionId, 3);
+      expect(updatedRing.primaryIdMethod.toString(), 'C0');
+      expect(updatedRing.ringSeriesCode.toString(), 'E');
+      expect(updatedRing.ringIdNumber.toString(), '16');
+      expect(updatedRing.metalRingInfo.toString(), '3');
+      expect(updatedRing.species.toString(), 'MILVUS');
+      expect(updatedRing.age.toString(), '5');
+      expect(updatedRing.sex.toString(), 'U');
+      expect(updatedRing.sexingMethod.toString(), 'A');
+      expect(updatedRing.otherMarks.toString(), 'DC');
+      expect(updatedRing.catchingMethod.toString(), 'C');
+      expect(updatedRing.catchingLures.toString(), 'D');
+      expect(updatedRing.condition.toString(), '7');
+      expect(updatedRing.circumstances.toString(), '33');
+      expect(updatedRing.circumstancesPresumed.toString(), '0');
+      expect(updatedRing.status.toString(), 'L');
+      expect(updatedRing.time.toString(), '06:55');
+      expect(updatedRing.wingLength.toString(), '152.2');
+      expect(updatedRing.thirdPrimary.toString(), '90.5');
+      expect(updatedRing.wingPointState.toString(), 'V');
+      expect(updatedRing.mass.toString(), '42.5');
+      expect(updatedRing.moult.toString(), 'X');
+      expect(updatedRing.plumageCode.toString(), 'U');
+      expect(updatedRing.hindClaw.toString(), '32.1');
+      expect(updatedRing.billLength.toString(), '40.2');
+      expect(updatedRing.billMethod.toString(), 'C');
+      expect(updatedRing.headLengthTotal.toString(), '53.5');
+      expect(updatedRing.tarsus.toString(), '46.7');
+      expect(updatedRing.tarsusMethod.toString(), 'T');
+      expect(updatedRing.tailLength.toString(), '65.5');
+      expect(updatedRing.tailDifference.toString(), '7.5');
+      expect(updatedRing.fatScore.toString(), '4');
+      expect(updatedRing.fatScoreMethod.toString(), 'P');
+      expect(updatedRing.pectoralMuscle.toString(), '3');
+      expect(updatedRing.broodPatch.toString(), '4');
+      expect(updatedRing.primaryScore.toString(), '33');
+      expect(updatedRing.primaryMoult.toString(), '2');
+      expect(updatedRing.oldGreaterCoverts.toString(), 'A');
+      expect(updatedRing.alula.toString(), '1');
+      expect(updatedRing.carpalCovert.toString(), '1');
     });
   });
 }
