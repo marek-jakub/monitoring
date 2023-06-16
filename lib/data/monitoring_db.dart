@@ -129,9 +129,7 @@ class MonRingDb extends _$MonRingDb {
         .getSingle();
   }
 
-  /// Updates ring data.
-  ///
-  /// @param companion A ring entity companion.
+  /// Updates ring data stored in the [companion].
   Future<bool> updateRing(RingEntityCompanion companion) async {
     return await update(ringEntity).replace(companion);
   }
