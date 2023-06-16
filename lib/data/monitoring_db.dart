@@ -109,9 +109,7 @@ class MonRingDb extends _$MonRingDb {
 
   // RING ENTITY
 
-  /// Saves ring data.
-  ///
-  /// @param companion A ring entity companion.
+  /// Saves ring data stored in the [companion].
   ///
   /// Returns an integer, on success an ID of the saved companion, otherwise
   /// returns 0.
