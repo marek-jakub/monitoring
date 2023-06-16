@@ -17,7 +17,7 @@ void main() {
     monRingDb.close();
   });
 
-  group('Session data can be saved, updated and retrieved.', () {
+  group('Session data can be saved, updated, retrieved and deleted.', () {
     test('Session can be saved.', () async {
       final id = await monRingDb.saveSession(sessions[0]);
       final session = await monRingDb.getSession(id);
@@ -31,7 +31,7 @@ void main() {
       expect(session.endTime.toString(), '10:00');
     });
 
-    test('Another session can be saved and updated.', () async {
+    test('Another session can be saved, updated and deleted.', () async {
       final id = await monRingDb.saveSession(sessions[1]);
       final session = await monRingDb.getSession(id);
 
@@ -63,6 +63,10 @@ void main() {
       expect(updatedSession.ringerId.toString(), '8000');
       expect(updatedSession.startTime.toString(), '06:00');
       expect(updatedSession.endTime.toString(), '12:00');
+
+      final deleted = await monRingDb.deleteSession(id);
+
+      expect(deleted, id);
     });
   });
 
