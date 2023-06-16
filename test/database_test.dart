@@ -115,5 +115,7 @@ void main() {
     });
   });
 
-  group('Ring data can be saved, updated and retrieved.', () {});
+  group('Ring data can be saved, updated and retrieved.', () {
+    test('Ring data can be saved.', () {});
+  });
 }
