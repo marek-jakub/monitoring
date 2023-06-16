@@ -149,9 +149,7 @@ class MonRingDb extends _$MonRingDb {
     return await into(retrapEntity).insert(companion);
   }
 
-  /// Returns a stream of retrap data for a given session as a list.
-  ///
-  /// @param id A session id.
+  /// Returns a stream of retrap data for a session identified by [id].
   Stream<List<RetrapEntityData>> watchSessionRetraps(int id) {
     return (select(retrapEntity)..where((tbl) => tbl.sessionId.equals(id)))
         .watch();
