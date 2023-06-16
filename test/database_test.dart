@@ -162,5 +162,52 @@ void main() {
       expect(ring.alula.toString(), '1');
       expect(ring.carpalCovert.toString(), '1');
     });
+
+    test('Anogher ring data can be saved and updated.', () async {
+      final id = await monRingDb.saveRing(rings[1]);
+      final ring = await monRingDb.getRing(id);
+
+      expect(ring.id, id);
+      expect(ring.sessionId, 2);
+      expect(ring.primaryIdMethod.toString(), 'B0');
+      expect(ring.ringSeriesCode.toString(), 'D');
+      expect(ring.ringIdNumber.toString(), '14');
+      expect(ring.metalRingInfo.toString(), '2');
+      expect(ring.species.toString(), 'EMBLLA');
+      expect(ring.age.toString(), '4');
+      expect(ring.sex.toString(), 'M');
+      expect(ring.sexingMethod.toString(), 'U');
+      expect(ring.otherMarks.toString(), 'BB');
+      expect(ring.catchingMethod.toString(), 'A');
+      expect(ring.catchingLures.toString(), 'F');
+      expect(ring.condition.toString(), '6');
+      expect(ring.circumstances.toString(), '44');
+      expect(ring.circumstancesPresumed.toString(), '1');
+      expect(ring.status.toString(), 'N');
+      expect(ring.time.toString(), '05:55');
+      expect(ring.wingLength.toString(), '142.2');
+      expect(ring.thirdPrimary.toString(), '80.5');
+      expect(ring.wingPointState.toString(), 'U');
+      expect(ring.mass.toString(), '32.5');
+      expect(ring.moult.toString(), 'P');
+      expect(ring.plumageCode.toString(), 'D');
+      expect(ring.hindClaw.toString(), '22.1');
+      expect(ring.billLength.toString(), '30.2');
+      expect(ring.billMethod.toString(), 'S');
+      expect(ring.headLengthTotal.toString(), '43.5');
+      expect(ring.tarsus.toString(), '36.7');
+      expect(ring.tarsusMethod.toString(), 'S');
+      expect(ring.tailLength.toString(), '55.5');
+      expect(ring.tailDifference.toString(), '6.5');
+      expect(ring.fatScore.toString(), '3');
+      expect(ring.fatScoreMethod.toString(), 'E');
+      expect(ring.pectoralMuscle.toString(), '2');
+      expect(ring.broodPatch.toString(), '3');
+      expect(ring.primaryScore.toString(), '55');
+      expect(ring.primaryMoult.toString(), '1');
+      expect(ring.oldGreaterCoverts.toString(), '9');
+      expect(ring.alula.toString(), '0');
+      expect(ring.carpalCovert.toString(), '0');
+    });
   });
 }
