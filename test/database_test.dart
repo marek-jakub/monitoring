@@ -305,6 +305,10 @@ void main() {
       expect(updatedRing.oldGreaterCoverts.toString(), 'A');
       expect(updatedRing.alula.toString(), '1');
       expect(updatedRing.carpalCovert.toString(), '1');
+
+      final deleted = await monRingDb.deleteRing(id);
+
+      expect(deleted, id);
     });
   });
 
