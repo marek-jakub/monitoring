@@ -141,9 +141,7 @@ class MonRingDb extends _$MonRingDb {
 
   // RETRAP ENTITY
 
-  /// Saves retrap ring data.
-  ///
-  /// @param companion A retrap entity companion.
+  /// Saves retrap ring data stored in the [companion].
   ///
   /// Returns an integer, on success an ID of the saved companion, otherwise
   /// returns 0.
