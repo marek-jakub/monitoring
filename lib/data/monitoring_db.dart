@@ -155,9 +155,7 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
-  /// Returns retrap data.
-  ///
-  /// @param id A retrap id.
+  /// Returns retrap data identified by [id].
   Future<RetrapEntityData> getRetrap(int id) async {
     return await (select(retrapEntity)..where((tbl) => tbl.id.equals(id)))
         .getSingle();
