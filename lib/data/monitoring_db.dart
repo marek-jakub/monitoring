@@ -63,9 +63,7 @@ class MonRingDb extends _$MonRingDb {
     return await into(sessionEntity).insert(companion);
   }
 
-  /// Returns session data.
-  ///
-  /// @param id A session id.
+  /// Returns session data identified by [id].
   Future<SessionEntityData> getSession(int id) async {
     return await (select(sessionEntity)..where((tbl) => tbl.id.equals(id)))
         .getSingle();
