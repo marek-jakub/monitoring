@@ -299,4 +299,190 @@ void main() {
       expect(updatedRing.carpalCovert.toString(), '1');
     });
   });
+
+  group('Retrap data can be saved, updated and retrieved.', () {
+    test('Retrap data can be saved.', () async {
+      final id = await monRingDb.saveRetrap(retraps[0]);
+      final retrap = await monRingDb.getRetrap(id);
+
+      expect(retrap.id, id);
+      expect(retrap.sessionId, 1);
+      expect(retrap.primaryIdMethod.toString(), 'A0');
+      expect(retrap.ringSeriesCode.toString(), 'C');
+      expect(retrap.ringIdNumber.toString(), '12');
+      expect(retrap.metalRingInfo.toString(), '1');
+      expect(retrap.species.toString(), 'SYLATR');
+      expect(retrap.age.toString(), '3');
+      expect(retrap.sex.toString(), 'F');
+      expect(retrap.sexingMethod.toString(), 'S');
+      expect(retrap.otherMarks.toString(), 'ZZ');
+      expect(retrap.catchingMethod.toString(), 'M');
+      expect(retrap.catchingLures.toString(), 'N');
+      expect(retrap.condition.toString(), '8');
+      expect(retrap.circumstances.toString(), '61');
+      expect(retrap.circumstancesPresumed.toString(), '0');
+      expect(retrap.status.toString(), 'U');
+      expect(retrap.time.toString(), '04:55');
+      expect(retrap.wingLength.toString(), '122.2');
+      expect(retrap.thirdPrimary.toString(), '70.5');
+      expect(retrap.wingPointState.toString(), 'A');
+      expect(retrap.mass.toString(), '22.5');
+      expect(retrap.moult.toString(), 'M');
+      expect(retrap.plumageCode.toString(), 'A');
+      expect(retrap.hindClaw.toString(), '12.1');
+      expect(retrap.billLength.toString(), '20.2');
+      expect(retrap.billMethod.toString(), 'N');
+      expect(retrap.headLengthTotal.toString(), '33.5');
+      expect(retrap.tarsus.toString(), '26.7');
+      expect(retrap.tarsusMethod.toString(), 'M');
+      expect(retrap.tailLength.toString(), '45.5');
+      expect(retrap.tailDifference.toString(), '5.5');
+      expect(retrap.fatScore.toString(), '2');
+      expect(retrap.fatScoreMethod.toString(), 'B');
+      expect(retrap.pectoralMuscle.toString(), '1');
+      expect(retrap.broodPatch.toString(), '2');
+      expect(retrap.primaryScore.toString(), '45');
+      expect(retrap.primaryMoult.toString(), '0');
+      expect(retrap.oldGreaterCoverts.toString(), 'A');
+      expect(retrap.alula.toString(), '1');
+      expect(retrap.carpalCovert.toString(), '1');
+    });
+
+    test('Anogher retrap data can be saved and updated.', () async {
+      final id = await monRingDb.saveRetrap(retraps[1]);
+      final retrap = await monRingDb.getRetrap(id);
+
+      expect(retrap.id, id);
+      expect(retrap.sessionId, 2);
+      expect(retrap.primaryIdMethod.toString(), 'B0');
+      expect(retrap.ringSeriesCode.toString(), 'D');
+      expect(retrap.ringIdNumber.toString(), '14');
+      expect(retrap.metalRingInfo.toString(), '2');
+      expect(retrap.species.toString(), 'EMBLLA');
+      expect(retrap.age.toString(), '4');
+      expect(retrap.sex.toString(), 'M');
+      expect(retrap.sexingMethod.toString(), 'U');
+      expect(retrap.otherMarks.toString(), 'BB');
+      expect(retrap.catchingMethod.toString(), 'A');
+      expect(retrap.catchingLures.toString(), 'F');
+      expect(retrap.condition.toString(), '6');
+      expect(retrap.circumstances.toString(), '44');
+      expect(retrap.circumstancesPresumed.toString(), '1');
+      expect(retrap.status.toString(), 'N');
+      expect(retrap.time.toString(), '05:55');
+      expect(retrap.wingLength.toString(), '142.2');
+      expect(retrap.thirdPrimary.toString(), '80.5');
+      expect(retrap.wingPointState.toString(), 'U');
+      expect(retrap.mass.toString(), '32.5');
+      expect(retrap.moult.toString(), 'P');
+      expect(retrap.plumageCode.toString(), 'D');
+      expect(retrap.hindClaw.toString(), '22.1');
+      expect(retrap.billLength.toString(), '30.2');
+      expect(retrap.billMethod.toString(), 'S');
+      expect(retrap.headLengthTotal.toString(), '43.5');
+      expect(retrap.tarsus.toString(), '36.7');
+      expect(retrap.tarsusMethod.toString(), 'S');
+      expect(retrap.tailLength.toString(), '55.5');
+      expect(retrap.tailDifference.toString(), '6.5');
+      expect(retrap.fatScore.toString(), '3');
+      expect(retrap.fatScoreMethod.toString(), 'E');
+      expect(retrap.pectoralMuscle.toString(), '2');
+      expect(retrap.broodPatch.toString(), '3');
+      expect(retrap.primaryScore.toString(), '55');
+      expect(retrap.primaryMoult.toString(), '1');
+      expect(retrap.oldGreaterCoverts.toString(), '9');
+      expect(retrap.alula.toString(), '0');
+      expect(retrap.carpalCovert.toString(), '0');
+
+      final updated = await monRingDb.updateRetrap(
+        RetrapEntityCompanion(
+          id: d.Value(id),
+          sessionId: const d.Value(3),
+          ringScheme: const d.Value('DEB'),
+          primaryIdMethod: const d.Value('C0'),
+          ringSeriesCode: const d.Value('E'),
+          ringIdNumber: const d.Value('16'),
+          metalRingInfo: const d.Value('3'),
+          species: const d.Value('MILVUS'),
+          age: const d.Value('5'),
+          sex: const d.Value('U'),
+          sexingMethod: const d.Value('A'),
+          otherMarks: const d.Value('DC'),
+          catchingMethod: const d.Value('C'),
+          catchingLures: const d.Value('D'),
+          condition: const d.Value('7'),
+          circumstances: const d.Value('33'),
+          circumstancesPresumed: const d.Value('0'),
+          status: const d.Value('L'),
+          time: const d.Value('06:55'),
+          wingLength: const d.Value('152.2'),
+          thirdPrimary: const d.Value('90.5'),
+          wingPointState: const d.Value('V'),
+          mass: const d.Value('42.5'),
+          moult: const d.Value('X'),
+          plumageCode: const d.Value('U'),
+          hindClaw: const d.Value('32.1'),
+          billLength: const d.Value('40.2'),
+          billMethod: const d.Value('C'),
+          headLengthTotal: const d.Value('53.5'),
+          tarsus: const d.Value('46.7'),
+          tarsusMethod: const d.Value('T'),
+          tailLength: const d.Value('65.5'),
+          tailDifference: const d.Value('7.5'),
+          fatScore: const d.Value('4'),
+          fatScoreMethod: const d.Value('P'),
+          pectoralMuscle: const d.Value('3'),
+          broodPatch: const d.Value('4'),
+          primaryScore: const d.Value('33'),
+          primaryMoult: const d.Value('2'),
+          oldGreaterCoverts: const d.Value('A'),
+          alula: const d.Value('1'),
+          carpalCovert: const d.Value('1'),
+        ),
+      );
+      final updatedRetrap = await monRingDb.getRetrap(id);
+
+      expect(updated, true);
+      expect(updatedRetrap.sessionId, 3);
+      expect(updatedRetrap.primaryIdMethod.toString(), 'C0');
+      expect(updatedRetrap.ringSeriesCode.toString(), 'E');
+      expect(updatedRetrap.ringIdNumber.toString(), '16');
+      expect(updatedRetrap.metalRingInfo.toString(), '3');
+      expect(updatedRetrap.species.toString(), 'MILVUS');
+      expect(updatedRetrap.age.toString(), '5');
+      expect(updatedRetrap.sex.toString(), 'U');
+      expect(updatedRetrap.sexingMethod.toString(), 'A');
+      expect(updatedRetrap.otherMarks.toString(), 'DC');
+      expect(updatedRetrap.catchingMethod.toString(), 'C');
+      expect(updatedRetrap.catchingLures.toString(), 'D');
+      expect(updatedRetrap.condition.toString(), '7');
+      expect(updatedRetrap.circumstances.toString(), '33');
+      expect(updatedRetrap.circumstancesPresumed.toString(), '0');
+      expect(updatedRetrap.status.toString(), 'L');
+      expect(updatedRetrap.time.toString(), '06:55');
+      expect(updatedRetrap.wingLength.toString(), '152.2');
+      expect(updatedRetrap.thirdPrimary.toString(), '90.5');
+      expect(updatedRetrap.wingPointState.toString(), 'V');
+      expect(updatedRetrap.mass.toString(), '42.5');
+      expect(updatedRetrap.moult.toString(), 'X');
+      expect(updatedRetrap.plumageCode.toString(), 'U');
+      expect(updatedRetrap.hindClaw.toString(), '32.1');
+      expect(updatedRetrap.billLength.toString(), '40.2');
+      expect(updatedRetrap.billMethod.toString(), 'C');
+      expect(updatedRetrap.headLengthTotal.toString(), '53.5');
+      expect(updatedRetrap.tarsus.toString(), '46.7');
+      expect(updatedRetrap.tarsusMethod.toString(), 'T');
+      expect(updatedRetrap.tailLength.toString(), '65.5');
+      expect(updatedRetrap.tailDifference.toString(), '7.5');
+      expect(updatedRetrap.fatScore.toString(), '4');
+      expect(updatedRetrap.fatScoreMethod.toString(), 'P');
+      expect(updatedRetrap.pectoralMuscle.toString(), '3');
+      expect(updatedRetrap.broodPatch.toString(), '4');
+      expect(updatedRetrap.primaryScore.toString(), '33');
+      expect(updatedRetrap.primaryMoult.toString(), '2');
+      expect(updatedRetrap.oldGreaterCoverts.toString(), 'A');
+      expect(updatedRetrap.alula.toString(), '1');
+      expect(updatedRetrap.carpalCovert.toString(), '1');
+    });
+  });
 }
