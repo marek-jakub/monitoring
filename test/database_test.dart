@@ -360,7 +360,7 @@ void main() {
       expect(retrap.carpalCovert.toString(), '1');
     });
 
-    test('Anogher retrap data can be saved and updated.', () async {
+    test('Anogher retrap data can be saved, updated and deleted.', () async {
       final id = await monRingDb.saveRetrap(retraps[1]);
       final retrap = await monRingDb.getRetrap(id);
 
@@ -495,6 +495,10 @@ void main() {
       expect(updatedRetrap.oldGreaterCoverts.toString(), 'A');
       expect(updatedRetrap.alula.toString(), '1');
       expect(updatedRetrap.carpalCovert.toString(), '1');
+
+      final deleted = await monRingDb.deleteRetrap(id);
+
+      expect(deleted, id);
     });
   });
 }
