@@ -512,5 +512,19 @@ void main() {
 
       expect(deleted, id);
     });
+
+    test('Stream emits list of right retraps.', () async {
+      await monRingDb.saveRetrap(retraps[0]);
+      await monRingDb.saveRetrap(retraps[1]);
+
+      final expectation = expectLater(
+          monRingDb
+              .watchSessionRetraps(2)
+              .map((retrapList) => retrapList.length),
+          emitsInOrder([1, 2]));
+
+      await monRingDb.saveRetrap(retraps[2]);
+      await expectation;
+    });
   });
 }
