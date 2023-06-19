@@ -46,7 +46,7 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
-  /// Returns an entry of session - location view, given by [id].
+  /// Returns an entry of session - location view, given by session [id].
   Future<SessionLocationViewData> getSessionLocationById(int id) async {
     return await (select(sessionLocationView)
           ..where((tbl) => tbl.id.equals(id)))
