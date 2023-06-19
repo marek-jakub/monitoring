@@ -310,6 +310,18 @@ void main() {
 
       expect(deleted, id);
     });
+
+    test('Stream emits list of right rings.', () async {
+      await monRingDb.saveRing(rings[0]);
+      await monRingDb.saveRing(rings[1]);
+
+      final expectation = expectLater(
+          monRingDb.watchSessionRings(2).map((ringList) => ringList.length),
+          emitsInOrder([1, 2]));
+
+      await monRingDb.saveRing(rings[2]);
+      await expectation;
+    });
   });
 
   group('Retrap data can be saved, updated, retrieved and deleted.', () {
