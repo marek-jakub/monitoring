@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 // For testing purposes
-import 'package:drift/native.dart';
+//import 'package:drift/native.dart';
 
 import '../data/monitoring_db.dart';
 import '../models/models.dart';
@@ -25,9 +25,9 @@ class MonitoRing extends StatefulWidget {
 
 class _MonitoRingState extends State<MonitoRing> {
   // For app release
-  //final _monRingDb = MonRingDb();
+  final _monRingDb = MonRingDb();
   // For testing purposes
-  final _monRingDb = MonRingDb(NativeDatabase.memory());
+  //final _monRingDb = MonRingDb(NativeDatabase.memory());
   final _appStateManager = MonitoRingStateManager();
   final _profileManager = ProfileManager();
   final _ringDataManager = RingDataManager();
