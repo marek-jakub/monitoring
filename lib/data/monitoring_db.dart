@@ -27,10 +27,10 @@ part 'monitoring_db.g.dart';
 ])
 class MonRingDb extends _$MonRingDb {
   // The initiator for app release
-  //MonRingDb() : super(_openConnection());
+  MonRingDb() : super(_openConnection());
 
   // The initiator with QueryExecutor is for testing purposes
-  MonRingDb(QueryExecutor e) : super(e);
+  //MonRingDb(QueryExecutor e) : super(e);
 
   @override
   int get schemaVersion => 1;
