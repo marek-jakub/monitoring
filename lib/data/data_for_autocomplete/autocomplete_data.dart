@@ -170,6 +170,9 @@ const List<String> condition = <String>[
   '9',
 ];
 
+/// EURING code countries.
+const List<String> countries = <String>[];
+
 /// EURING Code metal ring information values.
 const List<String> metalRingInfo = <String>[
   '',
