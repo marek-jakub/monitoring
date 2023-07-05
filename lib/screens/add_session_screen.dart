@@ -145,7 +145,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
               CustomDropdownButtonFormField(
                   controller: _placeCodeController,
                   txtLabel: 'Place code',
-                  listValues: getPlaceCodes()),
+                  listValues: getPlaceCodes(_country.text)),
               CustomTextFormField(
                 controller: _localityController,
                 txtLabel: 'Locality name',
@@ -442,9 +442,10 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
         desiredAccuracy: LocationAccuracy.best);
   }
 
-  List<String> getPlaceCodes() {
+  /// Returns a list of place codes for given [country].
+  List<String> getPlaceCodes(String country) {
     List<String> places = <String>[''];
-    if (_country.text.isNotEmpty) {
+    if (country.isNotEmpty) {
       places = placeCode[_country.text]!;
     }
     return places;
