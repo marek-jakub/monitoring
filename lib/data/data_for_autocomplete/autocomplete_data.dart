@@ -171,7 +171,41 @@ const List<String> condition = <String>[
 ];
 
 /// EURING code countries.
-const List<String> countries = <String>[];
+const List<String> countries = <String>[
+  // TODO: Complete the list!
+  '',
+  'ADEN',
+  'AFGANISTAN',
+  'ALBANIA',
+  'ALGERIA',
+  'ANDORRA',
+  'ANGOLA',
+  'ANTARCTICA',
+  'ARCTIC OCEAN',
+  'ARGENTINA',
+  'ARMENIA',
+  'AT SEA',
+  'AUSTRALIA',
+  'AUSTRIA',
+  'AZERBAIJAN',
+  'BAHAMAS',
+  'BAHRAIN & QATAR',
+  'BALTIC SEA ISLANDS',
+  'BANGLADESH',
+  'BAY OF BISCAY ISLANDS',
+  'BEAR ISLAND',
+  'BELARUS',
+  'BELGIUM',
+  'BELIZE',
+  'BENIN',
+  'BERMUDA',
+  'BHUTAN',
+  'BIOCO',
+  'BLACK AND CASPIAN SEA ISLANDS',
+  'BOLIVIA',
+  '...',
+  'UNITED KINGDOM',
+];
 
 /// EURING Code metal ring information values.
 const List<String> metalRingInfo = <String>[
