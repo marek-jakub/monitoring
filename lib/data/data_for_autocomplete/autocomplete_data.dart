@@ -232,32 +232,34 @@ const List<String> moult = <String>[
 ];
 
 /// EURING Code values of place code.
-const List<String> placeCode = <String>[
+const Map<String, List<String>> placeCode = {
   // TODO: Complete the list!
-  '',
-  'GB--',
-  'GBMB',
-  'GBMK',
-  'GBML',
-  'GBMN',
-  'GBMO',
-  'GBMT',
-  'GBMW',
-  'GBNA',
-  'GBNE',
-  'GBNG',
-  'GBNO',
-  'GBNP',
-  'GBNR',
-  'GBNS',
-  'GBPB',
-  'GBPE',
-  'GBPH',
-  'GBPL',
-  'GBPM',
-  'GBPP',
-  'GBL',
-];
+  'UNITED KINGDOM': [
+    '',
+    'GB--',
+    'GBMB',
+    'GBMK',
+    'GBML',
+    'GBMN',
+    'GBMO',
+    'GBMT',
+    'GBMW',
+    'GBNA',
+    'GBNE',
+    'GBNG',
+    'GBNO',
+    'GBNP',
+    'GBNR',
+    'GBNS',
+    'GBPB',
+    'GBPE',
+    'GBPH',
+    'GBPL',
+    'GBPM',
+    'GBPP',
+    'GBL',
+  ],
+};
 
 /// EURING code plumage code values.
 const List<String> plumageCode = <String>[
