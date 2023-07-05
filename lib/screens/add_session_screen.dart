@@ -40,6 +40,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   //  final TextEditingController _ringingSchemeController =
   //    TextEditingController();
   final TextEditingController _ringerId = TextEditingController();
+  final TextEditingController _country = TextEditingController();
   final TextEditingController _placeCodeController = TextEditingController();
   final TextEditingController _localityController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -86,6 +87,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   void dispose() {
     // Dispose off session controllers
     _ringerId.dispose();
+    _country.dispose();
     _placeCodeController.dispose();
     _localityController.dispose();
     _dateController.dispose();
@@ -137,9 +139,13 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 keyboard: 'text',
               ),
               CustomDropdownButtonFormField(
+                  controller: _country,
+                  txtLabel: 'Country',
+                  listValues: countries),
+              CustomDropdownButtonFormField(
                   controller: _placeCodeController,
                   txtLabel: 'Place code',
-                  listValues: placeCode),
+                  listValues: getPlaceCodes()),
               CustomTextFormField(
                 controller: _localityController,
                 txtLabel: 'Locality name',
@@ -434,5 +440,13 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
+  }
+
+  List<String> getPlaceCodes() {
+    List<String> places = <String>[''];
+    if (_country.text.isNotEmpty) {
+      places = placeCode[_country.text]!;
+    }
+    return places;
   }
 }
