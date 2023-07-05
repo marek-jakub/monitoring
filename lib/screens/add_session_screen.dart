@@ -9,6 +9,7 @@ import '../data/data_for_autocomplete/autocomplete_data.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_text_form_field.dart';
+import '../widgets/custom_dropdown_country_field.dart';
 import '../widgets/custom_dropdown_form_field.dart';
 import '../widgets/custom_date_picker_field.dart';
 import '../widgets/custom_time_picker_field.dart';
@@ -138,14 +139,14 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                 txtLabel: 'Ringer ID',
                 keyboard: 'text',
               ),
-              CustomDropdownButtonFormField(
+              CustomDropdownCountryFormField(
                   controller: _country,
                   txtLabel: 'Country',
                   listValues: countries),
               CustomDropdownButtonFormField(
                   controller: _placeCodeController,
                   txtLabel: 'Place code',
-                  listValues: getPlaceCodes(_country.text)),
+                  listValues: placeCode['UNITED KINGDOM']!),
               CustomTextFormField(
                 controller: _localityController,
                 txtLabel: 'Locality name',
