@@ -443,7 +443,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   }
 
   /// Returns a list of place codes for given [country].
-  List<String> getPlaceCodes(String country) {
+  Future<List<String>> getPlaceCodes(String country) async {
     List<String> places = <String>[''];
     if (country.isNotEmpty) {
       places = placeCode[_country.text]!;
