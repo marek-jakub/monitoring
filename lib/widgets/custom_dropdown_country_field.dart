@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../models/models.dart';
-import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
 
 /// A dropdown button form field, requires text controler [_controller],
 /// a label [_label] and a list of strings to be used [_listValues].
