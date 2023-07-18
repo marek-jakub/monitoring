@@ -1,3 +1,4 @@
 {
-    "java.configuration.updateBuildConfiguration": "interactive"
+    "java.configuration.updateBuildConfiguration": "interactive",
+    "cmake.sourceDirectory": "/home/weer/Desktop/01_my_work/11_ou/001_tm470/07_tm470_project_clone/monitoring/linux",
 }
