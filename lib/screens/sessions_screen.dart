@@ -228,7 +228,8 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                             Row(
                                               children: [
                                                 const Expanded(
-                                                  child: Text('ID method:',
+                                                  child: Text(
+                                                      'Primary ID method:',
                                                       textAlign:
                                                           TextAlign.left),
                                                 ),
