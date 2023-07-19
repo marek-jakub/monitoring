@@ -205,6 +205,7 @@ abstract class SessionLocationView extends View {
   LocationEntity get aLocation;
 
   Expression<int> get locationId => aLocation.id;
+  Expression<String> get locationCountry => aLocation.country;
   Expression<String> get locationLocality => aLocation.locality;
   Expression<String> get locationPlaceCode => aLocation.placeCode;
   Expression<String> get locationLat => aLocation.latitude;
@@ -222,6 +223,7 @@ abstract class SessionLocationView extends View {
         aSession.startTime,
         aSession.endTime,
         locationId,
+        locationCountry,
         locationLocality,
         locationPlaceCode,
         locationLat,
