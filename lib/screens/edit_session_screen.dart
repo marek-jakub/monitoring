@@ -156,7 +156,8 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                     keyboard: 'text',
                   ),
                   CustomDropdownCountryFormField(
-                      controller: _country,
+                      countryController: _country,
+                      placeCodeController: _placeCodeController,
                       txtLabel: 'Country',
                       listValues: countries),
                   CustomDropdownButtonFormField(
