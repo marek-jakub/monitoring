@@ -161,20 +161,12 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                   },
                                   child: Card(
                                     key: ValueKey(session.id),
+                                    elevation: 0,
                                     color: Colors.blueGrey.shade100,
-                                    shape: const RoundedRectangleBorder(
-                                      side: BorderSide(
-                                        color: Colors.green,
-                                        style: BorderStyle.solid,
-                                        width: 1.0,
-                                      ),
-                                      borderRadius: BorderRadius.all(
-                                          Radius.circular(10.0)),
-                                    ),
                                     child: Container(
                                       color: session.id == _selectedId
                                           ? Colors.amber
-                                          : Colors.cyan,
+                                          : Colors.blue,
                                       child: Row(
                                         children: [
                                           Text('${session.date} - '),
@@ -211,16 +203,8 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         dataManager.setSelectedRingId(ring.id);
                                       },
                                       child: Card(
+                                        elevation: 0,
                                         color: Colors.blueGrey.shade100,
-                                        shape: const RoundedRectangleBorder(
-                                          side: BorderSide(
-                                            color: Colors.green,
-                                            style: BorderStyle.solid,
-                                            width: 1.0,
-                                          ),
-                                          borderRadius: BorderRadius.all(
-                                              Radius.circular(10.0)),
-                                        ),
                                         child: Column(
                                           children: [
                                             // TODO: refactor the code, create a ring card
