@@ -232,7 +232,7 @@ const List<String> moult = <String>[
 ];
 
 /// EURING Code values of place code.
-const Map<String, List<String>> placeCode = {
+const Map<String, List<String>> placeCodes = {
   // TODO: Complete the list!
   'UNITED KINGDOM': [
     '',
