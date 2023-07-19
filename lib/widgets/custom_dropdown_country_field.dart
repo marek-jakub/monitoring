@@ -59,6 +59,8 @@ class _CustomDropdownCountryFormFieldState
             setState(() {
               widget._countryController.text = value!;
               widget._placeCodeController.text = '';
+              Provider.of<RingDataManager>(context, listen: false)
+                  .setCountry(value);
             });
           },
           items:
