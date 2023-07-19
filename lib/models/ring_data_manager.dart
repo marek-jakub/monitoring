@@ -67,6 +67,11 @@ class RingDataManager extends ChangeNotifier {
   /// Whether loading data from database takes longer.
   bool _isLoading = false;
 
+  /// Currently chosen country in add session.
+  ///
+  /// Used to pick place codes for the chosen country.
+  String _country = '';
+
   /// Holding error message if occuring during database access.
   String _error = '';
 
