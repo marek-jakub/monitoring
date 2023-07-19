@@ -299,7 +299,6 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                                 ),
                                               ],
                                             ),
-                                            Text(ring.species),
                                           ],
                                         ),
                                       ),
