@@ -121,6 +121,8 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
           icon: const BackButtonIcon(),
           onPressed: () {
             Provider.of<RingDataManager>(context, listen: false)
+                .getSessionLocationViewStream();
+            Provider.of<RingDataManager>(context, listen: false)
                 .setEditSession(false);
           },
         ),
