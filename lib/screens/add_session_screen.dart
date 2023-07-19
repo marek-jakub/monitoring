@@ -250,6 +250,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     if (isValid != null && isValid) {
       final locationEntity = LocationEntityCompanion(
         locality: d.Value(_localityController.text),
+        country: d.Value(_countryController.text),
         placeCode: d.Value(_placeCodeController.text),
         latitude: d.Value(_latController.text),
         longitude: d.Value(_lonController.text),
@@ -279,6 +280,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
       listenAddSession();
       // Clear data to allow another entry input.
       setState(() {
+        _countryController.clear();
         _placeCodeController.clear();
         _localityController.clear();
         _dateController.clear();
