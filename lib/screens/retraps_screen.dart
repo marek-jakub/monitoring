@@ -103,12 +103,11 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                           Row(
                                             children: [
                                               const Expanded(
-                                                child: Text('Ring series:',
+                                                child: Text('Ringing scheme:',
                                                     textAlign: TextAlign.left),
                                               ),
                                               Expanded(
-                                                child: Text(
-                                                    retrap.ringSeriesCode,
+                                                child: Text(retrap.ringScheme,
                                                     textAlign: TextAlign.left),
                                               ),
                                             ],
@@ -116,11 +115,12 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                           Row(
                                             children: [
                                               const Expanded(
-                                                child: Text('Ringing scheme:',
+                                                child: Text('Ring series:',
                                                     textAlign: TextAlign.left),
                                               ),
                                               Expanded(
-                                                child: Text(retrap.ringScheme,
+                                                child: Text(
+                                                    retrap.ringSeriesCode,
                                                     textAlign: TextAlign.left),
                                               ),
                                             ],
