@@ -241,6 +241,21 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                                 ),
                                               ],
                                             ),
+                                            Row(
+                                              children: [
+                                                const Expanded(
+                                                  child: Text('Metal ring:',
+                                                      textAlign:
+                                                          TextAlign.left),
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                      ring.metalRingInfo,
+                                                      textAlign:
+                                                          TextAlign.left),
+                                                ),
+                                              ],
+                                            ),
                                             Text(ring.ringIdNumber),
                                             Text(ring.species),
                                           ],
