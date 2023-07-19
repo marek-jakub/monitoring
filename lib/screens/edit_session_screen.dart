@@ -268,6 +268,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     if (isValid != null && isValid) {
       final locationEntity = LocationEntityCompanion(
         id: d.Value(context.read<RingDataManager>().currentLocationId),
+        country: d.Value(_countryController.text),
         locality: d.Value(_localityController.text),
         placeCode: d.Value(_placeCodeController.text),
         latitude: d.Value(_latController.text),
