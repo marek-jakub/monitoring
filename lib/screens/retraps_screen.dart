@@ -100,9 +100,55 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                         children: [
                                           // TODO: refactor the code, create retrap card
                                           //Text(retrap.id.toString()),
-                                          Text(retrap.ringIdNumber),
-                                          Text(retrap.ringScheme),
-                                          Text(retrap.condition),
+                                          Row(
+                                            children: [
+                                              const Expanded(
+                                                child: Text('Ring series:',
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                              Expanded(
+                                                child: Text(
+                                                    retrap.ringSeriesCode,
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Expanded(
+                                                child: Text('Ringing scheme:',
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                              Expanded(
+                                                child: Text(retrap.ringScheme,
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Expanded(
+                                                child: Text('ID number:',
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                              Expanded(
+                                                child: Text(retrap.ringIdNumber,
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                            ],
+                                          ),
+                                          Row(
+                                            children: [
+                                              const Expanded(
+                                                child: Text('Condition:',
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                              Expanded(
+                                                child: Text(retrap.condition,
+                                                    textAlign: TextAlign.left),
+                                              ),
+                                            ],
+                                          ),
                                         ],
                                       ),
                                     ),
