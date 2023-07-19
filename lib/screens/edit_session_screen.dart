@@ -314,6 +314,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     if (_dataManager.isSessionDeleted) {
       listenDeleteSession();
       _ringerId.clear();
+      _countryController.clear();
       _placeCodeController.clear();
       _localityController.clear();
       _dateController.clear();
