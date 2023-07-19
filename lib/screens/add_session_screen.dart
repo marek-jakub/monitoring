@@ -41,7 +41,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   //  final TextEditingController _ringingSchemeController =
   //    TextEditingController();
   final TextEditingController _ringerId = TextEditingController();
-  final TextEditingController _country = TextEditingController();
+  final TextEditingController _countryController = TextEditingController();
   final TextEditingController _placeCodeController = TextEditingController();
   final TextEditingController _localityController = TextEditingController();
   final TextEditingController _dateController = TextEditingController();
@@ -91,7 +91,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   void dispose() {
     // Dispose off session controllers
     _ringerId.dispose();
-    _country.dispose();
+    _countryController.dispose();
     _placeCodeController.dispose();
     _localityController.dispose();
     _dateController.dispose();
@@ -146,7 +146,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     keyboard: 'text',
                   ),
                   CustomDropdownCountryFormField(
-                      countryController: _country,
+                      countryController: _countryController,
                       placeCodeController: _placeCodeController,
                       txtLabel: 'Country',
                       listValues: countries),
