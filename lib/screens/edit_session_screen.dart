@@ -8,10 +8,7 @@ import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
 import '../models/models.dart';
 
-import '../widgets/custom_text_form_field.dart';
-import '../widgets/custom_dropdown_form_field.dart';
-import '../widgets/custom_date_picker_field.dart';
-import '../widgets/custom_time_picker_field.dart';
+import '../widgets/custom_widgets.dart';
 
 /// Screen used to edit session-location information.
 class EditSessionScreen extends StatefulWidget {
