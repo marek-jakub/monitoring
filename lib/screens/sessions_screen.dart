@@ -313,6 +313,20 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                                 ),
                                               ],
                                             ),
+                                            Row(
+                                              children: [
+                                                const Expanded(
+                                                  child: Text('Age:',
+                                                      textAlign:
+                                                          TextAlign.left),
+                                                ),
+                                                Expanded(
+                                                  child: Text(ring.age,
+                                                      textAlign:
+                                                          TextAlign.left),
+                                                ),
+                                              ],
+                                            ),
                                           ],
                                         ),
                                       ),
