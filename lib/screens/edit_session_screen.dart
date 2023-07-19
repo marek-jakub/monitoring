@@ -514,6 +514,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   void setSession(SessionLocationViewData? data) {
     if (data != null) {
       _ringerId.text = data.ringerId;
+      _countryController.text = data.locationCountry ?? '';
       _placeCodeController.text = data.locationPlaceCode ?? '';
       _localityController.text = data.locationLocality ?? '';
       _dateController.text = data.date;
