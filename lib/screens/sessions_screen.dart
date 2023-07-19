@@ -224,7 +224,22 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         child: Column(
                                           children: [
                                             // TODO: refactor the code, create a ring card
-                                            Text(ring.id.toString()),
+                                            // Text(ring.id.toString()),
+                                            Row(
+                                              children: [
+                                                const Expanded(
+                                                  child: Text('ID method:',
+                                                      textAlign:
+                                                          TextAlign.left),
+                                                ),
+                                                Expanded(
+                                                  child: Text(
+                                                      ring.primaryIdMethod,
+                                                      textAlign:
+                                                          TextAlign.left),
+                                                ),
+                                              ],
+                                            ),
                                             Text(ring.ringIdNumber),
                                             Text(ring.species),
                                           ],
