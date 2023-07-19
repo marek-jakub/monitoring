@@ -75,6 +75,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   /// User's geographical position.
   late Position position;
 
+  /// List holding country place codes for chosen country.
+  List<String> countryPlaceCodes = [];
+
   /// Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
@@ -109,147 +112,152 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   }
 
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'MonitoRing: edit session',
-        ),
-        leading: IconButton(
-          icon: const BackButtonIcon(),
-          onPressed: () {
-            Provider.of<RingDataManager>(context, listen: false)
-                .getSessionLocationViewStream();
-            Provider.of<RingDataManager>(context, listen: false)
-                .setEditSession(false);
-          },
-        ),
-        actions: [
-          IconButton(
-            onPressed: () {
-              editSession();
-            },
-            icon: const Icon(Icons.save),
-          ),
-          IconButton(
-            onPressed: () {
-              deleteSession();
-            },
-            icon: const Icon(Icons.delete),
-          ),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Selector<RingDataManager, SessionLocationViewData?>(
-          selector: (context, notifier) => notifier.sessionLocationViewData,
-          builder: (context, data, child) {
-            if (firstSet) {
-              setSession(data);
-              firstSet = false;
-            }
-            return Form(
-              key: _editSessionFormKey,
-              child: Column(
-                children: [
-                  CustomTextFormField(
-                    controller: _ringerId,
-                    txtLabel: 'Ringer ID',
-                    keyboard: 'text',
-                  ),
-                  CustomDropdownCountryFormField(
-                      countryController: _country,
-                      placeCodeController: _placeCodeController,
-                      txtLabel: 'Country',
-                      listValues: countries),
-                  CustomDropdownButtonFormField(
-                      controller: _placeCodeController,
-                      txtLabel: 'Place code',
-                      listValues: getPlaceCodes(_country.text)),
-                  CustomTextFormField(
-                    controller: _localityController,
-                    txtLabel: 'Locality name',
-                    keyboard: 'text',
-                  ),
-                  CustomDatePickerField(
-                    controller: _dateController,
-                    txtLabel: 'Date',
-                    callback: () {
-                      pickDate(context);
-                    },
-                  ),
-                  CustomDropdownButtonFormField(
-                    controller: _accuracyOfDateController,
-                    txtLabel: 'Accuracy of date',
-                    listValues: accuracyOfDate,
-                  ),
-                  ElevatedButton(
-                    onPressed: () async {
-                      Future<Position> location = determineLatLon();
-                      position = await location;
-
-                      setState(() {
-                        _latController.text = position.latitude.toString();
-                        _lonController.text = position.longitude.toString();
-                      });
-                    },
-                    child: const Text('Add current latitude and longitude'),
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomTextFormField(
-                          controller: _latController,
-                          txtLabel: 'Latitude',
-                          keyboard: 'number',
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomTextFormField(
-                          controller: _lonController,
-                          txtLabel: 'Longitude',
-                          keyboard: 'number',
-                        ),
-                      ),
-                    ],
-                  ),
-                  CustomDropdownButtonFormField(
-                    controller: _coordAccuracyController,
-                    txtLabel: 'Co-ordinates accuracy',
-                    listValues: accuracyOfCoordinates,
-                  ),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: CustomTimePickerField(
-                          controller: _startTimeController,
-                          txtLabel: 'Start time',
-                          callback: () {
-                            _startTimeFieldFocus = true;
-                            pickTime(context);
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: CustomTimePickerField(
-                          controller: _endTimeController,
-                          txtLabel: 'End time',
-                          callback: () {
-                            pickTime(context);
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
-                  CustomTextFormField(
-                    controller: _localeInfoController,
-                    txtLabel: 'Locality information',
-                    keyboard: 'text',
-                  ),
-                ],
+    return Consumer<RingDataManager>(
+      builder: (context, ringDataManager, child) {
+        countryPlaceCodes = placeCodes[ringDataManager.country] ?? [''];
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'MonitoRing: edit session',
+            ),
+            leading: IconButton(
+              icon: const BackButtonIcon(),
+              onPressed: () {
+                Provider.of<RingDataManager>(context, listen: false)
+                    .getSessionLocationViewStream();
+                Provider.of<RingDataManager>(context, listen: false)
+                    .setEditSession(false);
+              },
+            ),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  editSession();
+                },
+                icon: const Icon(Icons.save),
               ),
-            );
-          },
-        ),
-      ),
+              IconButton(
+                onPressed: () {
+                  deleteSession();
+                },
+                icon: const Icon(Icons.delete),
+              ),
+            ],
+          ),
+          body: SingleChildScrollView(
+            child: Selector<RingDataManager, SessionLocationViewData?>(
+              selector: (context, notifier) => notifier.sessionLocationViewData,
+              builder: (context, data, child) {
+                if (firstSet) {
+                  setSession(data);
+                  firstSet = false;
+                }
+                return Form(
+                  key: _editSessionFormKey,
+                  child: Column(
+                    children: [
+                      CustomTextFormField(
+                        controller: _ringerId,
+                        txtLabel: 'Ringer ID',
+                        keyboard: 'text',
+                      ),
+                      CustomDropdownCountryFormField(
+                          countryController: _country,
+                          placeCodeController: _placeCodeController,
+                          txtLabel: 'Country',
+                          listValues: countries),
+                      CustomDropdownButtonFormField(
+                          controller: _placeCodeController,
+                          txtLabel: 'Place code',
+                          listValues: countryPlaceCodes),
+                      CustomTextFormField(
+                        controller: _localityController,
+                        txtLabel: 'Locality name',
+                        keyboard: 'text',
+                      ),
+                      CustomDatePickerField(
+                        controller: _dateController,
+                        txtLabel: 'Date',
+                        callback: () {
+                          pickDate(context);
+                        },
+                      ),
+                      CustomDropdownButtonFormField(
+                        controller: _accuracyOfDateController,
+                        txtLabel: 'Accuracy of date',
+                        listValues: accuracyOfDate,
+                      ),
+                      ElevatedButton(
+                        onPressed: () async {
+                          Future<Position> location = determineLatLon();
+                          position = await location;
+
+                          setState(() {
+                            _latController.text = position.latitude.toString();
+                            _lonController.text = position.longitude.toString();
+                          });
+                        },
+                        child: const Text('Add current latitude and longitude'),
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _latController,
+                              txtLabel: 'Latitude',
+                              keyboard: 'number',
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTextFormField(
+                              controller: _lonController,
+                              txtLabel: 'Longitude',
+                              keyboard: 'number',
+                            ),
+                          ),
+                        ],
+                      ),
+                      CustomDropdownButtonFormField(
+                        controller: _coordAccuracyController,
+                        txtLabel: 'Co-ordinates accuracy',
+                        listValues: accuracyOfCoordinates,
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: CustomTimePickerField(
+                              controller: _startTimeController,
+                              txtLabel: 'Start time',
+                              callback: () {
+                                _startTimeFieldFocus = true;
+                                pickTime(context);
+                              },
+                            ),
+                          ),
+                          Expanded(
+                            child: CustomTimePickerField(
+                              controller: _endTimeController,
+                              txtLabel: 'End time',
+                              callback: () {
+                                pickTime(context);
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      CustomTextFormField(
+                        controller: _localeInfoController,
+                        txtLabel: 'Locality information',
+                        keyboard: 'text',
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
+          ),
+        );
+      },
     );
   }
 
@@ -499,15 +507,6 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
 
     return await Geolocator.getCurrentPosition(
         desiredAccuracy: LocationAccuracy.best);
-  }
-
-  /// Returns a list of place codes for given [country].
-  List<String> getPlaceCodes(String country) {
-    List<String> places = <String>[''];
-    if (country.isNotEmpty) {
-      places = placeCode[_country.text]!;
-    }
-    return places;
   }
 
   /// Populates form fields with selected session information provided in
