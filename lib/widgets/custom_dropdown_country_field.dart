@@ -5,15 +5,18 @@ import 'package:flutter/material.dart';
 class CustomDropdownCountryFormField extends StatefulWidget {
   const CustomDropdownCountryFormField({
     Key? key,
-    required TextEditingController controller,
+    required TextEditingController countryController,
+    required TextEditingController placeCodeController,
     required String txtLabel,
     required List<String> listValues,
-  })  : _controller = controller,
+  })  : _countryController = countryController,
+        _placeCodeController = placeCodeController,
         _label = txtLabel,
         _listValues = listValues,
         super(key: key);
 
-  final TextEditingController _controller;
+  final TextEditingController _countryController;
+  final TextEditingController _placeCodeController;
   final String _label;
   final List<String> _listValues;
 
@@ -30,7 +33,7 @@ class _CustomDropdownCountryFormFieldState
       padding: const EdgeInsets.all(5.0),
       child: DropdownButtonFormField(
           icon: const Icon(Icons.arrow_downward),
-          value: widget._controller.text,
+          value: widget._countryController.text,
           decoration: InputDecoration(
             enabledBorder: const OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey),
@@ -52,7 +55,8 @@ class _CustomDropdownCountryFormFieldState
           menuMaxHeight: 200.0,
           onChanged: (String? value) {
             setState(() {
-              widget._controller.text = value!;
+              widget._countryController.text = value!;
+              widget._placeCodeController.text = '';
             });
           },
           items:
