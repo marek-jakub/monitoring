@@ -32,7 +32,8 @@ dependencies:
   # GPS access
   # geolocator deprecated in flutter 3.10
   # geolocator: ^9.0.2
-  geocode: ^1.0.3
+  # geocode: ^1.0.3
+  location: ^5.0.0
   # internationalize e.g. date
   intl: ^0.18.1
   # create custom type ahead form field
