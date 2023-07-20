@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
-import 'package:geolocator/geolocator.dart';
+// Deprecated package.
+//import 'package:geolocator/geolocator.dart';
+import 'package:location/location.dart';
 import 'package:intl/intl.dart';
 
 import '../data/monitoring_db.dart';
@@ -66,12 +68,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
   /// User permission to access GPS sensor service.
   bool hasPermission = false;
-
-  /// Permission to access user's location services.
-  late LocationPermission permission;
-
-  /// User's geographical position.
-  late Position position;
 
   /// List holding country place codes for chosen country.
   List<String> countryPlaceCodes = [];
@@ -173,11 +169,14 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   ),
                   ElevatedButton(
                     onPressed: () async {
-                      Future<Position> location = determineLatLon();
-                      position = await location;
-                      setState(() {
-                        _latController.text = position.latitude.toString();
-                        _lonController.text = position.longitude.toString();
+                      determineLatLon().then((value) {
+                        LocationData? location = value;
+                        setState(() {
+                          _latController.text =
+                              location?.latitude.toString() ?? '';
+                          _lonController.text =
+                              location?.longitude.toString() ?? '';
+                        });
                       });
                     },
                     child: const Text('Current latitude and longitude'),
@@ -418,39 +417,31 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   ///
   /// User geolocation permissions required, else shows permissions denied
   /// message.
-  Future<Position> determineLatLon() async {
-    serviceStatus = await Geolocator.isLocationServiceEnabled();
-    if (!serviceStatus) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text('Enable location services.')),
-        );
+  Future<LocationData?> determineLatLon() async {
+    Location location = Location();
+    LocationData locationData;
+
+    bool serviceEnabled;
+    PermissionStatus permissionGranted;
+
+    serviceEnabled = await location.serviceEnabled();
+    if (!serviceEnabled) {
+      serviceEnabled = await location.requestService();
+      if (!serviceEnabled) {
+        return null;
       }
     }
 
-    permission = await Geolocator.checkPermission();
-    if (permission == LocationPermission.denied) {
-      permission = await Geolocator.requestPermission();
-      if (permission == LocationPermission.denied) {
-        if (context.mounted) {
-          ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-                content: Text('Location permissions have been denied.')),
-          );
-        }
+    permissionGranted = await location.hasPermission();
+    if (permissionGranted == PermissionStatus.denied) {
+      permissionGranted = await location.requestPermission();
+      if (permissionGranted != PermissionStatus.granted) {
+        return null;
       }
     }
 
-    if (permission == LocationPermission.deniedForever) {
-      if (context.mounted) {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-              content: Text('Location permissions are permanently denied.')),
-        );
-      }
-    }
+    locationData = await location.getLocation();
 
-    return await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.best);
+    return locationData;
   }
 }
