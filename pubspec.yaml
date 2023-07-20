@@ -30,7 +30,9 @@ dependencies:
   # animation and page changes
   smooth_page_indicator: ^1.1.0
   # GPS access
-  geolocator: ^9.0.2
+  # geolocator deprecated in flutter 3.10
+  # geolocator: ^9.0.2
+  geocode: ^1.0.3
   # internationalize e.g. date
   intl: ^0.18.1
   # create custom type ahead form field
