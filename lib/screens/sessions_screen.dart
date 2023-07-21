@@ -207,7 +207,6 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                       },
                                       child: Card(
                                         elevation: 0,
-                                        color: Colors.blueGrey.shade100,
                                         child: Column(
                                           children: [
                                             // TODO: refactor the code, create a ring card
