@@ -38,6 +38,8 @@ dependencies:
   intl: ^0.18.1
   # create custom type ahead form field
   flutter_typeahead: ^4.6.2
+  # create autocomplete form field
+  simple_autocomplete_formfield: ^0.3.0
 
 
   cupertino_icons: ^1.0.2
