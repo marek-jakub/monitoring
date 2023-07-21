@@ -31,6 +31,7 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
           labelStyle: const TextStyle(fontSize: 14),
           border: const OutlineInputBorder(),
         ),
+        inputTextStyle: const TextStyle(fontSize: 14),
         initialValue: widget._controller.text,
         suggestions: widget._listValues,
         suggestionBuilder: (data) {
