@@ -235,10 +235,11 @@ class _EditRingScreenState extends State<EditRingScreen> {
                         ),
                       ],
                     ),
-                    CustomTypeaheadFormfield(
-                        controller: _speciesController,
-                        txtLabel: 'Species',
-                        listValues: species),
+                    CustomEasyAutocomplete(
+                      controller: _speciesController,
+                      txtLabel: 'Species',
+                      listValues: species,
+                    ),
                     Padding(
                       padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
                       child: DecoratedBox(
