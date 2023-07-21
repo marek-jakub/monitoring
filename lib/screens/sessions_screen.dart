@@ -105,6 +105,9 @@ class _SessionsScreenState extends State<SessionsScreen> {
                             if (_selectedId > -1) {
                               dataManager.getSessionLocationById(_selectedId);
                               dataManager.setEditSession(true);
+                              final session = sessions[_selectedId];
+                              dataManager
+                                  .setCountry(session.locationCountry ?? '');
                             } else {
                               ScaffoldMessenger.of(context).showMaterialBanner(
                                 MaterialBanner(
