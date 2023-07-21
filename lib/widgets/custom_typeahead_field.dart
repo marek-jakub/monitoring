@@ -39,6 +39,8 @@ class _CustomTypeaheadFormfieldState extends State<CustomTypeaheadFormfield> {
               filled: true,
             ),
             style: const TextStyle(fontSize: 14)),
+        getImmediateSuggestions: false,
+        minCharsForSuggestions: 2,
         suggestionsCallback: (pattern) {
           return widget._listValues
               .where((species) =>
@@ -54,7 +56,10 @@ class _CustomTypeaheadFormfieldState extends State<CustomTypeaheadFormfield> {
           return child;
         },
         onSuggestionSelected: (suggestion) {
-          widget._controller.text = suggestion.toString();
+          widget._controller.text = suggestion;
+          // setState(() {
+          //   widget._controller.text = suggestion;
+          // });
         },
         validator: (value) {
           if (value!.isEmpty) {
