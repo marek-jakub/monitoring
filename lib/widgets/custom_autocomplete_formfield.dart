@@ -28,9 +28,9 @@ class _CustomAutocompleteFormfieldState
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: SimpleAutocompleteFormField(
-        decoration: const InputDecoration(
-          labelText: 'Species',
-          border: OutlineInputBorder(),
+        decoration: InputDecoration(
+          labelText: widget._label,
+          border: const OutlineInputBorder(),
         ),
         suggestionsHeight: 80.0,
         itemBuilder: (context, item) => Padding(
