@@ -6,10 +6,7 @@ import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
 import '../models/models.dart';
 
-import '../widgets/custom_text_form_field.dart';
-import '../widgets/custom_dropdown_form_field.dart';
-import '../widgets/custom_time_picker_field.dart';
-import '../widgets/custom_typeahead_field.dart';
+import '../widgets/custom_widgets.dart';
 
 /// A form allowing to edit bird information given as a ring entity.
 class EditRingScreen extends StatefulWidget {
