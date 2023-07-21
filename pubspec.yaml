@@ -37,7 +37,7 @@ dependencies:
   # internationalize e.g. date
   intl: ^0.18.1
   # create custom type ahead form field
-  flutter_typeahead: ^4.6.1
+  flutter_typeahead: ^4.6.2
 
 
   cupertino_icons: ^1.0.2
