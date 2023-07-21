@@ -81,6 +81,7 @@ class MonitoRingTheme {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.green,
       ),
+      cardColor: Colors.grey.shade300,
       textTheme: lightTextTheme,
     );
   }
