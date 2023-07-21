@@ -105,9 +105,6 @@ class _SessionsScreenState extends State<SessionsScreen> {
                             if (_selectedId > -1) {
                               dataManager.getSessionLocationById(_selectedId);
                               dataManager.setEditSession(true);
-                              final session = sessions[_selectedId];
-                              dataManager
-                                  .setCountry(session.locationCountry ?? '');
                             } else {
                               ScaffoldMessenger.of(context).showMaterialBanner(
                                 MaterialBanner(
@@ -148,10 +145,13 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         dataManager.setCurrentSessionId(-1);
                                         dataManager.setCurrentLocationId(-1);
                                         dataManager.setSessionTapped(false);
+                                        dataManager.setCountry('');
                                       } else {
                                         _selectedId = session.id;
                                         dataManager
                                             .setCurrentSessionId(session.id);
+                                        dataManager.setCountry(
+                                            session.locationCountry ?? '');
                                         dataManager.setCurrentLocationId(
                                             session.location);
                                         dataManager
