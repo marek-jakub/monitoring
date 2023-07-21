@@ -40,6 +40,7 @@ dependencies:
   flutter_typeahead: ^4.6.2
   # create autocomplete form field
   simple_autocomplete_formfield: ^0.3.0
+  easy_autocomplete: ^1.6.0
 
 
   cupertino_icons: ^1.0.2
