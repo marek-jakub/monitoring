@@ -28,6 +28,7 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
       child: EasyAutocomplete(
         decoration: InputDecoration(
           labelText: widget._label,
+          labelStyle: const TextStyle(fontSize: 14),
           border: const OutlineInputBorder(),
         ),
         suggestions: widget._listValues,
