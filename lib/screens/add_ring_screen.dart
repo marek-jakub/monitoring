@@ -217,11 +217,16 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                 ],
               ),
-              CustomAutocompleteFormfield(
+              CustomEasyAutocomplete(
                 controller: _speciesController,
                 txtLabel: 'Species',
                 listValues: species,
               ),
+              // CustomAutocompleteFormfield(
+              //   controller: _speciesController,
+              //   txtLabel: 'Species',
+              //   listValues: species,
+              // ),
               // CustomTypeaheadFormfield(
               //     controller: _speciesController,
               //     txtLabel: 'Species',
