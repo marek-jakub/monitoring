@@ -32,7 +32,7 @@ class _CustomAutocompleteFormfieldState
           labelText: widget._label,
           border: const OutlineInputBorder(),
         ),
-        suggestionsHeight: 80.0,
+        suggestionsHeight: 120.0,
         itemBuilder: (context, item) => Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(item.toString()),
