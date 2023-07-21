@@ -217,10 +217,15 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                 ],
               ),
-              CustomTypeaheadFormfield(
-                  controller: _speciesController,
-                  txtLabel: 'Species',
-                  listValues: species),
+              CustomAutocompleteFormfield(
+                controller: _speciesController,
+                txtLabel: 'Species',
+                listValues: species,
+              ),
+              // CustomTypeaheadFormfield(
+              //     controller: _speciesController,
+              //     txtLabel: 'Species',
+              //     listValues: species),
               Padding(
                 padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
                 child: DecoratedBox(
