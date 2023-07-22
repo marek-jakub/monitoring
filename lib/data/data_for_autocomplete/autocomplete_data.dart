@@ -459,8 +459,13 @@ const List<String> species = <String>[
   'ACR.RIS',
   'ANS',
   'ANT',
+
   'BRA',
+  'BRA.BER',
+  'BRA.CAN',
+  'BRA.LEU',
   'BUT',
+
   'CAL.ENS',
   'CAL.LBA',
   'CAL.INA',
@@ -475,6 +480,8 @@ const List<String> species = <String>[
   'CAR.VIR',
   'CHE.URA',
   'CHL.RUS',
+  'CIC.CIC',
+  'CIC.NIG',
   'CIR',
   'COL',
   'COR',
@@ -483,30 +490,48 @@ const List<String> species = <String>[
   'COR.ONE',
   'CYA.NUS',
   'CYA.ANA',
+
+  'DEL.URB',
+
+  'EGR.GAR',
+  'EGR.ALB',
   'EMB.LLA',
   'EMB.ICA',
+
   'FAL',
   'FEE',
   'FIC.AXH',
   'FIC.INA',
   'FIC.RVA',
   'FRI',
+
   'HEE',
+
   'LAN.NOR',
   'LAR.UTU',
+  'LIM.FAL',
+  'LIM.LAP',
+  'LIM.LIM',
   'LOC.DES',
   'LOX',
   'LUS.NIA',
+
   'MIL.ANS',
   'MIL.VUS',
   'MOT',
+
+  'NYC.SCA',
+
   'OEN.YGA',
   'OEN.URA',
+
   'PAR',
   'PAR.UMO',
   'PAS',
   'PAS.SMO',
+  'PHA.COL',
   'PHA.CUS',
+  'PHI.PUG',
   'PHY.BIT',
   'PHY.DES',
   'PHY.LUS',
@@ -516,6 +541,7 @@ const List<String> species = <String>[
   'PSS',
   'PYR.RAX',
   'PYR.ULA',
+
   'SAX.TRA',
   'SAX.OLA',
   'STE.CUS',
@@ -525,6 +551,7 @@ const List<String> species = <String>[
   'SYL.ALA',
   'SYL.RAX',
   'SYL.UNI',
+
   'TET.RIX',
   'TET.RAX',
   'TRI.PES',
