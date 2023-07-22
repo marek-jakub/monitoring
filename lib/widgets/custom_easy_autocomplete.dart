@@ -26,6 +26,7 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
     return Padding(
       padding: const EdgeInsets.all(5.0),
       child: EasyAutocomplete(
+        controller: widget._controller,
         decoration: InputDecoration(
           labelText: widget._label,
           labelStyle: const TextStyle(fontSize: 14),
