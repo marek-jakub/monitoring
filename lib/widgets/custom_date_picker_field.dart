@@ -30,6 +30,7 @@ class CustomDatePickerField extends StatelessWidget {
           fillColor: Colors.white,
           filled: true,
         ),
+        style: const TextStyle(fontSize: 14, color: Colors.black),
         validator: (value) {
           // if (value == null || value.isEmpty) {
           //   return '$_label cannot be empty!';
