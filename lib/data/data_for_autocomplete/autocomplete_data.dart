@@ -455,9 +455,18 @@ const List<String> sexingMethod = <String>[
 const List<String> species = <String>[
   // TODO: Complete the list!
   'ACC',
+  'ACC.GEN',
+  'ACC.NIS',
   'ACR.OLA',
   'ACR.RIS',
   'ALO.EGY',
+  'ANA.ACU',
+  'ANA.CLY',
+  'ANA.CRE',
+  'ANA.PEN',
+  'ANA.PLA',
+  'ANA.QUE',
+  'ANA.STR',
   'ANS',
   'ANS.ALB',
   'ANS.ANS',
@@ -468,7 +477,14 @@ const List<String> species = <String>[
   'APU.APU',
   'APU.MEL',
   'ARD.RAL',
+  'AYT.COL',
+  'AYT.FER',
+  'AYT.FUL',
+  'AYT.MAR',
+  'AYT.NYR',
 
+  'BOM.GAR',
+  'BON.BON',
   'BOT.STE',
   'BRA',
   'BRA.BER',
@@ -512,6 +528,7 @@ const List<String> species = <String>[
   'COR.NIX',
   'COR.RAX',
   'COR.ONE',
+  'CRE.CRE',
   'CYA.NUS',
   'CYA.ANA',
 
@@ -539,8 +556,8 @@ const List<String> species = <String>[
 
   'IXO.MIN',
 
-  'JYN.TOR'
-      'LAN.NOR',
+  'JYN.TOR',
+  'LAN.NOR',
   'LAR.ARG',
   'LAR.CAC',
   'LAR.CAN',
@@ -563,6 +580,10 @@ const List<String> species = <String>[
   'MOT',
 
   'NET.RUF',
+  'NUM.ARQ',
+  'NUM.PHA',
+  'NUM.TEN',
+  'NYC.NYC',
   'NYC.SCA',
 
   'OEN.YGA',
@@ -574,6 +595,7 @@ const List<String> species = <String>[
   'PAR.UMO',
   'PAS',
   'PAS.SMO',
+  'PER.PER',
   'PHA.COL',
   'PHA.CUS',
   'PHI.PUG',
@@ -581,14 +603,18 @@ const List<String> species = <String>[
   'PHY.DES',
   'PHY.LUS',
   'PIC.TRI',
+  'PLE.FAL',
   'POD.ENA',
   'POR.RIO',
   'POR.ANA',
+  'POR.PAR',
+  'POR.PUS',
   'PSS',
   'PYR.GRA',
   'PYR.RAX',
   'PYR.ULA',
 
+  'RAL.AQU',
   'RIP.RIP',
   'RIS.TRI',
 
@@ -606,6 +632,8 @@ const List<String> species = <String>[
   'SYL.RAX',
   'SYL.UNI',
 
+  'TAD.FER',
+  'TAD.TAD',
   'TET.RIX',
   'TET.RAX',
   'TET.URO',
