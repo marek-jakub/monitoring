@@ -459,7 +459,9 @@ const List<String> species = <String>[
   'ACR.RIS',
   'ANS',
   'ANT',
+  'ARD.RAL',
 
+  'BOT.STE',
   'BRA',
   'BRA.BER',
   'BRA.CAN',
@@ -478,6 +480,7 @@ const List<String> species = <String>[
   'CAR.LIS',
   'CAR.MEA',
   'CAR.VIR',
+  'CHE.GRE',
   'CHE.URA',
   'CHL.RUS',
   'CIC.CIC',
@@ -507,7 +510,18 @@ const List<String> species = <String>[
 
   'HEE',
 
+  'IXO.MIN',
+
   'LAN.NOR',
+  'LAR.ARG',
+  'LAR.CAC',
+  'LAR.CAN',
+  'LAR.DEL',
+  'LAR.FUS',
+  'LAR.HYP',
+  'LAR.MAR',
+  'LAR.MEL',
+  'LAR.RID',
   'LAR.UTU',
   'LIM.FAL',
   'LIM.LAP',
@@ -542,8 +556,12 @@ const List<String> species = <String>[
   'PYR.RAX',
   'PYR.ULA',
 
+  'RIP.RIP',
+  'RIS.TRI',
+
   'SAX.TRA',
   'SAX.OLA',
+  'SIT.EUR',
   'STE.CUS',
   'STE.AEA',
   'STR',
@@ -557,6 +575,10 @@ const List<String> species = <String>[
   'TRI.PES',
   'TRI.OLA',
   'TUR',
+
+  'VAN.VAN',
+
+  'XEN.CIN',
 ];
 
 /// EURING code state of wing point values.
