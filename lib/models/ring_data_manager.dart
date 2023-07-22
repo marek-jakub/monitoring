@@ -41,6 +41,7 @@ class RingDataManager extends ChangeNotifier {
   int _selectedRingId = -1;
   RingEntityData? _ringEntityData;
   List<RingEntityData> _sessionRingStream = [];
+  List<RingEntityData> _allRings = [];
 
   // Retrap
   bool _newRetrap = false;
@@ -231,6 +232,9 @@ class RingDataManager extends ChangeNotifier {
   ///
   /// Session is identified by [_currentSessionId].
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
+
+  /// Access to all rings in the database.
+  List<RingEntityData> get allRings => _allRings;
 
   /// Access to a ring information.
   RingEntityData? get ringEntityData => _ringEntityData;
@@ -454,6 +458,17 @@ class RingDataManager extends ChangeNotifier {
       } else {
         _isSessionDeleted = true;
       }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Fetches all ring data from the database.
+  void fetchAllRings() {
+    _monRingDb?.getAllRings().then((value) {
+      _allRings = value;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
