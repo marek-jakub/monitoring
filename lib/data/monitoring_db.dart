@@ -110,6 +110,11 @@ class MonRingDb extends _$MonRingDb {
 
   // RING ENTITY
 
+  /// Return all rings saved in the database.
+  Future<List<RingEntityData>> getAllRings() async {
+    return await select(ringEntity).get();
+  }
+
   /// Saves ring data stored in the [companion].
   ///
   /// Returns an integer, on success an ID of the saved companion, otherwise
