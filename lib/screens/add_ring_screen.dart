@@ -164,6 +164,11 @@ class _AddRingScreenState extends State<AddRingScreen> {
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
+            int currentSessionId =
+                Provider.of<RingDataManager>(context, listen: false)
+                    .currentSessionId;
+            Provider.of<RingDataManager>(context, listen: false)
+                .getSessionRingStream(currentSessionId);
             Provider.of<RingDataManager>(context, listen: false)
                 .setNewRing(false);
           },
