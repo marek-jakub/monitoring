@@ -459,6 +459,8 @@ const List<String> species = <String>[
   'ACR.RIS',
   'ANS',
   'ANT',
+  'APU.APU',
+  'APU.MEL',
   'ARD.RAL',
 
   'BOT.STE',
@@ -466,6 +468,7 @@ const List<String> species = <String>[
   'BRA.BER',
   'BRA.CAN',
   'BRA.LEU',
+  'BRA.RUF',
   'BUT',
 
   'CAL.ENS',
@@ -476,13 +479,17 @@ const List<String> species = <String>[
   'CAL.UTA',
   'CAL.LLA',
   'CAP.LIS',
+  'CAR.ERY',
   'CAR.INA',
   'CAR.LIS',
   'CAR.MEA',
   'CAR.VIR',
   'CHE.GRE',
   'CHE.URA',
+  'CHL.HYB',
+  'CHL.NIG',
   'CHL.RUS',
+  'CHL.UND',
   'CIC.CIC',
   'CIC.NIG',
   'CIR',
@@ -495,11 +502,17 @@ const List<String> species = <String>[
   'CYA.ANA',
 
   'DEL.URB',
+  'DEN.LEU',
+  'DEN.MAJ',
+  'DEN.MED',
+  'DEN.MIN',
+  'DEN.SYR',
 
   'EGR.GAR',
   'EGR.ALB',
   'EMB.LLA',
   'EMB.ICA',
+  'ERI.RUB',
 
   'FAL',
   'FEE',
@@ -512,7 +525,8 @@ const List<String> species = <String>[
 
   'IXO.MIN',
 
-  'LAN.NOR',
+  'JYN.TOR'
+      'LAN.NOR',
   'LAR.ARG',
   'LAR.CAC',
   'LAR.CAN',
@@ -538,6 +552,7 @@ const List<String> species = <String>[
 
   'OEN.YGA',
   'OEN.URA',
+  'OTI.TAR',
 
   'PAR',
   'PAR.UMO',
@@ -553,6 +568,7 @@ const List<String> species = <String>[
   'POR.RIO',
   'POR.ANA',
   'PSS',
+  'PYR.GRA',
   'PYR.RAX',
   'PYR.ULA',
 
@@ -562,6 +578,7 @@ const List<String> species = <String>[
   'SAX.TRA',
   'SAX.OLA',
   'SIT.EUR',
+  'STE.CAS',
   'STE.CUS',
   'STE.AEA',
   'STR',
@@ -575,6 +592,12 @@ const List<String> species = <String>[
   'TRI.PES',
   'TRI.OLA',
   'TUR',
+  'TUR.ILI',
+  'TUR.MER',
+  'TUR.PHI',
+  'TUR.PIL',
+  'TUR.TOR',
+  'TUR.VIS',
 
   'VAN.VAN',
 
