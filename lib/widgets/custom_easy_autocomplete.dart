@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:easy_autocomplete/easy_autocomplete.dart';
 
+/// An autocomplete form field, requires text controller [_controller],
+/// a label [_label] and a list of strings to be used for suggestions
+/// [_listValues].
 class CustomEasyAutocomplete extends StatefulWidget {
   const CustomEasyAutocomplete({
     Key? key,
