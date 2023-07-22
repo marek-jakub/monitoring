@@ -1,11 +1,8 @@
-import 'dart:convert';
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:monitoring/data/monitoring_db.dart';
 
+import '../network/model_output.dart';
 import '../models/models.dart';
 
 /// A screen for data output as an EURING compatible .csv file.
@@ -25,6 +22,7 @@ class ReportScreen extends StatefulWidget {
 }
 
 class _ReportScreenState extends State<ReportScreen> {
+  ModelOutput outputData = ModelOutput();
   List<RingEntityData> rings = [];
 
   @override
@@ -52,8 +50,7 @@ class _ReportScreenState extends State<ReportScreen> {
             children: [
               ElevatedButton(
                 onPressed: () {
-                  String jsonRings = jsonEncode(rings);
-                  _saveJsonAsFile(jsonRings);
+                  outputData.saveJsonAsFile(rings);
                 },
                 child: const Text('Order rings'),
               ),
@@ -62,19 +59,5 @@ class _ReportScreenState extends State<ReportScreen> {
         );
       },
     );
-  }
-
-  _saveJsonAsFile(String json) async {
-    File ringsFile = File(await _getFilePath());
-    ringsFile.writeAsString(json);
-    debugPrint(ringsFile.toString());
-  }
-
-  Future<String> _getFilePath() async {
-    Directory appDocumentsDirectory = await getApplicationDocumentsDirectory();
-    String appDocumentsPath = appDocumentsDirectory.path;
-    String filePath = '$appDocumentsPath/jsonRings';
-
-    return filePath;
   }
 }
