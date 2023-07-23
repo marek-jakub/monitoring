@@ -82,6 +82,11 @@ class MonitoRingTheme {
         selectedItemColor: Colors.green,
       ),
       cardColor: Colors.grey.shade300,
+      listTileTheme: const ListTileThemeData(
+          style: ListTileStyle.list,
+          tileColor: Colors.white,
+          textColor: Colors.black,
+          titleTextStyle: TextStyle(fontSize: 14.0)),
       textTheme: lightTextTheme,
     );
   }
