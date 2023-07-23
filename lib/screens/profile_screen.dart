@@ -109,21 +109,27 @@ class _ProfileScreenState extends State<ProfileScreen> {
       children: [
         showDarkModeRow(),
         // TODO: set text style for list tiles
-        ListTile(
-          title: const Text('View Euring Code 2020'),
-          onTap: () {
-            Provider.of<ProfileManager>(context, listen: false)
-                .tapOnEuringCode(true);
-          },
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            title: const Text('View Euring Code 2020'),
+            onTap: () {
+              Provider.of<ProfileManager>(context, listen: false)
+                  .tapOnEuringCode(true);
+            },
+          ),
         ),
-        ListTile(
-          title: const Text('Logout'),
-          onTap: () {
-            Provider.of<ProfileManager>(context, listen: false)
-                .tapOnProfile(false);
-            Provider.of<MonitoRingStateManager>(context, listen: false)
-                .logout();
-          },
+        Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: ListTile(
+            title: const Text('Logout'),
+            onTap: () {
+              Provider.of<ProfileManager>(context, listen: false)
+                  .tapOnProfile(false);
+              Provider.of<MonitoRingStateManager>(context, listen: false)
+                  .logout();
+            },
+          ),
         ),
       ],
     );
@@ -136,7 +142,10 @@ class _ProfileScreenState extends State<ProfileScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const Text('Dark mode'),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: Text('Dark mode'),
+          ),
           Switch(
               value: widget.ringer.darkMode,
               onChanged: (value) {
