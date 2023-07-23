@@ -52,7 +52,7 @@ class _ReportScreenState extends State<ReportScreen> {
                 onPressed: () {
                   outputData.saveJsonAsFile(rings);
                 },
-                child: const Text('Order rings'),
+                child: const Text('Report'),
               ),
             ],
           ),
