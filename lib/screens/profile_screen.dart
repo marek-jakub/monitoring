@@ -50,26 +50,35 @@ class _ProfileScreenState extends State<ProfileScreen> {
             Expanded(
               child: buildMenu(),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Provider.of<RingDataManager>(context, listen: false)
-                    .setNewRingSeries(true);
-              },
-              child: const Text('Add ring series'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Provider.of<RingDataManager>(context, listen: false)
+                      .setNewRingSeries(true);
+                },
+                child: const Text('Add ring series'),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Provider.of<RingDataManager>(context, listen: false)
-                    .setNewLostRing(true);
-              },
-              child: const Text('Add lost ring'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Provider.of<RingDataManager>(context, listen: false)
+                      .setNewLostRing(true);
+                },
+                child: const Text('Add lost ring'),
+              ),
             ),
-            ElevatedButton(
-              onPressed: () {
-                Provider.of<RingDataManager>(context, listen: false)
-                    .setMakeOrder(true);
-              },
-              child: const Text('Order rings'),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: ElevatedButton(
+                onPressed: () {
+                  Provider.of<RingDataManager>(context, listen: false)
+                      .setMakeOrder(true);
+                },
+                child: const Text('Order rings'),
+              ),
             ),
           ],
         ),
