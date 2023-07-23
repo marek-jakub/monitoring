@@ -94,6 +94,11 @@ class MonitoRingTheme {
   static ThemeData dark() {
     return ThemeData(
       brightness: Brightness.dark,
+      primarySwatch: Colors.green,
+      checkboxTheme:
+          CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
+        return Colors.white;
+      })),
       appBarTheme: AppBarTheme(
         titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
         centerTitle: true,
@@ -108,6 +113,11 @@ class MonitoRingTheme {
         selectedItemColor: Colors.green,
       ),
       cardColor: Colors.grey.shade700,
+      listTileTheme: ListTileThemeData(
+          style: ListTileStyle.list,
+          tileColor: Colors.grey.shade800,
+          textColor: Colors.white,
+          titleTextStyle: const TextStyle(fontSize: 14.0)),
       textTheme: darkTextTheme,
     );
   }
