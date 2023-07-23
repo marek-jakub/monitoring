@@ -165,7 +165,6 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                   child: Card(
                                     key: ValueKey(session.id),
                                     elevation: 0,
-                                    color: Colors.blueGrey.shade100,
                                     child: Container(
                                       color: session.id == _selectedId
                                           ? Colors.amber
