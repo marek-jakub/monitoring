@@ -81,7 +81,7 @@ class MonitoRingTheme {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.green,
       ),
-      cardColor: Colors.grey.shade300,
+      cardColor: Colors.grey.shade400,
       listTileTheme: const ListTileThemeData(
           style: ListTileStyle.list,
           tileColor: Colors.blue,
@@ -98,7 +98,7 @@ class MonitoRingTheme {
       scaffoldBackgroundColor: Colors.grey[800],
       checkboxTheme:
           CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
-        return Colors.white;
+        return Colors.grey;
       })),
       appBarTheme: AppBarTheme(
         titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
@@ -113,7 +113,7 @@ class MonitoRingTheme {
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.green,
       ),
-      cardColor: Colors.grey.shade700,
+      cardColor: Colors.blueGrey,
       listTileTheme: const ListTileThemeData(
           style: ListTileStyle.list,
           tileColor: Colors.blueGrey,
