@@ -48,11 +48,16 @@ class _ReportScreenState extends State<ReportScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisSize: MainAxisSize.min,
             children: [
-              ElevatedButton(
-                onPressed: () {
-                  outputData.saveJsonAsFile(rings);
-                },
-                child: const Text('Report'),
+              Center(
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ElevatedButton(
+                    onPressed: () {
+                      outputData.saveJsonAsFile(rings);
+                    },
+                    child: const Text('Report'),
+                  ),
+                ),
               ),
             ],
           ),
