@@ -95,7 +95,7 @@ class MonitoRingTheme {
     return ThemeData(
       brightness: Brightness.dark,
       primarySwatch: Colors.green,
-      scaffoldBackgroundColor: Colors.black54,
+      scaffoldBackgroundColor: Colors.grey[800],
       checkboxTheme:
           CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
         return Colors.white;
@@ -114,11 +114,11 @@ class MonitoRingTheme {
         selectedItemColor: Colors.green,
       ),
       cardColor: Colors.grey.shade700,
-      listTileTheme: const ListTileThemeData(
+      listTileTheme: ListTileThemeData(
           style: ListTileStyle.list,
-          tileColor: Colors.black12,
+          tileColor: Colors.grey[800],
           textColor: Colors.white,
-          titleTextStyle: TextStyle(fontSize: 14.0)),
+          titleTextStyle: const TextStyle(fontSize: 14.0)),
       textTheme: darkTextTheme,
     );
   }
