@@ -84,7 +84,7 @@ class MonitoRingTheme {
       cardColor: Colors.grey.shade400,
       listTileTheme: const ListTileThemeData(
           style: ListTileStyle.list,
-          tileColor: Colors.blue,
+          tileColor: Colors.white,
           textColor: Colors.black,
           titleTextStyle: TextStyle(fontSize: 14.0)),
       textTheme: lightTextTheme,
