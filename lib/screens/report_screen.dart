@@ -53,7 +53,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      outputData.saveJsonAsFile(rings);
+                      outputData.saveDataAsFile(context, rings);
                     },
                     child: const Text('Report'),
                   ),
