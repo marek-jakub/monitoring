@@ -215,12 +215,12 @@ const List<String> countries = <String>[
   'CAMBODIA',
   'CAMEROON',
   'CANADA',
-  '...',
+  '.',
   'SLOVAKIA',
-  '...',
+  '..',
   'UNITED KINGDOM',
-  '...'
-      'YEMEN',
+  '...',
+  'YEMEN',
   'ZAMBIA',
   'ZANZIBAR & PEMBA'
       'ZIMBABWE',
