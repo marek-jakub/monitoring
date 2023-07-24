@@ -64,6 +64,7 @@ class MonitoRingTheme {
   static ThemeData light() {
     return ThemeData(
       brightness: Brightness.light,
+      primarySwatch: Colors.blueGrey,
       checkboxTheme:
           CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
         return Colors.black;
