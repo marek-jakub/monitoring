@@ -138,7 +138,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
   /// A dark mode switch.
   Widget showDarkModeRow() {
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: const EdgeInsets.fromLTRB(15, 10, 10, 10),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
