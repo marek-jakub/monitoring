@@ -166,9 +166,38 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                     key: ValueKey(session.id),
                                     elevation: 0,
                                     child: Container(
-                                      color: session.id == _selectedId
-                                          ? Colors.amber
-                                          : Colors.blue,
+                                      decoration: session.id == _selectedId
+                                          ? const BoxDecoration(
+                                              border: Border(
+                                                top: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 2,
+                                                ),
+                                                left: BorderSide(
+                                                    color: Colors.black),
+                                                right: BorderSide(
+                                                    color: Colors.black),
+                                                bottom: BorderSide(
+                                                  color: Colors.black,
+                                                  width: 2,
+                                                ),
+                                              ),
+                                            )
+                                          : const BoxDecoration(
+                                              border: Border(
+                                                top: BorderSide(
+                                                    color: Colors.white),
+                                                left: BorderSide(
+                                                    color: Colors.white),
+                                                right: BorderSide(
+                                                    color: Colors.white),
+                                                bottom: BorderSide(
+                                                    color: Colors.white),
+                                              ),
+                                            ),
+                                      // color: session.id == _selectedId
+                                      //     ? Colors.amber
+                                      //     : Colors.blueGrey[300],
                                       child: Row(
                                         children: [
                                           Text('${session.date} - '),
