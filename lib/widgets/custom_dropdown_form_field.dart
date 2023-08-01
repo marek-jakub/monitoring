@@ -32,15 +32,8 @@ class _CustomDropdownButtonFormFieldState
           icon: const Icon(Icons.arrow_downward),
           value: widget._controller.text,
           decoration: InputDecoration(
-            enabledBorder: const OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey),
-            ),
-            // Filled changes the color of the field
-            //filled: true,
             labelText: widget._label,
             labelStyle: const TextStyle(fontSize: 14),
-            fillColor: Colors.white,
-            filled: true,
           ),
           style: const TextStyle(fontSize: 14, color: Colors.black),
           validator: (value) {
