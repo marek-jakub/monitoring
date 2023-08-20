@@ -11,6 +11,16 @@ class MonitoRingTheme {
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
+    bodyMedium: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.black,
+    ),
+    bodySmall: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.black,
+    ),
     headlineLarge: GoogleFonts.openSans(
       fontSize: 32.0,
       fontWeight: FontWeight.bold,
@@ -28,6 +38,11 @@ class MonitoRingTheme {
     ),
     titleMedium: GoogleFonts.openSans(
       fontSize: 20.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    titleSmall: GoogleFonts.openSans(
+      fontSize: 14.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
@@ -63,16 +78,16 @@ class MonitoRingTheme {
 
   // Custom color used for dark theme swatch
   static Map<int, Color> colorLightSwatch = {
-    50: const Color.fromRGBO(250, 250, 250, 0.1),
-    100: const Color.fromRGBO(250, 250, 250, 0.2),
-    200: const Color.fromRGBO(250, 250, 250, 0.3),
-    300: const Color.fromRGBO(250, 250, 250, 0.4),
-    400: const Color.fromRGBO(250, 250, 250, 0.5),
-    500: const Color.fromRGBO(250, 250, 250, 0.6),
-    600: const Color.fromRGBO(250, 250, 250, 0.7),
-    700: const Color.fromRGBO(250, 250, 250, 0.8),
-    800: const Color.fromRGBO(250, 250, 250, 0.9),
-    900: const Color.fromRGBO(250, 250, 250, 1),
+    50: const Color.fromRGBO(250, 250, 250, 1),
+    100: const Color.fromRGBO(250, 250, 250, 0.9),
+    200: const Color.fromRGBO(250, 250, 250, 0.8),
+    300: const Color.fromRGBO(250, 250, 250, 0.7),
+    400: const Color.fromRGBO(250, 250, 250, 0.6),
+    500: const Color.fromRGBO(250, 250, 250, 0.5),
+    600: const Color.fromRGBO(250, 250, 250, 0.4),
+    700: const Color.fromRGBO(250, 250, 250, 0.3),
+    800: const Color.fromRGBO(250, 250, 250, 0.2),
+    900: const Color.fromRGBO(250, 250, 250, 0.1),
   };
 
   static MaterialColor customLightSwatch =
