@@ -82,6 +82,7 @@ class MonitoRingTheme {
     return ThemeData(
       brightness: Brightness.light,
       primarySwatch: customLightSwatch,
+      scaffoldBackgroundColor: Colors.grey[200],
       checkboxTheme:
           CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
         return Colors.black;
@@ -168,7 +169,7 @@ class MonitoRingTheme {
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
-        backgroundColor: Colors.green,
+        backgroundColor: Colors.grey,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
         selectedItemColor: Colors.green,
@@ -184,13 +185,13 @@ class MonitoRingTheme {
           borderSide: BorderSide(color: Colors.green),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.grey),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.red),
         ),
       ),
       cardColor: Colors.blueGrey,
