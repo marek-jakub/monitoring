@@ -156,7 +156,9 @@ class MonitoRingTheme {
       ),
       cardColor: Colors.blueGrey,
       expansionTileTheme: ExpansionTileThemeData(
-        backgroundColor: Colors.grey[600],
+        textColor: Colors.white,
+        collapsedBackgroundColor: Colors.grey[600],
+        backgroundColor: Colors.grey[700],
       ),
       listTileTheme: ListTileThemeData(
           style: ListTileStyle.list,
