@@ -307,13 +307,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
               ExpansionTile(
                 title: const Text(
                   'Body measurements',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
-                collapsedBackgroundColor: Colors.grey[500],
-                backgroundColor: Colors.grey[500],
                 children: [
                   Form(
                     key: _bodyMeasurementsFormKey,
@@ -743,13 +737,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
               ExpansionTile(
                 title: const Text(
                   'Circumstances',
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                  ),
                 ),
-                collapsedBackgroundColor: Colors.grey[300],
-                backgroundColor: Colors.grey[300],
                 children: [
                   Form(
                     key: _circumstancesFormKey,
