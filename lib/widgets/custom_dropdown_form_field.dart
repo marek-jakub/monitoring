@@ -33,10 +33,6 @@ class _CustomDropdownButtonFormFieldState
           value: widget._controller.text,
           decoration: InputDecoration(
             labelText: widget._label,
-            labelStyle: const TextStyle(fontSize: 14),
-          ),
-          style: const TextStyle(
-            fontSize: 14,
           ),
           validator: (value) {
             // if (value == null || value.isEmpty) {
