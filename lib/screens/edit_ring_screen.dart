@@ -323,13 +323,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                 ExpansionTile(
                   title: const Text(
                     'Body measurements',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
                   ),
-                  collapsedBackgroundColor: Colors.grey[500],
-                  backgroundColor: Colors.grey[500],
                   children: [
                     Form(
                       key: _bodyMeasurementsFormKey,
