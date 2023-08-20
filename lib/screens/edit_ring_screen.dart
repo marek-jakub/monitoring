@@ -407,95 +407,81 @@ class _EditRingScreenState extends State<EditRingScreen> {
                           Padding(
                             padding:
                                 const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'Bill Method',
-                                    style: TextStyle(color: Colors.grey[600]),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('C'),
-                                          value:
-                                              _billMethodController.text == 'C'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _billMethodController.text =
-                                                  value! ? 'C' : '';
-                                            });
-                                          },
-                                        ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Bill Method',
+                                  style: TextStyle(color: Colors.grey[600]),
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('C'),
+                                        value: _billMethodController.text == 'C'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'C' : '';
+                                          });
+                                        },
                                       ),
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('F'),
-                                          value:
-                                              _billMethodController.text == 'F'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _billMethodController.text =
-                                                  value! ? 'F' : '';
-                                            });
-                                          },
-                                        ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('F'),
+                                        value: _billMethodController.text == 'F'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'F' : '';
+                                          });
+                                        },
                                       ),
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('N'),
-                                          value:
-                                              _billMethodController.text == 'N'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _billMethodController.text =
-                                                  value! ? 'N' : '';
-                                            });
-                                          },
-                                        ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('N'),
+                                        value: _billMethodController.text == 'N'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'N' : '';
+                                          });
+                                        },
                                       ),
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('S'),
-                                          value:
-                                              _billMethodController.text == 'S'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _billMethodController.text =
-                                                  value! ? 'S' : '';
-                                            });
-                                          },
-                                        ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('S'),
+                                        value: _billMethodController.text == 'S'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'S' : '';
+                                          });
+                                        },
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           Row(
