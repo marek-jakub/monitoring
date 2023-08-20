@@ -76,7 +76,7 @@ class MonitoRingTheme {
   };
 
   static MaterialColor customLightSwatch =
-      MaterialColor(0xFF90A4AE, colorLightSwatch);
+      MaterialColor(0xFF90A4AAE, colorLightSwatch);
 
   static ThemeData light() {
     return ThemeData(
