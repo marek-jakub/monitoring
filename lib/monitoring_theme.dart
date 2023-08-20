@@ -120,6 +120,11 @@ class MonitoRingTheme {
         ),
       ),
       cardColor: Colors.grey.shade400,
+      expansionTileTheme: ExpansionTileThemeData(
+        textColor: Colors.black,
+        collapsedBackgroundColor: Colors.grey[300],
+        backgroundColor: Colors.grey[350],
+      ),
       listTileTheme: const ListTileThemeData(
           style: ListTileStyle.list,
           tileColor: Colors.white,
