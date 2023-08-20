@@ -35,7 +35,9 @@ class _CustomDropdownButtonFormFieldState
             labelText: widget._label,
             labelStyle: const TextStyle(fontSize: 14),
           ),
-          style: const TextStyle(fontSize: 14, color: Colors.black),
+          style: const TextStyle(
+            fontSize: 14,
+          ),
           validator: (value) {
             // if (value == null || value.isEmpty) {
             //   return '${widget._label} cannot be empty!';
