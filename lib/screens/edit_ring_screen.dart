@@ -717,8 +717,6 @@ class _EditRingScreenState extends State<EditRingScreen> {
                   title: const Text(
                     'Circumstances',
                   ),
-                  collapsedBackgroundColor: Colors.grey[300],
-                  backgroundColor: Colors.grey[300],
                   children: [
                     Form(
                       key: _circumstancesFormKey,
