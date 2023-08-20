@@ -409,9 +409,8 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                 const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
                             child: Column(
                               children: [
-                                Text(
+                                const Text(
                                   'Bill Method',
-                                  style: TextStyle(color: Colors.grey[600]),
                                 ),
                                 Row(
                                   children: [
