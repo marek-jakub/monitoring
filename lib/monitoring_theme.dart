@@ -103,20 +103,20 @@ class MonitoRingTheme {
         border: OutlineInputBorder(
           borderSide: BorderSide(
             width: 1.0,
-            color: Colors.white,
+            color: Colors.black,
           ),
         ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: Colors.green),
         ),
         enabledBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.black),
         ),
         errorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.red),
         ),
         focusedErrorBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: Colors.green),
+          borderSide: BorderSide(color: Colors.red),
         ),
       ),
       cardColor: Colors.grey.shade400,
