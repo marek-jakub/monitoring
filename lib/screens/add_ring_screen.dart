@@ -246,9 +246,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   ),
                   child: Column(
                     children: [
-                      Text(
+                      const Text(
                         'Sex',
-                        style: TextStyle(color: Colors.grey[600]),
                       ),
                       Row(
                         children: [
