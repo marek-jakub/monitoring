@@ -112,7 +112,7 @@ class MonitoRingTheme {
     );
   }
 
-  // Custom color used for swatch
+  // Custom color used for dark theme swatch
   static Map<int, Color> colorDarkSwatch = {
     50: const Color.fromRGBO(250, 250, 250, 0.1),
     100: const Color.fromRGBO(250, 250, 250, 0.2),
