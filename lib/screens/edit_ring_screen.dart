@@ -602,81 +602,68 @@ class _EditRingScreenState extends State<EditRingScreen> {
                           Padding(
                             padding:
                                 const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
-                              child: Column(
-                                children: [
-                                  Text(
-                                    'Fat Score Method',
-                                    style: TextStyle(color: Colors.grey[600]),
-                                  ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('B'),
-                                          value:
-                                              _fatScoreMethodController.text ==
-                                                      'B'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _fatScoreMethodController.text =
-                                                  value! ? 'B' : '';
-                                            });
-                                          },
-                                        ),
+                            child: Column(
+                              children: [
+                                Text(
+                                  'Fat Score Method',
+                                  style: TextStyle(color: Colors.grey[600]),
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('B'),
+                                        value: _fatScoreMethodController.text ==
+                                                'B'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _fatScoreMethodController.text =
+                                                value! ? 'B' : '';
+                                          });
+                                        },
                                       ),
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('E'),
-                                          value:
-                                              _fatScoreMethodController.text ==
-                                                      'E'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _fatScoreMethodController.text =
-                                                  value! ? 'E' : '';
-                                            });
-                                          },
-                                        ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('E'),
+                                        value: _fatScoreMethodController.text ==
+                                                'E'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _fatScoreMethodController.text =
+                                                value! ? 'E' : '';
+                                          });
+                                        },
                                       ),
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text('P'),
-                                          value:
-                                              _fatScoreMethodController.text ==
-                                                      'P'
-                                                  ? true
-                                                  : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _fatScoreMethodController.text =
-                                                  value! ? 'P' : '';
-                                            });
-                                          },
-                                        ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('P'),
+                                        value: _fatScoreMethodController.text ==
+                                                'P'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _fatScoreMethodController.text =
+                                                value! ? 'P' : '';
+                                          });
+                                        },
                                       ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                           Row(
