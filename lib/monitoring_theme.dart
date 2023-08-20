@@ -112,10 +112,27 @@ class MonitoRingTheme {
     );
   }
 
+  // Custom color used for swatch
+  static Map<int, Color> colorDarkSwatch = {
+    50: const Color.fromRGBO(250, 250, 250, 0.1),
+    100: const Color.fromRGBO(250, 250, 250, 0.2),
+    200: const Color.fromRGBO(250, 250, 250, 0.3),
+    300: const Color.fromRGBO(250, 250, 250, 0.4),
+    400: const Color.fromRGBO(250, 250, 250, 0.5),
+    500: const Color.fromRGBO(250, 250, 250, 0.6),
+    600: const Color.fromRGBO(250, 250, 250, 0.7),
+    700: const Color.fromRGBO(250, 250, 250, 0.8),
+    800: const Color.fromRGBO(250, 250, 250, 0.9),
+    900: const Color.fromRGBO(250, 250, 250, 1),
+  };
+
+  static MaterialColor customDarkSwatch =
+      MaterialColor(0x99FFFFFF, colorDarkSwatch);
+
   static ThemeData dark() {
     return ThemeData(
       brightness: Brightness.dark,
-      primarySwatch: Colors.blueGrey,
+      primarySwatch: customDarkSwatch,
       scaffoldBackgroundColor: Colors.grey[800],
       checkboxTheme:
           CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
