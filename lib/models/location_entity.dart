@@ -4,6 +4,7 @@ import 'package:drift/drift.dart';
 class LocationEntity extends Table {
   // non-nullable
   IntColumn get id => integer().autoIncrement()();
+  TextColumn get ringerId => text()();
   TextColumn get country => text()();
   TextColumn get locality => text()();
   TextColumn get placeCode => text()();
