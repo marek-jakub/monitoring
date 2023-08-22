@@ -4,5 +4,6 @@ import 'package:drift/drift.dart';
 class ReportEntity extends Table {
   // non-nullable
   IntColumn get id => integer().autoIncrement()();
+  TextColumn get ringerId => text()();
   TextColumn get date => text()();
 }
