@@ -18,6 +18,12 @@ class $LocationEntityTable extends LocationEntity
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _countryMeta =
       const VerificationMeta('country');
   @override
@@ -63,6 +69,7 @@ class $LocationEntityTable extends LocationEntity
   @override
   List<GeneratedColumn> get $columns => [
         id,
+        ringerId,
         country,
         locality,
         placeCode,
@@ -82,6 +89,12 @@ class $LocationEntityTable extends LocationEntity
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('country')) {
       context.handle(_countryMeta,
@@ -140,6 +153,8 @@ class $LocationEntityTable extends LocationEntity
     return LocationEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       country: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}country'])!,
       locality: attachedDatabase.typeMapping
@@ -166,6 +181,7 @@ class $LocationEntityTable extends LocationEntity
 class LocationEntityData extends DataClass
     implements Insertable<LocationEntityData> {
   final int id;
+  final String ringerId;
   final String country;
   final String locality;
   final String placeCode;
@@ -175,6 +191,7 @@ class LocationEntityData extends DataClass
   final String localeInfo;
   const LocationEntityData(
       {required this.id,
+      required this.ringerId,
       required this.country,
       required this.locality,
       required this.placeCode,
@@ -186,6 +203,7 @@ class LocationEntityData extends DataClass
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['country'] = Variable<String>(country);
     map['locality'] = Variable<String>(locality);
     map['place_code'] = Variable<String>(placeCode);
@@ -199,6 +217,7 @@ class LocationEntityData extends DataClass
   LocationEntityCompanion toCompanion(bool nullToAbsent) {
     return LocationEntityCompanion(
       id: Value(id),
+      ringerId: Value(ringerId),
       country: Value(country),
       locality: Value(locality),
       placeCode: Value(placeCode),
@@ -214,6 +233,7 @@ class LocationEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return LocationEntityData(
       id: serializer.fromJson<int>(json['id']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       country: serializer.fromJson<String>(json['country']),
       locality: serializer.fromJson<String>(json['locality']),
       placeCode: serializer.fromJson<String>(json['placeCode']),
@@ -229,6 +249,7 @@ class LocationEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ringerId': serializer.toJson<String>(ringerId),
       'country': serializer.toJson<String>(country),
       'locality': serializer.toJson<String>(locality),
       'placeCode': serializer.toJson<String>(placeCode),
@@ -241,6 +262,7 @@ class LocationEntityData extends DataClass
 
   LocationEntityData copyWith(
           {int? id,
+          String? ringerId,
           String? country,
           String? locality,
           String? placeCode,
@@ -250,6 +272,7 @@ class LocationEntityData extends DataClass
           String? localeInfo}) =>
       LocationEntityData(
         id: id ?? this.id,
+        ringerId: ringerId ?? this.ringerId,
         country: country ?? this.country,
         locality: locality ?? this.locality,
         placeCode: placeCode ?? this.placeCode,
@@ -262,6 +285,7 @@ class LocationEntityData extends DataClass
   String toString() {
     return (StringBuffer('LocationEntityData(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('country: $country, ')
           ..write('locality: $locality, ')
           ..write('placeCode: $placeCode, ')
@@ -274,13 +298,14 @@ class LocationEntityData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(id, country, locality, placeCode, latitude,
-      longitude, coordinatesAccuracy, localeInfo);
+  int get hashCode => Object.hash(id, ringerId, country, locality, placeCode,
+      latitude, longitude, coordinatesAccuracy, localeInfo);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is LocationEntityData &&
           other.id == this.id &&
+          other.ringerId == this.ringerId &&
           other.country == this.country &&
           other.locality == this.locality &&
           other.placeCode == this.placeCode &&
@@ -292,6 +317,7 @@ class LocationEntityData extends DataClass
 
 class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
   final Value<int> id;
+  final Value<String> ringerId;
   final Value<String> country;
   final Value<String> locality;
   final Value<String> placeCode;
@@ -301,6 +327,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
   final Value<String> localeInfo;
   const LocationEntityCompanion({
     this.id = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.country = const Value.absent(),
     this.locality = const Value.absent(),
     this.placeCode = const Value.absent(),
@@ -311,6 +338,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
   });
   LocationEntityCompanion.insert({
     this.id = const Value.absent(),
+    required String ringerId,
     required String country,
     required String locality,
     required String placeCode,
@@ -318,7 +346,8 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
     required String longitude,
     required String coordinatesAccuracy,
     required String localeInfo,
-  })  : country = Value(country),
+  })  : ringerId = Value(ringerId),
+        country = Value(country),
         locality = Value(locality),
         placeCode = Value(placeCode),
         latitude = Value(latitude),
@@ -327,6 +356,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
         localeInfo = Value(localeInfo);
   static Insertable<LocationEntityData> custom({
     Expression<int>? id,
+    Expression<String>? ringerId,
     Expression<String>? country,
     Expression<String>? locality,
     Expression<String>? placeCode,
@@ -337,6 +367,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (country != null) 'country': country,
       if (locality != null) 'locality': locality,
       if (placeCode != null) 'place_code': placeCode,
@@ -350,6 +381,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
 
   LocationEntityCompanion copyWith(
       {Value<int>? id,
+      Value<String>? ringerId,
       Value<String>? country,
       Value<String>? locality,
       Value<String>? placeCode,
@@ -359,6 +391,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
       Value<String>? localeInfo}) {
     return LocationEntityCompanion(
       id: id ?? this.id,
+      ringerId: ringerId ?? this.ringerId,
       country: country ?? this.country,
       locality: locality ?? this.locality,
       placeCode: placeCode ?? this.placeCode,
@@ -374,6 +407,9 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (country.present) {
       map['country'] = Variable<String>(country.value);
@@ -403,6 +439,7 @@ class LocationEntityCompanion extends UpdateCompanion<LocationEntityData> {
   String toString() {
     return (StringBuffer('LocationEntityCompanion(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('country: $country, ')
           ..write('locality: $locality, ')
           ..write('placeCode: $placeCode, ')
@@ -430,6 +467,12 @@ class $LostRingEntityTable extends LostRingEntity
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _ringSeriesCodeMeta =
       const VerificationMeta('ringSeriesCode');
   @override
@@ -443,7 +486,8 @@ class $LostRingEntityTable extends LostRingEntity
       'id_number', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, ringSeriesCode, idNumber];
+  List<GeneratedColumn> get $columns =>
+      [id, ringerId, ringSeriesCode, idNumber];
   @override
   String get aliasedName => _alias ?? 'lost_ring_entity';
   @override
@@ -455,6 +499,12 @@ class $LostRingEntityTable extends LostRingEntity
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('ring_series_code')) {
       context.handle(
@@ -481,6 +531,8 @@ class $LostRingEntityTable extends LostRingEntity
     return LostRingEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       ringSeriesCode: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ring_series_code'])!,
       idNumber: attachedDatabase.typeMapping
@@ -497,14 +549,19 @@ class $LostRingEntityTable extends LostRingEntity
 class LostRingEntityData extends DataClass
     implements Insertable<LostRingEntityData> {
   final int id;
+  final String ringerId;
   final String ringSeriesCode;
   final String idNumber;
   const LostRingEntityData(
-      {required this.id, required this.ringSeriesCode, required this.idNumber});
+      {required this.id,
+      required this.ringerId,
+      required this.ringSeriesCode,
+      required this.idNumber});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['ring_series_code'] = Variable<String>(ringSeriesCode);
     map['id_number'] = Variable<String>(idNumber);
     return map;
@@ -513,6 +570,7 @@ class LostRingEntityData extends DataClass
   LostRingEntityCompanion toCompanion(bool nullToAbsent) {
     return LostRingEntityCompanion(
       id: Value(id),
+      ringerId: Value(ringerId),
       ringSeriesCode: Value(ringSeriesCode),
       idNumber: Value(idNumber),
     );
@@ -523,6 +581,7 @@ class LostRingEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return LostRingEntityData(
       id: serializer.fromJson<int>(json['id']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
       idNumber: serializer.fromJson<String>(json['idNumber']),
     );
@@ -532,15 +591,20 @@ class LostRingEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ringerId': serializer.toJson<String>(ringerId),
       'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
       'idNumber': serializer.toJson<String>(idNumber),
     };
   }
 
   LostRingEntityData copyWith(
-          {int? id, String? ringSeriesCode, String? idNumber}) =>
+          {int? id,
+          String? ringerId,
+          String? ringSeriesCode,
+          String? idNumber}) =>
       LostRingEntityData(
         id: id ?? this.id,
+        ringerId: ringerId ?? this.ringerId,
         ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
         idNumber: idNumber ?? this.idNumber,
       );
@@ -548,6 +612,7 @@ class LostRingEntityData extends DataClass
   String toString() {
     return (StringBuffer('LostRingEntityData(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('idNumber: $idNumber')
           ..write(')'))
@@ -555,38 +620,45 @@ class LostRingEntityData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(id, ringSeriesCode, idNumber);
+  int get hashCode => Object.hash(id, ringerId, ringSeriesCode, idNumber);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is LostRingEntityData &&
           other.id == this.id &&
+          other.ringerId == this.ringerId &&
           other.ringSeriesCode == this.ringSeriesCode &&
           other.idNumber == this.idNumber);
 }
 
 class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
   final Value<int> id;
+  final Value<String> ringerId;
   final Value<String> ringSeriesCode;
   final Value<String> idNumber;
   const LostRingEntityCompanion({
     this.id = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.ringSeriesCode = const Value.absent(),
     this.idNumber = const Value.absent(),
   });
   LostRingEntityCompanion.insert({
     this.id = const Value.absent(),
+    required String ringerId,
     required String ringSeriesCode,
     required String idNumber,
-  })  : ringSeriesCode = Value(ringSeriesCode),
+  })  : ringerId = Value(ringerId),
+        ringSeriesCode = Value(ringSeriesCode),
         idNumber = Value(idNumber);
   static Insertable<LostRingEntityData> custom({
     Expression<int>? id,
+    Expression<String>? ringerId,
     Expression<String>? ringSeriesCode,
     Expression<String>? idNumber,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
       if (idNumber != null) 'id_number': idNumber,
     });
@@ -594,10 +666,12 @@ class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
 
   LostRingEntityCompanion copyWith(
       {Value<int>? id,
+      Value<String>? ringerId,
       Value<String>? ringSeriesCode,
       Value<String>? idNumber}) {
     return LostRingEntityCompanion(
       id: id ?? this.id,
+      ringerId: ringerId ?? this.ringerId,
       ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
       idNumber: idNumber ?? this.idNumber,
     );
@@ -608,6 +682,9 @@ class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (ringSeriesCode.present) {
       map['ring_series_code'] = Variable<String>(ringSeriesCode.value);
@@ -622,6 +699,7 @@ class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
   String toString() {
     return (StringBuffer('LostRingEntityCompanion(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('idNumber: $idNumber')
           ..write(')'))
@@ -644,6 +722,12 @@ class $OrderEntityTable extends OrderEntity
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _ringSeriesCodeMeta =
       const VerificationMeta('ringSeriesCode');
   @override
@@ -656,7 +740,7 @@ class $OrderEntityTable extends OrderEntity
       'amount', aliasedName, false,
       type: DriftSqlType.int, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, ringSeriesCode, amount];
+  List<GeneratedColumn> get $columns => [id, ringerId, ringSeriesCode, amount];
   @override
   String get aliasedName => _alias ?? 'order_entity';
   @override
@@ -668,6 +752,12 @@ class $OrderEntityTable extends OrderEntity
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('ring_series_code')) {
       context.handle(
@@ -694,6 +784,8 @@ class $OrderEntityTable extends OrderEntity
     return OrderEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       ringSeriesCode: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ring_series_code'])!,
       amount: attachedDatabase.typeMapping
@@ -709,14 +801,19 @@ class $OrderEntityTable extends OrderEntity
 
 class OrderEntityData extends DataClass implements Insertable<OrderEntityData> {
   final int id;
+  final String ringerId;
   final String ringSeriesCode;
   final int amount;
   const OrderEntityData(
-      {required this.id, required this.ringSeriesCode, required this.amount});
+      {required this.id,
+      required this.ringerId,
+      required this.ringSeriesCode,
+      required this.amount});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['ring_series_code'] = Variable<String>(ringSeriesCode);
     map['amount'] = Variable<int>(amount);
     return map;
@@ -725,6 +822,7 @@ class OrderEntityData extends DataClass implements Insertable<OrderEntityData> {
   OrderEntityCompanion toCompanion(bool nullToAbsent) {
     return OrderEntityCompanion(
       id: Value(id),
+      ringerId: Value(ringerId),
       ringSeriesCode: Value(ringSeriesCode),
       amount: Value(amount),
     );
@@ -735,6 +833,7 @@ class OrderEntityData extends DataClass implements Insertable<OrderEntityData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return OrderEntityData(
       id: serializer.fromJson<int>(json['id']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
       amount: serializer.fromJson<int>(json['amount']),
     );
@@ -744,14 +843,17 @@ class OrderEntityData extends DataClass implements Insertable<OrderEntityData> {
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ringerId': serializer.toJson<String>(ringerId),
       'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
       'amount': serializer.toJson<int>(amount),
     };
   }
 
-  OrderEntityData copyWith({int? id, String? ringSeriesCode, int? amount}) =>
+  OrderEntityData copyWith(
+          {int? id, String? ringerId, String? ringSeriesCode, int? amount}) =>
       OrderEntityData(
         id: id ?? this.id,
+        ringerId: ringerId ?? this.ringerId,
         ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
         amount: amount ?? this.amount,
       );
@@ -759,6 +861,7 @@ class OrderEntityData extends DataClass implements Insertable<OrderEntityData> {
   String toString() {
     return (StringBuffer('OrderEntityData(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('amount: $amount')
           ..write(')'))
@@ -766,47 +869,58 @@ class OrderEntityData extends DataClass implements Insertable<OrderEntityData> {
   }
 
   @override
-  int get hashCode => Object.hash(id, ringSeriesCode, amount);
+  int get hashCode => Object.hash(id, ringerId, ringSeriesCode, amount);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is OrderEntityData &&
           other.id == this.id &&
+          other.ringerId == this.ringerId &&
           other.ringSeriesCode == this.ringSeriesCode &&
           other.amount == this.amount);
 }
 
 class OrderEntityCompanion extends UpdateCompanion<OrderEntityData> {
   final Value<int> id;
+  final Value<String> ringerId;
   final Value<String> ringSeriesCode;
   final Value<int> amount;
   const OrderEntityCompanion({
     this.id = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.ringSeriesCode = const Value.absent(),
     this.amount = const Value.absent(),
   });
   OrderEntityCompanion.insert({
     this.id = const Value.absent(),
+    required String ringerId,
     required String ringSeriesCode,
     required int amount,
-  })  : ringSeriesCode = Value(ringSeriesCode),
+  })  : ringerId = Value(ringerId),
+        ringSeriesCode = Value(ringSeriesCode),
         amount = Value(amount);
   static Insertable<OrderEntityData> custom({
     Expression<int>? id,
+    Expression<String>? ringerId,
     Expression<String>? ringSeriesCode,
     Expression<int>? amount,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
       if (amount != null) 'amount': amount,
     });
   }
 
   OrderEntityCompanion copyWith(
-      {Value<int>? id, Value<String>? ringSeriesCode, Value<int>? amount}) {
+      {Value<int>? id,
+      Value<String>? ringerId,
+      Value<String>? ringSeriesCode,
+      Value<int>? amount}) {
     return OrderEntityCompanion(
       id: id ?? this.id,
+      ringerId: ringerId ?? this.ringerId,
       ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
       amount: amount ?? this.amount,
     );
@@ -817,6 +931,9 @@ class OrderEntityCompanion extends UpdateCompanion<OrderEntityData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (ringSeriesCode.present) {
       map['ring_series_code'] = Variable<String>(ringSeriesCode.value);
@@ -831,6 +948,7 @@ class OrderEntityCompanion extends UpdateCompanion<OrderEntityData> {
   String toString() {
     return (StringBuffer('OrderEntityCompanion(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('amount: $amount')
           ..write(')'))
@@ -853,13 +971,19 @@ class $ReportEntityTable extends ReportEntity
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _dateMeta = const VerificationMeta('date');
   @override
   late final GeneratedColumn<String> date = GeneratedColumn<String>(
       'date', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, date];
+  List<GeneratedColumn> get $columns => [id, ringerId, date];
   @override
   String get aliasedName => _alias ?? 'report_entity';
   @override
@@ -871,6 +995,12 @@ class $ReportEntityTable extends ReportEntity
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('date')) {
       context.handle(
@@ -889,6 +1019,8 @@ class $ReportEntityTable extends ReportEntity
     return ReportEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       date: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
     );
@@ -903,12 +1035,15 @@ class $ReportEntityTable extends ReportEntity
 class ReportEntityData extends DataClass
     implements Insertable<ReportEntityData> {
   final int id;
+  final String ringerId;
   final String date;
-  const ReportEntityData({required this.id, required this.date});
+  const ReportEntityData(
+      {required this.id, required this.ringerId, required this.date});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['date'] = Variable<String>(date);
     return map;
   }
@@ -916,6 +1051,7 @@ class ReportEntityData extends DataClass
   ReportEntityCompanion toCompanion(bool nullToAbsent) {
     return ReportEntityCompanion(
       id: Value(id),
+      ringerId: Value(ringerId),
       date: Value(date),
     );
   }
@@ -925,6 +1061,7 @@ class ReportEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return ReportEntityData(
       id: serializer.fromJson<int>(json['id']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       date: serializer.fromJson<String>(json['date']),
     );
   }
@@ -933,57 +1070,70 @@ class ReportEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ringerId': serializer.toJson<String>(ringerId),
       'date': serializer.toJson<String>(date),
     };
   }
 
-  ReportEntityData copyWith({int? id, String? date}) => ReportEntityData(
+  ReportEntityData copyWith({int? id, String? ringerId, String? date}) =>
+      ReportEntityData(
         id: id ?? this.id,
+        ringerId: ringerId ?? this.ringerId,
         date: date ?? this.date,
       );
   @override
   String toString() {
     return (StringBuffer('ReportEntityData(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('date: $date')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, date);
+  int get hashCode => Object.hash(id, ringerId, date);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ReportEntityData &&
           other.id == this.id &&
+          other.ringerId == this.ringerId &&
           other.date == this.date);
 }
 
 class ReportEntityCompanion extends UpdateCompanion<ReportEntityData> {
   final Value<int> id;
+  final Value<String> ringerId;
   final Value<String> date;
   const ReportEntityCompanion({
     this.id = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.date = const Value.absent(),
   });
   ReportEntityCompanion.insert({
     this.id = const Value.absent(),
+    required String ringerId,
     required String date,
-  }) : date = Value(date);
+  })  : ringerId = Value(ringerId),
+        date = Value(date);
   static Insertable<ReportEntityData> custom({
     Expression<int>? id,
+    Expression<String>? ringerId,
     Expression<String>? date,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (date != null) 'date': date,
     });
   }
 
-  ReportEntityCompanion copyWith({Value<int>? id, Value<String>? date}) {
+  ReportEntityCompanion copyWith(
+      {Value<int>? id, Value<String>? ringerId, Value<String>? date}) {
     return ReportEntityCompanion(
       id: id ?? this.id,
+      ringerId: ringerId ?? this.ringerId,
       date: date ?? this.date,
     );
   }
@@ -993,6 +1143,9 @@ class ReportEntityCompanion extends UpdateCompanion<ReportEntityData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (date.present) {
       map['date'] = Variable<String>(date.value);
@@ -1004,6 +1157,7 @@ class ReportEntityCompanion extends UpdateCompanion<ReportEntityData> {
   String toString() {
     return (StringBuffer('ReportEntityCompanion(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('date: $date')
           ..write(')'))
         .toString();
@@ -4876,6 +5030,12 @@ class $RingseriesEntityTable extends RingseriesEntity
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _codeMeta = const VerificationMeta('code');
   @override
   late final GeneratedColumn<String> code = GeneratedColumn<String>(
@@ -4900,7 +5060,7 @@ class $RingseriesEntityTable extends RingseriesEntity
       type: DriftSqlType.int, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, code, schemeCode, ringfrom, ringto];
+      [id, ringerId, code, schemeCode, ringfrom, ringto];
   @override
   String get aliasedName => _alias ?? 'ringseries_entity';
   @override
@@ -4913,6 +5073,12 @@ class $RingseriesEntityTable extends RingseriesEntity
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('code')) {
       context.handle(
@@ -4951,6 +5117,8 @@ class $RingseriesEntityTable extends RingseriesEntity
     return RingseriesEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       code: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}code'])!,
       schemeCode: attachedDatabase.typeMapping
@@ -4971,12 +5139,14 @@ class $RingseriesEntityTable extends RingseriesEntity
 class RingseriesEntityData extends DataClass
     implements Insertable<RingseriesEntityData> {
   final int id;
+  final String ringerId;
   final String code;
   final String schemeCode;
   final int ringfrom;
   final int ringto;
   const RingseriesEntityData(
       {required this.id,
+      required this.ringerId,
       required this.code,
       required this.schemeCode,
       required this.ringfrom,
@@ -4985,6 +5155,7 @@ class RingseriesEntityData extends DataClass
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['code'] = Variable<String>(code);
     map['scheme_code'] = Variable<String>(schemeCode);
     map['ringfrom'] = Variable<int>(ringfrom);
@@ -4995,6 +5166,7 @@ class RingseriesEntityData extends DataClass
   RingseriesEntityCompanion toCompanion(bool nullToAbsent) {
     return RingseriesEntityCompanion(
       id: Value(id),
+      ringerId: Value(ringerId),
       code: Value(code),
       schemeCode: Value(schemeCode),
       ringfrom: Value(ringfrom),
@@ -5007,6 +5179,7 @@ class RingseriesEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return RingseriesEntityData(
       id: serializer.fromJson<int>(json['id']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       code: serializer.fromJson<String>(json['code']),
       schemeCode: serializer.fromJson<String>(json['schemeCode']),
       ringfrom: serializer.fromJson<int>(json['ringfrom']),
@@ -5018,6 +5191,7 @@ class RingseriesEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ringerId': serializer.toJson<String>(ringerId),
       'code': serializer.toJson<String>(code),
       'schemeCode': serializer.toJson<String>(schemeCode),
       'ringfrom': serializer.toJson<int>(ringfrom),
@@ -5027,12 +5201,14 @@ class RingseriesEntityData extends DataClass
 
   RingseriesEntityData copyWith(
           {int? id,
+          String? ringerId,
           String? code,
           String? schemeCode,
           int? ringfrom,
           int? ringto}) =>
       RingseriesEntityData(
         id: id ?? this.id,
+        ringerId: ringerId ?? this.ringerId,
         code: code ?? this.code,
         schemeCode: schemeCode ?? this.schemeCode,
         ringfrom: ringfrom ?? this.ringfrom,
@@ -5042,6 +5218,7 @@ class RingseriesEntityData extends DataClass
   String toString() {
     return (StringBuffer('RingseriesEntityData(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('code: $code, ')
           ..write('schemeCode: $schemeCode, ')
           ..write('ringfrom: $ringfrom, ')
@@ -5051,12 +5228,14 @@ class RingseriesEntityData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(id, code, schemeCode, ringfrom, ringto);
+  int get hashCode =>
+      Object.hash(id, ringerId, code, schemeCode, ringfrom, ringto);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is RingseriesEntityData &&
           other.id == this.id &&
+          other.ringerId == this.ringerId &&
           other.code == this.code &&
           other.schemeCode == this.schemeCode &&
           other.ringfrom == this.ringfrom &&
@@ -5065,12 +5244,14 @@ class RingseriesEntityData extends DataClass
 
 class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
   final Value<int> id;
+  final Value<String> ringerId;
   final Value<String> code;
   final Value<String> schemeCode;
   final Value<int> ringfrom;
   final Value<int> ringto;
   const RingseriesEntityCompanion({
     this.id = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.code = const Value.absent(),
     this.schemeCode = const Value.absent(),
     this.ringfrom = const Value.absent(),
@@ -5078,16 +5259,19 @@ class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
   });
   RingseriesEntityCompanion.insert({
     this.id = const Value.absent(),
+    required String ringerId,
     required String code,
     required String schemeCode,
     required int ringfrom,
     required int ringto,
-  })  : code = Value(code),
+  })  : ringerId = Value(ringerId),
+        code = Value(code),
         schemeCode = Value(schemeCode),
         ringfrom = Value(ringfrom),
         ringto = Value(ringto);
   static Insertable<RingseriesEntityData> custom({
     Expression<int>? id,
+    Expression<String>? ringerId,
     Expression<String>? code,
     Expression<String>? schemeCode,
     Expression<int>? ringfrom,
@@ -5095,6 +5279,7 @@ class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (code != null) 'code': code,
       if (schemeCode != null) 'scheme_code': schemeCode,
       if (ringfrom != null) 'ringfrom': ringfrom,
@@ -5104,12 +5289,14 @@ class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
 
   RingseriesEntityCompanion copyWith(
       {Value<int>? id,
+      Value<String>? ringerId,
       Value<String>? code,
       Value<String>? schemeCode,
       Value<int>? ringfrom,
       Value<int>? ringto}) {
     return RingseriesEntityCompanion(
       id: id ?? this.id,
+      ringerId: ringerId ?? this.ringerId,
       code: code ?? this.code,
       schemeCode: schemeCode ?? this.schemeCode,
       ringfrom: ringfrom ?? this.ringfrom,
@@ -5122,6 +5309,9 @@ class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (code.present) {
       map['code'] = Variable<String>(code.value);
@@ -5142,6 +5332,7 @@ class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
   String toString() {
     return (StringBuffer('RingseriesEntityCompanion(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('code: $code, ')
           ..write('schemeCode: $schemeCode, ')
           ..write('ringfrom: $ringfrom, ')
@@ -5166,6 +5357,12 @@ class $UsedRingEntityTable extends UsedRingEntity
       requiredDuringInsert: false,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('PRIMARY KEY AUTOINCREMENT'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _ringSeriesCodeMeta =
       const VerificationMeta('ringSeriesCode');
   @override
@@ -5179,7 +5376,8 @@ class $UsedRingEntityTable extends UsedRingEntity
       'id_number', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
-  List<GeneratedColumn> get $columns => [id, ringSeriesCode, idNumber];
+  List<GeneratedColumn> get $columns =>
+      [id, ringerId, ringSeriesCode, idNumber];
   @override
   String get aliasedName => _alias ?? 'used_ring_entity';
   @override
@@ -5191,6 +5389,12 @@ class $UsedRingEntityTable extends UsedRingEntity
     final data = instance.toColumns(true);
     if (data.containsKey('id')) {
       context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('ring_series_code')) {
       context.handle(
@@ -5217,6 +5421,8 @@ class $UsedRingEntityTable extends UsedRingEntity
     return UsedRingEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       ringSeriesCode: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ring_series_code'])!,
       idNumber: attachedDatabase.typeMapping
@@ -5233,14 +5439,19 @@ class $UsedRingEntityTable extends UsedRingEntity
 class UsedRingEntityData extends DataClass
     implements Insertable<UsedRingEntityData> {
   final int id;
+  final String ringerId;
   final String ringSeriesCode;
   final String idNumber;
   const UsedRingEntityData(
-      {required this.id, required this.ringSeriesCode, required this.idNumber});
+      {required this.id,
+      required this.ringerId,
+      required this.ringSeriesCode,
+      required this.idNumber});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['ring_series_code'] = Variable<String>(ringSeriesCode);
     map['id_number'] = Variable<String>(idNumber);
     return map;
@@ -5249,6 +5460,7 @@ class UsedRingEntityData extends DataClass
   UsedRingEntityCompanion toCompanion(bool nullToAbsent) {
     return UsedRingEntityCompanion(
       id: Value(id),
+      ringerId: Value(ringerId),
       ringSeriesCode: Value(ringSeriesCode),
       idNumber: Value(idNumber),
     );
@@ -5259,6 +5471,7 @@ class UsedRingEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return UsedRingEntityData(
       id: serializer.fromJson<int>(json['id']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
       idNumber: serializer.fromJson<String>(json['idNumber']),
     );
@@ -5268,15 +5481,20 @@ class UsedRingEntityData extends DataClass
     serializer ??= driftRuntimeOptions.defaultSerializer;
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
+      'ringerId': serializer.toJson<String>(ringerId),
       'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
       'idNumber': serializer.toJson<String>(idNumber),
     };
   }
 
   UsedRingEntityData copyWith(
-          {int? id, String? ringSeriesCode, String? idNumber}) =>
+          {int? id,
+          String? ringerId,
+          String? ringSeriesCode,
+          String? idNumber}) =>
       UsedRingEntityData(
         id: id ?? this.id,
+        ringerId: ringerId ?? this.ringerId,
         ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
         idNumber: idNumber ?? this.idNumber,
       );
@@ -5284,6 +5502,7 @@ class UsedRingEntityData extends DataClass
   String toString() {
     return (StringBuffer('UsedRingEntityData(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('idNumber: $idNumber')
           ..write(')'))
@@ -5291,38 +5510,45 @@ class UsedRingEntityData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(id, ringSeriesCode, idNumber);
+  int get hashCode => Object.hash(id, ringerId, ringSeriesCode, idNumber);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is UsedRingEntityData &&
           other.id == this.id &&
+          other.ringerId == this.ringerId &&
           other.ringSeriesCode == this.ringSeriesCode &&
           other.idNumber == this.idNumber);
 }
 
 class UsedRingEntityCompanion extends UpdateCompanion<UsedRingEntityData> {
   final Value<int> id;
+  final Value<String> ringerId;
   final Value<String> ringSeriesCode;
   final Value<String> idNumber;
   const UsedRingEntityCompanion({
     this.id = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.ringSeriesCode = const Value.absent(),
     this.idNumber = const Value.absent(),
   });
   UsedRingEntityCompanion.insert({
     this.id = const Value.absent(),
+    required String ringerId,
     required String ringSeriesCode,
     required String idNumber,
-  })  : ringSeriesCode = Value(ringSeriesCode),
+  })  : ringerId = Value(ringerId),
+        ringSeriesCode = Value(ringSeriesCode),
         idNumber = Value(idNumber);
   static Insertable<UsedRingEntityData> custom({
     Expression<int>? id,
+    Expression<String>? ringerId,
     Expression<String>? ringSeriesCode,
     Expression<String>? idNumber,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
       if (idNumber != null) 'id_number': idNumber,
     });
@@ -5330,10 +5556,12 @@ class UsedRingEntityCompanion extends UpdateCompanion<UsedRingEntityData> {
 
   UsedRingEntityCompanion copyWith(
       {Value<int>? id,
+      Value<String>? ringerId,
       Value<String>? ringSeriesCode,
       Value<String>? idNumber}) {
     return UsedRingEntityCompanion(
       id: id ?? this.id,
+      ringerId: ringerId ?? this.ringerId,
       ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
       idNumber: idNumber ?? this.idNumber,
     );
@@ -5344,6 +5572,9 @@ class UsedRingEntityCompanion extends UpdateCompanion<UsedRingEntityData> {
     final map = <String, Expression>{};
     if (id.present) {
       map['id'] = Variable<int>(id.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (ringSeriesCode.present) {
       map['ring_series_code'] = Variable<String>(ringSeriesCode.value);
@@ -5358,6 +5589,7 @@ class UsedRingEntityCompanion extends UpdateCompanion<UsedRingEntityData> {
   String toString() {
     return (StringBuffer('UsedRingEntityCompanion(')
           ..write('id: $id, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('idNumber: $idNumber')
           ..write(')'))
@@ -5374,6 +5606,7 @@ class SessionLocationViewData extends DataClass {
   final String startTime;
   final String endTime;
   final int? locationId;
+  final String? locationRingerId;
   final String? locationCountry;
   final String? locationLocality;
   final String? locationPlaceCode;
@@ -5390,6 +5623,7 @@ class SessionLocationViewData extends DataClass {
       required this.startTime,
       required this.endTime,
       this.locationId,
+      this.locationRingerId,
       this.locationCountry,
       this.locationLocality,
       this.locationPlaceCode,
@@ -5409,6 +5643,7 @@ class SessionLocationViewData extends DataClass {
       startTime: serializer.fromJson<String>(json['startTime']),
       endTime: serializer.fromJson<String>(json['endTime']),
       locationId: serializer.fromJson<int?>(json['locationId']),
+      locationRingerId: serializer.fromJson<String?>(json['locationRingerId']),
       locationCountry: serializer.fromJson<String?>(json['locationCountry']),
       locationLocality: serializer.fromJson<String?>(json['locationLocality']),
       locationPlaceCode:
@@ -5432,6 +5667,7 @@ class SessionLocationViewData extends DataClass {
       'startTime': serializer.toJson<String>(startTime),
       'endTime': serializer.toJson<String>(endTime),
       'locationId': serializer.toJson<int?>(locationId),
+      'locationRingerId': serializer.toJson<String?>(locationRingerId),
       'locationCountry': serializer.toJson<String?>(locationCountry),
       'locationLocality': serializer.toJson<String?>(locationLocality),
       'locationPlaceCode': serializer.toJson<String?>(locationPlaceCode),
@@ -5452,6 +5688,7 @@ class SessionLocationViewData extends DataClass {
           String? startTime,
           String? endTime,
           Value<int?> locationId = const Value.absent(),
+          Value<String?> locationRingerId = const Value.absent(),
           Value<String?> locationCountry = const Value.absent(),
           Value<String?> locationLocality = const Value.absent(),
           Value<String?> locationPlaceCode = const Value.absent(),
@@ -5468,6 +5705,9 @@ class SessionLocationViewData extends DataClass {
         startTime: startTime ?? this.startTime,
         endTime: endTime ?? this.endTime,
         locationId: locationId.present ? locationId.value : this.locationId,
+        locationRingerId: locationRingerId.present
+            ? locationRingerId.value
+            : this.locationRingerId,
         locationCountry: locationCountry.present
             ? locationCountry.value
             : this.locationCountry,
@@ -5496,6 +5736,7 @@ class SessionLocationViewData extends DataClass {
           ..write('startTime: $startTime, ')
           ..write('endTime: $endTime, ')
           ..write('locationId: $locationId, ')
+          ..write('locationRingerId: $locationRingerId, ')
           ..write('locationCountry: $locationCountry, ')
           ..write('locationLocality: $locationLocality, ')
           ..write('locationPlaceCode: $locationPlaceCode, ')
@@ -5517,6 +5758,7 @@ class SessionLocationViewData extends DataClass {
       startTime,
       endTime,
       locationId,
+      locationRingerId,
       locationCountry,
       locationLocality,
       locationPlaceCode,
@@ -5536,6 +5778,7 @@ class SessionLocationViewData extends DataClass {
           other.startTime == this.startTime &&
           other.endTime == this.endTime &&
           other.locationId == this.locationId &&
+          other.locationRingerId == this.locationRingerId &&
           other.locationCountry == this.locationCountry &&
           other.locationLocality == this.locationLocality &&
           other.locationPlaceCode == this.locationPlaceCode &&
@@ -5566,6 +5809,7 @@ class $SessionLocationViewView
         startTime,
         endTime,
         locationId,
+        locationRingerId,
         locationCountry,
         locationLocality,
         locationPlaceCode,
@@ -5579,7 +5823,7 @@ class $SessionLocationViewView
   @override
   String get entityName => 'session_location_view';
   @override
-  String? get createViewStmt => null;
+  Map<SqlDialect, String>? get createViewStatements => null;
   @override
   $SessionLocationViewView get asDslTable => this;
   @override
@@ -5603,6 +5847,8 @@ class $SessionLocationViewView
           .read(DriftSqlType.string, data['${effectivePrefix}end_time'])!,
       locationId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}location_id']),
+      locationRingerId: attachedDatabase.typeMapping.read(
+          DriftSqlType.string, data['${effectivePrefix}location_ringer_id']),
       locationCountry: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}location_country']),
       locationLocality: attachedDatabase.typeMapping.read(
@@ -5651,6 +5897,10 @@ class $SessionLocationViewView
   late final GeneratedColumn<int> locationId = GeneratedColumn<int>(
       'location_id', aliasedName, true,
       generatedAs: GeneratedAs(aLocation.id, false), type: DriftSqlType.int);
+  late final GeneratedColumn<String> locationRingerId = GeneratedColumn<String>(
+      'location_ringer_id', aliasedName, true,
+      generatedAs: GeneratedAs(aLocation.ringerId, false),
+      type: DriftSqlType.string);
   late final GeneratedColumn<String> locationCountry = GeneratedColumn<String>(
       'location_country', aliasedName, true,
       generatedAs: GeneratedAs(aLocation.country, false),
