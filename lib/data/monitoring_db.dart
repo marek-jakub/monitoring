@@ -197,7 +197,7 @@ class MonRingDb extends _$MonRingDb {
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db_b.sqlite'));
+    final file = File(p.join(dbFolder.path, 'db_c.sqlite'));
 
     //return NativeDatabase.createInBackground(file);
     return NativeDatabase(file);
@@ -210,6 +210,7 @@ abstract class SessionLocationView extends View {
   LocationEntity get aLocation;
 
   Expression<int> get locationId => aLocation.id;
+  Expression<String> get locationRingerId => aLocation.ringerId;
   Expression<String> get locationCountry => aLocation.country;
   Expression<String> get locationLocality => aLocation.locality;
   Expression<String> get locationPlaceCode => aLocation.placeCode;
@@ -228,6 +229,7 @@ abstract class SessionLocationView extends View {
         aSession.startTime,
         aSession.endTime,
         locationId,
+        locationRingerId,
         locationCountry,
         locationLocality,
         locationPlaceCode,
