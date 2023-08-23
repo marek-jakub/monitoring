@@ -248,6 +248,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
     if (isValid != null && isValid) {
       final locationEntity = LocationEntityCompanion(
+        // TODO: if different from the signed in ringer id, use that one.
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         locality: d.Value(_localityController.text),
         country: d.Value(_countryController.text),
         placeCode: d.Value(_placeCodeController.text),
