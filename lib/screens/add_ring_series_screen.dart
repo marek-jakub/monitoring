@@ -94,6 +94,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   txtLabel: 'Series from',
                   keyboard: 'number',
                 ),
+                CustomTextFormField(
+                  controller: _ringTo,
+                  txtLabel: 'Series to',
+                  keyboard: 'number',
+                ),
               ],
             ),
           ),
