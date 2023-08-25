@@ -79,7 +79,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
             child: Form(
               key: _ringSeriesFormKey,
               child: Column(
-                children: [],
+                children: [
+                  CustomTextFormField(
+                    controller: _seriesCode,
+                    txtLabel: 'Series code',
+                    keyboard: 'text',
+                  ),
+                ],
               ),
             ),
           ),
