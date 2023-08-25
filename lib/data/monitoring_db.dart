@@ -198,6 +198,11 @@ class MonRingDb extends _$MonRingDb {
     return await update(ringseriesEntity).replace(companion);
   }
 
+  /// Deletes ring series data identified by [id].
+  Future<int> deleteRingSeries(int id) async {
+    return (delete(ringseriesEntity)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
   // USEDRING ENTITY
   // TODO: define used ring access methods
 
