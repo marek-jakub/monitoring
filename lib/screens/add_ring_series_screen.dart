@@ -41,6 +41,15 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   @override
+  void dispose() {
+    // Dispose off text controllers.
+    _seriesCode.dispose();
+    _schemeCode.dispose();
+    _ringFrom.dispose();
+    _ringTo.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
