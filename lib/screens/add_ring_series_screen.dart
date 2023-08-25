@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 
+import '../widgets/custom_widgets.dart';
+
 /// A form to input and save ring series information as a ringseries entity.
 class AddRingSeriesScreen extends StatefulWidget {
   static MaterialPage page() {
