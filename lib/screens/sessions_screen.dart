@@ -171,7 +171,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                               border: Border(
                                                 top: BorderSide(
                                                   color: Colors.black,
-                                                  width: 2,
+                                                  width: 3,
                                                 ),
                                                 left: BorderSide(
                                                     color: Colors.black),
@@ -179,7 +179,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                                     color: Colors.black),
                                                 bottom: BorderSide(
                                                   color: Colors.black,
-                                                  width: 2,
+                                                  width: 3,
                                                 ),
                                               ),
                                             )
