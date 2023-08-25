@@ -33,6 +33,14 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   late RingDataManager _dataManager;
 
   @override
+  void initState() {
+    super.initState();
+
+    _dataManager = Provider.of<RingDataManager>(context, listen: false);
+    _dataManager.addListener(providerListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
