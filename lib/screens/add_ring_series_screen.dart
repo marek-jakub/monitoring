@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
 import 'package:provider/provider.dart';
 
 import '../models/models.dart';
@@ -82,6 +83,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   controller: _seriesCode,
                   txtLabel: 'Series code',
                   keyboard: 'text',
+                ),
+                CustomDropdownButtonFormField(
+                  controller: _schemeCode,
+                  txtLabel: 'Scheme code',
+                  listValues: ringingSchemes,
                 ),
               ],
             ),
