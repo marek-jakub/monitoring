@@ -51,27 +51,31 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'MonitoRing: ring series',
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const BackButtonIcon(),
-          onPressed: () {
-            Provider.of<RingDataManager>(context, listen: false)
-                .setNewRingSeries(false);
-          },
-        ),
-      ),
-      body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          Text('ring_series_screen'),
-        ],
-      ),
+    return Consumer<RingDataManager>(
+      builder: (context, ringDataManager, child) {
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'MonitoRing: ring series',
+            ),
+            centerTitle: true,
+            leading: IconButton(
+              icon: const BackButtonIcon(),
+              onPressed: () {
+                Provider.of<RingDataManager>(context, listen: false)
+                    .setNewRingSeries(false);
+              },
+            ),
+          ),
+          body: const Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Text('ring_series_screen'),
+            ],
+          ),
+        );
+      },
     );
   }
 }
