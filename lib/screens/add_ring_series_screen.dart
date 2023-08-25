@@ -115,6 +115,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                         child: const Text('Remove'),
                       ),
                     ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Update'),
+                      ),
+                    ),
                   ],
                 ),
               ],
