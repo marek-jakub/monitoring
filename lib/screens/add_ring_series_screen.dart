@@ -72,7 +72,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
               },
             ),
           ),
-          body: const Padding(
+          body: Padding(
             padding: EdgeInsets.all(8.0),
             child: Form(
               key: _ringSeriesFormKey,
