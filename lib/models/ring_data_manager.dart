@@ -58,6 +58,7 @@ class RingDataManager extends ChangeNotifier {
 
   // RingSeries
   bool _newRingSeries = false;
+  bool _isRingSeriesAdded = false;
 
   // Lost ring
   bool _newLostRing = false;
@@ -317,6 +318,13 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Whether ring series data has been successfuly saved in the database.
+  bool get isRingSeriesAdded => _isRingSeriesAdded;
+  void setIsRingSeriesAdded(bool added) {
+    _isRingSeriesAdded = added;
+    notifyListeners();
+  }
+
   // LOST RING ///////////////////////////
 
   /// Access to add lost ring screen.
@@ -573,6 +581,17 @@ class RingDataManager extends ChangeNotifier {
   void getRetrapById(int id) {
     _monRingDb?.getRetrap(id).then((value) {
       _retrapEntityData = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Saves ring series entity [companion] data in the database.
+  void saveRingSeries(RingseriesEntityCompanion companion) {
+    _monRingDb?.saveRingSeries(companion).then((value) {
+      _isRingSeriesAdded = value > 0 ? true : false;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
