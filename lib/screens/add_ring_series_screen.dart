@@ -29,6 +29,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   final TextEditingController _ringFrom = TextEditingController();
   final TextEditingController _ringTo = TextEditingController();
 
+  // Provider and notifier access to data manager.
+  late RingDataManager _dataManager;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
