@@ -74,19 +74,16 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
               },
             ),
           ),
-          body: Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Form(
-              key: _ringSeriesFormKey,
-              child: Column(
-                children: [
-                  CustomTextFormField(
-                    controller: _seriesCode,
-                    txtLabel: 'Series code',
-                    keyboard: 'text',
-                  ),
-                ],
-              ),
+          body: Form(
+            key: _ringSeriesFormKey,
+            child: Column(
+              children: [
+                CustomTextFormField(
+                  controller: _seriesCode,
+                  txtLabel: 'Series code',
+                  keyboard: 'text',
+                ),
+              ],
             ),
           ),
         );
