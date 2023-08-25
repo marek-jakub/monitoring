@@ -109,11 +109,12 @@ class MonitoRingTheme {
         backgroundColor: Colors.white,
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
-          style: ButtonStyle(
-        minimumSize: MaterialStateProperty.all(
-          const Size(100, 40),
+        style: ButtonStyle(
+          minimumSize: MaterialStateProperty.all(
+            const Size(100, 40),
+          ),
         ),
-      )),
+      ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[800],
