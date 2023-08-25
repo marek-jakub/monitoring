@@ -138,14 +138,16 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     keyboard: 'text',
                   ),
                   CustomDropdownCountryFormField(
-                      countryController: _countryController,
-                      placeCodeController: _placeCodeController,
-                      txtLabel: 'Country',
-                      listValues: countries),
+                    countryController: _countryController,
+                    placeCodeController: _placeCodeController,
+                    txtLabel: 'Country',
+                    listValues: countries,
+                  ),
                   CustomDropdownButtonFormField(
-                      controller: _placeCodeController,
-                      txtLabel: 'Place code',
-                      listValues: countryPlaceCodes),
+                    controller: _placeCodeController,
+                    txtLabel: 'Place code',
+                    listValues: countryPlaceCodes,
+                  ),
                   CustomTextFormField(
                     controller: _localityController,
                     txtLabel: 'Locality name',
