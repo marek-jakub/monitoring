@@ -178,7 +178,14 @@ class MonRingDb extends _$MonRingDb {
   }
 
   // RINGSERIES ENTITY
-  // TODO: define ringseries access methods
+
+  /// Saves ring series data stored in the [companion].
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveRingSeries(RingseriesEntityCompanion companion) async {
+    return await into(ringseriesEntity).insert(companion);
+  }
 
   // USEDRING ENTITY
   // TODO: define used ring access methods
