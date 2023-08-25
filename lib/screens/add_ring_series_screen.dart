@@ -37,7 +37,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
-    _dataManager.addListener(providerListener);
+    // _dataManager.addListener(providerListener);
   }
 
   @override
