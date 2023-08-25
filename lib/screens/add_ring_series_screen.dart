@@ -75,58 +75,65 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
               },
             ),
           ),
-          body: Form(
-            key: _ringSeriesFormKey,
-            child: Column(
-              children: [
-                CustomTextFormField(
-                  controller: _seriesCode,
-                  txtLabel: 'Series code',
-                  keyboard: 'text',
-                ),
-                CustomDropdownButtonFormField(
-                  controller: _schemeCode,
-                  txtLabel: 'Scheme code',
-                  listValues: ringingSchemes,
-                ),
-                CustomTextFormField(
-                  controller: _ringFrom,
-                  txtLabel: 'Series from',
-                  keyboard: 'number',
-                ),
-                CustomTextFormField(
-                  controller: _ringTo,
-                  txtLabel: 'Series to',
-                  keyboard: 'number',
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+          body: Column(
+            children: [
+              Form(
+                key: _ringSeriesFormKey,
+                child: Column(
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Add'),
-                      ),
+                    CustomTextFormField(
+                      controller: _seriesCode,
+                      txtLabel: 'Series code',
+                      keyboard: 'text',
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Remove'),
-                      ),
+                    CustomDropdownButtonFormField(
+                      controller: _schemeCode,
+                      txtLabel: 'Scheme code',
+                      listValues: ringingSchemes,
                     ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Update'),
-                      ),
+                    CustomTextFormField(
+                      controller: _ringFrom,
+                      txtLabel: 'Series from',
+                      keyboard: 'number',
+                    ),
+                    CustomTextFormField(
+                      controller: _ringTo,
+                      txtLabel: 'Series to',
+                      keyboard: 'number',
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Add'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Remove'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                          child: ElevatedButton(
+                            onPressed: () {},
+                            child: const Text('Update'),
+                          ),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
         );
       },
