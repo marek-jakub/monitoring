@@ -101,10 +101,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                 ),
                 Row(
                   children: [
-                    Expanded(
-                      child: ElevatedButton(
-                        onPressed: () {},
-                        child: const Text('Add'),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
+                      child: Expanded(
+                        child: ElevatedButton(
+                          onPressed: () {},
+                          child: const Text('Add'),
+                        ),
                       ),
                     ),
                     Expanded(
