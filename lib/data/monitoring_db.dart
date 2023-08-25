@@ -187,6 +187,12 @@ class MonRingDb extends _$MonRingDb {
     return await into(ringseriesEntity).insert(companion);
   }
 
+  /// Returns a stream of ring series data for a ringer identified by [id].
+  Stream<List<RingseriesEntityData>> watchRingSeries(String id) {
+    return (select(ringseriesEntity)..where((tbl) => tbl.ringerId.equals(id)))
+        .watch();
+  }
+
   // USEDRING ENTITY
   // TODO: define used ring access methods
 
