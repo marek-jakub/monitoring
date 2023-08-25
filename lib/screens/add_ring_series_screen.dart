@@ -100,6 +100,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   keyboard: 'number',
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Padding(
                       padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
