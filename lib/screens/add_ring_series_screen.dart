@@ -99,6 +99,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   txtLabel: 'Series to',
                   keyboard: 'number',
                 ),
+                Row(
+                  children: [],
+                ),
               ],
             ),
           ),
