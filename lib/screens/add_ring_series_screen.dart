@@ -101,7 +101,12 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                 ),
                 Row(
                   children: [
-                    ElevatedButton(onPressed: () {}, child: const Text('Add'))
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Add'),
+                      ),
+                    )
                   ],
                 ),
               ],
