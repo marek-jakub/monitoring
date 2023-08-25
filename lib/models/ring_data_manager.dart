@@ -59,6 +59,7 @@ class RingDataManager extends ChangeNotifier {
   // RingSeries
   bool _newRingSeries = false;
   bool _isRingSeriesAdded = false;
+  bool _isRingSeriesUpdated = false;
 
   // Lost ring
   bool _newLostRing = false;
