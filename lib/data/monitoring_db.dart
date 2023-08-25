@@ -193,6 +193,11 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
+  /// Updates ring series data stored in the [companion].
+  Future<bool> updateRingSeries(RingseriesEntityCompanion companion) async {
+    return await update(ringseriesEntity).replace(companion);
+  }
+
   // USEDRING ENTITY
   // TODO: define used ring access methods
 
