@@ -76,7 +76,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
             padding: EdgeInsets.all(8.0),
             child: Form(
               key: _ringSeriesFormKey,
-              child: Column(),
+              child: Column(
+                children: [],
+              ),
             ),
           ),
         );
