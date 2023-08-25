@@ -47,6 +47,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     _schemeCode.dispose();
     _ringFrom.dispose();
     _ringTo.dispose();
+
+    // Remove notifier listener.
+    // _dataManager.removeListener(providerListener);
+
+    super.dispose();
   }
 
   @override
@@ -69,10 +74,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
           ),
           body: const Padding(
             padding: EdgeInsets.all(8.0),
-            child: Column(
-              children: <Widget>[
-                Text('ring_series_screen'),
-              ],
+            child: Form(
+              key: _ringSeriesFormKey,
+              child: Column(),
             ),
           ),
         );
