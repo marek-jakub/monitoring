@@ -89,6 +89,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   txtLabel: 'Scheme code',
                   listValues: ringingSchemes,
                 ),
+                CustomTextFormField(
+                  controller: _ringFrom,
+                  txtLabel: 'Series from',
+                  keyboard: 'number',
+                ),
               ],
             ),
           ),
