@@ -26,6 +26,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   // Ring series information controllers
   final TextEditingController _seriesCode = TextEditingController();
   final TextEditingController _schemeCode = TextEditingController();
+  final TextEditingController _ringFrom = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
