@@ -23,6 +23,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   /// Form key for accessing and checking form attributes' state.
   final _ringSeriesFormKey = GlobalKey<FormState>();
 
+  // Ring series information controllers
+  final TextEditingController _seriesCode = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
