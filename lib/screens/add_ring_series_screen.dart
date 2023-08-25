@@ -100,7 +100,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   keyboard: 'number',
                 ),
                 Row(
-                  children: [],
+                  children: [
+                    ElevatedButton(onPressed: () {}, child: const Text('Add'))
+                  ],
                 ),
               ],
             ),
