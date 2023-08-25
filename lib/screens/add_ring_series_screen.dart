@@ -70,8 +70,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
           body: const Padding(
             padding: EdgeInsets.all(8.0),
             child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text('ring_series_screen'),
               ],
