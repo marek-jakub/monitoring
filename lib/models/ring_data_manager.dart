@@ -623,4 +623,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// A stream of ring series for a ringer identified by [id].
+  void getRingSeriesStream(String id) {
+    _isLoading = true;
+
+    _monRingDb?.watchRingSeries(id).listen((event) {
+      _ringSeriesStream = event;
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
 }
