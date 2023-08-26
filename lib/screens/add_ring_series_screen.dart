@@ -139,7 +139,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                 builder: (context, ringSeries, child) {
                   return ListView.builder(
                       itemCount: ringSeries.length,
-                      itemBuilder: (context, index) {});
+                      itemBuilder: (context, index) {
+                        final ringseries = ringSeries[index];
+                      });
                 },
               ),
             ],
