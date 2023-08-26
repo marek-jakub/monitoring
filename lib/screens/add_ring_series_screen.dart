@@ -146,7 +146,57 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                           child: Card(
                             elevation: 0,
                             child: Column(
-                              children: [],
+                              children: [
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Ring series code:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(ringseries.code,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Scheme code:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(ringseries.schemeCode,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Series from:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                          ringseries.ringfrom.toString(),
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Series to:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(ringseries.ringto.toString(),
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ),
                         );
