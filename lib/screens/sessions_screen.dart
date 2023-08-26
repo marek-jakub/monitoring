@@ -186,13 +186,15 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                           : const BoxDecoration(
                                               border: Border(
                                                 top: BorderSide(
-                                                    color: Colors.white),
+                                                    color: Colors.white,
+                                                    width: 3),
                                                 left: BorderSide(
                                                     color: Colors.white),
                                                 right: BorderSide(
                                                     color: Colors.white),
                                                 bottom: BorderSide(
-                                                    color: Colors.white),
+                                                    color: Colors.white,
+                                                    width: 3),
                                               ),
                                             ),
                                       // color: session.id == _selectedId
