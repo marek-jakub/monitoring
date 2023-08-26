@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
+import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 
 import '../models/models.dart';
@@ -132,6 +133,14 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                     ),
                   ],
                 ),
+              ),
+              Selector<RingDataManager, List<RingseriesEntityData>>(
+                selector: (context, notifier) => notifier.ringSeriesStream,
+                builder: (context, ringSeries, child) {
+                  return ListView.builder(
+                      itemCount: ringSeries.length,
+                      itemBuilder: (context, index) {});
+                },
               ),
             ],
           ),
