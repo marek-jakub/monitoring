@@ -141,6 +141,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       itemCount: ringSeries.length,
                       itemBuilder: (context, index) {
                         final ringseries = ringSeries[index];
+                        return GestureDetector();
                       });
                 },
               ),
