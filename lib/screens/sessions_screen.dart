@@ -171,7 +171,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                               border: Border(
                                                 top: BorderSide(
                                                   color: Colors.black,
-                                                  width: 3,
+                                                  width: 2,
                                                 ),
                                                 left: BorderSide(
                                                     color: Colors.black),
@@ -179,7 +179,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                                     color: Colors.black),
                                                 bottom: BorderSide(
                                                   color: Colors.black,
-                                                  width: 3,
+                                                  width: 2,
                                                 ),
                                               ),
                                             )
@@ -187,14 +187,14 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                               border: Border(
                                                 top: BorderSide(
                                                     color: Colors.white,
-                                                    width: 3),
+                                                    width: 2),
                                                 left: BorderSide(
                                                     color: Colors.white),
                                                 right: BorderSide(
                                                     color: Colors.white),
                                                 bottom: BorderSide(
                                                     color: Colors.white,
-                                                    width: 3),
+                                                    width: 2),
                                               ),
                                             ),
                                       // color: session.id == _selectedId
