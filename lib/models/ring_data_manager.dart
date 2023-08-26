@@ -326,6 +326,13 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Whether ring series data has been successfuly updated in the database.
+  bool get isRingSeriesUpdated => _isRingSeriesUpdated;
+  void setIsRingSeriesUpdated(bool updated) {
+    _isRingSeriesUpdated = updated;
+    notifyListeners();
+  }
+
   // LOST RING ///////////////////////////
 
   /// Access to add lost ring screen.
