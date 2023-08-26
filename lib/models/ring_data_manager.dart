@@ -334,6 +334,9 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Access to ring series stream list of a given ringer.
+  List<RingseriesEntityData> get ringSeriesStream => _ringSeriesStream;
+
   // LOST RING ///////////////////////////
 
   /// Access to add lost ring screen.
