@@ -154,7 +154,14 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                         itemBuilder: (context, index) {
                           final ringseries = ringSeries[index];
                           return GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              setState(() {
+                                _seriesCode.text = ringseries.code;
+                                _schemeCode.text = ringseries.schemeCode;
+                                _ringFrom.text = ringseries.ringfrom.toString();
+                                _ringTo.text = ringseries.ringto.toString();
+                              });
+                            },
                             child: Card(
                               elevation: 0,
                               child: Column(
