@@ -262,7 +262,29 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   /// Shows scaffold messenger on successfuly saved ring series data.
-  void listenAddRingSeries() {}
+  void listenAddRingSeries() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Ring series data saved',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.read<RingDataManager>().setIsRingSeriesAdded(false);
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   /// Shows scaffold messenger with error on save error.
   void listenAddRingSeriesError(String errorMsg) {}
