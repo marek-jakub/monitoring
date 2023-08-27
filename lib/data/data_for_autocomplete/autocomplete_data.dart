@@ -395,7 +395,7 @@ const List<String> primaryIdMethod = <String>[
 ];
 
 /// EURING code ringing scheme values.
-const List<String> ringingSchemes = <String>[
+List<String> ringingSchemes = <String>[
   '',
   'ABT',
   'BLB',
