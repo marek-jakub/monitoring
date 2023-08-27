@@ -37,6 +37,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   // Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
+  // Ring series id
+  int _ringSeriesId = -1;
+
   @override
   void initState() {
     super.initState();
@@ -124,7 +127,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                           padding:
                               const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              deleteRingSeries(_ringSeriesId);
+                            },
                             child: const Text('Remove'),
                           ),
                         ),
@@ -249,6 +254,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     }
   }
 
+  /// Removes ring series information from the database.
+  void deleteRingSeries(int id) {
+    context.read<RingDataManager>().deleteRingSeries(id);
+  }
+
   /// Listens to change notifier save session success or error.
   void providerListener() {
     if (_dataManager.isRingSeriesAdded) {
@@ -261,6 +271,10 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
         _ringTo.clear();
       });
       context.read<RingDataManager>().setIsRingSeriesAdded(false);
+    }
+
+    if (_dataManager.isRingSeriesDeleted) {
+      listenDeleteRingSeries();
     }
 
     if (_dataManager.error != '') {
@@ -292,6 +306,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       ),
     );
   }
+
+  /// Shows scaffold messenger on successfuly deleting ring series data.
+  void listenDeleteRingSeries() {}
 
   /// Shows scaffold messenger with error on save error.
   void listenAddRingSeriesError(String errorMsg) {
