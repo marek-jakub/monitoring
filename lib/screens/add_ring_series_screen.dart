@@ -128,7 +128,10 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                               const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              deleteRingSeries(_ringSeriesId);
+                              if (_ringSeriesId != -1) {
+                                deleteRingSeries(_ringSeriesId);
+                                _ringSeriesId = -1;
+                              }
                             },
                             child: const Text('Remove'),
                           ),
@@ -289,6 +292,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
     if (_dataManager.error != '') {
       listenRingSeriesError(_dataManager.error);
+      _dataManager.setError('');
     }
   }
 
