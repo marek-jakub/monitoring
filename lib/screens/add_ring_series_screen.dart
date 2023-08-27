@@ -278,7 +278,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     }
 
     if (_dataManager.error != '') {
-      listenAddRingSeriesError(_dataManager.error);
+      listenRingSeriesError(_dataManager.error);
     }
   }
 
@@ -311,7 +311,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   void listenDeleteRingSeries() {}
 
   /// Shows scaffold messenger with error on save error.
-  void listenAddRingSeriesError(String errorMsg) {
+  void listenRingSeriesError(String errorMsg) {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: Text(
