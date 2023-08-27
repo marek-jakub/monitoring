@@ -248,8 +248,15 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       listenAddRingSeries();
       context.read<RingDataManager>().setIsRingSeriesAdded(false);
     }
+
+    if (_dataManager.error != '') {
+      listenAddRingSeriesError(_dataManager.error);
+    }
   }
 
   /// Shows scaffold messenger on successfuly saved ring series data.
   void listenAddRingSeries() {}
+
+  /// Shows scaffold messenger with error on save error.
+  void listenAddRingSeriesError(String errorMsg) {}
 }
