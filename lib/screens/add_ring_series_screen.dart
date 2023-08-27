@@ -246,6 +246,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   void providerListener() {
     if (_dataManager.isRingSeriesAdded) {
       listenAddRingSeries();
+      context.read<RingDataManager>().setIsRingSeriesAdded(false);
     }
   }
 
