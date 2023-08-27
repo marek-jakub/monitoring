@@ -165,6 +165,8 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                                 _schemeCode.text = ringseries.schemeCode;
                                 _ringFrom.text = ringseries.ringfrom.toString();
                                 _ringTo.text = ringseries.ringto.toString();
+
+                                _ringSeriesId = ringseries.id;
                               });
                             },
                             child: Card(
@@ -282,6 +284,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
         _ringFrom.clear();
         _ringTo.clear();
       });
+      context.read<RingDataManager>().setIsRingSeriesDeleted(false);
     }
 
     if (_dataManager.error != '') {
