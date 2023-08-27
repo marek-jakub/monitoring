@@ -246,6 +246,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   void providerListener() {
     if (_dataManager.isRingSeriesAdded) {
       listenAddRingSeries();
+      // Clear data to allow another entry input.
+      setState(() {
+        _seriesCode.clear();
+        _schemeCode.clear();
+        _ringFrom.clear();
+        _ringTo.clear();
+      });
       context.read<RingDataManager>().setIsRingSeriesAdded(false);
     }
 
