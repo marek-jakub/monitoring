@@ -91,7 +91,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                     CustomDropdownButtonFormField(
                       controller: _schemeCode,
                       txtLabel: 'Scheme code',
-                      listValues: ringingSchemes,
+                      listValues: ringingSchemes..sort(),
                     ),
                     CustomTextFormField(
                       controller: _ringFrom,
