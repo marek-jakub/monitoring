@@ -55,6 +55,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Provider.of<RingDataManager>(context, listen: false)
+                      .getRingSeriesStream(
+                          Provider.of<ProfileManager>(context, listen: false)
+                              .getRinger
+                              .ringerId);
+                  Provider.of<RingDataManager>(context, listen: false)
                       .setNewRingSeries(true);
                 },
                 child: const Text('Add ring series'),
