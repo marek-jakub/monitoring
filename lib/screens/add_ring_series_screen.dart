@@ -243,5 +243,12 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   /// Listens to change notifier save session success or error.
-  void providerListener() {}
+  void providerListener() {
+    if (_dataManager.isRingSeriesAdded) {
+      listenAddRingSeries();
+    }
+  }
+
+  /// Shows scaffold messenger on successfuly saved ring series data.
+  void listenAddRingSeries() {}
 }
