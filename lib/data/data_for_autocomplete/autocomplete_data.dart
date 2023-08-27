@@ -222,8 +222,8 @@ const List<String> countries = <String>[
   '...',
   'YEMEN',
   'ZAMBIA',
-  'ZANZIBAR & PEMBA'
-      'ZIMBABWE',
+  'ZANZIBAR & PEMBA',
+  'ZIMBABWE',
 ];
 
 /// EURING Code metal ring information values.
