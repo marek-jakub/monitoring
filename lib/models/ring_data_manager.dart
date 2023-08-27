@@ -60,6 +60,7 @@ class RingDataManager extends ChangeNotifier {
   bool _newRingSeries = false;
   bool _isRingSeriesAdded = false;
   bool _isRingSeriesUpdated = false;
+  bool _isRingSeriesDeleted = false;
   List<RingseriesEntityData> _ringSeriesStream = [];
 
   // Lost ring
@@ -331,6 +332,13 @@ class RingDataManager extends ChangeNotifier {
   bool get isRingSeriesUpdated => _isRingSeriesUpdated;
   void setIsRingSeriesUpdated(bool updated) {
     _isRingSeriesUpdated = updated;
+    notifyListeners();
+  }
+
+  /// Whether ring series data has been successfuly deleted from the database.
+  bool get isRingSeriesDeleted => _isRingSeriesDeleted;
+  void setIsRingSeriesDeleted(bool deleted) {
+    _isRingSeriesDeleted = deleted;
     notifyListeners();
   }
 
@@ -617,6 +625,23 @@ class RingDataManager extends ChangeNotifier {
   void updateRingSeries(RingseriesEntityCompanion companion) {
     _monRingDb?.updateRingSeries(companion).then((value) {
       _isRingSeriesUpdated = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
+  /// Deletes ring series information from the database.
+  ///
+  /// Id of the ring series to be deleted is stored in the [id].
+  void deleteRingSeries(int id) {
+    _monRingDb?.deleteRingSeries(id).then((value) {
+      if (value == 0) {
+        _error = 'Record not found';
+      } else {
+        _isRingSeriesDeleted = true;
+      }
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
