@@ -275,6 +275,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
     if (_dataManager.isRingSeriesDeleted) {
       listenDeleteRingSeries();
+      // Clear form data.
+      setState(() {
+        _seriesCode.clear();
+        _schemeCode.clear();
+        _ringFrom.clear();
+        _ringTo.clear();
+      });
     }
 
     if (_dataManager.error != '') {
