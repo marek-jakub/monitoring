@@ -42,7 +42,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
-    //_dataManager.addListener(providerListener);
+    _dataManager.addListener(providerListener);
   }
 
   @override
@@ -54,7 +54,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     _ringTo.dispose();
 
     // Remove notifier listener.
-    // _dataManager.removeListener(providerListener);
+    _dataManager.removeListener(providerListener);
 
     super.dispose();
   }
@@ -241,4 +241,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       context.read<RingDataManager>().saveRingSeries(ringSeriesEntity);
     }
   }
+
+  /// Listens to change notifier save session success or error.
+  void providerListener() {}
 }
