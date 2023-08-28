@@ -267,7 +267,22 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   /// Updated ring series information in the database.
-  void updateRingSeries() {}
+  void updateRingSeries() {
+    /// Checks for input validity
+    final isValid = _ringSeriesFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final ringSeriesEntity = RingseriesEntityCompanion(
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        code: d.Value(_seriesCode.text),
+        schemeCode: d.Value(_schemeCode.text),
+        ringfrom: d.Value(int.parse(_ringFrom.text)),
+        ringto: d.Value(int.parse(_ringTo.text)),
+      );
+
+      context.read<RingDataManager>().updateRingSeries(ringSeriesEntity);
+    }
+  }
 
   /// Listens to change notifier save session success or error.
   void providerListener() {
