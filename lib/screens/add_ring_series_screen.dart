@@ -141,7 +141,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                               const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
                           child: ElevatedButton(
                             onPressed: () {
-                              updateRingSeries();
+                              updateRingSeries(_ringSeriesId);
                             },
                             child: const Text('Update'),
                           ),
@@ -267,13 +267,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   /// Updated ring series information in the database.
-  void updateRingSeries() {
+  void updateRingSeries(int id) {
     /// Checks for input validity
     final isValid = _ringSeriesFormKey.currentState?.validate();
 
     if (isValid != null && isValid) {
       final ringSeriesEntity = RingseriesEntityCompanion(
-        id: d.Value(context.read<RingDataManager>().selectedRingSeriesId),
+        id: d.Value(id),
         ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         code: d.Value(_seriesCode.text),
         schemeCode: d.Value(_schemeCode.text),
@@ -391,6 +391,8 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
           TextButton(
             onPressed: () {
               context.read<RingDataManager>().setIsRingSeriesUpdated(false);
+              context.read<RingDataManager>().getRingSeriesStream(
+                  context.read<ProfileManager>().getRinger.ringerId);
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
             },
             child: const Text(
