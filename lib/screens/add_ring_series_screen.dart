@@ -299,6 +299,18 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       context.read<RingDataManager>().setIsRingSeriesAdded(false);
     }
 
+    if (_dataManager.isRingSeriesUpdated) {
+      listenUpdateRingSeries();
+      // Clear data to allow another entry input.
+      setState(() {
+        _seriesCode.clear();
+        _schemeCode.clear();
+        _ringFrom.clear();
+        _ringTo.clear();
+      });
+      context.read<RingDataManager>().setIsRingSeriesUpdated(false);
+    }
+
     if (_dataManager.isRingSeriesDeleted) {
       listenDeleteRingSeries();
       // Clear form data.
@@ -330,6 +342,31 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
           TextButton(
             onPressed: () {
               context.read<RingDataManager>().setIsRingSeriesAdded(false);
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Shows scaffold messenger on successfuly updated ring series data.
+  void listenUpdateRingSeries() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Ring series data updated',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.read<RingDataManager>().setIsRingSeriesUpdated(false);
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
             },
             child: const Text(
