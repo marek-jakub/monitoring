@@ -140,7 +140,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                           padding:
                               const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
                           child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              updateRingSeries();
+                            },
                             child: const Text('Update'),
                           ),
                         ),
@@ -263,6 +265,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   void deleteRingSeries(int id) {
     context.read<RingDataManager>().deleteRingSeries(id);
   }
+
+  /// Updated ring series information in the database.
+  void updateRingSeries() {}
 
   /// Listens to change notifier save session success or error.
   void providerListener() {
