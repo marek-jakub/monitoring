@@ -273,6 +273,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
     if (isValid != null && isValid) {
       final ringSeriesEntity = RingseriesEntityCompanion(
+        id: d.Value(context.read<RingDataManager>().selectedRingSeriesId),
         ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         code: d.Value(_seriesCode.text),
         schemeCode: d.Value(_schemeCode.text),
