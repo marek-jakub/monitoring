@@ -184,19 +184,19 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                               ),
                                             )
                                           : const BoxDecoration(
-                                              border: Border(
-                                                top: BorderSide(
-                                                    color: Colors.white,
-                                                    width: 2),
-                                                left: BorderSide(
-                                                    color: Colors.white),
-                                                right: BorderSide(
-                                                    color: Colors.white),
-                                                bottom: BorderSide(
-                                                    color: Colors.white,
-                                                    width: 2),
+                                              // border: Border(
+                                              //   top: BorderSide(
+                                              //       color: Colors.white,
+                                              //       width: 2),
+                                              //   left: BorderSide(
+                                              //       color: Colors.white),
+                                              //   right: BorderSide(
+                                              //       color: Colors.white),
+                                              //   bottom: BorderSide(
+                                              //       color: Colors.white,
+                                              //       width: 2),
+                                              // ),
                                               ),
-                                            ),
                                       // color: session.id == _selectedId
                                       //     ? Colors.amber
                                       //     : Colors.blueGrey[300],
