@@ -61,7 +61,7 @@ class RingDataManager extends ChangeNotifier {
   bool _isRingSeriesAdded = false;
   bool _isRingSeriesUpdated = false;
   bool _isRingSeriesDeleted = false;
-  int _selectedRingSeriesId = -1;
+  //int _selectedRingSeriesId = -1;
   List<RingseriesEntityData> _ringSeriesStream = [];
 
   // Lost ring
@@ -344,11 +344,11 @@ class RingDataManager extends ChangeNotifier {
   }
 
   /// An id of selected ring series.
-  int get selectedRingSeriesId => _selectedRingSeriesId;
-  void setSelectedRingSeriesId(int id) {
-    _selectedRingSeriesId = id;
-    //notifyListeners();
-  }
+  // int get selectedRingSeriesId => _selectedRingSeriesId;
+  // void setSelectedRingSeriesId(int id) {
+  //   _selectedRingSeriesId = id;
+  //   //notifyListeners();
+  // }
 
   /// Access to ring series stream list of a given ringer.
   List<RingseriesEntityData> get ringSeriesStream => _ringSeriesStream;
