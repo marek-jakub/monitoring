@@ -143,6 +143,9 @@ class MonitoRingTheme {
         ),
       ),
       cardColor: Colors.grey.shade400,
+      cardTheme: const CardTheme(
+        shape: RoundedRectangleBorder(),
+      ),
       expansionTileTheme: ExpansionTileThemeData(
         textColor: Colors.black,
         collapsedBackgroundColor: Colors.grey[300],
@@ -224,6 +227,9 @@ class MonitoRingTheme {
         ),
       ),
       cardColor: Colors.blueGrey,
+      cardTheme: const CardTheme(
+        shape: RoundedRectangleBorder(),
+      ),
       expansionTileTheme: ExpansionTileThemeData(
         textColor: Colors.white,
         collapsedBackgroundColor: Colors.grey[600],
