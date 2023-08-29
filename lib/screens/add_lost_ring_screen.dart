@@ -3,6 +3,8 @@ import 'package:provider/provider.dart';
 
 import '../models/models.dart';
 
+import '../widgets/custom_widgets.dart';
+
 /// A form to input and save lost ring information as a lost ring entity.
 class LostRingsScreen extends StatefulWidget {
   static MaterialPage page() {
