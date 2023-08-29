@@ -22,6 +22,9 @@ class LostRingsScreen extends StatefulWidget {
 }
 
 class _LostRingsScreenState extends State<LostRingsScreen> {
+  /// Form key for accessing and checking form attributes' state.
+  final _lostRingFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
