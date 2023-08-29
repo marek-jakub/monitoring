@@ -301,7 +301,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
     if (_dataManager.isRingSeriesDeleted) {
       listenDeleteRingSeries();
-      // Clear form data.
+      // Clear form fields.
       setState(() {
         _seriesCode.clear();
         _schemeCode.clear();
@@ -313,7 +313,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
     if (_dataManager.isRingSeriesUpdated) {
       listenUpdateRingSeries();
-      // Clear data to allow another entry input.
+      // Clear form fields to allow another entry input.
       setState(() {
         _seriesCode.clear();
         _schemeCode.clear();
