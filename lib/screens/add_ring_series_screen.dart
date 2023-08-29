@@ -285,7 +285,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     }
   }
 
-  /// Listens to change notifier save session success or error.
+  /// Listens to change notifier save ring series success or error.
   void providerListener() {
     if (_dataManager.isRingSeriesAdded) {
       listenAddRingSeries();
