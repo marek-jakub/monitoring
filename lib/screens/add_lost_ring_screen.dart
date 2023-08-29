@@ -41,6 +41,18 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   }
 
   @override
+  void dispose() {
+    // Dispose off text controllers.
+    _ringSeriesCode.dispose();
+    _ringId.dispose();
+
+    // Remove notifier listener.
+    _dataManager.removeListener(providerListener);
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
