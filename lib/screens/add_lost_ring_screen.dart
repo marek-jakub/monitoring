@@ -33,6 +33,14 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   late RingDataManager _dataManager;
 
   @override
+  void initState() {
+    super.initState();
+
+    _dataManager = Provider.of<RingDataManager>(context, listen: false);
+    _dataManager.addListener(providerListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -56,4 +64,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
       ),
     );
   }
+
+  /// Listens to change notifier save, delete, modify lost ring success or error.
+  void providerListener() {}
 }
