@@ -59,6 +59,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
         title: const Text(
           'MonitoRing: lost rings',
         ),
+        centerTitle: true,
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
