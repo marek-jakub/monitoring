@@ -29,6 +29,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   final TextEditingController _ringSeriesCode = TextEditingController();
   final TextEditingController _ringId = TextEditingController();
 
+  // Provider and notifier access to data manager.
+  late RingDataManager _dataManager;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
