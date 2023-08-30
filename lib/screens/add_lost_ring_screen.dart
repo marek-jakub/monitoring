@@ -68,9 +68,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
           },
         ),
       ),
-      body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
+      body: Column(
         children: <Widget>[
           Text('lost_rings_screen'),
         ],
