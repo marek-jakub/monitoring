@@ -113,6 +113,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
               ],
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );
