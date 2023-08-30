@@ -73,7 +73,13 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
           Form(
               key: _lostRingFormKey,
               child: Column(
-                children: [],
+                children: [
+                  CustomTextFormField(
+                    controller: _ringSeriesCode,
+                    txtLabel: 'Series code',
+                    keyboard: 'text',
+                  ),
+                ],
               )),
         ],
       ),
