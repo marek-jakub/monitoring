@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 
 import '../models/models.dart';
@@ -117,6 +118,55 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
             height: 10,
           ),
           const Text('Lost rings'),
+          Expanded(
+            child: Selector<RingDataManager, List<LostRingEntityData>>(
+              selector: (context, notifier) => notifier.lostRingsStream,
+              builder: (context, lostRings, child) {
+                return ListView.builder(
+                  itemCount: lostRings.length,
+                  itemBuilder: (context, index) {
+                    final lostRing = lostRings[index];
+                    return GestureDetector(
+                      onTap: () {
+                        setState(() {});
+                      },
+                      child: Card(
+                        elevation: 0,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                const Expanded(
+                                  child: Text('Ring series code:',
+                                      textAlign: TextAlign.left),
+                                ),
+                                Expanded(
+                                  child: Text(lostRing.ringSeriesCode,
+                                      textAlign: TextAlign.left),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Expanded(
+                                  child: Text('Ring ID:',
+                                      textAlign: TextAlign.left),
+                                ),
+                                Expanded(
+                                  child: Text(lostRing.idNumber,
+                                      textAlign: TextAlign.left),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
