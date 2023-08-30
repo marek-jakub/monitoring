@@ -210,7 +210,12 @@ class MonRingDb extends _$MonRingDb {
   // TODO: define order access methods
 
   // LOSTRING ENTITY
-  // TODO: define lost ring access methods
+
+  /// Returns a stream of lost ring data for a ringer identified by [id].
+  Stream<List<LostRingEntityData>> watchLostRings(String id) {
+    return (select(lostRingEntity)..where((tbl) => tbl.ringerId.equals(id)))
+        .watch();
+  }
 
   // REPORT ENTITY
   // TODO: define report access methods
