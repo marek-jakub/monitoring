@@ -125,6 +125,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   /// Saves lost ring information in the database.
   void addLostRing() {}
 
+  /// Removes lost ring information from the database.
+  void deleteLostRing(int id) {}
+
   /// Listens to change notifier save, delete, modify lost ring success or error.
   void providerListener() {}
 }
