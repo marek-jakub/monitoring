@@ -365,6 +365,9 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Access to lost rings stream list of a given ringer.
+  List<LostRingEntityData> get lostRingsStream => _lostRingsStream;
+
   // ORDER ///////////////////////////////
 
   /// Access to orders screen.
