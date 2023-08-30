@@ -76,7 +76,12 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                 children: [
                   CustomTextFormField(
                     controller: _ringSeriesCode,
-                    txtLabel: 'Series code',
+                    txtLabel: 'Ring series code',
+                    keyboard: 'text',
+                  ),
+                  CustomTextFormField(
+                    controller: _ringId,
+                    txtLabel: 'Ring ID',
                     keyboard: 'text',
                   ),
                 ],
