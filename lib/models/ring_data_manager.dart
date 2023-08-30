@@ -66,6 +66,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Lost ring
   bool _newLostRing = false;
+  List<LostRingEntityData> _lostRingsStream = [];
 
   // Ring orders
   bool _makeOrder = false;
