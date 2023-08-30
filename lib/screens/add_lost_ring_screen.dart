@@ -70,7 +70,11 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
       ),
       body: Column(
         children: <Widget>[
-          Text('lost_rings_screen'),
+          Form(
+              key: _lostRingFormKey,
+              child: Column(
+                children: [],
+              )),
         ],
       ),
     );
