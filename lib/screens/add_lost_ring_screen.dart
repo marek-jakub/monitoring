@@ -71,21 +71,48 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
       body: Column(
         children: <Widget>[
           Form(
-              key: _lostRingFormKey,
-              child: Column(
-                children: [
-                  CustomTextFormField(
-                    controller: _ringSeriesCode,
-                    txtLabel: 'Ring series code',
-                    keyboard: 'text',
-                  ),
-                  CustomTextFormField(
-                    controller: _ringId,
-                    txtLabel: 'Ring ID',
-                    keyboard: 'text',
-                  ),
-                ],
-              )),
+            key: _lostRingFormKey,
+            child: Column(
+              children: [
+                CustomTextFormField(
+                  controller: _ringSeriesCode,
+                  txtLabel: 'Ring series code',
+                  keyboard: 'text',
+                ),
+                CustomTextFormField(
+                  controller: _ringId,
+                  txtLabel: 'Ring ID',
+                  keyboard: 'text',
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Add'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Remove'),
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: const Text('Update'),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
