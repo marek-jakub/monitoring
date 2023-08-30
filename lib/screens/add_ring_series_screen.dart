@@ -160,79 +160,79 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   selector: (context, notifier) => notifier.ringSeriesStream,
                   builder: (context, ringSeries, child) {
                     return ListView.builder(
-                        itemCount: ringSeries.length,
-                        itemBuilder: (context, index) {
-                          final ringseries = ringSeries[index];
-                          return GestureDetector(
-                            onTap: () {
-                              setState(() {
-                                _seriesCode.text = ringseries.code;
-                                _schemeCode.text = ringseries.schemeCode;
-                                _ringFrom.text = ringseries.ringfrom.toString();
-                                _ringTo.text = ringseries.ringto.toString();
+                      itemCount: ringSeries.length,
+                      itemBuilder: (context, index) {
+                        final ringseries = ringSeries[index];
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _seriesCode.text = ringseries.code;
+                              _schemeCode.text = ringseries.schemeCode;
+                              _ringFrom.text = ringseries.ringfrom.toString();
+                              _ringTo.text = ringseries.ringto.toString();
 
-                                _ringSeriesId = ringseries.id;
-                              });
-                            },
-                            child: Card(
-                              elevation: 0,
-                              child: Column(
-                                children: [
-                                  Row(
-                                    children: [
-                                      const Expanded(
-                                        child: Text('Ring series code:',
-                                            textAlign: TextAlign.left),
-                                      ),
-                                      Expanded(
-                                        child: Text(ringseries.code,
-                                            textAlign: TextAlign.left),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Expanded(
-                                        child: Text('Scheme code:',
-                                            textAlign: TextAlign.left),
-                                      ),
-                                      Expanded(
-                                        child: Text(ringseries.schemeCode,
-                                            textAlign: TextAlign.left),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Expanded(
-                                        child: Text('Series from:',
-                                            textAlign: TextAlign.left),
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                            ringseries.ringfrom.toString(),
-                                            textAlign: TextAlign.left),
-                                      ),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      const Expanded(
-                                        child: Text('Series to:',
-                                            textAlign: TextAlign.left),
-                                      ),
-                                      Expanded(
-                                        child: Text(
-                                            ringseries.ringto.toString(),
-                                            textAlign: TextAlign.left),
-                                      ),
-                                    ],
-                                  ),
-                                ],
-                              ),
+                              _ringSeriesId = ringseries.id;
+                            });
+                          },
+                          child: Card(
+                            elevation: 0,
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Ring series code:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(ringseries.code,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Scheme code:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(ringseries.schemeCode,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Series from:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(
+                                          ringseries.ringfrom.toString(),
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Series to:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(ringseries.ringto.toString(),
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
-                          );
-                        });
+                          ),
+                        );
+                      },
+                    );
                   },
                 ),
               ),
