@@ -115,7 +115,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                           child: ElevatedButton(
                             onPressed: () {
                               addRingSeries();
-                              _dataManager.getRingSeriesStream(context
+                              dataManager.getRingSeriesStream(context
                                   .read<ProfileManager>()
                                   .getRinger
                                   .ringerId);
