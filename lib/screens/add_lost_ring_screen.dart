@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
+import 'package:drift/drift.dart' as d;
 
 import '../models/models.dart';
 
@@ -91,7 +92,13 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                     Padding(
                       padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          addLostRing();
+                          _dataManager.getLostRingsStream(context
+                              .read<ProfileManager>()
+                              .getRinger
+                              .ringerId);
+                        },
                         child: const Text('Add'),
                       ),
                     ),
@@ -173,7 +180,20 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   }
 
   /// Saves lost ring information in the database.
-  void addLostRing() {}
+  void addLostRing() {
+    /// Checks for input validity
+    final isValid = _lostRingFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final lostRingEntity = LostRingEntityCompanion(
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        ringSeriesCode: d.Value(_ringSeriesCode.text),
+        idNumber: d.Value(_ringId.text),
+      );
+
+      context.read<RingDataManager>().saveLostRing(lostRingEntity);
+    }
+  }
 
   /// Removes lost ring information from the database.
   void deleteLostRing(int id) {}
