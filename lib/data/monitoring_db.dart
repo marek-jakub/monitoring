@@ -230,6 +230,11 @@ class MonRingDb extends _$MonRingDb {
     return await update(lostRingEntity).replace(companion);
   }
 
+  /// Deletes lost ring data identified by [id].
+  Future<int> deleteLostRing(int id) async {
+    return (delete(lostRingEntity)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
   // REPORT ENTITY
   // TODO: define report access methods
 }
