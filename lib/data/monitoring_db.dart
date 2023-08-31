@@ -225,6 +225,11 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
+  /// Updates lost ring data stored in the [companion].
+  Future<bool> updateLostRing(LostRingEntityCompanion companion) async {
+    return await update(lostRingEntity).replace(companion);
+  }
+
   // REPORT ENTITY
   // TODO: define report access methods
 }
