@@ -67,6 +67,7 @@ class RingDataManager extends ChangeNotifier {
   // Lost ring
   bool _newLostRing = false;
   bool _isLostRingAdded = false;
+  bool _isLostRingUpdated = false;
   List<LostRingEntityData> _lostRingsStream = [];
 
   // Ring orders
@@ -370,6 +371,13 @@ class RingDataManager extends ChangeNotifier {
   bool get isLostRingAdded => _isLostRingAdded;
   void setIsLostRingAdded(bool added) {
     _isLostRingAdded = added;
+    notifyListeners();
+  }
+
+  /// Whether lost ring data has been successfuly updated in the database.
+  bool get isLostRingUpdated => _isLostRingUpdated;
+  void setIsLostRingUpdated(bool updated) {
+    _isLostRingUpdated = updated;
     notifyListeners();
   }
 
