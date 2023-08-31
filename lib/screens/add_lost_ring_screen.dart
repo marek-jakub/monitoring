@@ -202,5 +202,40 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   void updateLostRing(int id) {}
 
   /// Listens to change notifier save, delete, modify lost ring success or error.
-  void providerListener() {}
+  void providerListener() {
+    if (_dataManager.isLostRingAdded) {
+      listenAddLostRing();
+      // Clear data to allow another entry input.
+      setState(() {
+        _ringSeriesCode.clear();
+        _ringId.clear();
+      });
+      context.read<RingDataManager>().setIsLostRingAdded(false);
+    }
+  }
+
+  /// Shows scaffold messenger on successfuly saved ring series data.
+  void listenAddLostRing() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Lost ring data saved',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.read<RingDataManager>().setIsLostRingAdded(false);
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
