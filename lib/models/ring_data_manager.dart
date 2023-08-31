@@ -715,4 +715,21 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Deletes lost ring information from the database.
+  ///
+  /// Id of the lost ring to be deleted is stored in the [id].
+  void deleteLostRing(int id) {
+    _monRingDb?.deleteLostRing(id).then((value) {
+      if (value == 0) {
+        _error = 'Record not found';
+      } else {
+        _isLostRingDeleted = true;
+      }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
