@@ -211,6 +211,14 @@ class MonRingDb extends _$MonRingDb {
 
   // LOSTRING ENTITY
 
+  /// Saves lost ring data stored in the [companion].
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveLostRing(LostRingEntityCompanion companion) async {
+    return await into(lostRingEntity).insert(companion);
+  }
+
   /// Returns a stream of lost ring data for a ringer identified by [id].
   Stream<List<LostRingEntityData>> watchLostRings(String id) {
     return (select(lostRingEntity)..where((tbl) => tbl.ringerId.equals(id)))
