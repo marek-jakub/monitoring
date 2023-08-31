@@ -656,8 +656,6 @@ class RingDataManager extends ChangeNotifier {
   }
 
   /// Updates ring series information as given in the [companion].
-  ///
-  /// Id of the ring to be updated is stored in the [_selectedRingId].
   void updateRingSeries(RingseriesEntityCompanion companion) {
     _monRingDb?.updateRingSeries(companion).then((value) {
       _isRingSeriesUpdated = value;
