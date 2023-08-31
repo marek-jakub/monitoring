@@ -695,4 +695,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Saves lost ring entity [companion] data in the database.
+  void saveLostRing(LostRingEntityCompanion companion) {
+    _monRingDb?.saveLostRing(companion).then((value) {
+      _isLostRingAdded = value > 0 ? true : false;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
