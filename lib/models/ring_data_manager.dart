@@ -706,4 +706,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Updates lost ring information as given in the [companion].
+  void updateLostRing(LostRingEntityCompanion companion) {
+    _monRingDb?.updateLostRing(companion).then((value) {
+      _isLostRingUpdated = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
