@@ -732,4 +732,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// A stream of lost rings for a ringer identified by [id].
+  void getLostRingsStream(String id) {
+    _isLoading = true;
+
+    _monRingDb?.watchLostRings(id).listen((event) {
+      _lostRingsStream = event;
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
 }
