@@ -70,6 +70,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Provider.of<RingDataManager>(context, listen: false)
+                      .getLostRingsStream(
+                          Provider.of<ProfileManager>(context, listen: false)
+                              .getRinger
+                              .ringerId);
+                  Provider.of<RingDataManager>(context, listen: false)
                       .setNewLostRing(true);
                 },
                 child: const Text('Add lost ring'),
