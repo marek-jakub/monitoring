@@ -145,7 +145,12 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                     final lostRing = lostRings[index];
                     return GestureDetector(
                       onTap: () {
-                        setState(() {});
+                        setState(() {
+                          _ringSeriesCode.text = lostRing.ringSeriesCode;
+                          _ringId.text = lostRing.idNumber;
+
+                          _lostRingId = lostRing.id;
+                        });
                       },
                       child: Card(
                         elevation: 0,
