@@ -204,7 +204,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   }
 
   /// Removes lost ring information from the database.
-  void deleteLostRing(int id) {}
+  void deleteLostRing(int id) {
+    context.read<RingDataManager>().deleteLostRing(id);
+  }
 
   /// Updated lost ring information in the database.
   void updateLostRing(int id) {}
