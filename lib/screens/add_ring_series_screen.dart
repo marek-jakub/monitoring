@@ -406,7 +406,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     );
   }
 
-  /// Shows scaffold messenger with error on save error.
+  /// Shows scaffold messenger with error on save, update or delete.
   void listenRingSeriesError(String errorMsg) {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
