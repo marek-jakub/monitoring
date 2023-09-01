@@ -263,6 +263,11 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
       });
       context.read<RingDataManager>().setIsLostRingUpdated(false);
     }
+
+    if (_dataManager.error != '') {
+      listenLostRingError(_dataManager.error);
+      _dataManager.setError('');
+    }
   }
 
   /// Shows scaffold messenger on successfuly saved lost ring data.
@@ -328,6 +333,30 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
           TextButton(
             onPressed: () {
               context.read<RingDataManager>().setIsLostRingUpdated(false);
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Shows scaffold messenger with error on save, update or delete.
+  void listenLostRingError(String errorMsg) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(
+          errorMsg,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
             },
             child: const Text(
