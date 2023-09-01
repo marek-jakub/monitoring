@@ -34,6 +34,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   // Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
+  // Lost ring id
+  int _lostRingId = -1;
+
   @override
   void initState() {
     super.initState();
