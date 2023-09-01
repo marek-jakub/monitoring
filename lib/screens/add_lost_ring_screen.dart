@@ -211,7 +211,21 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   }
 
   /// Updated lost ring information in the database.
-  void updateLostRing(int id) {}
+  void updateLostRing(int id) {
+    /// Checks for input validity
+    final isValid = _lostRingFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final lostRingEntity = LostRingEntityCompanion(
+        id: d.Value(id),
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        ringSeriesCode: d.Value(_ringSeriesCode.text),
+        idNumber: d.Value(_ringId.text),
+      );
+
+      context.read<RingDataManager>().updateLostRing(lostRingEntity);
+    }
+  }
 
   /// Listens to change notifier save, delete, modify lost ring success or error.
   void providerListener() {
