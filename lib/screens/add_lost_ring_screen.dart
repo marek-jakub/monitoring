@@ -255,7 +255,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
     }
   }
 
-  /// Shows scaffold messenger on successfuly saved ring series data.
+  /// Shows scaffold messenger on successfuly saved lost ring data.
   void listenAddLostRing() {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
