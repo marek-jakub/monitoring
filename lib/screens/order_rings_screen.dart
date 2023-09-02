@@ -73,8 +73,6 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
         ),
       ),
       body: const Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisSize: MainAxisSize.min,
         children: <Widget>[
           Text('order_rings_screen'),
         ],
