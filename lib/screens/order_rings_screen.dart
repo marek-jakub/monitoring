@@ -38,6 +38,14 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   int _orderId = -1;
 
   @override
+  void initState() {
+    super.initState();
+
+    _dataManager = Provider.of<RingDataManager>(context, listen: false);
+    //_dataManager.addListener(providerListener);
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
