@@ -27,7 +27,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   /// Form key for accessing and checking form attributes' state.
   final _lostRingFormKey = GlobalKey<FormState>();
 
-  // Ring series information controllers
+  // Lost ring information controllers
   final TextEditingController _ringSeriesCode = TextEditingController();
   final TextEditingController _ringId = TextEditingController();
 
