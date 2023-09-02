@@ -107,6 +107,18 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                   child: const Text('Add'),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    // if (_orderId != -1) {
+                    //   deleteOrder(_orderId);
+                    //   _orderId = -1;
+                    // }
+                  },
+                  child: const Text('Remove'),
+                ),
+              ),
             ],
           ),
         ],
