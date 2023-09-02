@@ -46,6 +46,18 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   }
 
   @override
+  void dispose() {
+    // Dispose off text controllers.
+    _ringSeriesCode.dispose();
+    _amount.dispose();
+
+    // Remove notifier listener.
+    //_dataManager.removeListener(providerListener);
+
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
