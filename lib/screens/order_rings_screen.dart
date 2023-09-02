@@ -91,6 +91,24 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               ],
             ),
           ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    //addOrder();
+                    // _dataManager.getOrderStream(context
+                    //     .read<ProfileManager>()
+                    //     .getRinger
+                    //     .ringerId);
+                  },
+                  child: const Text('Add'),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
