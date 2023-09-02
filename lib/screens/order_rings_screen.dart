@@ -72,9 +72,25 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
           },
         ),
       ),
-      body: const Column(
+      body: Column(
         children: <Widget>[
-          Text('order_rings_screen'),
+          Form(
+            key: _orderFormKey,
+            child: Column(
+              children: [
+                CustomTextFormField(
+                  controller: _ringSeriesCode,
+                  txtLabel: 'Ring series code',
+                  keyboard: 'text',
+                ),
+                CustomTextFormField(
+                  controller: _amount,
+                  txtLabel: 'Amount',
+                  keyboard: 'number',
+                ),
+              ],
+            ),
+          ),
         ],
       ),
     );
