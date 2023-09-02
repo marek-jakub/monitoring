@@ -27,6 +27,10 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   /// Form key for accessing and checking form attributes' state.
   final _orderFormKey = GlobalKey<FormState>();
 
+  // Order information controllers
+  final TextEditingController _ringSeriesCode = TextEditingController();
+  final TextEditingController _amount = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
