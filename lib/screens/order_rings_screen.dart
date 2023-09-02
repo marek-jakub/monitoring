@@ -31,6 +31,9 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   final TextEditingController _ringSeriesCode = TextEditingController();
   final TextEditingController _amount = TextEditingController();
 
+  // Provider and notifier access to data manager.
+  late RingDataManager _dataManager;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
