@@ -34,6 +34,9 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   // Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
+  // Order id
+  int _orderId = -1;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
