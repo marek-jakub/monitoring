@@ -76,6 +76,7 @@ class RingDataManager extends ChangeNotifier {
   bool _isOrderAdded = false;
   bool _isOrderUpdated = false;
   bool _isOrderDeleted = false;
+  List<OrderEntityData> _orderStream = [];
 
   /// Whether loading data from database takes longer.
   bool _isLoading = false;
