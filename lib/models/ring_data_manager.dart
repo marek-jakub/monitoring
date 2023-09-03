@@ -782,4 +782,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Updates order information as given in the [companion].
+  void updateOrder(OrderEntityCompanion companion) {
+    _monRingDb?.updateOrder(companion).then((value) {
+      _isOrderUpdated = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
