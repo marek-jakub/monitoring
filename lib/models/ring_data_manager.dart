@@ -75,6 +75,7 @@ class RingDataManager extends ChangeNotifier {
   bool _makeOrder = false;
   bool _isOrderAdded = false;
   bool _isOrderUpdated = false;
+  bool _isOrderDeleted = false;
 
   /// Whether loading data from database takes longer.
   bool _isLoading = false;
@@ -416,6 +417,13 @@ class RingDataManager extends ChangeNotifier {
   bool get isOrderUpdated => _isOrderUpdated;
   void setIsOrderUpdated(bool updated) {
     _isOrderUpdated = updated;
+    notifyListeners();
+  }
+
+  /// Whether order data has been successfuly deleted from the database.
+  bool get isOrderDeleted => _isOrderDeleted;
+  void setIsOrderDeleted(bool deleted) {
+    _isOrderDeleted = deleted;
     notifyListeners();
   }
 
