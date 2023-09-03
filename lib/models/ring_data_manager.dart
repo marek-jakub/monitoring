@@ -771,4 +771,15 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Saves order entity [companion] data in the database.
+  void saveOrder(OrderEntityCompanion companion) {
+    _monRingDb?.saveOrder(companion).then((value) {
+      _isOrderAdded = value > 0 ? true : false;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
