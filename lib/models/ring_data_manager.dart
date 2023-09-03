@@ -793,4 +793,21 @@ class RingDataManager extends ChangeNotifier {
       notifyListeners();
     });
   }
+
+  /// Deletes order information from the database.
+  ///
+  /// Id of the order to be deleted is stored in the [id].
+  void deleteOrder(int id) {
+    _monRingDb?.deleteOrder(id).then((value) {
+      if (value == 0) {
+        _error = 'Record not found';
+      } else {
+        _isOrderDeleted = true;
+      }
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
 }
