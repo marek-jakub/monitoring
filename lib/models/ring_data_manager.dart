@@ -74,6 +74,7 @@ class RingDataManager extends ChangeNotifier {
   // Ring orders
   bool _makeOrder = false;
   bool _isOrderAdded = false;
+  bool _isOrderUpdated = false;
 
   /// Whether loading data from database takes longer.
   bool _isLoading = false;
