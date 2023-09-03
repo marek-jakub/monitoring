@@ -216,6 +216,12 @@ class MonRingDb extends _$MonRingDb {
     return await into(orderEntity).insert(companion);
   }
 
+  /// Returns a stream of order data for a ringer identified by [id].
+  Stream<List<OrderEntityData>> watchOrders(String id) {
+    return (select(orderEntity)..where((tbl) => tbl.ringerId.equals(id)))
+        .watch();
+  }
+
   // LOSTRING ENTITY
 
   /// Saves lost ring data stored in the [companion].
