@@ -222,6 +222,11 @@ class MonRingDb extends _$MonRingDb {
         .watch();
   }
 
+  /// Updates order data stored in the [companion].
+  Future<bool> updateOrder(OrderEntityCompanion companion) async {
+    return await update(orderEntity).replace(companion);
+  }
+
   // LOSTRING ENTITY
 
   /// Saves lost ring data stored in the [companion].
