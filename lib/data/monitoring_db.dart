@@ -227,6 +227,11 @@ class MonRingDb extends _$MonRingDb {
     return await update(orderEntity).replace(companion);
   }
 
+  /// Deletes order data identified by [id].
+  Future<int> deleteOrder(int id) async {
+    return (delete(orderEntity)..where((tbl) => tbl.id.equals(id))).go();
+  }
+
   // LOSTRING ENTITY
 
   /// Saves lost ring data stored in the [companion].
