@@ -412,6 +412,13 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Whether order data has been successfuly updated in the database.
+  bool get isOrderUpdated => _isOrderUpdated;
+  void setIsOrderUpdated(bool updated) {
+    _isOrderUpdated = updated;
+    notifyListeners();
+  }
+
   // DATABASE ACCESS /////////////////////
 
   /// A stream of session-location view.
