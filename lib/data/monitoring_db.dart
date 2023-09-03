@@ -207,7 +207,14 @@ class MonRingDb extends _$MonRingDb {
   // TODO: define used ring access methods
 
   // ORDER ENTITY
-  // TODO: define order access methods
+
+  /// Saves order data stored in the [companion].
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveOrder(OrderEntityCompanion companion) async {
+    return await into(orderEntity).insert(companion);
+  }
 
   // LOSTRING ENTITY
 
