@@ -428,6 +428,9 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Access to order stream list of a given ringer.
+  List<OrderEntityData> get ordersStream => _orderStream;
+
   // DATABASE ACCESS /////////////////////
 
   /// A stream of session-location view.
