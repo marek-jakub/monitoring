@@ -429,7 +429,7 @@ class RingDataManager extends ChangeNotifier {
   }
 
   /// Access to order stream list of a given ringer.
-  List<OrderEntityData> get ordersStream => _orderStream;
+  List<OrderEntityData> get orderStream => _orderStream;
 
   // DATABASE ACCESS /////////////////////
 
