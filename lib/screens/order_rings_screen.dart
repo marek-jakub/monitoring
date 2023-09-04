@@ -210,6 +210,6 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   /// Shows scaffold messenger on successfuly deleted order data.
   void listenDeleteOrder() {}
 
-  /// Shows scaffold messenger on successfuly deleted order data.
+  /// Shows scaffold messenger on successfuly updated order data.
   void listenUpdateOrder() {}
 }
