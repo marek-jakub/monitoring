@@ -98,11 +98,9 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                 padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    //addOrder();
-                    // _dataManager.getOrderStream(context
-                    //     .read<ProfileManager>()
-                    //     .getRinger
-                    //     .ringerId);
+                    addOrder();
+                    _dataManager.getOrderStream(
+                        context.read<ProfileManager>().getRinger.ringerId);
                   },
                   child: const Text('Add'),
                 ),
@@ -133,5 +131,21 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
         ],
       ),
     );
+  }
+
+  /// Saves lost ring information in the database.
+  void addOrder() {
+    /// Checks for input validity
+    final isValid = _orderFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final orderEntity = OrderEntityCompanion(
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        ringSeriesCode: d.Value(_ringSeriesCode.text),
+        amount: d.Value(int.parse(_amount.text)),
+      );
+
+      context.read<RingDataManager>().saveOrder(orderEntity);
+    }
   }
 }
