@@ -148,4 +148,9 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
       context.read<RingDataManager>().saveOrder(orderEntity);
     }
   }
+
+  /// Removes order information from the database.
+  void deleteOrder(int id) {
+    context.read<RingDataManager>().deleteOrder(id);
+  }
 }
