@@ -42,7 +42,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
-    //_dataManager.addListener(providerListener);
+    _dataManager.addListener(providerListener);
   }
 
   @override
@@ -52,7 +52,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
     _amount.dispose();
 
     // Remove notifier listener.
-    //_dataManager.removeListener(providerListener);
+    _dataManager.removeListener(providerListener);
 
     super.dispose();
   }
@@ -170,4 +170,20 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
       context.read<RingDataManager>().updateOrder(orderEntity);
     }
   }
+
+  /// Listens to change notifier save, delete, modify order success or error.
+  void providerListener() {
+    if (_dataManager.isOrderAdded) {
+      listenAddOrder();
+      // Clear data to allow another entry input.
+      setState(() {
+        _ringSeriesCode.clear();
+        _amount.clear();
+      });
+      context.read<RingDataManager>().setIsOrderAdded(false);
+    }
+  }
+
+  /// Shows scaffold messenger on successfuly saved order data.
+  void listenAddOrder() {}
 }
