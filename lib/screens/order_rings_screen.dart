@@ -202,6 +202,11 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
       });
       context.read<RingDataManager>().setIsOrderUpdated(false);
     }
+
+    if (_dataManager.error != '') {
+      listenOrderError(_dataManager.error);
+      _dataManager.setError('');
+    }
   }
 
   /// Shows scaffold messenger on successfuly saved order data.
@@ -212,4 +217,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
 
   /// Shows scaffold messenger on successfuly updated order data.
   void listenUpdateOrder() {}
+
+  /// Shows scaffold messenger on successfuly updated order data.
+  void listenOrderError(String errorMsg) {}
 }
