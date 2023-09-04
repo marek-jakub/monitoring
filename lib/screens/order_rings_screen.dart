@@ -192,6 +192,16 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
       });
       context.read<RingDataManager>().setIsOrderDeleted(false);
     }
+
+    if (_dataManager.isOrderUpdated) {
+      listenUpdateOrder();
+      // Clear data to allow another entry input.
+      setState(() {
+        _ringSeriesCode.clear();
+        _amount.clear();
+      });
+      context.read<RingDataManager>().setIsOrderUpdated(false);
+    }
   }
 
   /// Shows scaffold messenger on successfuly saved order data.
@@ -199,4 +209,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
 
   /// Shows scaffold messenger on successfuly deleted order data.
   void listenDeleteOrder() {}
+
+  /// Shows scaffold messenger on successfuly deleted order data.
+  void listenUpdateOrder() {}
 }
