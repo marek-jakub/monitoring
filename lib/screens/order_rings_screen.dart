@@ -121,7 +121,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                 padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
                 child: ElevatedButton(
                   onPressed: () {
-                    //updateOrder(_orderId);
+                    updateOrder(_orderId);
                   },
                   child: const Text('Update'),
                 ),
@@ -152,5 +152,22 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   /// Removes order information from the database.
   void deleteOrder(int id) {
     context.read<RingDataManager>().deleteOrder(id);
+  }
+
+  /// Update order information in the database.
+  void updateOrder(int id) {
+    /// Checks for input validity
+    final isValid = _orderFormKey.currentState?.validate();
+
+    if (isValid != null && isValid) {
+      final orderEntity = OrderEntityCompanion(
+        id: d.Value(id),
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        ringSeriesCode: d.Value(_ringSeriesCode.text),
+        amount: d.Value(int.parse(_amount.text)),
+      );
+
+      context.read<RingDataManager>().updateOrder(orderEntity);
+    }
   }
 }
