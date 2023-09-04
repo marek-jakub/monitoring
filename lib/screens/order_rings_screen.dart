@@ -218,6 +218,6 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   /// Shows scaffold messenger on successfuly updated order data.
   void listenUpdateOrder() {}
 
-  /// Shows scaffold messenger on successfuly updated order data.
+  /// Shows scaffold messenger with error on save, update or delete.
   void listenOrderError(String errorMsg) {}
 }
