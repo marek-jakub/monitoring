@@ -85,6 +85,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
               child: ElevatedButton(
                 onPressed: () {
                   Provider.of<RingDataManager>(context, listen: false)
+                      .getOrderStream(
+                          Provider.of<ProfileManager>(context, listen: false)
+                              .getRinger
+                              .ringerId);
+                  Provider.of<RingDataManager>(context, listen: false)
                       .setMakeOrder(true);
                 },
                 child: const Text('Order rings'),
