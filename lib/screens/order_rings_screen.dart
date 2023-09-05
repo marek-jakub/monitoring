@@ -235,7 +235,29 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   }
 
   /// Shows scaffold messenger on successfuly deleted order data.
-  void listenDeleteOrder() {}
+  void listenDeleteOrder() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Order data deleted',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.read<RingDataManager>().setIsOrderDeleted(false);
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   /// Shows scaffold messenger on successfuly updated order data.
   void listenUpdateOrder() {}
