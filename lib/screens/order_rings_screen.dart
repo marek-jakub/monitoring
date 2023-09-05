@@ -137,7 +137,11 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               selector: (context, notifier) => notifier.orderStream,
               builder: (context, orders, child) {
                 return ListView.builder(
-                    itemCount: orders.length, itemBuilder: (context, index) {});
+                    itemCount: orders.length,
+                    itemBuilder: (context, index) {
+                      final order = orders[index];
+                      return GestureDetector();
+                    });
               },
             ),
           ),
