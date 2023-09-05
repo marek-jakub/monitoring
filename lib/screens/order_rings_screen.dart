@@ -260,7 +260,29 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   }
 
   /// Shows scaffold messenger on successfuly updated order data.
-  void listenUpdateOrder() {}
+  void listenUpdateOrder() {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: const Text(
+          'Order data updated',
+          style: TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              context.read<RingDataManager>().setIsOrderUpdated(false);
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 
   /// Shows scaffold messenger with error on save, update or delete.
   void listenOrderError(String errorMsg) {}
