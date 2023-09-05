@@ -132,6 +132,15 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
             height: 10,
           ),
           const Text('Ring series orders'),
+          Expanded(
+            child: Selector<RingDataManager, List<OrderEntityData>>(
+              selector: (context, notifier) => notifier.orderStream,
+              builder: (context, orders, child) {
+                return ListView.builder(
+                    itemCount: orders.length, itemBuilder: (context, index) {});
+              },
+            ),
+          ),
         ],
       ),
     );
