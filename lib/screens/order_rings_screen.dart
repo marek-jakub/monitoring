@@ -285,5 +285,26 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   }
 
   /// Shows scaffold messenger with error on save, update or delete.
-  void listenOrderError(String errorMsg) {}
+  void listenOrderError(String errorMsg) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(
+          errorMsg,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
 }
