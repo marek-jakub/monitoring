@@ -80,7 +80,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               children: [
                 CustomTextFormField(
                   controller: _ringSeriesCode,
-                  txtLabel: 'Ring series code',
+                  txtLabel: 'Ring series',
                   keyboard: 'text',
                 ),
                 CustomTextFormField(
@@ -140,7 +140,42 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                     itemCount: orders.length,
                     itemBuilder: (context, index) {
                       final order = orders[index];
-                      return GestureDetector();
+                      return GestureDetector(
+                        onTap: () {
+                          setState(() {});
+                        },
+                        child: Card(
+                          elevation: 0,
+                          child: Column(
+                            children: [
+                              Row(
+                                children: [
+                                  const Expanded(
+                                    child: Text('Ring series:',
+                                        textAlign: TextAlign.left),
+                                  ),
+                                  Expanded(
+                                    child: Text(order.ringSeriesCode,
+                                        textAlign: TextAlign.left),
+                                  ),
+                                ],
+                              ),
+                              Row(
+                                children: [
+                                  const Expanded(
+                                    child: Text('Amount:',
+                                        textAlign: TextAlign.left),
+                                  ),
+                                  Expanded(
+                                    child: Text(order.amount.toString(),
+                                        textAlign: TextAlign.left),
+                                  ),
+                                ],
+                              ),
+                            ],
+                          ),
+                        ),
+                      );
                     });
               },
             ),
