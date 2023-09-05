@@ -128,6 +128,9 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               ),
             ],
           ),
+          const SizedBox(
+            height: 10,
+          ),
         ],
       ),
     );
