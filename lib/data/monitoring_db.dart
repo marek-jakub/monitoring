@@ -267,6 +267,12 @@ class MonRingDb extends _$MonRingDb {
   Future<int> saveReport(ReportEntityCompanion companion) async {
     return await into(reportEntity).insert(companion);
   }
+
+  /// Returns a stream of report data for a ringer identified by [id].
+  Stream<List<ReportEntityData>> watchReports(String id) {
+    return (select(reportEntity)..where((tbl) => tbl.ringerId.equals(id)))
+        .watch();
+  }
 }
 
 /// Access to the file holding ringing data.
