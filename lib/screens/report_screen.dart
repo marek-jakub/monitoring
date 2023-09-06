@@ -29,7 +29,8 @@ class _ReportScreenState extends State<ReportScreen> {
   Widget build(BuildContext context) {
     return Consumer<RingDataManager>(
       builder: (context, dataManager, child) {
-        dataManager.fetchAllRings();
+        dataManager.fetchRingerRings(
+            context.read<ProfileManager>().getRinger.ringerId);
         rings = dataManager.allRings;
         return Scaffold(
           appBar: AppBar(
