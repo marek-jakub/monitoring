@@ -558,8 +558,8 @@ class RingDataManager extends ChangeNotifier {
   }
 
   /// Fetches all ring data from the database.
-  void fetchAllRings() {
-    _monRingDb?.getAllRings().then((value) {
+  void fetchRingerRings(String ringerId) {
+    _monRingDb?.getRingerRings(ringerId).then((value) {
       _allRings = value;
       notifyListeners();
     }).onError((error, stackTrace) {
