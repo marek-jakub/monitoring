@@ -142,7 +142,12 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                       final order = orders[index];
                       return GestureDetector(
                         onTap: () {
-                          setState(() {});
+                          setState(() {
+                            _ringSeriesCode.text = order.ringSeriesCode;
+                            _amount.text = order.amount.toString();
+
+                            _orderId = order.id;
+                          });
                         },
                         child: Card(
                           elevation: 0,
