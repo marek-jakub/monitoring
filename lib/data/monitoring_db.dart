@@ -259,7 +259,14 @@ class MonRingDb extends _$MonRingDb {
   }
 
   // REPORT ENTITY
-  // TODO: define report access methods
+
+  /// Saves report data stored in the [companion].
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveReport(ReportEntityCompanion companion) async {
+    return await into(reportEntity).insert(companion);
+  }
 }
 
 /// Access to the file holding ringing data.
