@@ -70,6 +70,13 @@ class MonRingDb extends _$MonRingDb {
         .getSingle();
   }
 
+  /// Return all sessions in database for a ringer identified by [ringerId].
+  Future<List<SessionEntityData>> getRingerSessions(String ringerId) async {
+    return (select(sessionEntity)
+          ..where((tbl) => tbl.ringerId.equals(ringerId)))
+        .get();
+  }
+
   /// Updates session data stored in the [companion].
   Future<bool> updateSession(SessionEntityCompanion companion) async {
     return await update(sessionEntity).replace(companion);
@@ -110,8 +117,13 @@ class MonRingDb extends _$MonRingDb {
 
   // RING ENTITY
 
-  /// Return all rings saved in the database.
-  Future<List<RingEntityData>> getAllRings() async {
+  /// Return all rings in the database for a ringer identified by [ringerId].
+  ///
+  /// Collects all sessions belonging to ringerId and then all rings
+  /// belonging to given sessions.
+  Future<List<RingEntityData>> getRingerRings(String ringerId) async {
+    List<SessionEntityData> ringerSessions = await getRingerSessions(ringerId);
+    // TODO: get all rings belonging to ringer sessions.
     return await select(ringEntity).get();
   }
 
