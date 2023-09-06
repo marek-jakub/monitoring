@@ -55,7 +55,7 @@ class _ReportScreenState extends State<ReportScreen> {
                     onPressed: () {
                       outputData.saveDataAsFile(context, rings);
                     },
-                    child: const Text('Report'),
+                    child: const Text('Create report'),
                   ),
                 ),
               ),
