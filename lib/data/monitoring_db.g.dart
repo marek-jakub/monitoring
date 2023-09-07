@@ -982,8 +982,27 @@ class $ReportEntityTable extends ReportEntity
   late final GeneratedColumn<String> date = GeneratedColumn<String>(
       'date', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _numberOfRingsMeta =
+      const VerificationMeta('numberOfRings');
   @override
-  List<GeneratedColumn> get $columns => [id, ringerId, date];
+  late final GeneratedColumn<int> numberOfRings = GeneratedColumn<int>(
+      'number_of_rings', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _numberOfRetrapsMeta =
+      const VerificationMeta('numberOfRetraps');
+  @override
+  late final GeneratedColumn<int> numberOfRetraps = GeneratedColumn<int>(
+      'number_of_retraps', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  static const VerificationMeta _numberOfLostRingsMeta =
+      const VerificationMeta('numberOfLostRings');
+  @override
+  late final GeneratedColumn<int> numberOfLostRings = GeneratedColumn<int>(
+      'number_of_lost_rings', aliasedName, false,
+      type: DriftSqlType.int, requiredDuringInsert: true);
+  @override
+  List<GeneratedColumn> get $columns =>
+      [id, ringerId, date, numberOfRings, numberOfRetraps, numberOfLostRings];
   @override
   String get aliasedName => _alias ?? 'report_entity';
   @override
@@ -1008,6 +1027,30 @@ class $ReportEntityTable extends ReportEntity
     } else if (isInserting) {
       context.missing(_dateMeta);
     }
+    if (data.containsKey('number_of_rings')) {
+      context.handle(
+          _numberOfRingsMeta,
+          numberOfRings.isAcceptableOrUnknown(
+              data['number_of_rings']!, _numberOfRingsMeta));
+    } else if (isInserting) {
+      context.missing(_numberOfRingsMeta);
+    }
+    if (data.containsKey('number_of_retraps')) {
+      context.handle(
+          _numberOfRetrapsMeta,
+          numberOfRetraps.isAcceptableOrUnknown(
+              data['number_of_retraps']!, _numberOfRetrapsMeta));
+    } else if (isInserting) {
+      context.missing(_numberOfRetrapsMeta);
+    }
+    if (data.containsKey('number_of_lost_rings')) {
+      context.handle(
+          _numberOfLostRingsMeta,
+          numberOfLostRings.isAcceptableOrUnknown(
+              data['number_of_lost_rings']!, _numberOfLostRingsMeta));
+    } else if (isInserting) {
+      context.missing(_numberOfLostRingsMeta);
+    }
     return context;
   }
 
@@ -1023,6 +1066,12 @@ class $ReportEntityTable extends ReportEntity
           .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       date: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}date'])!,
+      numberOfRings: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}number_of_rings'])!,
+      numberOfRetraps: attachedDatabase.typeMapping
+          .read(DriftSqlType.int, data['${effectivePrefix}number_of_retraps'])!,
+      numberOfLostRings: attachedDatabase.typeMapping.read(
+          DriftSqlType.int, data['${effectivePrefix}number_of_lost_rings'])!,
     );
   }
 
@@ -1037,14 +1086,25 @@ class ReportEntityData extends DataClass
   final int id;
   final String ringerId;
   final String date;
+  final int numberOfRings;
+  final int numberOfRetraps;
+  final int numberOfLostRings;
   const ReportEntityData(
-      {required this.id, required this.ringerId, required this.date});
+      {required this.id,
+      required this.ringerId,
+      required this.date,
+      required this.numberOfRings,
+      required this.numberOfRetraps,
+      required this.numberOfLostRings});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['ringer_id'] = Variable<String>(ringerId);
     map['date'] = Variable<String>(date);
+    map['number_of_rings'] = Variable<int>(numberOfRings);
+    map['number_of_retraps'] = Variable<int>(numberOfRetraps);
+    map['number_of_lost_rings'] = Variable<int>(numberOfLostRings);
     return map;
   }
 
@@ -1053,6 +1113,9 @@ class ReportEntityData extends DataClass
       id: Value(id),
       ringerId: Value(ringerId),
       date: Value(date),
+      numberOfRings: Value(numberOfRings),
+      numberOfRetraps: Value(numberOfRetraps),
+      numberOfLostRings: Value(numberOfLostRings),
     );
   }
 
@@ -1063,6 +1126,9 @@ class ReportEntityData extends DataClass
       id: serializer.fromJson<int>(json['id']),
       ringerId: serializer.fromJson<String>(json['ringerId']),
       date: serializer.fromJson<String>(json['date']),
+      numberOfRings: serializer.fromJson<int>(json['numberOfRings']),
+      numberOfRetraps: serializer.fromJson<int>(json['numberOfRetraps']),
+      numberOfLostRings: serializer.fromJson<int>(json['numberOfLostRings']),
     );
   }
   @override
@@ -1072,69 +1138,114 @@ class ReportEntityData extends DataClass
       'id': serializer.toJson<int>(id),
       'ringerId': serializer.toJson<String>(ringerId),
       'date': serializer.toJson<String>(date),
+      'numberOfRings': serializer.toJson<int>(numberOfRings),
+      'numberOfRetraps': serializer.toJson<int>(numberOfRetraps),
+      'numberOfLostRings': serializer.toJson<int>(numberOfLostRings),
     };
   }
 
-  ReportEntityData copyWith({int? id, String? ringerId, String? date}) =>
+  ReportEntityData copyWith(
+          {int? id,
+          String? ringerId,
+          String? date,
+          int? numberOfRings,
+          int? numberOfRetraps,
+          int? numberOfLostRings}) =>
       ReportEntityData(
         id: id ?? this.id,
         ringerId: ringerId ?? this.ringerId,
         date: date ?? this.date,
+        numberOfRings: numberOfRings ?? this.numberOfRings,
+        numberOfRetraps: numberOfRetraps ?? this.numberOfRetraps,
+        numberOfLostRings: numberOfLostRings ?? this.numberOfLostRings,
       );
   @override
   String toString() {
     return (StringBuffer('ReportEntityData(')
           ..write('id: $id, ')
           ..write('ringerId: $ringerId, ')
-          ..write('date: $date')
+          ..write('date: $date, ')
+          ..write('numberOfRings: $numberOfRings, ')
+          ..write('numberOfRetraps: $numberOfRetraps, ')
+          ..write('numberOfLostRings: $numberOfLostRings')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, ringerId, date);
+  int get hashCode => Object.hash(
+      id, ringerId, date, numberOfRings, numberOfRetraps, numberOfLostRings);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is ReportEntityData &&
           other.id == this.id &&
           other.ringerId == this.ringerId &&
-          other.date == this.date);
+          other.date == this.date &&
+          other.numberOfRings == this.numberOfRings &&
+          other.numberOfRetraps == this.numberOfRetraps &&
+          other.numberOfLostRings == this.numberOfLostRings);
 }
 
 class ReportEntityCompanion extends UpdateCompanion<ReportEntityData> {
   final Value<int> id;
   final Value<String> ringerId;
   final Value<String> date;
+  final Value<int> numberOfRings;
+  final Value<int> numberOfRetraps;
+  final Value<int> numberOfLostRings;
   const ReportEntityCompanion({
     this.id = const Value.absent(),
     this.ringerId = const Value.absent(),
     this.date = const Value.absent(),
+    this.numberOfRings = const Value.absent(),
+    this.numberOfRetraps = const Value.absent(),
+    this.numberOfLostRings = const Value.absent(),
   });
   ReportEntityCompanion.insert({
     this.id = const Value.absent(),
     required String ringerId,
     required String date,
+    required int numberOfRings,
+    required int numberOfRetraps,
+    required int numberOfLostRings,
   })  : ringerId = Value(ringerId),
-        date = Value(date);
+        date = Value(date),
+        numberOfRings = Value(numberOfRings),
+        numberOfRetraps = Value(numberOfRetraps),
+        numberOfLostRings = Value(numberOfLostRings);
   static Insertable<ReportEntityData> custom({
     Expression<int>? id,
     Expression<String>? ringerId,
     Expression<String>? date,
+    Expression<int>? numberOfRings,
+    Expression<int>? numberOfRetraps,
+    Expression<int>? numberOfLostRings,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (ringerId != null) 'ringer_id': ringerId,
       if (date != null) 'date': date,
+      if (numberOfRings != null) 'number_of_rings': numberOfRings,
+      if (numberOfRetraps != null) 'number_of_retraps': numberOfRetraps,
+      if (numberOfLostRings != null) 'number_of_lost_rings': numberOfLostRings,
     });
   }
 
   ReportEntityCompanion copyWith(
-      {Value<int>? id, Value<String>? ringerId, Value<String>? date}) {
+      {Value<int>? id,
+      Value<String>? ringerId,
+      Value<String>? date,
+      Value<int>? numberOfRings,
+      Value<int>? numberOfRetraps,
+      Value<int>? numberOfLostRings}) {
     return ReportEntityCompanion(
       id: id ?? this.id,
       ringerId: ringerId ?? this.ringerId,
       date: date ?? this.date,
+      numberOfRings: numberOfRings ?? this.numberOfRings,
+      numberOfRetraps: numberOfRetraps ?? this.numberOfRetraps,
+      numberOfLostRings: numberOfLostRings ?? this.numberOfLostRings,
     );
   }
 
@@ -1150,6 +1261,15 @@ class ReportEntityCompanion extends UpdateCompanion<ReportEntityData> {
     if (date.present) {
       map['date'] = Variable<String>(date.value);
     }
+    if (numberOfRings.present) {
+      map['number_of_rings'] = Variable<int>(numberOfRings.value);
+    }
+    if (numberOfRetraps.present) {
+      map['number_of_retraps'] = Variable<int>(numberOfRetraps.value);
+    }
+    if (numberOfLostRings.present) {
+      map['number_of_lost_rings'] = Variable<int>(numberOfLostRings.value);
+    }
     return map;
   }
 
@@ -1158,7 +1278,10 @@ class ReportEntityCompanion extends UpdateCompanion<ReportEntityData> {
     return (StringBuffer('ReportEntityCompanion(')
           ..write('id: $id, ')
           ..write('ringerId: $ringerId, ')
-          ..write('date: $date')
+          ..write('date: $date, ')
+          ..write('numberOfRings: $numberOfRings, ')
+          ..write('numberOfRetraps: $numberOfRetraps, ')
+          ..write('numberOfLostRings: $numberOfLostRings')
           ..write(')'))
         .toString();
   }
@@ -1554,6 +1677,12 @@ class $RetrapEntityTable extends RetrapEntity
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES session_entity (id)'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _ringSeriesCodeMeta =
       const VerificationMeta('ringSeriesCode');
   @override
@@ -1790,6 +1919,7 @@ class $RetrapEntityTable extends RetrapEntity
   List<GeneratedColumn> get $columns => [
         id,
         sessionId,
+        ringerId,
         ringSeriesCode,
         ringIdNumber,
         ringScheme,
@@ -1848,6 +1978,12 @@ class $RetrapEntityTable extends RetrapEntity
           sessionId.isAcceptableOrUnknown(data['session_id']!, _sessionIdMeta));
     } else if (isInserting) {
       context.missing(_sessionIdMeta);
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('ring_series_code')) {
       context.handle(
@@ -2158,6 +2294,8 @@ class $RetrapEntityTable extends RetrapEntity
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       sessionId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}session_id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       ringSeriesCode: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ring_series_code'])!,
       ringIdNumber: attachedDatabase.typeMapping
@@ -2252,6 +2390,7 @@ class RetrapEntityData extends DataClass
     implements Insertable<RetrapEntityData> {
   final int id;
   final int sessionId;
+  final String ringerId;
   final String ringSeriesCode;
   final String ringIdNumber;
   final String ringScheme;
@@ -2295,6 +2434,7 @@ class RetrapEntityData extends DataClass
   const RetrapEntityData(
       {required this.id,
       required this.sessionId,
+      required this.ringerId,
       required this.ringSeriesCode,
       required this.ringIdNumber,
       required this.ringScheme,
@@ -2340,6 +2480,7 @@ class RetrapEntityData extends DataClass
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['session_id'] = Variable<int>(sessionId);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['ring_series_code'] = Variable<String>(ringSeriesCode);
     map['ring_id_number'] = Variable<String>(ringIdNumber);
     map['ring_scheme'] = Variable<String>(ringScheme);
@@ -2387,6 +2528,7 @@ class RetrapEntityData extends DataClass
     return RetrapEntityCompanion(
       id: Value(id),
       sessionId: Value(sessionId),
+      ringerId: Value(ringerId),
       ringSeriesCode: Value(ringSeriesCode),
       ringIdNumber: Value(ringIdNumber),
       ringScheme: Value(ringScheme),
@@ -2436,6 +2578,7 @@ class RetrapEntityData extends DataClass
     return RetrapEntityData(
       id: serializer.fromJson<int>(json['id']),
       sessionId: serializer.fromJson<int>(json['sessionId']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
       ringIdNumber: serializer.fromJson<String>(json['ringIdNumber']),
       ringScheme: serializer.fromJson<String>(json['ringScheme']),
@@ -2485,6 +2628,7 @@ class RetrapEntityData extends DataClass
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'sessionId': serializer.toJson<int>(sessionId),
+      'ringerId': serializer.toJson<String>(ringerId),
       'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
       'ringIdNumber': serializer.toJson<String>(ringIdNumber),
       'ringScheme': serializer.toJson<String>(ringScheme),
@@ -2531,6 +2675,7 @@ class RetrapEntityData extends DataClass
   RetrapEntityData copyWith(
           {int? id,
           int? sessionId,
+          String? ringerId,
           String? ringSeriesCode,
           String? ringIdNumber,
           String? ringScheme,
@@ -2574,6 +2719,7 @@ class RetrapEntityData extends DataClass
       RetrapEntityData(
         id: id ?? this.id,
         sessionId: sessionId ?? this.sessionId,
+        ringerId: ringerId ?? this.ringerId,
         ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
         ringIdNumber: ringIdNumber ?? this.ringIdNumber,
         ringScheme: ringScheme ?? this.ringScheme,
@@ -2621,6 +2767,7 @@ class RetrapEntityData extends DataClass
     return (StringBuffer('RetrapEntityData(')
           ..write('id: $id, ')
           ..write('sessionId: $sessionId, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('ringIdNumber: $ringIdNumber, ')
           ..write('ringScheme: $ringScheme, ')
@@ -2669,6 +2816,7 @@ class RetrapEntityData extends DataClass
   int get hashCode => Object.hashAll([
         id,
         sessionId,
+        ringerId,
         ringSeriesCode,
         ringIdNumber,
         ringScheme,
@@ -2716,6 +2864,7 @@ class RetrapEntityData extends DataClass
       (other is RetrapEntityData &&
           other.id == this.id &&
           other.sessionId == this.sessionId &&
+          other.ringerId == this.ringerId &&
           other.ringSeriesCode == this.ringSeriesCode &&
           other.ringIdNumber == this.ringIdNumber &&
           other.ringScheme == this.ringScheme &&
@@ -2761,6 +2910,7 @@ class RetrapEntityData extends DataClass
 class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
   final Value<int> id;
   final Value<int> sessionId;
+  final Value<String> ringerId;
   final Value<String> ringSeriesCode;
   final Value<String> ringIdNumber;
   final Value<String> ringScheme;
@@ -2804,6 +2954,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
   const RetrapEntityCompanion({
     this.id = const Value.absent(),
     this.sessionId = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.ringSeriesCode = const Value.absent(),
     this.ringIdNumber = const Value.absent(),
     this.ringScheme = const Value.absent(),
@@ -2848,6 +2999,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
   RetrapEntityCompanion.insert({
     this.id = const Value.absent(),
     required int sessionId,
+    required String ringerId,
     required String ringSeriesCode,
     required String ringIdNumber,
     required String ringScheme,
@@ -2889,6 +3041,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
     required String alula,
     required String carpalCovert,
   })  : sessionId = Value(sessionId),
+        ringerId = Value(ringerId),
         ringSeriesCode = Value(ringSeriesCode),
         ringIdNumber = Value(ringIdNumber),
         ringScheme = Value(ringScheme),
@@ -2932,6 +3085,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
   static Insertable<RetrapEntityData> custom({
     Expression<int>? id,
     Expression<int>? sessionId,
+    Expression<String>? ringerId,
     Expression<String>? ringSeriesCode,
     Expression<String>? ringIdNumber,
     Expression<String>? ringScheme,
@@ -2976,6 +3130,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (sessionId != null) 'session_id': sessionId,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
       if (ringIdNumber != null) 'ring_id_number': ringIdNumber,
       if (ringScheme != null) 'ring_scheme': ringScheme,
@@ -3023,6 +3178,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
   RetrapEntityCompanion copyWith(
       {Value<int>? id,
       Value<int>? sessionId,
+      Value<String>? ringerId,
       Value<String>? ringSeriesCode,
       Value<String>? ringIdNumber,
       Value<String>? ringScheme,
@@ -3066,6 +3222,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
     return RetrapEntityCompanion(
       id: id ?? this.id,
       sessionId: sessionId ?? this.sessionId,
+      ringerId: ringerId ?? this.ringerId,
       ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
       ringIdNumber: ringIdNumber ?? this.ringIdNumber,
       ringScheme: ringScheme ?? this.ringScheme,
@@ -3118,6 +3275,9 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
     }
     if (sessionId.present) {
       map['session_id'] = Variable<int>(sessionId.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (ringSeriesCode.present) {
       map['ring_series_code'] = Variable<String>(ringSeriesCode.value);
@@ -3248,6 +3408,7 @@ class RetrapEntityCompanion extends UpdateCompanion<RetrapEntityData> {
     return (StringBuffer('RetrapEntityCompanion(')
           ..write('id: $id, ')
           ..write('sessionId: $sessionId, ')
+          ..write('ringerId: $ringerId, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('ringIdNumber: $ringIdNumber, ')
           ..write('ringScheme: $ringScheme, ')
@@ -3317,6 +3478,12 @@ class $RingEntityTable extends RingEntity
       requiredDuringInsert: true,
       defaultConstraints:
           GeneratedColumn.constraintIsAlways('REFERENCES session_entity (id)'));
+  static const VerificationMeta _ringerIdMeta =
+      const VerificationMeta('ringerId');
+  @override
+  late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
+      'ringer_id', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _primaryIdMethodMeta =
       const VerificationMeta('primaryIdMethod');
   @override
@@ -3547,6 +3714,7 @@ class $RingEntityTable extends RingEntity
   List<GeneratedColumn> get $columns => [
         id,
         sessionId,
+        ringerId,
         primaryIdMethod,
         ringSeriesCode,
         ringIdNumber,
@@ -3604,6 +3772,12 @@ class $RingEntityTable extends RingEntity
           sessionId.isAcceptableOrUnknown(data['session_id']!, _sessionIdMeta));
     } else if (isInserting) {
       context.missing(_sessionIdMeta);
+    }
+    if (data.containsKey('ringer_id')) {
+      context.handle(_ringerIdMeta,
+          ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
+    } else if (isInserting) {
+      context.missing(_ringerIdMeta);
     }
     if (data.containsKey('primary_id_method')) {
       context.handle(
@@ -3906,6 +4080,8 @@ class $RingEntityTable extends RingEntity
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       sessionId: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}session_id'])!,
+      ringerId: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
       primaryIdMethod: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}primary_id_method'])!,
       ringSeriesCode: attachedDatabase.typeMapping.read(
@@ -3997,6 +4173,7 @@ class $RingEntityTable extends RingEntity
 class RingEntityData extends DataClass implements Insertable<RingEntityData> {
   final int id;
   final int sessionId;
+  final String ringerId;
   final String primaryIdMethod;
   final String ringSeriesCode;
   final String ringIdNumber;
@@ -4039,6 +4216,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
   const RingEntityData(
       {required this.id,
       required this.sessionId,
+      required this.ringerId,
       required this.primaryIdMethod,
       required this.ringSeriesCode,
       required this.ringIdNumber,
@@ -4083,6 +4261,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['session_id'] = Variable<int>(sessionId);
+    map['ringer_id'] = Variable<String>(ringerId);
     map['primary_id_method'] = Variable<String>(primaryIdMethod);
     map['ring_series_code'] = Variable<String>(ringSeriesCode);
     map['ring_id_number'] = Variable<String>(ringIdNumber);
@@ -4129,6 +4308,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
     return RingEntityCompanion(
       id: Value(id),
       sessionId: Value(sessionId),
+      ringerId: Value(ringerId),
       primaryIdMethod: Value(primaryIdMethod),
       ringSeriesCode: Value(ringSeriesCode),
       ringIdNumber: Value(ringIdNumber),
@@ -4177,6 +4357,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
     return RingEntityData(
       id: serializer.fromJson<int>(json['id']),
       sessionId: serializer.fromJson<int>(json['sessionId']),
+      ringerId: serializer.fromJson<String>(json['ringerId']),
       primaryIdMethod: serializer.fromJson<String>(json['primaryIdMethod']),
       ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
       ringIdNumber: serializer.fromJson<String>(json['ringIdNumber']),
@@ -4225,6 +4406,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'sessionId': serializer.toJson<int>(sessionId),
+      'ringerId': serializer.toJson<String>(ringerId),
       'primaryIdMethod': serializer.toJson<String>(primaryIdMethod),
       'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
       'ringIdNumber': serializer.toJson<String>(ringIdNumber),
@@ -4270,6 +4452,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
   RingEntityData copyWith(
           {int? id,
           int? sessionId,
+          String? ringerId,
           String? primaryIdMethod,
           String? ringSeriesCode,
           String? ringIdNumber,
@@ -4312,6 +4495,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
       RingEntityData(
         id: id ?? this.id,
         sessionId: sessionId ?? this.sessionId,
+        ringerId: ringerId ?? this.ringerId,
         primaryIdMethod: primaryIdMethod ?? this.primaryIdMethod,
         ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
         ringIdNumber: ringIdNumber ?? this.ringIdNumber,
@@ -4358,6 +4542,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
     return (StringBuffer('RingEntityData(')
           ..write('id: $id, ')
           ..write('sessionId: $sessionId, ')
+          ..write('ringerId: $ringerId, ')
           ..write('primaryIdMethod: $primaryIdMethod, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('ringIdNumber: $ringIdNumber, ')
@@ -4405,6 +4590,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
   int get hashCode => Object.hashAll([
         id,
         sessionId,
+        ringerId,
         primaryIdMethod,
         ringSeriesCode,
         ringIdNumber,
@@ -4451,6 +4637,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
       (other is RingEntityData &&
           other.id == this.id &&
           other.sessionId == this.sessionId &&
+          other.ringerId == this.ringerId &&
           other.primaryIdMethod == this.primaryIdMethod &&
           other.ringSeriesCode == this.ringSeriesCode &&
           other.ringIdNumber == this.ringIdNumber &&
@@ -4495,6 +4682,7 @@ class RingEntityData extends DataClass implements Insertable<RingEntityData> {
 class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
   final Value<int> id;
   final Value<int> sessionId;
+  final Value<String> ringerId;
   final Value<String> primaryIdMethod;
   final Value<String> ringSeriesCode;
   final Value<String> ringIdNumber;
@@ -4537,6 +4725,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
   const RingEntityCompanion({
     this.id = const Value.absent(),
     this.sessionId = const Value.absent(),
+    this.ringerId = const Value.absent(),
     this.primaryIdMethod = const Value.absent(),
     this.ringSeriesCode = const Value.absent(),
     this.ringIdNumber = const Value.absent(),
@@ -4580,6 +4769,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
   RingEntityCompanion.insert({
     this.id = const Value.absent(),
     required int sessionId,
+    required String ringerId,
     required String primaryIdMethod,
     required String ringSeriesCode,
     required String ringIdNumber,
@@ -4620,6 +4810,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
     required String alula,
     required String carpalCovert,
   })  : sessionId = Value(sessionId),
+        ringerId = Value(ringerId),
         primaryIdMethod = Value(primaryIdMethod),
         ringSeriesCode = Value(ringSeriesCode),
         ringIdNumber = Value(ringIdNumber),
@@ -4662,6 +4853,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
   static Insertable<RingEntityData> custom({
     Expression<int>? id,
     Expression<int>? sessionId,
+    Expression<String>? ringerId,
     Expression<String>? primaryIdMethod,
     Expression<String>? ringSeriesCode,
     Expression<String>? ringIdNumber,
@@ -4705,6 +4897,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (sessionId != null) 'session_id': sessionId,
+      if (ringerId != null) 'ringer_id': ringerId,
       if (primaryIdMethod != null) 'primary_id_method': primaryIdMethod,
       if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
       if (ringIdNumber != null) 'ring_id_number': ringIdNumber,
@@ -4751,6 +4944,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
   RingEntityCompanion copyWith(
       {Value<int>? id,
       Value<int>? sessionId,
+      Value<String>? ringerId,
       Value<String>? primaryIdMethod,
       Value<String>? ringSeriesCode,
       Value<String>? ringIdNumber,
@@ -4793,6 +4987,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
     return RingEntityCompanion(
       id: id ?? this.id,
       sessionId: sessionId ?? this.sessionId,
+      ringerId: ringerId ?? this.ringerId,
       primaryIdMethod: primaryIdMethod ?? this.primaryIdMethod,
       ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
       ringIdNumber: ringIdNumber ?? this.ringIdNumber,
@@ -4844,6 +5039,9 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
     }
     if (sessionId.present) {
       map['session_id'] = Variable<int>(sessionId.value);
+    }
+    if (ringerId.present) {
+      map['ringer_id'] = Variable<String>(ringerId.value);
     }
     if (primaryIdMethod.present) {
       map['primary_id_method'] = Variable<String>(primaryIdMethod.value);
@@ -4971,6 +5169,7 @@ class RingEntityCompanion extends UpdateCompanion<RingEntityData> {
     return (StringBuffer('RingEntityCompanion(')
           ..write('id: $id, ')
           ..write('sessionId: $sessionId, ')
+          ..write('ringerId: $ringerId, ')
           ..write('primaryIdMethod: $primaryIdMethod, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('ringIdNumber: $ringIdNumber, ')
