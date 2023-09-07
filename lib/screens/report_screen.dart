@@ -31,7 +31,7 @@ class _ReportScreenState extends State<ReportScreen> {
       builder: (context, dataManager, child) {
         dataManager.fetchRingerRings(
             context.read<ProfileManager>().getRinger.ringerId);
-        rings = dataManager.allRings;
+        rings = dataManager.ringerRings;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
