@@ -800,6 +800,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
     if (isRequiredValid != null && isRequiredValid) {
       final ringEntity = RingEntityCompanion(
         sessionId: d.Value(context.read<RingDataManager>().currentSessionId),
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         primaryIdMethod: d.Value(_primaryIDMethodController.text),
         ringSeriesCode: d.Value(_ringSeriesCodeController.text),
         ringIdNumber: d.Value(_ringIdNumberController.text),
