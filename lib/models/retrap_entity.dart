@@ -7,6 +7,7 @@ class RetrapEntity extends Table {
   // non-nullable
   IntColumn get id => integer().autoIncrement()();
   IntColumn get sessionId => integer().references(SessionEntity, #id)();
+  TextColumn get ringerId => text()();
   TextColumn get ringSeriesCode => text()();
   TextColumn get ringIdNumber => text()();
   TextColumn get ringScheme => text()();
