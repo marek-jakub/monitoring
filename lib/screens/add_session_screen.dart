@@ -38,7 +38,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   // Session information controllers
   //  final TextEditingController _ringingSchemeController =
   //    TextEditingController();
-  final TextEditingController _ringerId = TextEditingController();
   final TextEditingController _countryController = TextEditingController();
   final TextEditingController _placeCodeController = TextEditingController();
   final TextEditingController _localityController = TextEditingController();
@@ -82,7 +81,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   @override
   void dispose() {
     // Dispose off session controllers
-    _ringerId.dispose();
     _countryController.dispose();
     _placeCodeController.dispose();
     _localityController.dispose();
@@ -131,12 +129,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
               key: _sessionFormKey,
               child: Column(
                 children: [
-                  // TODO: populate with signed in ringer's ID
-                  CustomTextFormField(
-                    controller: _ringerId,
-                    txtLabel: 'Ringer ID',
-                    keyboard: 'text',
-                  ),
                   CustomDropdownCountryFormField(
                     countryController: _countryController,
                     placeCodeController: _placeCodeController,
