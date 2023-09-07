@@ -41,7 +41,7 @@ class RingDataManager extends ChangeNotifier {
   int _selectedRingId = -1;
   RingEntityData? _ringEntityData;
   List<RingEntityData> _sessionRingStream = [];
-  List<RingEntityData> _allRings = [];
+  List<RingEntityData> _ringerRings = [];
 
   // Retrap
   bool _newRetrap = false;
@@ -247,7 +247,7 @@ class RingDataManager extends ChangeNotifier {
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
 
   /// Access to all rings in the database.
-  List<RingEntityData> get allRings => _allRings;
+  List<RingEntityData> get ringerRings => _ringerRings;
 
   /// Access to a ring information.
   RingEntityData? get ringEntityData => _ringEntityData;
@@ -560,7 +560,7 @@ class RingDataManager extends ChangeNotifier {
   /// Fetches all ring data from the database.
   void fetchRingerRings(String ringerId) {
     _monRingDb?.getRingerRings(ringerId).then((value) {
-      _allRings = value;
+      _ringerRings = value;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
