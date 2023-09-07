@@ -122,9 +122,9 @@ class MonRingDb extends _$MonRingDb {
   /// Collects all sessions belonging to ringerId and then all rings
   /// belonging to given sessions.
   Future<List<RingEntityData>> getRingerRings(String ringerId) async {
-    List<SessionEntityData> ringerSessions = await getRingerSessions(ringerId);
-    // TODO: get all rings belonging to ringer sessions.
-    return await select(ringEntity).get();
+    return await (select(ringEntity)
+          ..where((tbl) => tbl.ringerId.equals(ringerId)))
+        .get();
   }
 
   /// Saves ring data stored in the [companion].
@@ -291,7 +291,7 @@ class MonRingDb extends _$MonRingDb {
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db_c.sqlite'));
+    final file = File(p.join(dbFolder.path, 'db_mring_a.sqlite'));
 
     //return NativeDatabase.createInBackground(file);
     return NativeDatabase(file);
