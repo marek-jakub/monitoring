@@ -878,6 +878,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
     if (isRequiredValid != null && isRequiredValid) {
       final retrapEntity = RetrapEntityCompanion(
         sessionId: d.Value(context.read<RingDataManager>().currentSessionId),
+        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         ringScheme: d.Value(_ringSchemeController.text),
         primaryIdMethod: d.Value(_primaryIDMethodController.text),
         ringSeriesCode: d.Value(_ringSeriesCodeController.text),
