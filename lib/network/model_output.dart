@@ -12,8 +12,10 @@ class ModelOutput {
   saveDataAsFile(BuildContext context, List<RingEntityData> ringData,
       List<RetrapEntityData> retrapData) {
     String jsonRings = jsonEncode(ringData);
+    String jsonRetraps = jsonEncode(retrapData);
+    String jsonOutput = jsonRings + jsonRetraps;
 
-    List<int> textBytes = utf8.encode(jsonRings);
+    List<int> textBytes = utf8.encode(jsonOutput);
     Uint8List textB = Uint8List.fromList(textBytes);
 
     DocumentFileSavePlus fileSaver = DocumentFileSavePlus();
