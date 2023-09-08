@@ -625,6 +625,17 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
+  /// Fetches ringer retraps data from the database.
+  void fetchRingerRetraps(String ringerId) {
+    _monRingDb?.getRingerRetraps(ringerId).then((value) {
+      _ringerRetraps = value;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      notifyListeners();
+    });
+  }
+
   /// Saves retrap entity [companion] data in the database.
   void saveRetrap(RetrapEntityCompanion companion) {
     _monRingDb?.saveRetrap(companion).then((value) {
