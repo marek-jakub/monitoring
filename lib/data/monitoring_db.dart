@@ -118,9 +118,6 @@ class MonRingDb extends _$MonRingDb {
   // RING ENTITY
 
   /// Return all rings in the database for a ringer identified by [ringerId].
-  ///
-  /// Collects all sessions belonging to ringerId and then all rings
-  /// belonging to given sessions.
   Future<List<RingEntityData>> getRingerRings(String ringerId) async {
     return await (select(ringEntity)
           ..where((tbl) => tbl.ringerId.equals(ringerId)))
