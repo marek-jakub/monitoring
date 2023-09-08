@@ -52,6 +52,7 @@ class RingDataManager extends ChangeNotifier {
   int _selectedRetrapId = -1;
   RetrapEntityData? _retrapEntityData;
   List<RetrapEntityData> _sessionRetrapStream = [];
+  List<RetrapEntityData> _ringerRetraps = [];
 
   // Report
   bool _newReport = false;
@@ -299,6 +300,9 @@ class RingDataManager extends ChangeNotifier {
     _selectedRetrapId = id;
     //notifyListeners();
   }
+
+  /// Access to all ringer retraps in the database.
+  List<RetrapEntityData> get ringerRetraps => _ringerRetraps;
 
   /// Access to a retrap information.
   RetrapEntityData? get retrapEntityData => _retrapEntityData;
