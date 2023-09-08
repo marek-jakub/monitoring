@@ -13,13 +13,21 @@ class ModelOutput {
       List<RetrapEntityData> retrapData) {
     String jsonRings = jsonEncode(ringData);
     String jsonRetraps = jsonEncode(retrapData);
-    String jsonOutput = jsonRings + jsonRetraps;
 
-    List<int> textBytes = utf8.encode(jsonOutput);
-    Uint8List textB = Uint8List.fromList(textBytes);
+    List<int> textRings = utf8.encode(jsonRings);
+    Uint8List textA = Uint8List.fromList(textRings);
 
+    List<int> textRetraps = utf8.encode(jsonRetraps);
+    Uint8List textB = Uint8List.fromList(textRetraps);
+
+    // DocumentFileSavePlus might give 'missing plugin error'
+    // when app run in linux.
     DocumentFileSavePlus fileSaver = DocumentFileSavePlus();
-    fileSaver.saveFile(textB, "ringerData.txt", "text/plain").then(
+    fileSaver.saveMultipleFiles(
+      dataList: [textA, textB],
+      fileNameList: ["ringerRings.txt", "ringerRetraps.txt"],
+      mimeTypeList: ["text/plain", "text/plain"],
+    ).then(
       (value) {
         ScaffoldMessenger.of(context).showMaterialBanner(
           MaterialBanner(
