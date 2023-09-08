@@ -33,6 +33,7 @@ class _ReportScreenState extends State<ReportScreen> {
         dataManager.fetchRingerRings(
             context.read<ProfileManager>().getRinger.ringerId);
         rings = dataManager.ringerRings;
+        retraps = dataManager.ringerRetraps;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -55,7 +56,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   padding: const EdgeInsets.all(8.0),
                   child: ElevatedButton(
                     onPressed: () {
-                      outputData.saveDataAsFile(context, rings);
+                      outputData.saveDataAsFile(context, rings, retraps);
                     },
                     child: const Text('Create report'),
                   ),
