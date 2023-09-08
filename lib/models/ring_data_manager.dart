@@ -247,7 +247,7 @@ class RingDataManager extends ChangeNotifier {
   /// Session is identified by [_currentSessionId].
   List<RingEntityData> get sessionRingStream => _sessionRingStream;
 
-  /// Access to all rings in the database.
+  /// Access to a ringer rings in the database.
   List<RingEntityData> get ringerRings => _ringerRings;
 
   /// Access to a ring information.
@@ -301,7 +301,7 @@ class RingDataManager extends ChangeNotifier {
     //notifyListeners();
   }
 
-  /// Access to all ringer retraps in the database.
+  /// Access to a ringer retraps in the database.
   List<RetrapEntityData> get ringerRetraps => _ringerRetraps;
 
   /// Access to a retrap information.
