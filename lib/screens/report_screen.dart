@@ -33,6 +33,8 @@ class _ReportScreenState extends State<ReportScreen> {
         dataManager.fetchRingerRings(
             context.read<ProfileManager>().getRinger.ringerId);
         rings = dataManager.ringerRings;
+        dataManager.fetchRingerRetraps(
+            context.read<ProfileManager>().getRinger.ringerId);
         retraps = dataManager.ringerRetraps;
         return Scaffold(
           appBar: AppBar(
