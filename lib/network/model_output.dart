@@ -9,7 +9,8 @@ import 'package:document_file_save_plus/document_file_save_plus.dart';
 
 /// A basic json convert and data output.
 class ModelOutput {
-  saveDataAsFile(BuildContext context, List<RingEntityData> ringData) {
+  saveDataAsFile(BuildContext context, List<RingEntityData> ringData,
+      List<RetrapEntityData> retrapData) {
     String jsonRings = jsonEncode(ringData);
 
     List<int> textBytes = utf8.encode(jsonRings);
