@@ -24,6 +24,7 @@ class ReportScreen extends StatefulWidget {
 class _ReportScreenState extends State<ReportScreen> {
   ModelOutput outputData = ModelOutput();
   List<RingEntityData> rings = [];
+  List<RetrapEntityData> retraps = [];
 
   @override
   Widget build(BuildContext context) {
