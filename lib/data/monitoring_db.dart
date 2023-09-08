@@ -159,6 +159,13 @@ class MonRingDb extends _$MonRingDb {
 
   // RETRAP ENTITY
 
+  /// Return all retraps in the database for a ringer identified by [ringerId].
+  Future<List<RetrapEntityData>> getRingerRetraps(String ringerId) async {
+    return await (select(retrapEntity)
+          ..where((tbl) => tbl.ringerId.equals(ringerId)))
+        .get();
+  }
+
   /// Saves retrap ring data stored in the [companion].
   ///
   /// Returns an integer, on success an ID of the saved companion, otherwise
