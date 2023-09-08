@@ -16,7 +16,7 @@ class ModelOutput {
     Uint8List textB = Uint8List.fromList(textBytes);
 
     DocumentFileSavePlus fileSaver = DocumentFileSavePlus();
-    fileSaver.saveFile(textB, "ringData.txt", "text/plain").then(
+    fileSaver.saveFile(textB, "ringerData.txt", "text/plain").then(
       (value) {
         ScaffoldMessenger.of(context).showMaterialBanner(
           MaterialBanner(
