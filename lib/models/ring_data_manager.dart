@@ -561,7 +561,7 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
-  /// Fetches all ring data from the database.
+  /// Fetches ringer rings data from the database.
   void fetchRingerRings(String ringerId) {
     _monRingDb?.getRingerRings(ringerId).then((value) {
       _ringerRings = value;
