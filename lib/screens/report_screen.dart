@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:monitoring/data/monitoring_db.dart';
+import 'package:drift/drift.dart' as d;
 
 import '../network/model_output.dart';
 import '../models/models.dart';
@@ -59,7 +61,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       outputData.saveDataAsFile(context, rings, retraps);
-                      saveReportInfo();
+                      saveReportInfo(rings, retraps);
                     },
                     child: const Text('Create report'),
                   ),
@@ -72,5 +74,20 @@ class _ReportScreenState extends State<ReportScreen> {
     );
   }
 
-  void saveReportInfo() {}
+  void saveReportInfo(
+      List<RingEntityData> rings, List<RetrapEntityData> retraps) {
+    // Get current date to be used as report date input
+    final initialDate = DateTime.now();
+    String currentDate = DateFormat('dd-MM-yyyy').format(initialDate);
+
+    final reportEntity = ReportEntityCompanion(
+      ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+      date: d.Value(currentDate),
+      numberOfRings: d.Value(rings.length),
+      numberOfRetraps: d.Value(retraps.length),
+      numberOfLostRings: const d.Value(0),
+    );
+
+    context.read<RingDataManager>().saveReport(reportEntity);
+  }
 }
