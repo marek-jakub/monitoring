@@ -59,6 +59,7 @@ class _ReportScreenState extends State<ReportScreen> {
                   child: ElevatedButton(
                     onPressed: () {
                       outputData.saveDataAsFile(context, rings, retraps);
+                      saveReportInfo();
                     },
                     child: const Text('Create report'),
                   ),
@@ -70,4 +71,6 @@ class _ReportScreenState extends State<ReportScreen> {
       },
     );
   }
+
+  void saveReportInfo() {}
 }
