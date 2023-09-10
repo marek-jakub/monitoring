@@ -56,6 +56,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Report
   bool _newReport = false;
+  bool _isReportAdded = false;
 
   // RingSeries
   bool _newRingSeries = false;
@@ -320,6 +321,13 @@ class RingDataManager extends ChangeNotifier {
   bool get newReport => _newReport;
   void setNewReport(bool create) {
     _newReport = create;
+    notifyListeners();
+  }
+
+  /// Whether report data has been successfuly saved in the database.
+  bool get isReportAdded => _isReportAdded;
+  void setIsReportAdded(bool added) {
+    _isReportAdded = added;
     notifyListeners();
   }
 
