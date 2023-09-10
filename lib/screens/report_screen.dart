@@ -70,7 +70,7 @@ class _ReportScreenState extends State<ReportScreen> {
               const SizedBox(
                 height: 10,
               ),
-              const Text('Reports'),
+              Center(child: const Text('Reports')),
             ],
           ),
         );
