@@ -332,6 +332,9 @@ class RingDataManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Access to report stream list of a given ringer.
+  List<ReportEntityData> get reportStream => _reportStream;
+
   // RINGSERIES /////////////////////////
 
   /// Access to add ring series screen.
