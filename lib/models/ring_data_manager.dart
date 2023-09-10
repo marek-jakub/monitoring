@@ -848,7 +848,7 @@ class RingDataManager extends ChangeNotifier {
   /// Saves report entity [companion] data in the database.
   void saveReport(ReportEntityCompanion companion) {
     _monRingDb?.saveReport(companion).then((value) {
-      //_isReportAdded = value > 0 ? true : false;
+      _isReportAdded = value > 0 ? true : false;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
