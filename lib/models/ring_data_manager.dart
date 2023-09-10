@@ -57,6 +57,7 @@ class RingDataManager extends ChangeNotifier {
   // Report
   bool _newReport = false;
   bool _isReportAdded = false;
+  List<ReportEntityData> _reportStream = [];
 
   // RingSeries
   bool _newRingSeries = false;
