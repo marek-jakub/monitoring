@@ -27,6 +27,7 @@ class _ReportScreenState extends State<ReportScreen> {
   ModelOutput outputData = ModelOutput();
   List<RingEntityData> rings = [];
   List<RetrapEntityData> retraps = [];
+  List<ReportEntityData> reports = [];
 
   @override
   Widget build(BuildContext context) {
@@ -38,6 +39,7 @@ class _ReportScreenState extends State<ReportScreen> {
         dataManager.fetchRingerRetraps(
             context.read<ProfileManager>().getRinger.ringerId);
         retraps = dataManager.ringerRetraps;
+        reports = dataManager.reportStream;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -62,6 +64,8 @@ class _ReportScreenState extends State<ReportScreen> {
                     onPressed: () {
                       outputData.saveDataAsFile(context, rings, retraps);
                       saveReportInfo(rings, retraps);
+                      dataManager.getReportStream(
+                          context.read<ProfileManager>().getRinger.ringerId);
                     },
                     child: const Text('Create report'),
                   ),
@@ -70,8 +74,58 @@ class _ReportScreenState extends State<ReportScreen> {
               const SizedBox(
                 height: 10,
               ),
-              Center(
-                child: const Text('Reports'),
+              const Center(
+                child: Text('Reports'),
+              ),
+              Expanded(
+                child: ListView.builder(
+                    itemCount: reports.length,
+                    itemBuilder: (context, index) {
+                      final report = reports[index];
+                      return Card(
+                        elevation: 0,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                const Expanded(
+                                  child: Text('Report date:',
+                                      textAlign: TextAlign.left),
+                                ),
+                                Expanded(
+                                  child: Text(report.date,
+                                      textAlign: TextAlign.left),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Expanded(
+                                  child: Text('Number of rings:',
+                                      textAlign: TextAlign.left),
+                                ),
+                                Expanded(
+                                  child: Text(report.numberOfRings.toString(),
+                                      textAlign: TextAlign.left),
+                                ),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                const Expanded(
+                                  child: Text('Number of retraps:',
+                                      textAlign: TextAlign.left),
+                                ),
+                                Expanded(
+                                  child: Text(report.numberOfRetraps.toString(),
+                                      textAlign: TextAlign.left),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
               ),
             ],
           ),
