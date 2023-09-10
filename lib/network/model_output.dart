@@ -14,20 +14,29 @@ class ModelOutput {
     String jsonRings = jsonEncode(ringData);
     String jsonRetraps = jsonEncode(retrapData);
 
-    List<int> textRings = utf8.encode(jsonRings);
-    Uint8List textA = Uint8List.fromList(textRings);
+    // Combination of rings and retraps
+    String ringsAndRetraps = jsonRings + jsonRetraps;
 
-    List<int> textRetraps = utf8.encode(jsonRetraps);
-    Uint8List textB = Uint8List.fromList(textRetraps);
+    List<int> ringerOut = utf8.encode(ringsAndRetraps);
+    Uint8List ringerOutput = Uint8List.fromList(ringerOut);
+
+    // List<int> textRings = utf8.encode(jsonRings);
+    // Uint8List textA = Uint8List.fromList(textRings);
+
+    // List<int> textRetraps = utf8.encode(jsonRetraps);
+    // Uint8List textB = Uint8List.fromList(textRetraps);
 
     // DocumentFileSavePlus might give 'missing plugin error'
     // when app run in linux.
     DocumentFileSavePlus fileSaver = DocumentFileSavePlus();
-    fileSaver.saveMultipleFiles(
-      dataList: [textA, textB],
-      fileNameList: ["ringerRings.txt", "ringerRetraps.txt"],
-      mimeTypeList: ["text/plain", "text/plain"],
-    ).then(
+
+    fileSaver
+        .saveFile(
+      ringerOutput,
+      "monitoRing.txt",
+      "text/plain",
+    )
+        .then(
       (value) {
         ScaffoldMessenger.of(context).showMaterialBanner(
           MaterialBanner(
@@ -52,6 +61,36 @@ class ModelOutput {
         );
       },
     );
+
+    // fileSaver.saveMultipleFiles(
+    //   dataList: [textA, textB],
+    //   fileNameList: ["ringerRings.txt", "ringerRetraps.txt"],
+    //   mimeTypeList: ["text/plain", "text/plain"],
+    // ).then(
+    //   (value) {
+    //     ScaffoldMessenger.of(context).showMaterialBanner(
+    //       MaterialBanner(
+    //         content: const Text(
+    //           'Records saved in Download directory',
+    //           style: TextStyle(color: Colors.white),
+    //         ),
+    //         backgroundColor: Colors.brown,
+    //         actions: [
+    //           TextButton(
+    //             onPressed: () {
+    //               //ScaffoldMessenger.of(context).removeCurrentMaterialBanner();
+    //               ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+    //             },
+    //             child: const Text(
+    //               'Close',
+    //               style: TextStyle(color: Colors.white),
+    //             ),
+    //           ),
+    //         ],
+    //       ),
+    //     );
+    //   },
+    // );
   }
 
   // saveJsonAsFile(List<RingEntityData> ringData) async {
