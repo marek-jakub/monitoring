@@ -22,7 +22,7 @@ class SessionsScreen extends StatefulWidget {
 
 class _SessionsScreenState extends State<SessionsScreen> {
   /// Holds id of selected session.
-  int _selectedId = -1;
+  int _selectedSessionId = -1;
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +44,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (_selectedId > -1) {
+                    if (_selectedSessionId > -1) {
                       // Go to add_ring screen.
                       dataManager.setNewRing(true);
                     } else {
@@ -102,8 +102,9 @@ class _SessionsScreenState extends State<SessionsScreen> {
                         IconButton(
                           icon: const Icon(Icons.edit),
                           onPressed: () {
-                            if (_selectedId > -1) {
-                              dataManager.getSessionLocationById(_selectedId);
+                            if (_selectedSessionId > -1) {
+                              dataManager
+                                  .getSessionLocationById(_selectedSessionId);
                               dataManager.setEditSession(true);
                             } else {
                               ScaffoldMessenger.of(context).showMaterialBanner(
@@ -140,14 +141,14 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                 return GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      if (_selectedId == session.id) {
-                                        _selectedId = -1;
+                                      if (_selectedSessionId == session.id) {
+                                        _selectedSessionId = -1;
                                         dataManager.setCurrentSessionId(-1);
                                         dataManager.setCurrentLocationId(-1);
                                         dataManager.setSessionTapped(false);
                                         dataManager.setCountry('');
                                       } else {
-                                        _selectedId = session.id;
+                                        _selectedSessionId = session.id;
                                         dataManager
                                             .setCurrentSessionId(session.id);
                                         dataManager.setCountry(
@@ -166,38 +167,39 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                     key: ValueKey(session.id),
                                     elevation: 0,
                                     child: Container(
-                                      decoration: session.id == _selectedId
-                                          ? const BoxDecoration(
-                                              border: Border(
-                                                top: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 2,
-                                                ),
-                                                left: BorderSide(
-                                                    color: Colors.black),
-                                                right: BorderSide(
-                                                    color: Colors.black),
-                                                bottom: BorderSide(
-                                                  color: Colors.black,
-                                                  width: 2,
-                                                ),
-                                              ),
-                                            )
-                                          : const BoxDecoration(
-                                              // border: Border(
-                                              //   top: BorderSide(
-                                              //       color: Colors.white,
-                                              //       width: 2),
-                                              //   left: BorderSide(
-                                              //       color: Colors.white),
-                                              //   right: BorderSide(
-                                              //       color: Colors.white),
-                                              //   bottom: BorderSide(
-                                              //       color: Colors.white,
-                                              //       width: 2),
-                                              // ),
-                                              ),
-                                      // color: session.id == _selectedId
+                                      decoration:
+                                          session.id == _selectedSessionId
+                                              ? const BoxDecoration(
+                                                  border: Border(
+                                                    top: BorderSide(
+                                                      color: Colors.black,
+                                                      width: 2,
+                                                    ),
+                                                    left: BorderSide(
+                                                        color: Colors.black),
+                                                    right: BorderSide(
+                                                        color: Colors.black),
+                                                    bottom: BorderSide(
+                                                      color: Colors.black,
+                                                      width: 2,
+                                                    ),
+                                                  ),
+                                                )
+                                              : const BoxDecoration(
+                                                  // border: Border(
+                                                  //   top: BorderSide(
+                                                  //       color: Colors.white,
+                                                  //       width: 2),
+                                                  //   left: BorderSide(
+                                                  //       color: Colors.white),
+                                                  //   right: BorderSide(
+                                                  //       color: Colors.white),
+                                                  //   bottom: BorderSide(
+                                                  //       color: Colors.white,
+                                                  //       width: 2),
+                                                  // ),
+                                                  ),
+                                      // color: session.id == _selectedSessionId
                                       //     ? Colors.amber
                                       //     : Colors.blueGrey[300],
                                       child: Row(
