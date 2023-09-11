@@ -66,7 +66,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              setSessionTitle(dataManager.sessionLocationViewData),
+              setSessionTitle(dataManager, dataManager.sessionLocationViewData),
               Expanded(
                 child: dataManager.sessionTapped
                     ? dataManager.sessionRetrapStream.isNotEmpty
@@ -163,11 +163,12 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
   }
 
   /// Creates a title text from session [data].
-  Widget setSessionTitle(SessionLocationViewData? data) {
+  Widget setSessionTitle(
+      RingDataManager dataManager, SessionLocationViewData? data) {
     debugPrint('retraps screen setSessionTitle: $data');
-    String sessionLocation = 'dfg';
-    String sessionDate = 'dfg';
-    if (data != null) {
+    String sessionLocation = '';
+    String sessionDate = '';
+    if (data != null && dataManager.currentSessionId > -1) {
       sessionLocation = data.locationLocality ?? '';
       sessionDate = data.date;
     }
