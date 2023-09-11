@@ -470,6 +470,10 @@ class RingDataManager extends ChangeNotifier {
 
     _monRingDb?.getSessionLocationById(id).then((value) {
       _sessionLocationViewData = value;
+      // debugPrint('=========================================');
+      // debugPrint('SESSION-LOCATION VIEW BY ID: ');
+      // debugPrint('session manager calling session location $value');
+      // debugPrint('=========================================');
       _isLoading = false;
       notifyListeners();
     }).onError((error, stackTrace) {
@@ -485,10 +489,10 @@ class RingDataManager extends ChangeNotifier {
 
     _monRingDb?.watchSessionRings(id).listen((event) {
       _sessionRingStream = event;
-      debugPrint('=========================================');
-      debugPrint('SESSION RINGS STREAM SIZE: ${event.length}');
-      debugPrint('session manager calling session rings: $event');
-      debugPrint('=========================================');
+      // debugPrint('=========================================');
+      // debugPrint('SESSION RINGS STREAM SIZE: ${event.length}');
+      // debugPrint('session manager calling session rings: $event');
+      // debugPrint('=========================================');
       _isLoading = false;
       notifyListeners();
     });
