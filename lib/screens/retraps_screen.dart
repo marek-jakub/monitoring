@@ -66,7 +66,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
           padding: const EdgeInsets.all(8.0),
           child: Column(
             children: [
-              const Text('Session retraps'),
+              setSessionTitle(dataManager.sessionLocationViewData),
               Expanded(
                 child: dataManager.sessionTapped
                     ? dataManager.sessionRetrapStream.isNotEmpty
@@ -160,5 +160,20 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
         ),
       );
     });
+  }
+
+  /// Creates a title text from session [data].
+  Widget setSessionTitle(SessionLocationViewData? data) {
+    debugPrint('retraps screen setSessionTitle: $data');
+    String sessionLocation = 'dfg';
+    String sessionDate = 'dfg';
+    if (data != null) {
+      sessionLocation = data.locationLocality ?? '';
+      sessionDate = data.date;
+    }
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Text('$sessionLocation $sessionDate'),
+    );
   }
 }
