@@ -149,6 +149,8 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         dataManager.setCountry('');
                                       } else {
                                         _selectedSessionId = session.id;
+                                        dataManager.getSessionLocationById(
+                                            _selectedSessionId);
                                         dataManager
                                             .setCurrentSessionId(session.id);
                                         dataManager.setCountry(
