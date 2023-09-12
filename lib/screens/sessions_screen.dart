@@ -356,8 +356,11 @@ class _SessionsScreenState extends State<SessionsScreen> {
       _selectedSessionId = -1;
       // On deselecting session, drop current session id.
       dataManager.setCurrentSessionId(-1);
+      // On deselecting session, drop current location id.
       dataManager.setCurrentLocationId(-1);
+      // On deselecting session, set session tapped to false.
       dataManager.setSessionTapped(false);
+      // On deselecting session, drop session country.
       dataManager.setCountry('');
     } else {
       // If session is not selected, select it by recognizing its id.
