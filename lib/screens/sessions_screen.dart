@@ -365,12 +365,19 @@ class _SessionsScreenState extends State<SessionsScreen> {
     } else {
       // If session is not selected, select it by recognizing its id.
       _selectedSessionId = session.id;
+      // On selecting session, get stream of session, location data.
       dataManager.getSessionLocationById(_selectedSessionId);
+      // On selecting session, set current session id.
       dataManager.setCurrentSessionId(session.id);
+      // On selecting session, set country to session country.
       dataManager.setCountry(session.locationCountry ?? '');
+      // On selecting session, set location id to session's location.
       dataManager.setCurrentLocationId(session.location);
+      // On selecting session, get session's rings.
       dataManager.getSessionRingStream(session.id);
+      // On selecting session, get session's retraps.
       dataManager.getSessionRetrapStream(session.id);
+      // On selecting session, set session tapped to true.
       dataManager.setSessionTapped(true);
     }
   }
