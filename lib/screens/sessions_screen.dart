@@ -141,28 +141,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                 return GestureDetector(
                                   onTap: () {
                                     setState(() {
-                                      if (_selectedSessionId == session.id) {
-                                        _selectedSessionId = -1;
-                                        dataManager.setCurrentSessionId(-1);
-                                        dataManager.setCurrentLocationId(-1);
-                                        dataManager.setSessionTapped(false);
-                                        dataManager.setCountry('');
-                                      } else {
-                                        _selectedSessionId = session.id;
-                                        dataManager.getSessionLocationById(
-                                            _selectedSessionId);
-                                        dataManager
-                                            .setCurrentSessionId(session.id);
-                                        dataManager.setCountry(
-                                            session.locationCountry ?? '');
-                                        dataManager.setCurrentLocationId(
-                                            session.location);
-                                        dataManager
-                                            .getSessionRingStream(session.id);
-                                        dataManager
-                                            .getSessionRetrapStream(session.id);
-                                        dataManager.setSessionTapped(true);
-                                      }
+                                      getResponses(dataManager, session);
                                     });
                                   },
                                   child: Card(
@@ -368,5 +347,26 @@ class _SessionsScreenState extends State<SessionsScreen> {
         );
       },
     );
+  }
+
+  void getResponses(
+      RingDataManager dataManager, SessionLocationViewData session) {
+    if (_selectedSessionId == session.id) {
+      // If session is selected, on next tap unselect it.
+      _selectedSessionId = -1;
+      dataManager.setCurrentSessionId(-1);
+      dataManager.setCurrentLocationId(-1);
+      dataManager.setSessionTapped(false);
+      dataManager.setCountry('');
+    } else {
+      _selectedSessionId = session.id;
+      dataManager.getSessionLocationById(_selectedSessionId);
+      dataManager.setCurrentSessionId(session.id);
+      dataManager.setCountry(session.locationCountry ?? '');
+      dataManager.setCurrentLocationId(session.location);
+      dataManager.getSessionRingStream(session.id);
+      dataManager.getSessionRetrapStream(session.id);
+      dataManager.setSessionTapped(true);
+    }
   }
 }
