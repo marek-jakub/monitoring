@@ -145,7 +145,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _placeCodeController,
                     txtLabel: 'Place code',
                     listValues: countryPlaceCodes,
-                    validator: _inputValidator.placeCodeValidator,
+                    validator:
+                        _inputValidator.placeCodeValidator(countryPlaceCodes),
                   ),
                   CustomTextFormField(
                     controller: _localityController,
@@ -163,7 +164,9 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _accuracyOfDateController,
                     txtLabel: 'Accuracy of date',
                     listValues: accuracyOfDate,
-                    validator: _inputValidator.placeCodeValidator,
+                    // TODO: implement proper validator
+                    validator:
+                        _inputValidator.placeCodeValidator(countryPlaceCodes),
                   ),
                   ElevatedButton(
                     onPressed: () async {
@@ -201,7 +204,9 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _coordAccuracyController,
                     txtLabel: 'Co-ordinates accuracy',
                     listValues: accuracyOfCoordinates,
-                    validator: _inputValidator.placeCodeValidator,
+                    // TODO: implement proper validator
+                    validator:
+                        _inputValidator.placeCodeValidator(countryPlaceCodes),
                   ),
                   Row(
                     children: [
