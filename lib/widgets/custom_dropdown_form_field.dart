@@ -8,14 +8,17 @@ class CustomDropdownButtonFormField extends StatefulWidget {
     required TextEditingController controller,
     required String txtLabel,
     required List<String> listValues,
+    required String? Function(String?)? validator,
   })  : _controller = controller,
         _label = txtLabel,
         _listValues = listValues,
+        _validator = validator,
         super(key: key);
 
   final TextEditingController _controller;
   final String _label;
   final List<String> _listValues;
+  final String? Function(String?)? _validator;
 
   @override
   State<CustomDropdownButtonFormField> createState() =>
@@ -34,12 +37,7 @@ class _CustomDropdownButtonFormFieldState
           decoration: InputDecoration(
             labelText: widget._label,
           ),
-          validator: (value) {
-            // if (value == null || value.isEmpty) {
-            //   return '${widget._label} cannot be empty!';
-            // }
-            return null;
-          },
+          validator: widget._validator,
           menuMaxHeight: 200.0,
           onChanged: (String? value) {
             setState(() {
