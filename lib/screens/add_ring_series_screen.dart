@@ -101,7 +101,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       controller: _schemeCode,
                       txtLabel: 'Scheme code',
                       listValues: ringingSchemes..sort(),
-                      validator: _inputValidator.placeCodeValidator,
+                      // TODO: implement proper validator
+                      validator:
+                          _inputValidator.placeCodeValidator(['sd', 'sd']),
                     ),
                     CustomTextFormField(
                       controller: _ringFrom,
