@@ -8,6 +8,7 @@ import 'package:intl/intl.dart';
 
 import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
+import '../data/data_for_autocomplete/data_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_widgets.dart';
@@ -70,12 +71,17 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   /// Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
+  /// Form field input validator.
+  late InputValidator _inputValidator;
+
   @override
   void initState() {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(providerListener);
+
+    _inputValidator = InputValidator();
   }
 
   @override
@@ -139,6 +145,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _placeCodeController,
                     txtLabel: 'Place code',
                     listValues: countryPlaceCodes,
+                    validator: _inputValidator.placeCodeValidator,
                   ),
                   CustomTextFormField(
                     controller: _localityController,
@@ -156,6 +163,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _accuracyOfDateController,
                     txtLabel: 'Accuracy of date',
                     listValues: accuracyOfDate,
+                    validator: _inputValidator.placeCodeValidator,
                   ),
                   ElevatedButton(
                     onPressed: () async {
@@ -193,6 +201,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _coordAccuracyController,
                     txtLabel: 'Co-ordinates accuracy',
                     listValues: accuracyOfCoordinates,
+                    validator: _inputValidator.placeCodeValidator,
                   ),
                   Row(
                     children: [
