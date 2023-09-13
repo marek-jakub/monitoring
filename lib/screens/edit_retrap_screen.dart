@@ -4,6 +4,7 @@ import 'package:drift/drift.dart' as d;
 
 import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
+import '../data/data_for_autocomplete/data_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_text_form_field.dart';
@@ -107,12 +108,17 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
   /// Change notifier access.
   late RingDataManager _dataManager;
 
+  /// Form field input validator.
+  late InputValidator _inputValidator;
+
   @override
   void initState() {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(updateRetrapListener);
+
+    _inputValidator = InputValidator();
   }
 
   @override
@@ -229,6 +235,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                           controller: _ringSchemeController,
                           txtLabel: 'Ringing scheme',
                           listValues: ringingSchemes,
+                          validator: _inputValidator.placeCodeValidator,
                         ),
                       ),
                       Expanded(
@@ -236,6 +243,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                           controller: _conditionController,
                           txtLabel: 'Condition',
                           listValues: condition,
+                          validator: _inputValidator.placeCodeValidator,
                         ),
                       ),
                     ],
@@ -262,6 +270,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _primaryIDMethodController,
                                     txtLabel: 'Primary ID method',
                                     listValues: primaryIdMethod,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                                 Expanded(
@@ -269,6 +279,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _metalRingInfoController,
                                     txtLabel: 'Metal ring information',
                                     listValues: metalRingInfo,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                               ],
@@ -360,6 +372,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                               controller: _ageController,
                               txtLabel: 'Age',
                               listValues: age,
+                              validator: _inputValidator.placeCodeValidator,
                             ),
                             Row(
                               children: [
@@ -393,6 +406,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _wingPointStateController,
                                     txtLabel: 'State of Wing Point',
                                     listValues: stateOfWingPoint,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                                 Expanded(
@@ -400,6 +415,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _moultController,
                                     txtLabel: 'Moult',
                                     listValues: moult,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                                 Expanded(
@@ -407,6 +424,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _plumageCodeController,
                                     txtLabel: 'Plumage code',
                                     listValues: plumageCode,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                               ],
@@ -781,6 +800,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _carpalCovertController,
                                     txtLabel: 'Carpal covert',
                                     listValues: carpalCovert,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                               ],
@@ -812,6 +833,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _sexingMethodController,
                                     txtLabel: 'Sexing method',
                                     listValues: sexingMethod,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                                 Expanded(
@@ -819,6 +842,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _catchingMethodController,
                                     txtLabel: 'Catching method',
                                     listValues: catchingMethod,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                                 Expanded(
@@ -826,6 +851,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _catchingLuresController,
                                     txtLabel: 'Catching lures',
                                     listValues: catchingLures,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                               ],
@@ -837,6 +864,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _statusController,
                                     txtLabel: 'Status',
                                     listValues: status,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                               ],
@@ -848,6 +877,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                     controller: _circumstancesController,
                                     txtLabel: 'Circumstances',
                                     listValues: circumstances,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                                 Expanded(
@@ -856,6 +887,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                         _circumstancesPresumedController,
                                     txtLabel: 'Circumstances presumed',
                                     listValues: circumstancesPresumed,
+                                    validator:
+                                        _inputValidator.placeCodeValidator,
                                   ),
                                 ),
                               ],
