@@ -1,15 +1,17 @@
-import 'autocomplete_data.dart';
+import 'package:flutter/material.dart';
 
 class InputValidator {
   // Session input validation
 
   // Place code
-  String? Function(String?)? placeCodeValidator = (String? placeCode) {
-    if (placeCode == null || placeCode.isEmpty) {
-      return 'Place code should not be empty';
-    } else if (!placeCodes.containsValue(placeCode)) {
-      return 'Unrecognized place code';
-    }
-    return null;
-  };
+  String? Function(String?)? placeCodeValidator(List<String> plCodes) {
+    return (String? placeCode) {
+      if (placeCode == null || placeCode.isEmpty) {
+        return 'Place code should not be empty';
+      } else if (!plCodes.contains(placeCode)) {
+        return 'Unrecognized place code';
+      }
+      return null;
+    };
+  }
 }
