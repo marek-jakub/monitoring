@@ -44,9 +44,9 @@ class _CustomDropdownCountryFormFieldState
           ),
           style: const TextStyle(fontSize: 14, color: Colors.black),
           validator: (value) {
-            // if (value == null || value.isEmpty) {
-            //   return '${widget._label} cannot be empty!';
-            // }
+            if (value == null || value.isEmpty) {
+              return '${widget._label} cannot be empty!';
+            }
             return null;
           },
           menuMaxHeight: 200.0,
