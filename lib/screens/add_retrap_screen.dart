@@ -218,7 +218,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         controller: _ringSchemeController,
                         txtLabel: 'Ringing scheme',
                         listValues: ringingSchemes,
-                        validator: _inputValidator.placeCodeValidator,
+                        // TODO: implement proper validator
+                        validator:
+                            _inputValidator.placeCodeValidator(['sd', 'sd']),
                       ),
                     ),
                     Expanded(
@@ -226,7 +228,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         controller: _conditionController,
                         txtLabel: 'Condition',
                         listValues: condition,
-                        validator: _inputValidator.placeCodeValidator,
+                        // TODO: implement proper validator
+                        validator:
+                            _inputValidator.placeCodeValidator(['sd', 'sd']),
                       ),
                     ),
                   ],
@@ -253,7 +257,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _primaryIDMethodController,
                                   txtLabel: 'Primary ID method',
                                   listValues: primaryIdMethod,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                               Expanded(
@@ -261,7 +267,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _metalRingInfoController,
                                   txtLabel: 'Metal ring information',
                                   listValues: metalRingInfo,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                             ],
@@ -353,7 +361,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                             controller: _ageController,
                             txtLabel: 'Age',
                             listValues: age,
-                            validator: _inputValidator.placeCodeValidator,
+                            // TODO: implement proper validator
+                            validator: _inputValidator
+                                .placeCodeValidator(['sd', 'sd']),
                           ),
                           Row(
                             children: [
@@ -387,7 +397,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _wingPointStateController,
                                   txtLabel: 'State of Wing Point',
                                   listValues: stateOfWingPoint,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                               Expanded(
@@ -395,7 +407,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _moultController,
                                   txtLabel: 'Moult',
                                   listValues: moult,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                               Expanded(
@@ -403,7 +417,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _plumageCodeController,
                                   txtLabel: 'Plumage code',
                                   listValues: plumageCode,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                             ],
@@ -775,7 +791,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _carpalCovertController,
                                   txtLabel: 'Carpal covert',
                                   listValues: carpalCovert,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                             ],
@@ -807,7 +825,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _sexingMethodController,
                                   txtLabel: 'Sexing method',
                                   listValues: sexingMethod,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                               Expanded(
@@ -815,7 +835,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _catchingMethodController,
                                   txtLabel: 'Catching method',
                                   listValues: catchingMethod,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                               Expanded(
@@ -823,7 +845,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _catchingLuresController,
                                   txtLabel: 'Catching lures',
                                   listValues: catchingLures,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                             ],
@@ -835,7 +859,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _statusController,
                                   txtLabel: 'Status',
                                   listValues: status,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                             ],
@@ -847,7 +873,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _circumstancesController,
                                   txtLabel: 'Circumstances',
                                   listValues: circumstances,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                               Expanded(
@@ -855,7 +883,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _circumstancesPresumedController,
                                   txtLabel: 'Circumstances presumed',
                                   listValues: circumstancesPresumed,
-                                  validator: _inputValidator.placeCodeValidator,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
                                 ),
                               ),
                             ],
