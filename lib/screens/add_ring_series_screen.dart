@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
+import '../data/data_for_autocomplete/data_validation.dart';
 import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
@@ -40,12 +41,17 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   // Ring series id
   int _ringSeriesId = -1;
 
+  /// Form field input validator.
+  late InputValidator _inputValidator;
+
   @override
   void initState() {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(providerListener);
+
+    _inputValidator = InputValidator();
   }
 
   @override
@@ -95,6 +101,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       controller: _schemeCode,
                       txtLabel: 'Scheme code',
                       listValues: ringingSchemes..sort(),
+                      validator: _inputValidator.placeCodeValidator,
                     ),
                     CustomTextFormField(
                       controller: _ringFrom,
