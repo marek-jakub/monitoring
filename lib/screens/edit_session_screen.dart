@@ -162,6 +162,8 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                         controller: _ringerId,
                         txtLabel: 'Ringer ID',
                         keyboard: 'text',
+                        // TODO: Implement proper validator.
+                        validator: _inputValidator.localityNameValidator(),
                       ),
                       CustomDropdownCountryFormField(
                           countryController: _countryController,
@@ -180,6 +182,8 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                         controller: _localityController,
                         txtLabel: 'Locality name',
                         keyboard: 'text',
+                        // TODO: Implement proper validator.
+                        validator: _inputValidator.localityNameValidator(),
                       ),
                       CustomDatePickerField(
                         controller: _dateController,
@@ -217,6 +221,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                               controller: _latController,
                               txtLabel: 'Latitude',
                               keyboard: 'number',
+                              // TODO: Implement proper validator.
+                              validator:
+                                  _inputValidator.localityNameValidator(),
                             ),
                           ),
                           Expanded(
@@ -224,6 +231,9 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                               controller: _lonController,
                               txtLabel: 'Longitude',
                               keyboard: 'number',
+                              // TODO: Implement proper validator.
+                              validator:
+                                  _inputValidator.localityNameValidator(),
                             ),
                           ),
                         ],
@@ -263,6 +273,8 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                         controller: _localeInfoController,
                         txtLabel: 'Locality information',
                         keyboard: 'text',
+                        // TODO: Implement proper validator.
+                        validator: _inputValidator.localityNameValidator(),
                       ),
                     ],
                   ),
