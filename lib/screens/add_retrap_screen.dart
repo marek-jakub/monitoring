@@ -200,6 +200,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         controller: _ringSeriesCodeController,
                         txtLabel: 'Ring series',
                         keyboard: 'text',
+                        // TODO: Implement proper validator.
+                        validator: _inputValidator.localityNameValidator(),
                       ),
                     ),
                     Expanded(
@@ -207,6 +209,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         controller: _ringIdNumberController,
                         txtLabel: 'ID number',
                         keyboard: 'number',
+                        // TODO: Implement proper validator.
+                        validator: _inputValidator.localityNameValidator(),
                       ),
                     ),
                   ],
@@ -372,6 +376,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _wingLengthController,
                                   txtLabel: 'Wing Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -379,6 +386,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _thirdPrimaryController,
                                   txtLabel: 'Third Primary',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -386,6 +396,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _massController,
                                   txtLabel: 'Mass',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               )
                             ],
@@ -431,6 +444,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _billLengthController,
                                   txtLabel: 'Bill Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -438,6 +454,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _hindClawController,
                                   txtLabel: 'Hind Claw',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -445,6 +464,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _headLengthTotalController,
                                   txtLabel: 'Total Head Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -552,6 +574,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _tarsusController,
                                   txtLabel: 'Tarsus',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -559,6 +584,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _tailLengthController,
                                   txtLabel: 'Tail Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -566,6 +594,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _tailDifferenceController,
                                   txtLabel: 'Tail Difference',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -654,6 +685,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _fatScoreController,
                                   txtLabel: 'Fat Score',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -661,6 +695,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _pectoralMuscleController,
                                   txtLabel: 'Pectoral Muscle Score',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -668,6 +705,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _primaryScoreController,
                                   txtLabel: 'Primary Score',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -759,6 +799,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _broodPatchController,
                                   txtLabel: 'Brood Patch',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -766,6 +809,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _primaryMoultController,
                                   txtLabel: 'Primary Moult',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -773,6 +819,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _oldGreaterCovertsController,
                                   txtLabel: 'Old Greater Coverts',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -784,6 +833,9 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   controller: _alulaController,
                                   txtLabel: 'Alula',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -901,6 +953,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                             controller: _otherMarksController,
                             txtLabel: 'Other marks',
                             keyboard: 'text',
+                            // TODO: Implement proper validator.
+                            validator: _inputValidator.localityNameValidator(),
                           ),
                         ],
                       ),
