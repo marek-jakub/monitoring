@@ -236,6 +236,8 @@ class _EditRingScreenState extends State<EditRingScreen> {
                             controller: _ringSeriesCodeController,
                             txtLabel: 'Ring series',
                             keyboard: 'text',
+                            // TODO: Implement proper validator.
+                            validator: _inputValidator.localityNameValidator(),
                           ),
                         ),
                         Expanded(
@@ -243,6 +245,8 @@ class _EditRingScreenState extends State<EditRingScreen> {
                             controller: _ringIdNumberController,
                             txtLabel: 'ID number',
                             keyboard: 'number',
+                            // TODO: Implement proper validator.
+                            validator: _inputValidator.localityNameValidator(),
                           ),
                         ),
                       ],
@@ -340,6 +344,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _wingLengthController,
                                   txtLabel: 'Wing Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -347,6 +354,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _thirdPrimaryController,
                                   txtLabel: 'Third Primary',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -354,6 +364,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _massController,
                                   txtLabel: 'Mass',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               )
                             ],
@@ -399,6 +412,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _billLengthController,
                                   txtLabel: 'Bill Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -406,6 +422,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _hindClawController,
                                   txtLabel: 'Hind Claw',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -413,6 +432,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _headLengthTotalController,
                                   txtLabel: 'Total Head Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -503,6 +525,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _tarsusController,
                                   txtLabel: 'Tarsus',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -510,6 +535,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _tailLengthController,
                                   txtLabel: 'Tail Length',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -517,6 +545,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _tailDifferenceController,
                                   txtLabel: 'Tail Difference',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -594,6 +625,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _fatScoreController,
                                   txtLabel: 'Fat Score',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -601,6 +635,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _pectoralMuscleController,
                                   txtLabel: 'Pectoral Muscle Score',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -608,6 +645,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _primaryScoreController,
                                   txtLabel: 'Primary Score',
                                   keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -685,6 +725,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _broodPatchController,
                                   txtLabel: 'Brood Patch',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -692,6 +735,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _primaryMoultController,
                                   txtLabel: 'Primary Moult',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -699,6 +745,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _oldGreaterCovertsController,
                                   txtLabel: 'Old Greater Coverts',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                             ],
@@ -710,6 +759,9 @@ class _EditRingScreenState extends State<EditRingScreen> {
                                   controller: _alulaController,
                                   txtLabel: 'Alula',
                                   keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
                                 ),
                               ),
                               Expanded(
@@ -831,6 +883,8 @@ class _EditRingScreenState extends State<EditRingScreen> {
                             controller: _otherMarksController,
                             txtLabel: 'Other marks',
                             keyboard: 'text',
+                            // TODO: Implement proper validator.
+                            validator: _inputValidator.localityNameValidator(),
                           ),
                         ],
                       ),
