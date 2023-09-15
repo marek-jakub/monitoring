@@ -1,6 +1,6 @@
+/// A form input data validator.
 class InputValidator {
-  // Session input validation
-
+  // SESSION form input validation
   // Place code
   String? Function(String?)? placeCodeValidator(List<String> plCodes) {
     return (String? placeCode) {
