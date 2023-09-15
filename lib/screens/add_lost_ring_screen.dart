@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
 
 import '../models/models.dart';
+import '../data/data_for_autocomplete/data_validation.dart';
 
 import '../widgets/custom_widgets.dart';
 
@@ -37,12 +38,17 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   // Lost ring id
   int _lostRingId = -1;
 
+  /// Form field input validator.
+  late InputValidator _inputValidator;
+
   @override
   void initState() {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(providerListener);
+
+    _inputValidator = InputValidator();
   }
 
   @override
@@ -83,11 +89,15 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                   controller: _ringSeriesCode,
                   txtLabel: 'Ring series code',
                   keyboard: 'text',
+                  // TODO: Implement proper validator.
+                  validator: _inputValidator.localityNameValidator(),
                 ),
                 CustomTextFormField(
                   controller: _ringId,
                   txtLabel: 'Ring ID',
                   keyboard: 'text',
+                  // TODO: Implement proper validator.
+                  validator: _inputValidator.localityNameValidator(),
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
