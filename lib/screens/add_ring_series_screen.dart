@@ -96,6 +96,8 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       controller: _seriesCode,
                       txtLabel: 'Series code',
                       keyboard: 'text',
+                      // TODO: Implement proper validator.
+                      validator: _inputValidator.localityNameValidator(),
                     ),
                     CustomDropdownButtonFormField(
                       controller: _schemeCode,
@@ -109,11 +111,15 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       controller: _ringFrom,
                       txtLabel: 'Series from',
                       keyboard: 'number',
+                      // TODO: Implement proper validator.
+                      validator: _inputValidator.localityNameValidator(),
                     ),
                     CustomTextFormField(
                       controller: _ringTo,
                       txtLabel: 'Series to',
                       keyboard: 'number',
+                      // TODO: Implement proper validator.
+                      validator: _inputValidator.localityNameValidator(),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
