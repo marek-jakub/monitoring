@@ -164,7 +164,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _accuracyOfDateController,
                     txtLabel: 'Accuracy of date',
                     listValues: accuracyOfDate,
-                    // TODO: implement proper validator
                     validator:
                         _inputValidator.placeCodeValidator(countryPlaceCodes),
                   ),
