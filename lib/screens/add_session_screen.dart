@@ -152,6 +152,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _localityController,
                     txtLabel: 'Locality name',
                     keyboard: 'text',
+                    validator: _inputValidator.localityNameValidator(),
                   ),
                   CustomDatePickerField(
                     controller: _dateController,
@@ -188,6 +189,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                           controller: _latController,
                           txtLabel: 'Latitude',
                           keyboard: 'number',
+                          // TODO: Implement proper validator.
+                          validator: _inputValidator.localityNameValidator(),
                         ),
                       ),
                       Expanded(
@@ -195,6 +198,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                           controller: _lonController,
                           txtLabel: 'Longitude',
                           keyboard: 'number',
+                          // TODO: Implement proper validator.
+                          validator: _inputValidator.localityNameValidator(),
                         ),
                       ),
                     ],
@@ -234,6 +239,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _localeInfoController,
                     txtLabel: 'Locality information',
                     keyboard: 'text',
+                    // TODO: Implement proper validator.
+                    validator: _inputValidator.localityNameValidator(),
                   ),
                 ],
               ),
