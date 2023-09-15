@@ -12,4 +12,14 @@ class InputValidator {
       return null;
     };
   }
+
+  // Locality name
+  String? Function(String?)? localityNameValidator() {
+    return (String? localityName) {
+      if (localityName == null || localityName.isEmpty) {
+        return 'Locality name should not be empty';
+      }
+      return null;
+    };
+  }
 }
