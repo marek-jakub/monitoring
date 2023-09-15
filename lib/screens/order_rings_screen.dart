@@ -4,6 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
 
 import '../models/models.dart';
+import '../data/data_for_autocomplete/data_validation.dart';
 
 import '../widgets/custom_widgets.dart';
 
@@ -37,12 +38,17 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
   // Order id
   int _orderId = -1;
 
+  /// Form field input validator.
+  late InputValidator _inputValidator;
+
   @override
   void initState() {
     super.initState();
 
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(providerListener);
+
+    _inputValidator = InputValidator();
   }
 
   @override
@@ -82,11 +88,15 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                   controller: _ringSeriesCode,
                   txtLabel: 'Ring series',
                   keyboard: 'text',
+                  // TODO: Implement proper validator.
+                  validator: _inputValidator.localityNameValidator(),
                 ),
                 CustomTextFormField(
                   controller: _amount,
                   txtLabel: 'Amount',
                   keyboard: 'number',
+                  // TODO: Implement proper validator.
+                  validator: _inputValidator.localityNameValidator(),
                 ),
               ],
             ),
