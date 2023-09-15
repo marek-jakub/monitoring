@@ -1,21 +1,27 @@
 import 'package:flutter/material.dart';
 
-/// A text form field, requires text controller [_controller],
-/// a label [_label] and a string signifying what keyboard to show [_keyboard].
+/// A text form field.
+///
+/// Requires text controller [_controller], a label [_label],
+/// a string signifying what keyboard to show [_keyboard],
+/// and an input validator [_validator].
 class CustomTextFormField extends StatefulWidget {
-  const CustomTextFormField(
-      {Key? key,
-      required TextEditingController controller,
-      required String txtLabel,
-      required String keyboard})
-      : _controller = controller,
+  const CustomTextFormField({
+    Key? key,
+    required TextEditingController controller,
+    required String txtLabel,
+    required String keyboard,
+    required String? Function(String?)? validator,
+  })  : _controller = controller,
         _label = txtLabel,
         _keyboard = keyboard,
+        _validator = validator,
         super(key: key);
 
   final TextEditingController _controller;
   final String _label;
   final String _keyboard;
+  final String? Function(String?)? _validator;
 
   @override
   State<CustomTextFormField> createState() => _CustomTextFormFieldState();
@@ -36,12 +42,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           label: Text(widget._label),
         ),
         style: const TextStyle(fontSize: 14),
-        validator: (value) {
-          // if (value == null || value.isEmpty) {
-          //   return '${widget._label} cannot be empty!';
-          // }
-          return null;
-        },
+        validator: widget._validator,
       ),
     );
   }
