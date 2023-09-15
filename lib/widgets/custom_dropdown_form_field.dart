@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 
-/// A dropdown button form field, requires text controler [_controller],
-/// a label [_label] and a list of strings to be used [_listValues].
+/// A dropdown button form field.
+///
+/// Requires text controler [_controller], a label [_label],
+/// a list of strings to be used [_listValues] and
+/// an input validator [_validator].
 class CustomDropdownButtonFormField extends StatefulWidget {
   const CustomDropdownButtonFormField({
     Key? key,
