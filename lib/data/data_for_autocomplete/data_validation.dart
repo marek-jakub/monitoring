@@ -1,6 +1,10 @@
 /// A form input data validator.
 class InputValidator {
   // SESSION form input validation
+
+  // Custom drop down country form field validation in the
+  // custom_dropdown_country_field.dart
+
   // Place code
   String? Function(String?)? placeCodeValidator(List<String> plCodes) {
     return (String? placeCode) {
@@ -22,4 +26,7 @@ class InputValidator {
       return null;
     };
   }
+
+  // Date field validation in the
+  // custom_date_picker_field.dart
 }
