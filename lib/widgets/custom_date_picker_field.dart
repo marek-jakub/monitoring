@@ -29,10 +29,13 @@ class CustomDatePickerField extends StatelessWidget {
           label: Text(_label),
         ),
         style: const TextStyle(fontSize: 14, color: Colors.black),
-        validator: (value) {
-          // if (value == null || value.isEmpty) {
-          //   return '$_label cannot be empty!';
-          // }
+        validator: (date) {
+          RegExp dateMatch = RegExp(r'(\d{2}-\d{2}-\d{4})');
+          if (date == null || date.isEmpty) {
+            return 'Date field should not be empty';
+          } else if (!dateMatch.hasMatch(date)) {
+            return 'Date should be in correct format';
+          }
           return null;
         },
         onTap: _callback,
