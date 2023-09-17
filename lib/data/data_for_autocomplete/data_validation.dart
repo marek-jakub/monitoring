@@ -29,4 +29,16 @@ class InputValidator {
 
   // Date field validation in the
   // custom_date_picker_field.dart
+
+  // Accuracy of date
+  String? Function(String?)? accOfDateValidator(List<String> accOfDateCodes) {
+    return (String? accuracyOfDate) {
+      if (accuracyOfDate == null || accuracyOfDate.isEmpty) {
+        return 'Accuracy of date should not be empty';
+      } else if (!accOfDateCodes.contains(accuracyOfDate)) {
+        return 'Unrecognized accuracy of date';
+      }
+      return null;
+    };
+  }
 }
