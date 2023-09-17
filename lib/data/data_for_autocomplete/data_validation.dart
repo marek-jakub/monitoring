@@ -41,4 +41,21 @@ class InputValidator {
       return null;
     };
   }
+
+  // Latitude
+  String? Function(String?)? latValidator() {
+    RegExp latMatch = RegExp(
+        r'^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$');
+    return (String? lat) {
+      if (lat == null || lat.isEmpty) {
+        return 'Latitude should not be empty';
+      } else if (!latMatch.hasMatch(lat)) {
+        return 'Latitude not in corrent format';
+      }
+      return null;
+    };
+  }
+
+  // TODO: implement lon validator
+  // ^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$
 }
