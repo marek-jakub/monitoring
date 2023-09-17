@@ -166,7 +166,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     txtLabel: 'Accuracy of date',
                     listValues: accuracyOfDate,
                     validator:
-                        _inputValidator.placeCodeValidator(countryPlaceCodes),
+                        _inputValidator.accOfDateValidator(accuracyOfDate),
                   ),
                   ElevatedButton(
                     onPressed: () async {
