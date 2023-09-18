@@ -878,6 +878,8 @@ class _EditRingScreenState extends State<EditRingScreen> {
                             callback: () {
                               pickTime(context);
                             },
+                            // TODO: Implement proper validator.
+                            validator: _inputValidator.startTimeValidator(),
                           ),
                           CustomTextFormField(
                             controller: _otherMarksController,
