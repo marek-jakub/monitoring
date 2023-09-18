@@ -219,6 +219,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                             _startTimeFieldFocus = true;
                             pickTime(context);
                           },
+                          validator: _inputValidator.startTimeValidator(),
                         ),
                       ),
                       Expanded(
@@ -228,6 +229,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                           callback: () {
                             pickTime(context);
                           },
+                          // TODO: Implement proper validator.
+                          validator: _inputValidator.startTimeValidator(),
                         ),
                       ),
                     ],
