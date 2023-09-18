@@ -969,6 +969,8 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                               callback: () {
                                 pickTime(context);
                               },
+                              // TODO: Implement proper validator.
+                              validator: _inputValidator.startTimeValidator(),
                             ),
                             CustomTextFormField(
                               controller: _otherMarksController,
