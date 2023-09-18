@@ -197,8 +197,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                           controller: _lonController,
                           txtLabel: 'Longitude',
                           keyboard: 'number',
-                          // TODO: Implement proper validator.
-                          validator: _inputValidator.localityNameValidator(),
+                          validator: _inputValidator.lonValidator(),
                         ),
                       ),
                     ],
