@@ -56,6 +56,17 @@ class InputValidator {
     };
   }
 
-  // TODO: implement lon validator
-  // ^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$
+  // Longitude
+  String? Function(String?)? lonValidator() {
+    RegExp lonMatch = RegExp(
+        r'^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$');
+    return (String? lon) {
+      if (lon == null || lon.isEmpty) {
+        return 'Longitude should not be empty';
+      } else if (!lonMatch.hasMatch(lon)) {
+        return 'Longitude incorrect format';
+      }
+      return null;
+    };
+  }
 }
