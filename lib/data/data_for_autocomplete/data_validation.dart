@@ -32,10 +32,10 @@ class InputValidator {
 
   // Accuracy of date
   String? Function(String?)? accOfDateValidator(List<String> accOfDateCodes) {
-    return (String? accuracyOfDate) {
-      if (accuracyOfDate == null || accuracyOfDate.isEmpty) {
+    return (String? dateAcc) {
+      if (dateAcc == null || dateAcc.isEmpty) {
         return 'Accuracy of date should not be empty';
-      } else if (!accOfDateCodes.contains(accuracyOfDate)) {
+      } else if (!accOfDateCodes.contains(dateAcc)) {
         return 'Unrecognized accuracy of date';
       }
       return null;
@@ -50,7 +50,7 @@ class InputValidator {
       if (lat == null || lat.isEmpty) {
         return 'Latitude should not be empty';
       } else if (!latMatch.hasMatch(lat)) {
-        return 'Latitude not in corrent format';
+        return 'Latitude incorrect format';
       }
       return null;
     };
@@ -65,6 +65,32 @@ class InputValidator {
         return 'Longitude should not be empty';
       } else if (!lonMatch.hasMatch(lon)) {
         return 'Longitude incorrect format';
+      }
+      return null;
+    };
+  }
+
+  // Coordinates accuracy
+  String? Function(String?)? coordValidator(List<String> accOfCoordCodes) {
+    return (String? coordAccuracy) {
+      if (coordAccuracy == null || coordAccuracy.isEmpty) {
+        return 'Coordinates accuracy should not be empty';
+      } else if (!accOfCoordCodes.contains(coordAccuracy)) {
+        return 'Unrecognized coordinates accuracy';
+      }
+      return null;
+    };
+  }
+
+  // Time
+  String? Function(String?)? startTimeValidator() {
+    RegExp timeMatch = RegExp(
+        r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
+    return (String? time) {
+      if (time == null || time.isEmpty) {
+        return 'Start time should not be empty';
+      } else if (!timeMatch.hasMatch(time)) {
+        return 'Start time incorrect format';
       }
       return null;
     };
