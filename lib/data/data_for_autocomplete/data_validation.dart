@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+
 /// A form input data validator.
 class InputValidator {
   // SESSION form input validation
@@ -88,11 +90,42 @@ class InputValidator {
         r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
     return (String? time) {
       if (time == null || time.isEmpty) {
-        return 'Start time should not be empty';
+        return 'Time should not be empty';
       } else if (!timeMatch.hasMatch(time)) {
-        return 'Start time incorrect format';
+        return 'Time incorrect format';
       }
       return null;
     };
   }
+
+  // Session end time
+  // String? Function(String?)? endTimeValidator(String startTime) {
+  //   RegExp endTimeMatch = RegExp(
+  //       r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
+  //   return (String? endTime) {
+  //     if (endTime == null || endTime.isEmpty) {
+  //       return 'Time should not be empty';
+  //     } else if (!endTimeMatch.hasMatch(endTime)) {
+  //       return 'Time incorrect format';
+  //     } else if (_isNotAfterStart(startTime, endTime)) {
+  //       return 'End time not after start';
+  //     }
+  //     return null;
+  //   };
+  // }
+
+  /// Compares session end time to session start time.
+  ///
+  /// Requires start [startTime] and end time [endTime].
+  // bool _isNotAfterStart(String startTime, String endTime) {
+  //   RegExp startTimeMatch = RegExp(
+  //       r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
+  //   if (startTimeMatch.hasMatch(startTime)) {
+  //     List<String> start = startTime.split(':');
+  //     List<String> end = endTime.split(':');
+  //     int startHours = int.tryParse(start[0].replaceAll('0', '')) ?? 0;
+  //     int startMinutes = int.tryParse(source)
+  //   }
+  //   return false;
+  // }
 }
