@@ -206,9 +206,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _coordAccuracyController,
                     txtLabel: 'Co-ordinates accuracy',
                     listValues: accuracyOfCoordinates,
-                    // TODO: implement proper validator
                     validator:
-                        _inputValidator.placeCodeValidator(countryPlaceCodes),
+                        _inputValidator.coordValidator(accuracyOfCoordinates),
                   ),
                   Row(
                     children: [
