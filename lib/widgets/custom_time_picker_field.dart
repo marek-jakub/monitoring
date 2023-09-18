@@ -1,21 +1,26 @@
 import 'package:flutter/material.dart';
 
-/// A time picker, requires a text controller [_controller],
-/// a label [_label] and a callback method [_callback].
+/// A time picker.
+///
+/// Requires a text controller [_controller], a label [_label],
+/// a callback method [_callback], a validator [_validator].
 class CustomTimePickerField extends StatefulWidget {
-  const CustomTimePickerField(
-      {Key? key,
-      required TextEditingController controller,
-      required String txtLabel,
-      required VoidCallback callback})
-      : _controller = controller,
+  const CustomTimePickerField({
+    Key? key,
+    required TextEditingController controller,
+    required String txtLabel,
+    required VoidCallback callback,
+    required String? Function(String?)? validator,
+  })  : _controller = controller,
         _label = txtLabel,
         _callback = callback,
+        _validator = validator,
         super(key: key);
 
   final TextEditingController _controller;
   final String _label;
   final VoidCallback _callback;
+  final String? Function(String?)? _validator;
 
   @override
   State<CustomTimePickerField> createState() => _CustomTimePickerFieldState();
@@ -34,12 +39,7 @@ class _CustomTimePickerFieldState extends State<CustomTimePickerField> {
           label: Text(widget._label),
         ),
         style: const TextStyle(fontSize: 14),
-        validator: (value) {
-          // if (value == null || value.isEmpty) {
-          //   return '${widget._label} cannot be empty!';
-          // }
-          return null;
-        },
+        validator: widget._validator,
         onTap: widget._callback,
       ),
     );
