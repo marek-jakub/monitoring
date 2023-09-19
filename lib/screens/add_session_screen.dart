@@ -229,8 +229,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                           callback: () {
                             pickTime(context);
                           },
-                          // TODO: Implement proper validator.
-                          validator: _inputValidator.startTimeValidator(),
+                          validator: _inputValidator
+                              .endTimeValidator(_startTimeController.text),
                         ),
                       ),
                     ],
