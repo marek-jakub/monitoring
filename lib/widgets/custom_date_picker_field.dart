@@ -32,9 +32,9 @@ class CustomDatePickerField extends StatelessWidget {
         validator: (date) {
           RegExp dateMatch = RegExp(r'(\d{2}-\d{2}-\d{4})');
           if (date == null || date.isEmpty) {
-            return 'Date field should not be empty';
+            return 'Date field should not be empty!';
           } else if (!dateMatch.hasMatch(date)) {
-            return 'Date should be in correct format';
+            return 'Date should be in correct format!';
           }
           return null;
         },
