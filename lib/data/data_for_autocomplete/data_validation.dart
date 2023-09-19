@@ -11,9 +11,9 @@ class InputValidator {
   String? Function(String?)? placeCodeValidator(List<String> plCodes) {
     return (String? placeCode) {
       if (placeCode == null || placeCode.isEmpty) {
-        return 'Place code should not be empty';
+        return 'Place code should not be empty!';
       } else if (!plCodes.contains(placeCode)) {
-        return 'Unrecognized place code';
+        return 'Unrecognized place code!';
       }
       return null;
     };
@@ -23,7 +23,7 @@ class InputValidator {
   String? Function(String?)? localityNameValidator() {
     return (String? localityName) {
       if (localityName == null || localityName.isEmpty) {
-        return 'Locality name should not be empty';
+        return 'Locality name should not be empty!';
       }
       return null;
     };
@@ -36,9 +36,9 @@ class InputValidator {
   String? Function(String?)? accOfDateValidator(List<String> accOfDateCodes) {
     return (String? dateAcc) {
       if (dateAcc == null || dateAcc.isEmpty) {
-        return 'Accuracy of date should not be empty';
+        return 'Accuracy of date should not be empty!';
       } else if (!accOfDateCodes.contains(dateAcc)) {
-        return 'Unrecognized accuracy of date';
+        return 'Unrecognized accuracy of date!';
       }
       return null;
     };
@@ -50,9 +50,9 @@ class InputValidator {
         r'^(\+|-)?(?:90(?:(?:\.0{1,6})?)|(?:[0-9]|[1-8][0-9])(?:(?:\.[0-9]{1,6})?))$');
     return (String? lat) {
       if (lat == null || lat.isEmpty) {
-        return 'Latitude should not be empty';
+        return 'Latitude should not be empty!';
       } else if (!latMatch.hasMatch(lat)) {
-        return 'Latitude incorrect format';
+        return 'Latitude incorrect format!';
       }
       return null;
     };
@@ -64,9 +64,9 @@ class InputValidator {
         r'^(\+|-)?(?:180(?:(?:\.0{1,6})?)|(?:[0-9]|[1-9][0-9]|1[0-7][0-9])(?:(?:\.[0-9]{1,6})?))$');
     return (String? lon) {
       if (lon == null || lon.isEmpty) {
-        return 'Longitude should not be empty';
+        return 'Longitude should not be empty!';
       } else if (!lonMatch.hasMatch(lon)) {
-        return 'Longitude incorrect format';
+        return 'Longitude incorrect format!';
       }
       return null;
     };
@@ -76,9 +76,9 @@ class InputValidator {
   String? Function(String?)? coordValidator(List<String> accOfCoordCodes) {
     return (String? coordAccuracy) {
       if (coordAccuracy == null || coordAccuracy.isEmpty) {
-        return 'Coordinates accuracy should not be empty';
+        return 'Coordinates accuracy should not be empty!';
       } else if (!accOfCoordCodes.contains(coordAccuracy)) {
-        return 'Unrecognized coordinates accuracy';
+        return 'Unrecognized coordinates accuracy!';
       }
       return null;
     };
@@ -89,9 +89,9 @@ class InputValidator {
     RegExp timeMatch = RegExp(r'^([01]\d|2[0-3]):[0-5]\d$');
     return (String? time) {
       if (time == null || time.isEmpty) {
-        return 'Time should not be empty';
+        return 'Time should not be empty!';
       } else if (!timeMatch.hasMatch(time)) {
-        return 'Time incorrect format';
+        return 'Time incorrect format!';
       }
       return null;
     };
@@ -102,14 +102,19 @@ class InputValidator {
     RegExp endTimeMatch = RegExp(r'^([01]\d|2[0-3]):[0-5]\d$');
     return (String? endTime) {
       if (endTime == null || endTime.isEmpty) {
-        return 'Time should not be empty';
+        return 'Time should not be empty!';
       } else if (!endTimeMatch.hasMatch(endTime)) {
-        return 'Time incorrect format';
+        return 'Time incorrect format!';
       } else if (_isNotAfterStart(startTime, endTime)) {
-        return 'End time not after start';
+        return 'End time not after start!';
       }
       return null;
     };
+  }
+
+  // Locality information
+  String? Function(String?)? localityInfoValidator() {
+    return null;
   }
 
   /// Compares session end time to session start time.
