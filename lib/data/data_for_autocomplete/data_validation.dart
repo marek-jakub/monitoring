@@ -84,10 +84,9 @@ class InputValidator {
     };
   }
 
-  // Time
+  // Session start time
   String? Function(String?)? startTimeValidator() {
-    RegExp timeMatch = RegExp(
-        r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
+    RegExp timeMatch = RegExp(r'^([01]\d|2[0-3]):[0-5]\d$');
     return (String? time) {
       if (time == null || time.isEmpty) {
         return 'Time should not be empty';
@@ -100,8 +99,7 @@ class InputValidator {
 
   // Session end time
   String? Function(String?)? endTimeValidator(String startTime) {
-    RegExp endTimeMatch = RegExp(
-        r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
+    RegExp endTimeMatch = RegExp(r'^([01]\d|2[0-3]):[0-5]\d$');
     return (String? endTime) {
       if (endTime == null || endTime.isEmpty) {
         return 'Time should not be empty';
@@ -118,14 +116,14 @@ class InputValidator {
   ///
   /// Requires start [startTime] and end time [endTime].
   bool _isNotAfterStart(String startTime, String endTime) {
-    RegExp startTimeMatch = RegExp(
-        r'^(((0?[1-9]|1[012])(:[0-5][0-9])?am)|((0?[0-9]|1[012])(:[0-5][0-9])?pm))\b');
+    RegExp startTimeMatch = RegExp(r'^([01]\d|2[0-3]):[0-5]\d$');
     if (startTimeMatch.hasMatch(startTime)) {
-      DateTime? sTime = DateTime.tryParse(startTime);
-      DateTime? eTime = DateTime.tryParse(endTime);
+      // Use same dummy YYYY-MM-DD in parsing day times
+      DateTime? sTime = DateTime.tryParse('2020-07-17 $startTime:00');
+      DateTime? eTime = DateTime.tryParse('2020-07-17 $endTime:00');
       if (sTime == null && eTime == null) {
         return true;
-      } else if (eTime!.isBefore(sTime!)) {
+      } else if (eTime!.isBefore(sTime!) || eTime.isAtSameMomentAs(sTime)) {
         return true;
       }
     }
