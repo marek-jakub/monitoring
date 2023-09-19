@@ -239,8 +239,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     controller: _localeInfoController,
                     txtLabel: 'Locality information',
                     keyboard: 'text',
-                    // TODO: Implement proper validator.
-                    validator: _inputValidator.localityNameValidator(),
+                    validator: _inputValidator.localityInfoValidator(),
                   ),
                 ],
               ),
@@ -258,7 +257,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
 
     if (isValid != null && isValid) {
       final locationEntity = LocationEntityCompanion(
-        // TODO: if different from the signed in ringer id, use that one.
         ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         locality: d.Value(_localityController.text),
         country: d.Value(_countryController.text),
@@ -273,7 +271,6 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
         date: d.Value(_dateController.text),
         dateAccuracy: d.Value(_accuracyOfDateController.text),
         location: const d.Value(-1),
-        // TODO: if different from the signed in ringer id, use that one.
         ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
         startTime: d.Value(_startTimeController.text),
         endTime: d.Value(_endTimeController.text),
