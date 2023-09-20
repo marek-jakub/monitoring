@@ -199,9 +199,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                       controller: _primaryIDMethodController,
                       txtLabel: 'Primary ID method',
                       listValues: primaryIdMethod,
-                      // TODO: implement proper validator
-                      validator:
-                          _inputValidator.placeCodeValidator(['sd', 'sd']),
+                      validator: _inputValidator
+                          .primaryIdMethodValidator(primaryIdMethod),
                     ),
                   ),
                   Expanded(
