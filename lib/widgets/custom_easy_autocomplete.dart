@@ -52,7 +52,14 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
           );
         },
         onChanged: (value) => widget._controller.text = value,
-        validator: (species) => species == null ? 'Invalid species' : null,
+        validator: (species) {
+          if (species == null || species.isEmpty) {
+            return 'Species should not be empty!';
+          } else if (!widget._listValues.contains(species)) {
+            return 'Unrecognized species information!';
+          }
+          return null;
+        },
       ),
     );
   }
