@@ -151,10 +151,10 @@ class InputValidator {
   // custom_easy_autocomplete.dart
 
   // Sex checkbox fields validator
-  String? Function(bool?)? sexCheckboxesValidator() {
-    return (bool? sexSelected) {
-      if (sexSelected == null || !sexSelected) {
-        return 'Sex field should not be empty!';
+  String? Function(int?)? sexCheckboxesValidator() {
+    return (int? sexSelected) {
+      if (![1, 2, 3].contains(sexSelected)) {
+        return 'Checkbox must be checked';
       }
       return null;
     };
