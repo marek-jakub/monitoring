@@ -79,8 +79,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   /// An imgage with description.
   ///
-  /// @param imageProvider A provider loading an asset image.
-  /// @param description A string providing an onboarding message.
+  /// A provider [imageProvider] loading an asset image.
+  /// A string [description] providing an onboarding message.
   Widget onboardPage(ImageProvider imageProvider, String description) {
     return Padding(
       padding: const EdgeInsets.all(30.0),
