@@ -173,6 +173,11 @@ class _EditRingScreenState extends State<EditRingScreen> {
         leading: IconButton(
           icon: const BackButtonIcon(),
           onPressed: () {
+            int currentSessionId =
+                Provider.of<RingDataManager>(context, listen: false)
+                    .currentSessionId;
+            Provider.of<RingDataManager>(context, listen: false)
+                .getSessionRingStream(currentSessionId);
             Provider.of<RingDataManager>(context, listen: false)
                 .setEditRing(false);
           },
