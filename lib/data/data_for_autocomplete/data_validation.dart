@@ -117,6 +117,21 @@ class InputValidator {
     return null;
   }
 
+  // RING form input validation
+
+  // Primary ID method
+  String? Function(String?)? primaryIdMethodValidator(
+      List<String> idMethodCodes) {
+    return (String? primaryIdMethod) {
+      if (primaryIdMethod == null || primaryIdMethod.isEmpty) {
+        return 'Primary ID method should not be empty!';
+      } else if (!idMethodCodes.contains(primaryIdMethod)) {
+        return 'Unrecognized primary ID method!';
+      }
+      return null;
+    };
+  }
+
   /// Compares session end time to session start time.
   ///
   /// Requires start [startTime] and end time [endTime].
