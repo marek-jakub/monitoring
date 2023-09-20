@@ -35,7 +35,7 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
           border: const OutlineInputBorder(),
         ),
         inputTextStyle: const TextStyle(fontSize: 14),
-        initialValue: widget._controller.text,
+        //initialValue: widget._controller.text,
         suggestions: widget._listValues,
         suggestionBuilder: (data) {
           return Container(
@@ -51,7 +51,12 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
             ),
           );
         },
-        onChanged: (value) => widget._controller.text = value,
+        controller: widget._controller,
+        onChanged: (value) {
+          setState(() {
+            widget._controller.text = value;
+          });
+        },
         validator: (species) {
           if (species == null || species.isEmpty) {
             return 'Species should not be empty!';
