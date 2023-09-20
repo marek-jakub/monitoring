@@ -145,6 +145,21 @@ class InputValidator {
     };
   }
 
+  // TODO: create ring series and ID number validators.
+
+  // Species field validation in the
+  // custom_easy_autocomplete.dart
+
+  // Sex checkbox fields validator
+  String? Function(bool?)? sexCheckboxesValidator() {
+    return (bool? sexSelected) {
+      if (sexSelected == null || !sexSelected) {
+        return 'Sex field should not be empty!';
+      }
+      return null;
+    };
+  }
+
   /// Compares session end time to session start time.
   ///
   /// Requires start [startTime] and end time [endTime].
