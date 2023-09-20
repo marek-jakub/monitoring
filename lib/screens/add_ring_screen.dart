@@ -241,6 +241,61 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 txtLabel: 'Species',
                 listValues: species,
               ),
+              // Padding(
+              //   padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
+              //   child: Column(
+              //     children: [
+              //       const Text(
+              //         'Sex',
+              //       ),
+              //       Row(
+              //         children: [
+              //           Expanded(
+              //             child: CheckboxListTile(
+              //               title: const Text(
+              //                 'F',
+              //               ),
+              //               value: _sexController.text == 'F' ? true : false,
+              //               controlAffinity: ListTileControlAffinity.leading,
+              //               onChanged: (bool? value) {
+              //                 setState(() {
+              //                   _sexController.text = value! ? 'F' : '';
+              //                 });
+              //               },
+              //             ),
+              //           ),
+              //           Expanded(
+              //               child: CheckboxListTile(
+              //             title: const Text(
+              //               'M',
+              //             ),
+              //             value: _sexController.text == 'M' ? true : false,
+              //             controlAffinity: ListTileControlAffinity.leading,
+              //             onChanged: (bool? value) {
+              //               setState(() {
+              //                 _sexController.text = value! ? 'M' : '';
+              //               });
+              //             },
+              //           )),
+              //           Expanded(
+              //             child: CheckboxListTile(
+              //               title: const Text(
+              //                 'U',
+              //               ),
+              //               value: _sexController.text == 'U' ? true : false,
+              //               controlAffinity: ListTileControlAffinity.leading,
+              //               onChanged: (bool? value) {
+              //                 setState(() {
+              //                   _sexController.text = value! ? 'U' : '';
+              //                 });
+              //               },
+              //             ),
+              //           ),
+              //         ],
+              //       ),
+              //     ],
+              //   ),
+              // ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
                 child: Column(
@@ -248,50 +303,9 @@ class _AddRingScreenState extends State<AddRingScreen> {
                     const Text(
                       'Sex',
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: CheckboxListTile(
-                            title: const Text(
-                              'F',
-                            ),
-                            value: _sexController.text == 'F' ? true : false,
-                            controlAffinity: ListTileControlAffinity.leading,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                _sexController.text = value! ? 'F' : '';
-                              });
-                            },
-                          ),
-                        ),
-                        Expanded(
-                            child: CheckboxListTile(
-                          title: const Text(
-                            'M',
-                          ),
-                          value: _sexController.text == 'M' ? true : false,
-                          controlAffinity: ListTileControlAffinity.leading,
-                          onChanged: (bool? value) {
-                            setState(() {
-                              _sexController.text = value! ? 'M' : '';
-                            });
-                          },
-                        )),
-                        Expanded(
-                          child: CheckboxListTile(
-                            title: const Text(
-                              'U',
-                            ),
-                            value: _sexController.text == 'U' ? true : false,
-                            controlAffinity: ListTileControlAffinity.leading,
-                            onChanged: (bool? value) {
-                              setState(() {
-                                _sexController.text = value! ? 'U' : '';
-                              });
-                            },
-                          ),
-                        ),
-                      ],
+                    SexCheckboxFormField(
+                      controller: _sexController,
+                      validator: _inputValidator.sexCheckboxesValidator(),
                     ),
                   ],
                 ),
@@ -301,7 +315,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 txtLabel: 'Age',
                 listValues: age,
                 // TODO: implement proper validator
-                validator: _inputValidator.placeCodeValidator(['sd', 'sd']),
+                validator: _inputValidator.placeCodeValidator(['0', '0']),
               ),
               ExpansionTile(
                 title: const Text(
@@ -879,7 +893,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
   /// Saves ring data in the database.
   void addRing() {
     final isRequiredValid = _requiredDataFormKey.currentState?.validate();
-    // TODO: create central hub for validationg form input values.
+
     // final areBodyMeasurementsValid =
     //     _bodyMeasurementsFormKey.currentState?.validate();
     // final areCircumstancesValid =
