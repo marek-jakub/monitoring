@@ -132,6 +132,19 @@ class InputValidator {
     };
   }
 
+  // Metal ring information
+  String? Function(String?)? metalRingInfoValidator(
+      List<String> metalRingInfoCodes) {
+    return (String? metalRingInfo) {
+      if (metalRingInfo == null || metalRingInfo.isEmpty) {
+        return 'Metal ring information should not be empty!';
+      } else if (!metalRingInfoCodes.contains(metalRingInfo)) {
+        return 'Unrecognized metal ring information!';
+      }
+      return null;
+    };
+  }
+
   /// Compares session end time to session start time.
   ///
   /// Requires start [startTime] and end time [endTime].
