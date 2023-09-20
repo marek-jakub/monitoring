@@ -208,9 +208,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                       controller: _metalRingInfoController,
                       txtLabel: 'Metal ring information',
                       listValues: metalRingInfo,
-                      // TODO: implement proper validator
                       validator:
-                          _inputValidator.placeCodeValidator(['sd', 'sd']),
+                          _inputValidator.metalRingInfoValidator(metalRingInfo),
                     ),
                   ),
                 ],
