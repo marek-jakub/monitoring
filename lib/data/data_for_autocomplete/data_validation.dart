@@ -154,6 +154,7 @@ class InputValidator {
   String? Function(int?)? sexCheckboxesValidator() {
     return (int? sexSelected) {
       if (![1, 2, 3].contains(sexSelected)) {
+        // The color red is used now to show warning, instead of text.
         return 'Checkbox must be checked';
       }
       return null;
