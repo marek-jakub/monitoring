@@ -314,8 +314,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 controller: _ageController,
                 txtLabel: 'Age',
                 listValues: age,
-                // TODO: implement proper validator
-                validator: _inputValidator.placeCodeValidator(['0', '0']),
+                validator: _inputValidator.ageValidator(age),
               ),
               ExpansionTile(
                 title: const Text(
