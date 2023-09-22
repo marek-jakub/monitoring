@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 /// A form input data validator.
 class InputValidator {
   // SESSION form input validation
@@ -156,6 +154,18 @@ class InputValidator {
       if (![1, 2, 3].contains(sexSelected)) {
         // The color red is used now to show warning, instead of text.
         return 'Checkbox must be checked';
+      }
+      return null;
+    };
+  }
+
+  // Age validator
+  String? Function(String?)? ageValidator(List<String> ageCodes) {
+    return (String? age) {
+      if (age == null || age.isEmpty) {
+        return 'Age should not be empty!';
+      } else if (!ageCodes.contains(age)) {
+        return 'Unrecognized age value!';
       }
       return null;
     };
