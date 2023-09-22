@@ -35,6 +35,7 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
           border: const OutlineInputBorder(),
         ),
         inputTextStyle: const TextStyle(fontSize: 14),
+        // Cannot be initial value and controller set at the same time
         //initialValue: widget._controller.text,
         suggestions: widget._listValues,
         suggestionBuilder: (data) {
