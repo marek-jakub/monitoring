@@ -96,8 +96,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       controller: _seriesCode,
                       txtLabel: 'Series code',
                       keyboard: 'text',
-                      // TODO: Implement proper validator.
-                      validator: _inputValidator.localityNameValidator(),
+                      validator: _inputValidator.seriesCodeValidator(),
                     ),
                     CustomDropdownButtonFormField(
                       controller: _schemeCode,
