@@ -171,6 +171,18 @@ class InputValidator {
     };
   }
 
+  // Add RING SERIES FROM input validation
+
+  // Series code
+  String? Function(String?)? seriesCodeValidator() {
+    return (String? seriesCode) {
+      if (seriesCode == null || seriesCode.isEmpty) {
+        return 'Series code should not be empty!';
+      }
+      return null;
+    };
+  }
+
   /// Compares session end time to session start time.
   ///
   /// Requires start [startTime] and end time [endTime].
