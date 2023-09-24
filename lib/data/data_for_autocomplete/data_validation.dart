@@ -183,6 +183,46 @@ class InputValidator {
     };
   }
 
+  // Scheme code
+  String? Function(String?)? schemeCodeValidator(List<String> schemeCodes) {
+    return (String? schemeCode) {
+      if (schemeCode == null || schemeCode.isEmpty) {
+        return 'Scheme code should not be empty!';
+      } else if (!schemeCodes.contains(schemeCode)) {
+        return 'Unrecognized scheme code!';
+      }
+      return null;
+    };
+  }
+
+  // Series from
+  String? Function(String?)? seriesFromValidator() {
+    RegExp seriesFromMatch = RegExp(r'^[1-9]\d*$');
+    return (String? seriesFrom) {
+      if (seriesFrom == null || seriesFrom.isEmpty) {
+        return 'Series from should not be empty!';
+      } else if (!seriesFromMatch.hasMatch(seriesFrom)) {
+        return 'Incorrect format!';
+      }
+      return null;
+    };
+  }
+
+  // Series to
+  String? Function(String?)? seriesToValidator(String seriesFrom) {
+    RegExp seriesToMatch = RegExp(r'^[1-9]\d*$');
+    return (String? seriesTo) {
+      if (seriesTo == null || seriesTo.isEmpty) {
+        return 'Series to should not be empty!';
+      } else if (!seriesToMatch.hasMatch(seriesTo)) {
+        return 'Incorrect format!';
+      } else if (!_isSeriesToGreater(seriesFrom, seriesTo)) {
+        return 'Series to is too low!';
+      }
+      return null;
+    };
+  }
+
   /// Compares session end time to session start time.
   ///
   /// Requires start [startTime] and end time [endTime].
@@ -192,9 +232,27 @@ class InputValidator {
       // Use same dummy YYYY-MM-DD in parsing day times
       DateTime? sTime = DateTime.tryParse('2020-07-17 $startTime:00');
       DateTime? eTime = DateTime.tryParse('2020-07-17 $endTime:00');
-      if (sTime == null && eTime == null) {
+      if (sTime == null || eTime == null) {
         return true;
-      } else if (eTime!.isBefore(sTime!) || eTime.isAtSameMomentAs(sTime)) {
+      } else if (eTime.isBefore(sTime) || eTime.isAtSameMomentAs(sTime)) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  /// Compares two strings of digits.
+  ///
+  /// Returns true if [from] is greater than [to],
+  /// else returns false.
+  bool _isSeriesToGreater(String from, String to) {
+    RegExp fromMatch = RegExp(r'^[1-9]\d*$');
+    if (fromMatch.hasMatch(from)) {
+      int? fromNumber = int.tryParse(from);
+      int? toNumber = int.tryParse(to);
+      if (fromNumber == null || toNumber == null) {
+        return false;
+      } else if (fromNumber < toNumber) {
         return true;
       }
     }
