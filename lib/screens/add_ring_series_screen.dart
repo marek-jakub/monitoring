@@ -102,23 +102,21 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       controller: _schemeCode,
                       txtLabel: 'Scheme code',
                       listValues: ringingSchemes..sort(),
-                      // TODO: implement proper validator
                       validator:
-                          _inputValidator.placeCodeValidator(['sd', 'sd']),
+                          _inputValidator.schemeCodeValidator(ringingSchemes),
                     ),
                     CustomTextFormField(
                       controller: _ringFrom,
                       txtLabel: 'Series from',
                       keyboard: 'number',
-                      // TODO: Implement proper validator.
-                      validator: _inputValidator.localityNameValidator(),
+                      validator: _inputValidator.seriesFromValidator(),
                     ),
                     CustomTextFormField(
                       controller: _ringTo,
                       txtLabel: 'Series to',
                       keyboard: 'number',
-                      // TODO: Implement proper validator.
-                      validator: _inputValidator.localityNameValidator(),
+                      validator:
+                          _inputValidator.seriesToValidator(_ringFrom.text),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
