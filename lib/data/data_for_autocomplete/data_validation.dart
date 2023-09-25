@@ -171,7 +171,7 @@ class InputValidator {
     };
   }
 
-  // Add RING SERIES FROM input validation
+  // Add RING SERIES FORM input validation
 
   // Series code
   String? Function(String?)? seriesCodeValidator() {
