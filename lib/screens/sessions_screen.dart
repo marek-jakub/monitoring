@@ -94,6 +94,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 const Text('Ringing sessions'),
                 Selector<RingDataManager, List<SessionLocationViewData>>(
                   selector: (context, notifier) =>
+                      // TODO: implement session location stream for a given ringer
                       notifier.sessionLocationViewStream,
                   shouldRebuild: (previous, next) => true,
                   builder: (context, sessions, child) {
