@@ -76,6 +76,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                               .ringerId);
                   Provider.of<RingDataManager>(context, listen: false)
                       .setNewLostRing(true);
+                  Provider.of<RingDataManager>(context, listen: false)
+                      .getRingSeriesList(
+                          Provider.of<ProfileManager>(context, listen: false)
+                              .getRinger
+                              .ringerId);
                 },
                 child: const Text('Add lost ring'),
               ),
