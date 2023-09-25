@@ -37,6 +37,8 @@ class MonRingDb extends _$MonRingDb {
 
   // SESSION - LOCATION VIEW
 
+  // TODO: implement session - location view only for sessions for given ringer.
+
   /// Returns a stream of list containing session - location view.
   ///
   /// The data is ordered on session id, descending.
@@ -207,6 +209,14 @@ class MonRingDb extends _$MonRingDb {
   Stream<List<RingseriesEntityData>> watchRingSeries(String id) {
     return (select(ringseriesEntity)..where((tbl) => tbl.ringerId.equals(id)))
         .watch();
+  }
+
+  /// Return all ring series in the database for a ringer identified by [ringerId].
+  Future<List<RingseriesEntityData>> getRingerRingSeries(
+      String ringerId) async {
+    return await (select(ringseriesEntity)
+          ..where((tbl) => tbl.ringerId.equals(ringerId)))
+        .get();
   }
 
   /// Updates ring series data stored in the [companion].
