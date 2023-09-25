@@ -223,6 +223,14 @@ class InputValidator {
     };
   }
 
+  // Add LOST RING FORM input validation
+
+  // Series code
+  // TODO: implement series code validator.
+
+  // Rind ID
+  // TODO: implement ring ID validator.
+
   /// Compares session end time to session start time.
   ///
   /// Requires start [startTime] and end time [endTime].
