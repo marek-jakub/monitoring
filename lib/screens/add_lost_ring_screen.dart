@@ -38,6 +38,12 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   // Lost ring id
   int _lostRingId = -1;
 
+  // Ring series for a given ringer
+  List<RingseriesEntityData> ringSeriesCodes = [];
+
+  // Ring series list for the dropdown field
+  List<String> ringSeries = [];
+
   /// Form field input validator.
   late InputValidator _inputValidator;
 
@@ -65,142 +71,151 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          'MonitoRing: lost rings',
-        ),
-        centerTitle: true,
-        leading: IconButton(
-          icon: const BackButtonIcon(),
-          onPressed: () {
-            Provider.of<RingDataManager>(context, listen: false)
-                .setNewLostRing(false);
-          },
-        ),
-      ),
-      body: Column(
-        children: <Widget>[
-          Form(
-            key: _lostRingFormKey,
-            child: Column(
-              children: [
-                CustomTextFormField(
-                  controller: _ringSeriesCode,
-                  txtLabel: 'Ring series code',
-                  keyboard: 'text',
-                  // TODO: Implement proper validator.
-                  validator: _inputValidator.localityNameValidator(),
-                ),
-                CustomTextFormField(
-                  controller: _ringId,
-                  txtLabel: 'Ring ID',
-                  keyboard: 'text',
-                  // TODO: Implement proper validator.
-                  validator: _inputValidator.localityNameValidator(),
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          addLostRing();
-                          _dataManager.getLostRingsStream(context
-                              .read<ProfileManager>()
-                              .getRinger
-                              .ringerId);
-                        },
-                        child: const Text('Add'),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          if (_lostRingId != -1) {
-                            deleteLostRing(_lostRingId);
-                            _lostRingId = -1;
-                          }
-                        },
-                        child: const Text('Remove'),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                      child: ElevatedButton(
-                        onPressed: () {
-                          updateLostRing(_lostRingId);
-                        },
-                        child: const Text('Update'),
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+    return Consumer<RingDataManager>(
+      builder: (context, ringDataManager, child) {
+        ringSeriesCodes = ringDataManager.ringSeriesList;
+        ringSeries = _createRingSeries(ringSeriesCodes);
+        return Scaffold(
+          appBar: AppBar(
+            title: const Text(
+              'MonitoRing: lost rings',
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text('Lost rings'),
-          Expanded(
-            child: Selector<RingDataManager, List<LostRingEntityData>>(
-              selector: (context, notifier) => notifier.lostRingsStream,
-              builder: (context, lostRings, child) {
-                return ListView.builder(
-                  itemCount: lostRings.length,
-                  itemBuilder: (context, index) {
-                    final lostRing = lostRings[index];
-                    return GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          _ringSeriesCode.text = lostRing.ringSeriesCode;
-                          _ringId.text = lostRing.idNumber;
-
-                          _lostRingId = lostRing.id;
-                        });
-                      },
-                      child: Card(
-                        elevation: 0,
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                const Expanded(
-                                  child: Text('Ring series code:',
-                                      textAlign: TextAlign.left),
-                                ),
-                                Expanded(
-                                  child: Text(lostRing.ringSeriesCode,
-                                      textAlign: TextAlign.left),
-                                ),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                const Expanded(
-                                  child: Text('Ring ID:',
-                                      textAlign: TextAlign.left),
-                                ),
-                                Expanded(
-                                  child: Text(lostRing.idNumber,
-                                      textAlign: TextAlign.left),
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                );
+            centerTitle: true,
+            leading: IconButton(
+              icon: const BackButtonIcon(),
+              onPressed: () {
+                Provider.of<RingDataManager>(context, listen: false)
+                    .setNewLostRing(false);
               },
             ),
           ),
-        ],
-      ),
+          body: Column(
+            children: <Widget>[
+              Form(
+                key: _lostRingFormKey,
+                child: Column(
+                  children: [
+                    CustomDropdownButtonFormField(
+                      controller: _ringSeriesCode,
+                      txtLabel: 'Ring series code',
+                      listValues: ringSeries,
+                      // TODO: Implement proper validator.
+                      validator: _inputValidator.seriesCodeValidator(),
+                    ),
+                    CustomTextFormField(
+                      controller: _ringId,
+                      txtLabel: 'Ring ID',
+                      keyboard: 'text',
+                      // TODO: Implement proper validator.
+                      validator: _inputValidator.localityNameValidator(),
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              addLostRing();
+                              _dataManager.getLostRingsStream(context
+                                  .read<ProfileManager>()
+                                  .getRinger
+                                  .ringerId);
+                            },
+                            child: const Text('Add'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              if (_lostRingId != -1) {
+                                deleteLostRing(_lostRingId);
+                                _lostRingId = -1;
+                              }
+                            },
+                            child: const Text('Remove'),
+                          ),
+                        ),
+                        Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              updateLostRing(_lostRingId);
+                            },
+                            child: const Text('Update'),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Text('Lost rings'),
+              Expanded(
+                child: Selector<RingDataManager, List<LostRingEntityData>>(
+                  selector: (context, notifier) => notifier.lostRingsStream,
+                  builder: (context, lostRings, child) {
+                    return ListView.builder(
+                      itemCount: lostRings.length,
+                      itemBuilder: (context, index) {
+                        final lostRing = lostRings[index];
+                        return GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _ringSeriesCode.text = lostRing.ringSeriesCode;
+                              _ringId.text = lostRing.idNumber;
+
+                              _lostRingId = lostRing.id;
+                            });
+                          },
+                          child: Card(
+                            elevation: 0,
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Ring series code:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(lostRing.ringSeriesCode,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Ring ID:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(lostRing.idNumber,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        );
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 
@@ -377,5 +392,15 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
         ],
       ),
     );
+  }
+
+  List<String> _createRingSeries(List<RingseriesEntityData> ringSeriesCodes) {
+    List<String> seriesCodes = [''];
+    for (final seriesData in ringSeriesCodes) {
+      String code = seriesData.code.toString();
+      seriesCodes.add(code);
+    }
+    debugPrint('Add lost ring: series codes $seriesCodes');
+    return seriesCodes;
   }
 }
