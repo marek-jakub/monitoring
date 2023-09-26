@@ -165,7 +165,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
   /// Creates a title text from session [data].
   Widget setSessionTitle(
       RingDataManager dataManager, SessionLocationViewData? data) {
-    debugPrint('retraps screen setSessionTitle: $data');
+    // debugPrint('retraps screen setSessionTitle: $data');
     String sessionLocation = '';
     String sessionDate = '';
     if (data != null && dataManager.currentSessionId > -1) {
