@@ -118,50 +118,45 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       validator:
                           _inputValidator.seriesToValidator(_ringFrom.text),
                     ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              addRingSeries();
-                              dataManager.getRingSeriesStream(context
-                                  .read<ProfileManager>()
-                                  .getRinger
-                                  .ringerId);
-                            },
-                            child: const Text('Add'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              if (_ringSeriesId != -1) {
-                                deleteRingSeries(_ringSeriesId);
-                                _ringSeriesId = -1;
-                              }
-                            },
-                            child: const Text('Remove'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              updateRingSeries(_ringSeriesId);
-                            },
-                            child: const Text('Update'),
-                          ),
-                        ),
-                      ],
-                    ),
                   ],
                 ),
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        addRingSeries();
+                        dataManager.getRingSeriesStream(
+                            context.read<ProfileManager>().getRinger.ringerId);
+                      },
+                      child: const Text('Add'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        if (_ringSeriesId != -1) {
+                          deleteRingSeries(_ringSeriesId);
+                          _ringSeriesId = -1;
+                        }
+                      },
+                      child: const Text('Remove'),
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                    child: ElevatedButton(
+                      onPressed: () {
+                        updateRingSeries(_ringSeriesId);
+                      },
+                      child: const Text('Update'),
+                    ),
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 10,
