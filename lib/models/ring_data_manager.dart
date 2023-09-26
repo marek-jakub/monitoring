@@ -459,10 +459,10 @@ class RingDataManager extends ChangeNotifier {
 
     _monRingDb?.watchSessionLocationView().listen((event) {
       _sessionLocationViewStream = event;
-      debugPrint('=========================================');
-      debugPrint('SESSION-LOCATION VIEW STREAM SIZE: ${event.length}');
-      debugPrint('session manager calling location view: $event');
-      debugPrint('=========================================');
+      // debugPrint('=========================================');
+      // debugPrint('SESSION-LOCATION VIEW STREAM SIZE: ${event.length}');
+      // debugPrint('session manager calling location view: $event');
+      // debugPrint('=========================================');
       _isLoading = false;
       notifyListeners();
     });
