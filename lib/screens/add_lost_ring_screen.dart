@@ -398,7 +398,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
     List<String> seriesCodes = [''];
     for (final seriesData in ringSeriesCodes) {
       String code = seriesData.code.toString();
-      seriesCodes.add(code);
+      if (!seriesCodes.contains(code)) {
+        seriesCodes.add(code);
+      }
     }
     return seriesCodes;
   }
