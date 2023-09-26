@@ -400,7 +400,6 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
       String code = seriesData.code.toString();
       seriesCodes.add(code);
     }
-    debugPrint('Add lost ring: series codes $seriesCodes');
     return seriesCodes;
   }
 }
