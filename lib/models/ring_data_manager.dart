@@ -67,6 +67,7 @@ class RingDataManager extends ChangeNotifier {
   //int _selectedRingSeriesId = -1;
   List<RingseriesEntityData> _ringSeriesStream = [];
   List<RingseriesEntityData> _ringSeriesList = [];
+  List<RingseriesEntityData> _seriesRings = [];
 
   // Lost ring
   bool _newLostRing = false;
@@ -380,6 +381,9 @@ class RingDataManager extends ChangeNotifier {
 
   /// Access to ring series list of a given ringer.
   List<RingseriesEntityData> get ringSeriesList => _ringSeriesList;
+
+  /// Access to a series rings of a given ringer.
+  List<RingseriesEntityData> get seriesRings => _seriesRings;
 
   // LOST RING ///////////////////////////
 
@@ -763,6 +767,21 @@ class RingDataManager extends ChangeNotifier {
 
     _monRingDb?.getRingerRingSeries(id).then((value) {
       _ringSeriesList = value;
+      _isLoading = false;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
+
+  /// A list of a series rings for a ringer identified by [id] and [code].
+  void getSeriesRings(String id, String code) {
+    _isLoading = true;
+
+    _monRingDb?.getRingerSeriesRings(id, code).then((value) {
+      _seriesRings = value;
       _isLoading = false;
       notifyListeners();
     }).onError((error, stackTrace) {
