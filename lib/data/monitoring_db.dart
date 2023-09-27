@@ -219,6 +219,17 @@ class MonRingDb extends _$MonRingDb {
         .get();
   }
 
+  /// Return rings for a ring series.
+  ///
+  /// Identified by [ringerId] and [code].
+  Future<List<RingseriesEntityData>> getRingerSeriesRings(
+      String ringerId, String code) async {
+    return await (select(ringseriesEntity)
+          ..where(
+              (tbl) => tbl.ringerId.equals(ringerId) & tbl.code.equals(code)))
+        .get();
+  }
+
   /// Updates ring series data stored in the [companion].
   Future<bool> updateRingSeries(RingseriesEntityCompanion companion) async {
     return await update(ringseriesEntity).replace(companion);
