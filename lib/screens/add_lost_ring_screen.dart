@@ -95,6 +95,11 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                 key: _lostRingFormKey,
                 child: Column(
                   children: [
+                    CustomDropdownRingSeriesField(
+                        ringSeriesController: _ringSeriesCode,
+                        ringIdController: _ringId,
+                        txtLabel: 'Ring series code',
+                        listValues: ringSeries),
                     CustomDropdownButtonFormField(
                       controller: _ringSeriesCode,
                       txtLabel: 'Ring series code',
