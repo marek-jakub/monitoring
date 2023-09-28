@@ -28,7 +28,6 @@ class CustomDatePickerField extends StatelessWidget {
           border: const OutlineInputBorder(),
           label: Text(_label),
         ),
-        style: const TextStyle(fontSize: 14, color: Colors.black),
         validator: (date) {
           RegExp dateMatch = RegExp(r'(\d{2}-\d{2}-\d{4})');
           if (date == null || date.isEmpty) {
