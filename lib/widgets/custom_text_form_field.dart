@@ -41,7 +41,6 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
           border: const OutlineInputBorder(),
           label: Text(widget._label),
         ),
-        style: const TextStyle(fontSize: 14),
         validator: widget._validator,
       ),
     );
