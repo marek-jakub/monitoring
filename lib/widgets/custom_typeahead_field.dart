@@ -31,14 +31,14 @@ class _CustomTypeaheadFormfieldState extends State<CustomTypeaheadFormfield> {
       padding: const EdgeInsets.all(5.0),
       child: TypeAheadFormField(
         textFieldConfiguration: TextFieldConfiguration(
-            controller: widget._controller,
-            decoration: InputDecoration(
-              border: const OutlineInputBorder(),
-              label: Text(widget._label),
-              fillColor: Colors.white,
-              filled: true,
-            ),
-            style: const TextStyle(fontSize: 14)),
+          controller: widget._controller,
+          decoration: InputDecoration(
+            border: const OutlineInputBorder(),
+            label: Text(widget._label),
+            fillColor: Colors.white,
+            filled: true,
+          ),
+        ),
         getImmediateSuggestions: false,
         minCharsForSuggestions: 2,
         suggestionsCallback: (pattern) {
