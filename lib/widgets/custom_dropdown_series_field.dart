@@ -38,9 +38,7 @@ class _CustomDropdownRingSeriesFieldState
           value: widget._ringSeriesController.text,
           decoration: InputDecoration(
             labelText: widget._label,
-            labelStyle: const TextStyle(fontSize: 14),
           ),
-          style: const TextStyle(fontSize: 14),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return '${widget._label} cannot be empty!';
