@@ -6,8 +6,68 @@ import 'package:google_fonts/google_fonts.dart';
 /// Two definitions, light and dark mode.
 class MonitoRingTheme {
   static TextTheme lightTextTheme = TextTheme(
-    bodyLarge: GoogleFonts.openSans(
+    displayLarge: GoogleFonts.openSans(
+      fontSize: 18,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+    displayMedium: GoogleFonts.openSans(
+      fontSize: 16,
+      fontWeight: FontWeight.w700,
+      color: Colors.black,
+    ),
+    displaySmall: GoogleFonts.openSans(
+      fontSize: 12,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    headlineLarge: GoogleFonts.openSans(
+      fontSize: 18.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.black,
+    ),
+    headlineMedium: GoogleFonts.openSans(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.black,
+    ),
+    headlineSmall: GoogleFonts.openSans(
       fontSize: 14.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    titleLarge: GoogleFonts.openSans(
+      fontSize: 20.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    titleMedium: GoogleFonts.openSans(
+      fontSize: 18.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    titleSmall: GoogleFonts.openSans(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    labelLarge: GoogleFonts.openSans(
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
+      color: Colors.black,
+    ),
+    labelMedium: GoogleFonts.openSans(
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      color: Colors.black,
+    ),
+    labelSmall: GoogleFonts.openSans(
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      color: Colors.black,
+    ),
+    bodyLarge: GoogleFonts.openSans(
+      fontSize: 16.0,
       fontWeight: FontWeight.w700,
       color: Colors.black,
     ),
@@ -17,33 +77,8 @@ class MonitoRingTheme {
       color: Colors.black,
     ),
     bodySmall: GoogleFonts.openSans(
-      fontSize: 14.0,
+      fontSize: 12.0,
       fontWeight: FontWeight.w700,
-      color: Colors.black,
-    ),
-    headlineLarge: GoogleFonts.openSans(
-      fontSize: 32.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.black,
-    ),
-    headlineMedium: GoogleFonts.openSans(
-      fontSize: 21.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.black,
-    ),
-    headlineSmall: GoogleFonts.openSans(
-      fontSize: 16.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-    titleMedium: GoogleFonts.openSans(
-      fontSize: 20.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-    titleSmall: GoogleFonts.openSans(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
   );
@@ -54,13 +89,23 @@ class MonitoRingTheme {
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
+    bodyMedium: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
+    bodySmall: GoogleFonts.openSans(
+      fontSize: 12.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
     headlineLarge: GoogleFonts.openSans(
-      fontSize: 32.0,
+      fontSize: 30.0,
       fontWeight: FontWeight.bold,
       color: Colors.white,
     ),
     headlineMedium: GoogleFonts.openSans(
-      fontSize: 21.0,
+      fontSize: 20.0,
       fontWeight: FontWeight.w700,
       color: Colors.white,
     ),
@@ -70,7 +115,27 @@ class MonitoRingTheme {
       color: Colors.white,
     ),
     titleMedium: GoogleFonts.openSans(
-      fontSize: 20.0,
+      fontSize: 18.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    titleSmall: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.white,
+    ),
+    displayLarge: GoogleFonts.openSans(
+      fontSize: 14,
+      fontWeight: FontWeight.bold,
+      color: Colors.white,
+    ),
+    displayMedium: GoogleFonts.openSans(
+      fontSize: 14,
+      fontWeight: FontWeight.w700,
+      color: Colors.white,
+    ),
+    displaySmall: GoogleFonts.openSans(
+      fontSize: 12,
       fontWeight: FontWeight.w600,
       color: Colors.white,
     ),
@@ -152,10 +217,16 @@ class MonitoRingTheme {
         backgroundColor: Colors.grey[350],
       ),
       listTileTheme: const ListTileThemeData(
-          style: ListTileStyle.list,
-          tileColor: Colors.white,
-          textColor: Colors.black,
-          titleTextStyle: TextStyle(fontSize: 14.0)),
+        style: ListTileStyle.list,
+        tileColor: Colors.white,
+        textColor: Colors.black,
+        titleTextStyle: TextStyle(fontSize: 14.0),
+      ),
+      dropdownMenuTheme: const DropdownMenuThemeData(
+        textStyle: TextStyle(
+          fontSize: 14,
+        ),
+      ),
       textTheme: lightTextTheme,
     );
   }
@@ -236,10 +307,16 @@ class MonitoRingTheme {
         backgroundColor: Colors.grey[700],
       ),
       listTileTheme: ListTileThemeData(
-          style: ListTileStyle.list,
-          tileColor: Colors.grey[800],
-          textColor: Colors.white,
-          titleTextStyle: const TextStyle(fontSize: 14.0)),
+        style: ListTileStyle.list,
+        tileColor: Colors.grey[800],
+        textColor: Colors.white,
+        titleTextStyle: const TextStyle(fontSize: 14.0),
+      ),
+      dropdownMenuTheme: const DropdownMenuThemeData(
+        textStyle: TextStyle(
+          fontSize: 14,
+        ),
+      ),
       textTheme: darkTextTheme,
     );
   }
