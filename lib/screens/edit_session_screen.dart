@@ -158,13 +158,6 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                   key: _editSessionFormKey,
                   child: Column(
                     children: [
-                      CustomTextFormField(
-                        controller: _ringerId,
-                        txtLabel: 'Ringer ID',
-                        keyboard: 'text',
-                        // TODO: Implement proper validator.
-                        validator: _inputValidator.localityNameValidator(),
-                      ),
                       CustomDropdownCountryFormField(
                           countryController: _countryController,
                           placeCodeController: _placeCodeController,
