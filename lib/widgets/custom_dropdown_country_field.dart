@@ -40,9 +40,7 @@ class _CustomDropdownCountryFormFieldState
             // Filled changes the color of the field
             //filled: true,
             labelText: widget._label,
-            labelStyle: const TextStyle(fontSize: 14),
           ),
-          style: const TextStyle(fontSize: 14),
           validator: (value) {
             if (value == null || value.isEmpty) {
               return '${widget._label} cannot be empty!';
