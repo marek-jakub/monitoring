@@ -39,7 +39,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   int _lostRingId = -1;
 
   // Ring series for a given ringer
-  List<RingseriesEntityData> ringSeriesCodes = [];
+  List<String> ringSeriesCodes = [];
 
   // Ring series list for the dropdown field
   List<String> ringSeries = [];
@@ -73,8 +73,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   Widget build(BuildContext context) {
     return Consumer<RingDataManager>(
       builder: (context, ringDataManager, child) {
-        ringSeriesCodes = ringDataManager.ringSeriesList;
-        ringSeries = _createRingSeries(ringSeriesCodes);
+        ringSeriesCodes = ringDataManager.ringerSeriesCodes;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -99,11 +98,11 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                         ringSeriesController: _ringSeriesCode,
                         ringIdController: _ringId,
                         txtLabel: 'Ring series code',
-                        listValues: ringSeries),
+                        listValues: ringSeriesCodes),
                     CustomDropdownButtonFormField(
                       controller: _ringSeriesCode,
                       txtLabel: 'Ring series code',
-                      listValues: ringSeries,
+                      listValues: ringSeriesCodes,
                       // TODO: Implement proper validator.
                       validator: _inputValidator.seriesCodeValidator(),
                     ),
@@ -397,16 +396,5 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
         ],
       ),
     );
-  }
-
-  List<String> _createRingSeries(List<RingseriesEntityData> ringSeriesCodes) {
-    List<String> seriesCodes = [''];
-    for (final seriesData in ringSeriesCodes) {
-      String code = seriesData.code.toString();
-      if (!seriesCodes.contains(code)) {
-        seriesCodes.add(code);
-      }
-    }
-    return seriesCodes;
   }
 }
