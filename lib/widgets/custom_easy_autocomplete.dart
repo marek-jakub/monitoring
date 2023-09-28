@@ -43,12 +43,10 @@ class _CustomEasyAutocompleteState extends State<CustomEasyAutocomplete> {
             margin: const EdgeInsets.all(1),
             padding: const EdgeInsets.all(5),
             decoration: BoxDecoration(
-              color: Colors.white,
               borderRadius: BorderRadius.circular(5),
             ),
             child: Text(
               data,
-              style: const TextStyle(color: Colors.black),
             ),
           );
         },
