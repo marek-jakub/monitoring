@@ -39,9 +39,7 @@ class _CustomDropdownButtonFormFieldState
           value: widget._controller.text,
           decoration: InputDecoration(
             labelText: widget._label,
-            labelStyle: const TextStyle(fontSize: 14),
           ),
-          style: const TextStyle(fontSize: 14),
           validator: widget._validator,
           menuMaxHeight: 200.0,
           onChanged: (String? value) {
