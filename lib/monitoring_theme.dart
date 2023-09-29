@@ -37,17 +37,17 @@ class MonitoRingTheme {
       color: Colors.black,
     ),
     titleLarge: GoogleFonts.openSans(
-      fontSize: 20.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.black,
-    ),
-    titleMedium: GoogleFonts.openSans(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
-    titleSmall: GoogleFonts.openSans(
+    titleMedium: GoogleFonts.openSans(
       fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.black,
+    ),
+    titleSmall: GoogleFonts.openSans(
+      fontSize: 15.0,
       fontWeight: FontWeight.w600,
       color: Colors.black,
     ),
@@ -84,60 +84,80 @@ class MonitoRingTheme {
   );
 
   static TextTheme darkTextTheme = TextTheme(
-    bodyLarge: GoogleFonts.openSans(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.white,
-    ),
-    bodyMedium: GoogleFonts.openSans(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.white,
-    ),
-    bodySmall: GoogleFonts.openSans(
-      fontSize: 12.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.white,
-    ),
-    headlineLarge: GoogleFonts.openSans(
-      fontSize: 30.0,
-      fontWeight: FontWeight.bold,
-      color: Colors.white,
-    ),
-    headlineMedium: GoogleFonts.openSans(
-      fontSize: 20.0,
-      fontWeight: FontWeight.w700,
-      color: Colors.white,
-    ),
-    headlineSmall: GoogleFonts.openSans(
-      fontSize: 16.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-    titleMedium: GoogleFonts.openSans(
-      fontSize: 18.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
-    titleSmall: GoogleFonts.openSans(
-      fontSize: 14.0,
-      fontWeight: FontWeight.w600,
-      color: Colors.white,
-    ),
     displayLarge: GoogleFonts.openSans(
-      fontSize: 14,
+      fontSize: 18,
       fontWeight: FontWeight.bold,
-      color: Colors.white,
+      color: Colors.grey[300],
     ),
     displayMedium: GoogleFonts.openSans(
-      fontSize: 14,
+      fontSize: 16,
       fontWeight: FontWeight.w700,
-      color: Colors.white,
+      color: Colors.grey[300],
     ),
     displaySmall: GoogleFonts.openSans(
       fontSize: 12,
       fontWeight: FontWeight.w600,
-      color: Colors.white,
+      color: Colors.grey[300],
+    ),
+    headlineLarge: GoogleFonts.openSans(
+      fontSize: 18.0,
+      fontWeight: FontWeight.bold,
+      color: Colors.grey[300],
+    ),
+    headlineMedium: GoogleFonts.openSans(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.grey[300],
+    ),
+    headlineSmall: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.grey[300],
+    ),
+    titleLarge: GoogleFonts.openSans(
+      fontSize: 18.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.grey[300],
+    ),
+    titleMedium: GoogleFonts.openSans(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.grey[300],
+    ),
+    titleSmall: GoogleFonts.openSans(
+      fontSize: 15.0,
+      fontWeight: FontWeight.w600,
+      color: Colors.grey[300],
+    ),
+    labelLarge: GoogleFonts.openSans(
+      fontSize: 18,
+      fontWeight: FontWeight.normal,
+      color: Colors.grey[300],
+    ),
+    labelMedium: GoogleFonts.openSans(
+      fontSize: 14,
+      fontWeight: FontWeight.normal,
+      color: Colors.grey[300],
+    ),
+    labelSmall: GoogleFonts.openSans(
+      fontSize: 12,
+      fontWeight: FontWeight.normal,
+      color: Colors.grey[300],
+    ),
+    bodyLarge: GoogleFonts.openSans(
+      fontSize: 16.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.grey[300],
+    ),
+    bodyMedium: GoogleFonts.openSans(
+      fontSize: 14.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.grey[300],
+    ),
+    bodySmall: GoogleFonts.openSans(
+      fontSize: 12.0,
+      fontWeight: FontWeight.w700,
+      color: Colors.grey[300],
     ),
   );
 
@@ -175,12 +195,20 @@ class MonitoRingTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
+          textStyle: MaterialStateProperty.all(
+            const TextStyle(
+              fontSize: 14,
+            ),
+          ),
           minimumSize: MaterialStateProperty.all(
             const Size(100, 40),
           ),
         ),
       ),
       floatingActionButtonTheme: FloatingActionButtonThemeData(
+        extendedTextStyle: const TextStyle(
+          fontSize: 14,
+        ),
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey[800],
       ),
@@ -265,12 +293,20 @@ class MonitoRingTheme {
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
+          textStyle: MaterialStateProperty.all(
+            const TextStyle(
+              fontSize: 14,
+            ),
+          ),
           minimumSize: MaterialStateProperty.all(
             const Size(100, 40),
           ),
         ),
       ),
       floatingActionButtonTheme: const FloatingActionButtonThemeData(
+        extendedTextStyle: TextStyle(
+          fontSize: 14,
+        ),
         foregroundColor: Colors.white,
         backgroundColor: Colors.grey,
       ),
