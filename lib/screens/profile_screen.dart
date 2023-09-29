@@ -39,72 +39,70 @@ class _ProfileScreenState extends State<ProfileScreen> {
           },
         ),
       ),
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(
-              height: 10.0,
-            ),
-            buildProfile(),
-            Expanded(
-              child: buildMenu(),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .getRingSeriesStream(
-                          Provider.of<ProfileManager>(context, listen: false)
-                              .getRinger
-                              .ringerId);
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .setNewRingSeries(true);
-                },
-                child: const Text('Add ring series'),
+      body: Column(
+        children: [
+          buildProfile(),
+          buildMenu(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .getRingSeriesStream(
+                            Provider.of<ProfileManager>(context, listen: false)
+                                .getRinger
+                                .ringerId);
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .setNewRingSeries(true);
+                  },
+                  child: const Text('Add ring series'),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .getLostRingsStream(
-                          Provider.of<ProfileManager>(context, listen: false)
-                              .getRinger
-                              .ringerId);
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .setNewLostRing(true);
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .getRingSeriesList(
-                          Provider.of<ProfileManager>(context, listen: false)
-                              .getRinger
-                              .ringerId);
-                },
-                child: const Text('Add lost ring'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .getLostRingsStream(
+                            Provider.of<ProfileManager>(context, listen: false)
+                                .getRinger
+                                .ringerId);
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .setNewLostRing(true);
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .getRingSeriesList(
+                            Provider.of<ProfileManager>(context, listen: false)
+                                .getRinger
+                                .ringerId);
+                  },
+                  child: const Text('Add lost ring'),
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(
-                onPressed: () {
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .getOrderStream(
-                          Provider.of<ProfileManager>(context, listen: false)
-                              .getRinger
-                              .ringerId);
-                  Provider.of<RingDataManager>(context, listen: false)
-                      .setMakeOrder(true);
-                },
-                child: const Text('Order rings'),
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ElevatedButton(
+                  onPressed: () {
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .getOrderStream(
+                            Provider.of<ProfileManager>(context, listen: false)
+                                .getRinger
+                                .ringerId);
+                    Provider.of<RingDataManager>(context, listen: false)
+                        .setMakeOrder(true);
+                  },
+                  child: const Text('Order rings'),
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 200.0,
-            ),
-          ],
-        ),
+            ],
+          ),
+          // const SizedBox(
+          //   height: 200.0,
+          // ),
+        ],
       ),
     );
   }
@@ -125,10 +123,9 @@ class _ProfileScreenState extends State<ProfileScreen> {
   ///
   /// Access to dar mode, EURING code and logout.
   Widget buildMenu() {
-    return ListView(
+    return Column(
       children: [
         showDarkModeRow(),
-        // TODO: set text style for list tiles
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
