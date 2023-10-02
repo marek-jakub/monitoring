@@ -5541,12 +5541,12 @@ class RingseriesEntityCompanion extends UpdateCompanion<RingseriesEntityData> {
   }
 }
 
-class $UsedRingEntityTable extends UsedRingEntity
-    with TableInfo<$UsedRingEntityTable, UsedRingEntityData> {
+class $RingsInEntityTable extends RingsInEntity
+    with TableInfo<$RingsInEntityTable, RingsInEntityData> {
   @override
   final GeneratedDatabase attachedDatabase;
   final String? _alias;
-  $UsedRingEntityTable(this.attachedDatabase, [this._alias]);
+  $RingsInEntityTable(this.attachedDatabase, [this._alias]);
   static const VerificationMeta _idMeta = const VerificationMeta('id');
   @override
   late final GeneratedColumn<int> id = GeneratedColumn<int>(
@@ -5562,11 +5562,16 @@ class $UsedRingEntityTable extends UsedRingEntity
   late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
       'ringer_id', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
-  static const VerificationMeta _ringSeriesCodeMeta =
-      const VerificationMeta('ringSeriesCode');
+  static const VerificationMeta _codeMeta = const VerificationMeta('code');
   @override
-  late final GeneratedColumn<String> ringSeriesCode = GeneratedColumn<String>(
-      'ring_series_code', aliasedName, false,
+  late final GeneratedColumn<String> code = GeneratedColumn<String>(
+      'code', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _schemeCodeMeta =
+      const VerificationMeta('schemeCode');
+  @override
+  late final GeneratedColumn<String> schemeCode = GeneratedColumn<String>(
+      'scheme_code', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _idNumberMeta =
       const VerificationMeta('idNumber');
@@ -5574,15 +5579,25 @@ class $UsedRingEntityTable extends UsedRingEntity
   late final GeneratedColumn<String> idNumber = GeneratedColumn<String>(
       'id_number', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _usedMeta = const VerificationMeta('used');
+  @override
+  late final GeneratedColumn<String> used = GeneratedColumn<String>(
+      'used', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _lostMeta = const VerificationMeta('lost');
+  @override
+  late final GeneratedColumn<String> lost = GeneratedColumn<String>(
+      'lost', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, ringerId, ringSeriesCode, idNumber];
+      [id, ringerId, code, schemeCode, idNumber, used, lost];
   @override
-  String get aliasedName => _alias ?? 'used_ring_entity';
+  String get aliasedName => _alias ?? 'rings_in_entity';
   @override
-  String get actualTableName => 'used_ring_entity';
+  String get actualTableName => 'rings_in_entity';
   @override
-  VerificationContext validateIntegrity(Insertable<UsedRingEntityData> instance,
+  VerificationContext validateIntegrity(Insertable<RingsInEntityData> instance,
       {bool isInserting = false}) {
     final context = VerificationContext();
     final data = instance.toColumns(true);
@@ -5595,13 +5610,19 @@ class $UsedRingEntityTable extends UsedRingEntity
     } else if (isInserting) {
       context.missing(_ringerIdMeta);
     }
-    if (data.containsKey('ring_series_code')) {
+    if (data.containsKey('code')) {
       context.handle(
-          _ringSeriesCodeMeta,
-          ringSeriesCode.isAcceptableOrUnknown(
-              data['ring_series_code']!, _ringSeriesCodeMeta));
+          _codeMeta, code.isAcceptableOrUnknown(data['code']!, _codeMeta));
     } else if (isInserting) {
-      context.missing(_ringSeriesCodeMeta);
+      context.missing(_codeMeta);
+    }
+    if (data.containsKey('scheme_code')) {
+      context.handle(
+          _schemeCodeMeta,
+          schemeCode.isAcceptableOrUnknown(
+              data['scheme_code']!, _schemeCodeMeta));
+    } else if (isInserting) {
+      context.missing(_schemeCodeMeta);
     }
     if (data.containsKey('id_number')) {
       context.handle(_idNumberMeta,
@@ -5609,70 +5630,103 @@ class $UsedRingEntityTable extends UsedRingEntity
     } else if (isInserting) {
       context.missing(_idNumberMeta);
     }
+    if (data.containsKey('used')) {
+      context.handle(
+          _usedMeta, used.isAcceptableOrUnknown(data['used']!, _usedMeta));
+    } else if (isInserting) {
+      context.missing(_usedMeta);
+    }
+    if (data.containsKey('lost')) {
+      context.handle(
+          _lostMeta, lost.isAcceptableOrUnknown(data['lost']!, _lostMeta));
+    } else if (isInserting) {
+      context.missing(_lostMeta);
+    }
     return context;
   }
 
   @override
   Set<GeneratedColumn> get $primaryKey => {id};
   @override
-  UsedRingEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
+  RingsInEntityData map(Map<String, dynamic> data, {String? tablePrefix}) {
     final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
-    return UsedRingEntityData(
+    return RingsInEntityData(
       id: attachedDatabase.typeMapping
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       ringerId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
-      ringSeriesCode: attachedDatabase.typeMapping.read(
-          DriftSqlType.string, data['${effectivePrefix}ring_series_code'])!,
+      code: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}code'])!,
+      schemeCode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}scheme_code'])!,
       idNumber: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}id_number'])!,
+      used: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}used'])!,
+      lost: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}lost'])!,
     );
   }
 
   @override
-  $UsedRingEntityTable createAlias(String alias) {
-    return $UsedRingEntityTable(attachedDatabase, alias);
+  $RingsInEntityTable createAlias(String alias) {
+    return $RingsInEntityTable(attachedDatabase, alias);
   }
 }
 
-class UsedRingEntityData extends DataClass
-    implements Insertable<UsedRingEntityData> {
+class RingsInEntityData extends DataClass
+    implements Insertable<RingsInEntityData> {
   final int id;
   final String ringerId;
-  final String ringSeriesCode;
+  final String code;
+  final String schemeCode;
   final String idNumber;
-  const UsedRingEntityData(
+  final String used;
+  final String lost;
+  const RingsInEntityData(
       {required this.id,
       required this.ringerId,
-      required this.ringSeriesCode,
-      required this.idNumber});
+      required this.code,
+      required this.schemeCode,
+      required this.idNumber,
+      required this.used,
+      required this.lost});
   @override
   Map<String, Expression> toColumns(bool nullToAbsent) {
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['ringer_id'] = Variable<String>(ringerId);
-    map['ring_series_code'] = Variable<String>(ringSeriesCode);
+    map['code'] = Variable<String>(code);
+    map['scheme_code'] = Variable<String>(schemeCode);
     map['id_number'] = Variable<String>(idNumber);
+    map['used'] = Variable<String>(used);
+    map['lost'] = Variable<String>(lost);
     return map;
   }
 
-  UsedRingEntityCompanion toCompanion(bool nullToAbsent) {
-    return UsedRingEntityCompanion(
+  RingsInEntityCompanion toCompanion(bool nullToAbsent) {
+    return RingsInEntityCompanion(
       id: Value(id),
       ringerId: Value(ringerId),
-      ringSeriesCode: Value(ringSeriesCode),
+      code: Value(code),
+      schemeCode: Value(schemeCode),
       idNumber: Value(idNumber),
+      used: Value(used),
+      lost: Value(lost),
     );
   }
 
-  factory UsedRingEntityData.fromJson(Map<String, dynamic> json,
+  factory RingsInEntityData.fromJson(Map<String, dynamic> json,
       {ValueSerializer? serializer}) {
     serializer ??= driftRuntimeOptions.defaultSerializer;
-    return UsedRingEntityData(
+    return RingsInEntityData(
       id: serializer.fromJson<int>(json['id']),
       ringerId: serializer.fromJson<String>(json['ringerId']),
-      ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
+      code: serializer.fromJson<String>(json['code']),
+      schemeCode: serializer.fromJson<String>(json['schemeCode']),
       idNumber: serializer.fromJson<String>(json['idNumber']),
+      used: serializer.fromJson<String>(json['used']),
+      lost: serializer.fromJson<String>(json['lost']),
     );
   }
   @override
@@ -5681,88 +5735,128 @@ class UsedRingEntityData extends DataClass
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'ringerId': serializer.toJson<String>(ringerId),
-      'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
+      'code': serializer.toJson<String>(code),
+      'schemeCode': serializer.toJson<String>(schemeCode),
       'idNumber': serializer.toJson<String>(idNumber),
+      'used': serializer.toJson<String>(used),
+      'lost': serializer.toJson<String>(lost),
     };
   }
 
-  UsedRingEntityData copyWith(
+  RingsInEntityData copyWith(
           {int? id,
           String? ringerId,
-          String? ringSeriesCode,
-          String? idNumber}) =>
-      UsedRingEntityData(
+          String? code,
+          String? schemeCode,
+          String? idNumber,
+          String? used,
+          String? lost}) =>
+      RingsInEntityData(
         id: id ?? this.id,
         ringerId: ringerId ?? this.ringerId,
-        ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
+        code: code ?? this.code,
+        schemeCode: schemeCode ?? this.schemeCode,
         idNumber: idNumber ?? this.idNumber,
+        used: used ?? this.used,
+        lost: lost ?? this.lost,
       );
   @override
   String toString() {
-    return (StringBuffer('UsedRingEntityData(')
+    return (StringBuffer('RingsInEntityData(')
           ..write('id: $id, ')
           ..write('ringerId: $ringerId, ')
-          ..write('ringSeriesCode: $ringSeriesCode, ')
-          ..write('idNumber: $idNumber')
+          ..write('code: $code, ')
+          ..write('schemeCode: $schemeCode, ')
+          ..write('idNumber: $idNumber, ')
+          ..write('used: $used, ')
+          ..write('lost: $lost')
           ..write(')'))
         .toString();
   }
 
   @override
-  int get hashCode => Object.hash(id, ringerId, ringSeriesCode, idNumber);
+  int get hashCode =>
+      Object.hash(id, ringerId, code, schemeCode, idNumber, used, lost);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is UsedRingEntityData &&
+      (other is RingsInEntityData &&
           other.id == this.id &&
           other.ringerId == this.ringerId &&
-          other.ringSeriesCode == this.ringSeriesCode &&
-          other.idNumber == this.idNumber);
+          other.code == this.code &&
+          other.schemeCode == this.schemeCode &&
+          other.idNumber == this.idNumber &&
+          other.used == this.used &&
+          other.lost == this.lost);
 }
 
-class UsedRingEntityCompanion extends UpdateCompanion<UsedRingEntityData> {
+class RingsInEntityCompanion extends UpdateCompanion<RingsInEntityData> {
   final Value<int> id;
   final Value<String> ringerId;
-  final Value<String> ringSeriesCode;
+  final Value<String> code;
+  final Value<String> schemeCode;
   final Value<String> idNumber;
-  const UsedRingEntityCompanion({
+  final Value<String> used;
+  final Value<String> lost;
+  const RingsInEntityCompanion({
     this.id = const Value.absent(),
     this.ringerId = const Value.absent(),
-    this.ringSeriesCode = const Value.absent(),
+    this.code = const Value.absent(),
+    this.schemeCode = const Value.absent(),
     this.idNumber = const Value.absent(),
+    this.used = const Value.absent(),
+    this.lost = const Value.absent(),
   });
-  UsedRingEntityCompanion.insert({
+  RingsInEntityCompanion.insert({
     this.id = const Value.absent(),
     required String ringerId,
-    required String ringSeriesCode,
+    required String code,
+    required String schemeCode,
     required String idNumber,
+    required String used,
+    required String lost,
   })  : ringerId = Value(ringerId),
-        ringSeriesCode = Value(ringSeriesCode),
-        idNumber = Value(idNumber);
-  static Insertable<UsedRingEntityData> custom({
+        code = Value(code),
+        schemeCode = Value(schemeCode),
+        idNumber = Value(idNumber),
+        used = Value(used),
+        lost = Value(lost);
+  static Insertable<RingsInEntityData> custom({
     Expression<int>? id,
     Expression<String>? ringerId,
-    Expression<String>? ringSeriesCode,
+    Expression<String>? code,
+    Expression<String>? schemeCode,
     Expression<String>? idNumber,
+    Expression<String>? used,
+    Expression<String>? lost,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (ringerId != null) 'ringer_id': ringerId,
-      if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
+      if (code != null) 'code': code,
+      if (schemeCode != null) 'scheme_code': schemeCode,
       if (idNumber != null) 'id_number': idNumber,
+      if (used != null) 'used': used,
+      if (lost != null) 'lost': lost,
     });
   }
 
-  UsedRingEntityCompanion copyWith(
+  RingsInEntityCompanion copyWith(
       {Value<int>? id,
       Value<String>? ringerId,
-      Value<String>? ringSeriesCode,
-      Value<String>? idNumber}) {
-    return UsedRingEntityCompanion(
+      Value<String>? code,
+      Value<String>? schemeCode,
+      Value<String>? idNumber,
+      Value<String>? used,
+      Value<String>? lost}) {
+    return RingsInEntityCompanion(
       id: id ?? this.id,
       ringerId: ringerId ?? this.ringerId,
-      ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
+      code: code ?? this.code,
+      schemeCode: schemeCode ?? this.schemeCode,
       idNumber: idNumber ?? this.idNumber,
+      used: used ?? this.used,
+      lost: lost ?? this.lost,
     );
   }
 
@@ -5775,22 +5869,34 @@ class UsedRingEntityCompanion extends UpdateCompanion<UsedRingEntityData> {
     if (ringerId.present) {
       map['ringer_id'] = Variable<String>(ringerId.value);
     }
-    if (ringSeriesCode.present) {
-      map['ring_series_code'] = Variable<String>(ringSeriesCode.value);
+    if (code.present) {
+      map['code'] = Variable<String>(code.value);
+    }
+    if (schemeCode.present) {
+      map['scheme_code'] = Variable<String>(schemeCode.value);
     }
     if (idNumber.present) {
       map['id_number'] = Variable<String>(idNumber.value);
+    }
+    if (used.present) {
+      map['used'] = Variable<String>(used.value);
+    }
+    if (lost.present) {
+      map['lost'] = Variable<String>(lost.value);
     }
     return map;
   }
 
   @override
   String toString() {
-    return (StringBuffer('UsedRingEntityCompanion(')
+    return (StringBuffer('RingsInEntityCompanion(')
           ..write('id: $id, ')
           ..write('ringerId: $ringerId, ')
-          ..write('ringSeriesCode: $ringSeriesCode, ')
-          ..write('idNumber: $idNumber')
+          ..write('code: $code, ')
+          ..write('schemeCode: $schemeCode, ')
+          ..write('idNumber: $idNumber, ')
+          ..write('used: $used, ')
+          ..write('lost: $lost')
           ..write(')'))
         .toString();
   }
@@ -6153,7 +6259,7 @@ abstract class _$MonRingDb extends GeneratedDatabase {
   late final $RingEntityTable ringEntity = $RingEntityTable(this);
   late final $RingseriesEntityTable ringseriesEntity =
       $RingseriesEntityTable(this);
-  late final $UsedRingEntityTable usedRingEntity = $UsedRingEntityTable(this);
+  late final $RingsInEntityTable ringsInEntity = $RingsInEntityTable(this);
   late final $SessionLocationViewView sessionLocationView =
       $SessionLocationViewView(this);
   @override
@@ -6169,7 +6275,7 @@ abstract class _$MonRingDb extends GeneratedDatabase {
         retrapEntity,
         ringEntity,
         ringseriesEntity,
-        usedRingEntity,
+        ringsInEntity,
         sessionLocationView
       ];
 }
