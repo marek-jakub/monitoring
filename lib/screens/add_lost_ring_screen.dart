@@ -99,13 +99,6 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                         ringIdController: _ringId,
                         txtLabel: 'Ring series code',
                         listValues: ringSeriesCodes),
-                    CustomDropdownButtonFormField(
-                      controller: _ringSeriesCode,
-                      txtLabel: 'Ring series code',
-                      listValues: ringSeriesCodes,
-                      // TODO: Implement proper validator.
-                      validator: _inputValidator.seriesCodeValidator(),
-                    ),
                     CustomTextFormField(
                       controller: _ringId,
                       txtLabel: 'Ring ID',
