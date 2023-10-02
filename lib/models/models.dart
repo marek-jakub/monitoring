@@ -10,6 +10,6 @@ export 'retrap_entity.dart';
 export 'ring_data_manager.dart';
 export 'ring_entity.dart';
 export 'ring_series_entity.dart';
+export 'rings_in_entity.dart';
 export 'ringer.dart';
 export 'session_entity.dart';
-export 'used_ring_entity.dart';
