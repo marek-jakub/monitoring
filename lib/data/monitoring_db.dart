@@ -20,8 +20,8 @@ part 'monitoring_db.g.dart';
   RetrapEntity,
   RingEntity,
   RingseriesEntity,
+  RingsInEntity,
   SessionEntity,
-  UsedRingEntity
 ], views: [
   SessionLocationView
 ])
@@ -240,8 +240,8 @@ class MonRingDb extends _$MonRingDb {
     return (delete(ringseriesEntity)..where((tbl) => tbl.id.equals(id))).go();
   }
 
-  // USEDRING ENTITY
-  // TODO: define used ring access methods
+  // RINGSIN ENTITY
+  // TODO: define rings in the system
 
   // ORDER ENTITY
 
@@ -316,7 +316,7 @@ class MonRingDb extends _$MonRingDb {
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db_mring_a.sqlite'));
+    final file = File(p.join(dbFolder.path, 'db_mring_c.sqlite'));
 
     //return NativeDatabase.createInBackground(file);
     return NativeDatabase(file);
