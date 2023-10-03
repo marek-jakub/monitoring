@@ -249,6 +249,11 @@ class MonRingDb extends _$MonRingDb {
     return await into(ringsInEntity).insert(companion);
   }
 
+  /// Updates unused ring data stored in the [companion].
+  Future<bool> updateUnusedRing(RingsInEntityCompanion companion) async {
+    return await update(ringsInEntity).replace(companion);
+  }
+
   // ORDER ENTITY
 
   /// Saves order data stored in the [companion].
