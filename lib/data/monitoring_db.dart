@@ -241,7 +241,13 @@ class MonRingDb extends _$MonRingDb {
   }
 
   // RINGSIN ENTITY
-  // TODO: define rings in the system
+  /// Saves available ring data stored in the [companion].
+  ///
+  /// Returns an integer, on success an ID of the saved companion, otherwise
+  /// returns 0.
+  Future<int> saveUnusedRing(RingsInEntityCompanion companion) async {
+    return await into(ringsInEntity).insert(companion);
+  }
 
   // ORDER ENTITY
 
