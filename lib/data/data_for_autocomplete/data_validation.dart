@@ -1,3 +1,8 @@
+import 'package:flutter/material.dart';
+import 'package:monitoring/data/monitoring_db.dart';
+import 'package:monitoring/models/models.dart';
+import 'package:provider/provider.dart';
+
 /// A form input data validator.
 class InputValidator {
   // SESSION form input validation
@@ -143,7 +148,7 @@ class InputValidator {
     };
   }
 
-  // TODO: create ring series and ID number validators.
+  // TODO: add ring screen - create ring series and ID number validators.
 
   // Species field validation in the
   // custom_easy_autocomplete.dart
@@ -196,21 +201,43 @@ class InputValidator {
   }
 
   // Series from
-  String? Function(String?)? seriesFromValidator() {
+  String? Function(String?)? seriesFromValidator(
+      BuildContext context, String scheme, String code, String seriesTo) {
     RegExp seriesFromMatch = RegExp(r'^[1-9]\d*$');
+
+    // Get all ringseries for given ringer and code
+    Provider.of<RingDataManager>(context, listen: false).getSeriesRings(
+        Provider.of<ProfileManager>(context, listen: false).getRinger.ringerId,
+        scheme,
+        code);
+    List<RingseriesEntityData> codeSeries =
+        Provider.of<RingDataManager>(context, listen: false).seriesRings;
+
     return (String? seriesFrom) {
       if (seriesFrom == null || seriesFrom.isEmpty) {
         return 'Series from should not be empty!';
       } else if (!seriesFromMatch.hasMatch(seriesFrom)) {
         return 'Incorrect format!';
+      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo)) {
+        return 'Series numbers collide!';
       }
       return null;
     };
   }
 
   // Series to
-  String? Function(String?)? seriesToValidator(String seriesFrom) {
+  String? Function(String?)? seriesToValidator(
+      BuildContext context, String scheme, String code, String seriesFrom) {
     RegExp seriesToMatch = RegExp(r'^[1-9]\d*$');
+
+    // Get all ringseries for given ringer and code
+    Provider.of<RingDataManager>(context, listen: false).getSeriesRings(
+        Provider.of<ProfileManager>(context, listen: false).getRinger.ringerId,
+        scheme,
+        code);
+    List<RingseriesEntityData> codeSeries =
+        Provider.of<RingDataManager>(context, listen: false).seriesRings;
+
     return (String? seriesTo) {
       if (seriesTo == null || seriesTo.isEmpty) {
         return 'Series to should not be empty!';
@@ -218,6 +245,8 @@ class InputValidator {
         return 'Incorrect format!';
       } else if (!_isSeriesToGreater(seriesFrom, seriesTo)) {
         return 'Series to is too low!';
+      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo)) {
+        return 'Series numbers collide!';
       }
       return null;
     };
@@ -262,6 +291,33 @@ class InputValidator {
         return false;
       } else if (fromNumber < toNumber) {
         return true;
+      }
+    }
+    return false;
+  }
+
+  /// Compares series number ranges.
+  ///
+  /// Returns true if series ranges collide,
+  /// else returns false.
+  bool _seriesNumbersCollide(
+      List<RingseriesEntityData> codeSeries, String from, String to) {
+    RegExp integerMatch = RegExp(r'^[1-9]\d*$');
+    if (integerMatch.hasMatch(from) && integerMatch.hasMatch(to)) {
+      int? f = int.tryParse(from);
+      int? t = int.tryParse(to);
+      var range1 = [f, t];
+      for (var series in codeSeries) {
+        var range2 = [series.ringfrom, series.ringto];
+
+        // Compare two ranges
+        if (range1[1]! < range2[0] || range1[0]! > range2[1]) {
+          return false;
+        } else if (range1[1]! == range2[0] ||
+            range1[0]! == range2[1] ||
+            (range1[1]! >= range2[0] && range1[0]! <= range2[1])) {
+          return true;
+        }
       }
     }
     return false;
