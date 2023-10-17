@@ -7,16 +7,19 @@ import 'package:monitoring/models/models.dart';
 class CustomDropdownRingSeriesField extends StatefulWidget {
   const CustomDropdownRingSeriesField({
     Key? key,
+    required TextEditingController schemeCodeController,
     required TextEditingController ringSeriesController,
     required TextEditingController ringIdController,
     required String txtLabel,
     required List<String> listValues,
-  })  : _ringSeriesController = ringSeriesController,
+  })  : _schemeCodeController = schemeCodeController,
+        _ringSeriesController = ringSeriesController,
         _ringIdController = ringIdController,
         _label = txtLabel,
         _listValues = listValues,
         super(key: key);
 
+  final TextEditingController _schemeCodeController;
   final TextEditingController _ringSeriesController;
   final TextEditingController _ringIdController;
   final String _label;
@@ -52,7 +55,9 @@ class _CustomDropdownRingSeriesFieldState
               widget._ringIdController.text = '';
               Provider.of<RingDataManager>(context, listen: false)
                   .getSeriesRings(
-                      context.read<ProfileManager>().getRinger.ringerId, value);
+                      context.read<ProfileManager>().getRinger.ringerId,
+                      widget._schemeCodeController.text,
+                      value);
             });
           },
           items:
