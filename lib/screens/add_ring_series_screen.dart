@@ -92,12 +92,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                 key: _ringSeriesFormKey,
                 child: Column(
                   children: [
-                    CustomTextFormField(
-                      controller: _seriesCode,
-                      txtLabel: 'Series code',
-                      keyboard: 'text',
-                      validator: _inputValidator.seriesCodeValidator(),
-                    ),
                     CustomDropdownButtonFormField(
                       controller: _schemeCode,
                       txtLabel: 'Scheme code',
@@ -106,17 +100,24 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                           _inputValidator.schemeCodeValidator(ringingSchemes),
                     ),
                     CustomTextFormField(
+                      controller: _seriesCode,
+                      txtLabel: 'Series code',
+                      keyboard: 'text',
+                      validator: _inputValidator.seriesCodeValidator(),
+                    ),
+                    CustomTextFormField(
                       controller: _ringFrom,
                       txtLabel: 'Series from',
                       keyboard: 'number',
-                      validator: _inputValidator.seriesFromValidator(),
+                      validator: _inputValidator.seriesFromValidator(context,
+                          _schemeCode.text, _seriesCode.text, _ringTo.text),
                     ),
                     CustomTextFormField(
                       controller: _ringTo,
                       txtLabel: 'Series to',
                       keyboard: 'number',
-                      validator:
-                          _inputValidator.seriesToValidator(_ringFrom.text),
+                      validator: _inputValidator.seriesToValidator(context,
+                          _schemeCode.text, _seriesCode.text, _ringFrom.text),
                     ),
                   ],
                 ),
