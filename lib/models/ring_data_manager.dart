@@ -781,11 +781,11 @@ class RingDataManager extends ChangeNotifier {
     });
   }
 
-  /// A list of a series rings for a ringer identified by [id] and [code].
-  void getSeriesRings(String id, String code) {
+  /// A list of a series rings for a ringer identified by [id], [scheme] and [code].
+  void getSeriesRings(String id, String scheme, String code) {
     _isLoading = true;
 
-    _monRingDb?.getRingerSeriesRings(id, code).then((value) {
+    _monRingDb?.getRingerSeries(id, scheme, code).then((value) {
       _seriesRings = value;
       _isLoading = false;
       notifyListeners();
