@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
 import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
@@ -29,6 +30,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   final _lostRingFormKey = GlobalKey<FormState>();
 
   // Lost ring information controllers
+  final TextEditingController _schemeCode = TextEditingController();
   final TextEditingController _ringSeriesCode = TextEditingController();
   final TextEditingController _ringId = TextEditingController();
 
@@ -60,6 +62,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   @override
   void dispose() {
     // Dispose off text controllers.
+    _schemeCode.dispose();
     _ringSeriesCode.dispose();
     _ringId.dispose();
 
@@ -94,7 +97,15 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                 key: _lostRingFormKey,
                 child: Column(
                   children: [
+                    CustomDropdownButtonFormField(
+                      controller: _schemeCode,
+                      txtLabel: 'Scheme code',
+                      listValues: ringingSchemes..sort(),
+                      validator:
+                          _inputValidator.schemeCodeValidator(ringingSchemes),
+                    ),
                     CustomDropdownRingSeriesField(
+                        schemeCodeController: _schemeCode,
                         ringSeriesController: _ringSeriesCode,
                         ringIdController: _ringId,
                         txtLabel: 'Ring series code',
