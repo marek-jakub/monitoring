@@ -219,14 +219,16 @@ class MonRingDb extends _$MonRingDb {
         .get();
   }
 
-  /// Return rings for a ring series.
+  /// Return ring series.
   ///
-  /// Identified by [ringerId] and [code].
-  Future<List<RingseriesEntityData>> getRingerSeriesRings(
-      String ringerId, String code) async {
+  /// Identified by [ringerId], [scheme] and [code].
+  Future<List<RingseriesEntityData>> getRingerSeries(
+      String ringerId, String scheme, String code) async {
     return await (select(ringseriesEntity)
-          ..where(
-              (tbl) => tbl.ringerId.equals(ringerId) & tbl.code.equals(code)))
+          ..where((tbl) =>
+              tbl.ringerId.equals(ringerId) &
+              tbl.schemeCode.equals(scheme) &
+              tbl.code.equals(code)))
         .get();
   }
 
