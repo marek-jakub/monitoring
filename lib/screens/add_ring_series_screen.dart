@@ -148,15 +148,15 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       child: const Text('Remove'),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        updateRingSeries(_ringSeriesId);
-                      },
-                      child: const Text('Update'),
-                    ),
-                  ),
+                  // Padding(
+                  //   padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
+                  //   child: ElevatedButton(
+                  //     onPressed: () {
+                  //       updateRingSeries(_ringSeriesId);
+                  //     },
+                  //     child: const Text('Update'),
+                  //   ),
+                  // ),
                 ],
               ),
               const SizedBox(
@@ -174,8 +174,8 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                         return GestureDetector(
                           onTap: () {
                             setState(() {
-                              _seriesCode.text = ringseries.code;
                               _schemeCode.text = ringseries.schemeCode;
+                              _seriesCode.text = ringseries.code;
                               _ringFrom.text = ringseries.ringfrom.toString();
                               _ringTo.text = ringseries.ringto.toString();
 
@@ -189,11 +189,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                                 Row(
                                   children: [
                                     const Expanded(
-                                      child: Text('Ring series code:',
+                                      child: Text('Scheme code:',
                                           textAlign: TextAlign.left),
                                     ),
                                     Expanded(
-                                      child: Text(ringseries.code,
+                                      child: Text(ringseries.schemeCode,
                                           textAlign: TextAlign.left),
                                     ),
                                   ],
@@ -201,11 +201,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                                 Row(
                                   children: [
                                     const Expanded(
-                                      child: Text('Scheme code:',
+                                      child: Text('Ring series code:',
                                           textAlign: TextAlign.left),
                                     ),
                                     Expanded(
-                                      child: Text(ringseries.schemeCode,
+                                      child: Text(ringseries.code,
                                           textAlign: TextAlign.left),
                                     ),
                                   ],
@@ -265,6 +265,22 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
         ringto: d.Value(int.parse(_ringTo.text)),
       );
 
+      // Create and add in db rings from the series
+      int? from = int.tryParse(_ringFrom.text);
+      int? to = int.tryParse(_ringTo.text);
+      for (from; from! <= to!; from++) {
+        final ringsInEntity = RingsInEntityCompanion(
+          ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+          code: d.Value(_seriesCode.text),
+          schemeCode: d.Value(_schemeCode.text),
+          idNumber: d.Value(from.toString()),
+          used: const d.Value('false'),
+          lost: const d.Value('false'),
+        );
+
+        // TODO: implement add rings in
+      }
+
       context.read<RingDataManager>().saveRingSeries(ringSeriesEntity);
     }
   }
@@ -275,23 +291,23 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   /// Updated ring series information in the database.
-  void updateRingSeries(int id) {
-    /// Checks for input validity
-    final isValid = _ringSeriesFormKey.currentState?.validate();
+  // void updateRingSeries(int id) {
+  //   /// Checks for input validity
+  //   final isValid = _ringSeriesFormKey.currentState?.validate();
 
-    if (isValid != null && isValid) {
-      final ringSeriesEntity = RingseriesEntityCompanion(
-        id: d.Value(id),
-        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
-        code: d.Value(_seriesCode.text),
-        schemeCode: d.Value(_schemeCode.text),
-        ringfrom: d.Value(int.parse(_ringFrom.text)),
-        ringto: d.Value(int.parse(_ringTo.text)),
-      );
+  //   if (isValid != null && isValid) {
+  //     final ringSeriesEntity = RingseriesEntityCompanion(
+  //       id: d.Value(id),
+  //       ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+  //       code: d.Value(_seriesCode.text),
+  //       schemeCode: d.Value(_schemeCode.text),
+  //       ringfrom: d.Value(int.parse(_ringFrom.text)),
+  //       ringto: d.Value(int.parse(_ringTo.text)),
+  //     );
 
-      context.read<RingDataManager>().updateRingSeries(ringSeriesEntity);
-    }
-  }
+  //     context.read<RingDataManager>().updateRingSeries(ringSeriesEntity);
+  //   }
+  // }
 
   /// Listens to change notifier save, delete, modify ring series success
   /// or error.
@@ -320,17 +336,17 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       context.read<RingDataManager>().setIsRingSeriesDeleted(false);
     }
 
-    if (_dataManager.isRingSeriesUpdated) {
-      listenUpdateRingSeries();
-      // Clear form fields to allow another entry input.
-      setState(() {
-        _seriesCode.clear();
-        _schemeCode.clear();
-        _ringFrom.clear();
-        _ringTo.clear();
-      });
-      context.read<RingDataManager>().setIsRingSeriesUpdated(false);
-    }
+    // if (_dataManager.isRingSeriesUpdated) {
+    //   listenUpdateRingSeries();
+    //   // Clear form fields to allow another entry input.
+    //   setState(() {
+    //     _seriesCode.clear();
+    //     _schemeCode.clear();
+    //     _ringFrom.clear();
+    //     _ringTo.clear();
+    //   });
+    //   context.read<RingDataManager>().setIsRingSeriesUpdated(false);
+    // }
 
     if (_dataManager.error != '') {
       listenRingSeriesError(_dataManager.error);
@@ -388,31 +404,31 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   }
 
   /// Shows scaffold messenger on successfuly updated ring series data.
-  void listenUpdateRingSeries() {
-    ScaffoldMessenger.of(context).showMaterialBanner(
-      MaterialBanner(
-        content: const Text(
-          'Ring series data updated',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.brown,
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.read<RingDataManager>().setIsRingSeriesUpdated(false);
-              context.read<RingDataManager>().getRingSeriesStream(
-                  context.read<ProfileManager>().getRinger.ringerId);
-              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-            },
-            child: const Text(
-              'Close',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+  // void listenUpdateRingSeries() {
+  //   ScaffoldMessenger.of(context).showMaterialBanner(
+  //     MaterialBanner(
+  //       content: const Text(
+  //         'Ring series data updated',
+  //         style: TextStyle(color: Colors.white),
+  //       ),
+  //       backgroundColor: Colors.brown,
+  //       actions: [
+  //         TextButton(
+  //           onPressed: () {
+  //             context.read<RingDataManager>().setIsRingSeriesUpdated(false);
+  //             context.read<RingDataManager>().getRingSeriesStream(
+  //                 context.read<ProfileManager>().getRinger.ringerId);
+  //             ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+  //           },
+  //           child: const Text(
+  //             'Close',
+  //             style: TextStyle(color: Colors.white),
+  //           ),
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 
   /// Shows scaffold messenger with error on save, update or delete.
   void listenRingSeriesError(String errorMsg) {
