@@ -329,7 +329,7 @@ class MonRingDb extends _$MonRingDb {
 LazyDatabase _openConnection() {
   return LazyDatabase(() async {
     final dbFolder = await getApplicationDocumentsDirectory();
-    final file = File(p.join(dbFolder.path, 'db_mring_c.sqlite'));
+    final file = File(p.join(dbFolder.path, 'db_mring_d.sqlite'));
 
     //return NativeDatabase.createInBackground(file);
     return NativeDatabase(file);

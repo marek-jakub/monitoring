@@ -473,6 +473,12 @@ class $LostRingEntityTable extends LostRingEntity
   late final GeneratedColumn<String> ringerId = GeneratedColumn<String>(
       'ringer_id', aliasedName, false,
       type: DriftSqlType.string, requiredDuringInsert: true);
+  static const VerificationMeta _schemeCodeMeta =
+      const VerificationMeta('schemeCode');
+  @override
+  late final GeneratedColumn<String> schemeCode = GeneratedColumn<String>(
+      'scheme_code', aliasedName, false,
+      type: DriftSqlType.string, requiredDuringInsert: true);
   static const VerificationMeta _ringSeriesCodeMeta =
       const VerificationMeta('ringSeriesCode');
   @override
@@ -487,7 +493,7 @@ class $LostRingEntityTable extends LostRingEntity
       type: DriftSqlType.string, requiredDuringInsert: true);
   @override
   List<GeneratedColumn> get $columns =>
-      [id, ringerId, ringSeriesCode, idNumber];
+      [id, ringerId, schemeCode, ringSeriesCode, idNumber];
   @override
   String get aliasedName => _alias ?? 'lost_ring_entity';
   @override
@@ -505,6 +511,14 @@ class $LostRingEntityTable extends LostRingEntity
           ringerId.isAcceptableOrUnknown(data['ringer_id']!, _ringerIdMeta));
     } else if (isInserting) {
       context.missing(_ringerIdMeta);
+    }
+    if (data.containsKey('scheme_code')) {
+      context.handle(
+          _schemeCodeMeta,
+          schemeCode.isAcceptableOrUnknown(
+              data['scheme_code']!, _schemeCodeMeta));
+    } else if (isInserting) {
+      context.missing(_schemeCodeMeta);
     }
     if (data.containsKey('ring_series_code')) {
       context.handle(
@@ -533,6 +547,8 @@ class $LostRingEntityTable extends LostRingEntity
           .read(DriftSqlType.int, data['${effectivePrefix}id'])!,
       ringerId: attachedDatabase.typeMapping
           .read(DriftSqlType.string, data['${effectivePrefix}ringer_id'])!,
+      schemeCode: attachedDatabase.typeMapping
+          .read(DriftSqlType.string, data['${effectivePrefix}scheme_code'])!,
       ringSeriesCode: attachedDatabase.typeMapping.read(
           DriftSqlType.string, data['${effectivePrefix}ring_series_code'])!,
       idNumber: attachedDatabase.typeMapping
@@ -550,11 +566,13 @@ class LostRingEntityData extends DataClass
     implements Insertable<LostRingEntityData> {
   final int id;
   final String ringerId;
+  final String schemeCode;
   final String ringSeriesCode;
   final String idNumber;
   const LostRingEntityData(
       {required this.id,
       required this.ringerId,
+      required this.schemeCode,
       required this.ringSeriesCode,
       required this.idNumber});
   @override
@@ -562,6 +580,7 @@ class LostRingEntityData extends DataClass
     final map = <String, Expression>{};
     map['id'] = Variable<int>(id);
     map['ringer_id'] = Variable<String>(ringerId);
+    map['scheme_code'] = Variable<String>(schemeCode);
     map['ring_series_code'] = Variable<String>(ringSeriesCode);
     map['id_number'] = Variable<String>(idNumber);
     return map;
@@ -571,6 +590,7 @@ class LostRingEntityData extends DataClass
     return LostRingEntityCompanion(
       id: Value(id),
       ringerId: Value(ringerId),
+      schemeCode: Value(schemeCode),
       ringSeriesCode: Value(ringSeriesCode),
       idNumber: Value(idNumber),
     );
@@ -582,6 +602,7 @@ class LostRingEntityData extends DataClass
     return LostRingEntityData(
       id: serializer.fromJson<int>(json['id']),
       ringerId: serializer.fromJson<String>(json['ringerId']),
+      schemeCode: serializer.fromJson<String>(json['schemeCode']),
       ringSeriesCode: serializer.fromJson<String>(json['ringSeriesCode']),
       idNumber: serializer.fromJson<String>(json['idNumber']),
     );
@@ -592,6 +613,7 @@ class LostRingEntityData extends DataClass
     return <String, dynamic>{
       'id': serializer.toJson<int>(id),
       'ringerId': serializer.toJson<String>(ringerId),
+      'schemeCode': serializer.toJson<String>(schemeCode),
       'ringSeriesCode': serializer.toJson<String>(ringSeriesCode),
       'idNumber': serializer.toJson<String>(idNumber),
     };
@@ -600,11 +622,13 @@ class LostRingEntityData extends DataClass
   LostRingEntityData copyWith(
           {int? id,
           String? ringerId,
+          String? schemeCode,
           String? ringSeriesCode,
           String? idNumber}) =>
       LostRingEntityData(
         id: id ?? this.id,
         ringerId: ringerId ?? this.ringerId,
+        schemeCode: schemeCode ?? this.schemeCode,
         ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
         idNumber: idNumber ?? this.idNumber,
       );
@@ -613,6 +637,7 @@ class LostRingEntityData extends DataClass
     return (StringBuffer('LostRingEntityData(')
           ..write('id: $id, ')
           ..write('ringerId: $ringerId, ')
+          ..write('schemeCode: $schemeCode, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('idNumber: $idNumber')
           ..write(')'))
@@ -620,13 +645,15 @@ class LostRingEntityData extends DataClass
   }
 
   @override
-  int get hashCode => Object.hash(id, ringerId, ringSeriesCode, idNumber);
+  int get hashCode =>
+      Object.hash(id, ringerId, schemeCode, ringSeriesCode, idNumber);
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
       (other is LostRingEntityData &&
           other.id == this.id &&
           other.ringerId == this.ringerId &&
+          other.schemeCode == this.schemeCode &&
           other.ringSeriesCode == this.ringSeriesCode &&
           other.idNumber == this.idNumber);
 }
@@ -634,31 +661,37 @@ class LostRingEntityData extends DataClass
 class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
   final Value<int> id;
   final Value<String> ringerId;
+  final Value<String> schemeCode;
   final Value<String> ringSeriesCode;
   final Value<String> idNumber;
   const LostRingEntityCompanion({
     this.id = const Value.absent(),
     this.ringerId = const Value.absent(),
+    this.schemeCode = const Value.absent(),
     this.ringSeriesCode = const Value.absent(),
     this.idNumber = const Value.absent(),
   });
   LostRingEntityCompanion.insert({
     this.id = const Value.absent(),
     required String ringerId,
+    required String schemeCode,
     required String ringSeriesCode,
     required String idNumber,
   })  : ringerId = Value(ringerId),
+        schemeCode = Value(schemeCode),
         ringSeriesCode = Value(ringSeriesCode),
         idNumber = Value(idNumber);
   static Insertable<LostRingEntityData> custom({
     Expression<int>? id,
     Expression<String>? ringerId,
+    Expression<String>? schemeCode,
     Expression<String>? ringSeriesCode,
     Expression<String>? idNumber,
   }) {
     return RawValuesInsertable({
       if (id != null) 'id': id,
       if (ringerId != null) 'ringer_id': ringerId,
+      if (schemeCode != null) 'scheme_code': schemeCode,
       if (ringSeriesCode != null) 'ring_series_code': ringSeriesCode,
       if (idNumber != null) 'id_number': idNumber,
     });
@@ -667,11 +700,13 @@ class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
   LostRingEntityCompanion copyWith(
       {Value<int>? id,
       Value<String>? ringerId,
+      Value<String>? schemeCode,
       Value<String>? ringSeriesCode,
       Value<String>? idNumber}) {
     return LostRingEntityCompanion(
       id: id ?? this.id,
       ringerId: ringerId ?? this.ringerId,
+      schemeCode: schemeCode ?? this.schemeCode,
       ringSeriesCode: ringSeriesCode ?? this.ringSeriesCode,
       idNumber: idNumber ?? this.idNumber,
     );
@@ -685,6 +720,9 @@ class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
     }
     if (ringerId.present) {
       map['ringer_id'] = Variable<String>(ringerId.value);
+    }
+    if (schemeCode.present) {
+      map['scheme_code'] = Variable<String>(schemeCode.value);
     }
     if (ringSeriesCode.present) {
       map['ring_series_code'] = Variable<String>(ringSeriesCode.value);
@@ -700,6 +738,7 @@ class LostRingEntityCompanion extends UpdateCompanion<LostRingEntityData> {
     return (StringBuffer('LostRingEntityCompanion(')
           ..write('id: $id, ')
           ..write('ringerId: $ringerId, ')
+          ..write('schemeCode: $schemeCode, ')
           ..write('ringSeriesCode: $ringSeriesCode, ')
           ..write('idNumber: $idNumber')
           ..write(')'))
