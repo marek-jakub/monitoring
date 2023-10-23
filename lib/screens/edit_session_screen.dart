@@ -309,7 +309,6 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
           date: d.Value(_dateController.text),
           dateAccuracy: d.Value(_accuracyOfDateController.text),
           location: d.Value(context.read<RingDataManager>().currentLocationId),
-          // TODO: if input different from signed in ringer, used that one
           ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
           startTime: d.Value(_startTimeController.text),
           endTime: d.Value(_endTimeController.text),
