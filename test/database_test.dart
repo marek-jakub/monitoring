@@ -10,7 +10,9 @@ void main() {
   late MonRingDb monRingDb;
 
   setUp(() {
-    monRingDb = MonRingDb(NativeDatabase.memory());
+    // On testing uncomment below and comment out initializer with no paramenters.
+    //monRingDb = MonRingDb(NativeDatabase.memory());
+    monRingDb = MonRingDb();
   });
 
   tearDown(() {
