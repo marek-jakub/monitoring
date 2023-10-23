@@ -72,6 +72,8 @@ class RingDataManager extends ChangeNotifier {
 
   // RingsIn
   bool _isRingInAdded = false;
+  List<RingsInEntityData> _ringsInList = [];
+  List<String> _unusedRingIds = [];
 
   // Lost ring
   bool _newLostRing = false;
@@ -400,6 +402,12 @@ class RingDataManager extends ChangeNotifier {
     _isRingInAdded = added;
     notifyListeners();
   }
+
+  /// Access to a series rings of a given ringer, scheme and series.
+  List<RingsInEntityData> get ringsInList => _ringsInList;
+
+  /// Access to a series unused rings for a given ringer.
+  List<String> get unusedRingIds => _unusedRingIds;
 
   // LOST RING ///////////////////////////
 
@@ -830,6 +838,22 @@ class RingDataManager extends ChangeNotifier {
     }
   }
 
+  /// A list of a series rings for a ringer identified by [id], [scheme] and [code].
+  void getUnusedSeriesRings(String id, String scheme, String code) {
+    _isLoading = true;
+
+    _monRingDb?.getUnusedSeriesRings(id, scheme, code).then((value) {
+      _ringsInList = value;
+      _unusedRingIds = _createUnusedRingIds(value);
+      _isLoading = false;
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
+      _isLoading = false;
+      notifyListeners();
+    });
+  }
+
   /// Saves lost ring entity [companion] data in the database.
   void saveLostRing(LostRingEntityCompanion companion) {
     _monRingDb?.saveLostRing(companion).then((value) {
@@ -963,5 +987,17 @@ class RingDataManager extends ChangeNotifier {
       }
     }
     return seriesCodes;
+  }
+
+  /// Creates a list of unused ring id string values.
+  List<String> _createUnusedRingIds(List<RingsInEntityData> ringsIn) {
+    List<String> ringIds = [''];
+    for (final ringData in ringsIn) {
+      String id = ringData.idNumber.toString();
+      if (!ringIds.contains(id)) {
+        ringIds.add(id);
+      }
+    }
+    return ringIds;
   }
 }
