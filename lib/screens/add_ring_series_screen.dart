@@ -268,19 +268,27 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       // Create and add in db rings from the series
       int? from = int.tryParse(_ringFrom.text);
       int? to = int.tryParse(_ringTo.text);
-      for (from; from! <= to!; from++) {
-        final ringsInEntity = RingsInEntityCompanion(
-          ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
-          code: d.Value(_seriesCode.text),
-          schemeCode: d.Value(_schemeCode.text),
-          idNumber: d.Value(from.toString()),
-          used: const d.Value('false'),
-          lost: const d.Value('false'),
-        );
 
-        // TODO: implement add rings in
+      context.read<RingDataManager>().saveRingsIn(
+          context.read<ProfileManager>().getRinger.ringerId,
+          _seriesCode.text,
+          _schemeCode.text,
+          from!,
+          to!);
+
+      // Check the ring has been added in, else cancel operation
+      if (context.read<RingDataManager>().isRingInAdded) {
+        context.read<RingDataManager>().setIsRingInAdded(false);
+      } else {
+        // Show error message
+        showAddRingsInError(_dataManager.error);
       }
 
+      // Check the last ring in has been added, if true save the series
+      if (context.read<RingDataManager>().isRingInAdded) {
+        context.read<RingDataManager>().saveRingSeries(ringSeriesEntity);
+        context.read<RingDataManager>().setIsRingInAdded(false);
+      }
       context.read<RingDataManager>().saveRingSeries(ringSeriesEntity);
     }
   }
@@ -432,6 +440,30 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
 
   /// Shows scaffold messenger with error on save, update or delete.
   void listenRingSeriesError(String errorMsg) {
+    ScaffoldMessenger.of(context).showMaterialBanner(
+      MaterialBanner(
+        content: Text(
+          errorMsg,
+          style: const TextStyle(color: Colors.white),
+        ),
+        backgroundColor: Colors.brown,
+        actions: [
+          TextButton(
+            onPressed: () {
+              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
+            },
+            child: const Text(
+              'Close',
+              style: TextStyle(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  /// Shows scaffold messenger with error on save, update or delete.
+  void showAddRingsInError(String errorMsg) {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: Text(
