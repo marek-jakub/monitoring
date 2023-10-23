@@ -256,6 +256,20 @@ class MonRingDb extends _$MonRingDb {
     return await update(ringsInEntity).replace(companion);
   }
 
+  /// Return unused rings.
+  ///
+  /// Identified by [ringerId], [scheme] and [code].
+  Future<List<RingsInEntityData>> getUnusedSeriesRings(
+      String ringerId, String scheme, String code) async {
+    return await (select(ringsInEntity)
+          ..where((tbl) =>
+              tbl.ringerId.equals(ringerId) &
+              tbl.schemeCode.equals(scheme) &
+              tbl.code.equals(code) &
+              tbl.used.equals('false')))
+        .get();
+  }
+
   // ORDER ENTITY
 
   /// Saves order data stored in the [companion].
