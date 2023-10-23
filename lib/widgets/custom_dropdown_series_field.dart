@@ -53,8 +53,13 @@ class _CustomDropdownRingSeriesFieldState
             setState(() {
               widget._ringSeriesController.text = value!;
               widget._ringIdController.text = '';
+              // Provider.of<RingDataManager>(context, listen: false)
+              //     .getSeriesRings(
+              //         context.read<ProfileManager>().getRinger.ringerId,
+              //         widget._schemeCodeController.text,
+              //         value);
               Provider.of<RingDataManager>(context, listen: false)
-                  .getSeriesRings(
+                  .getUnusedSeriesRings(
                       context.read<ProfileManager>().getRinger.ringerId,
                       widget._schemeCodeController.text,
                       value);
