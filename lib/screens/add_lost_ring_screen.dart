@@ -46,6 +46,9 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   // Ring series list for the dropdown field
   List<String> ringSeries = [];
 
+  // Unused rings list for the dropdown field
+  List<String> unusedRings = [];
+
   /// Form field input validator.
   late InputValidator _inputValidator;
 
@@ -77,6 +80,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
     return Consumer<RingDataManager>(
       builder: (context, ringDataManager, child) {
         ringSeriesCodes = ringDataManager.ringerSeriesCodes;
+        unusedRings = ringDataManager.unusedRingIds;
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -110,13 +114,17 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                         ringIdController: _ringId,
                         txtLabel: 'Ring series code',
                         listValues: ringSeriesCodes),
-                    CustomTextFormField(
-                      controller: _ringId,
-                      txtLabel: 'Ring ID',
-                      keyboard: 'text',
-                      // TODO: Implement proper validator.
-                      validator: _inputValidator.localityNameValidator(),
-                    ),
+                    CustomDropdownRingField(
+                        ringIdController: _ringId,
+                        txtLabel: 'Ring ID',
+                        listValues: unusedRings),
+                    // CustomTextFormField(
+                    //   controller: _ringId,
+                    //   txtLabel: 'Ring ID',
+                    //   keyboard: 'text',
+                    //   // TODO: Implement proper validator.
+                    //   validator: _inputValidator.localityNameValidator(),
+                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
