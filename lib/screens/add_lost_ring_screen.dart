@@ -147,16 +147,6 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                             child: const Text('Remove'),
                           ),
                         ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                          child: ElevatedButton(
-                            onPressed: () {
-                              updateLostRing(_lostRingId);
-                            },
-                            child: const Text('Update'),
-                          ),
-                        ),
                       ],
                     ),
                   ],
