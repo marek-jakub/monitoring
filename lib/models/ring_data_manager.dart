@@ -70,6 +70,9 @@ class RingDataManager extends ChangeNotifier {
   List<RingseriesEntityData> _seriesRings = [];
   List<String> _ringerSeriesCodes = [];
 
+  // RingsIn
+  bool _isRingInAdded = false;
+
   // Lost ring
   bool _newLostRing = false;
   bool _isLostRingAdded = false;
@@ -388,6 +391,15 @@ class RingDataManager extends ChangeNotifier {
 
   /// Access to a series code values for a given ringer.
   List<String> get ringerSeriesCodes => _ringerSeriesCodes;
+
+  // RINGSIN ///////////////////////////
+
+  /// Whether ring in data has been successfuly saved in the database.
+  bool get isRingInAdded => _isRingInAdded;
+  void setIsRingInAdded(bool added) {
+    _isRingInAdded = added;
+    notifyListeners();
+  }
 
   // LOST RING ///////////////////////////
 
@@ -794,6 +806,28 @@ class RingDataManager extends ChangeNotifier {
       _isLoading = false;
       notifyListeners();
     });
+  }
+
+  /// Saves ringIn entity [companion] data in the database.
+  void saveRingsIn(
+      String ringerId, String seriesCode, String schemeCode, int from, int to) {
+    for (from; from <= to; from++) {
+      final companion = RingsInEntityCompanion(
+        ringerId: d.Value(ringerId),
+        code: d.Value(seriesCode),
+        schemeCode: d.Value(schemeCode),
+        idNumber: d.Value(from.toString()),
+        used: const d.Value('false'),
+        lost: const d.Value('false'),
+      );
+      _monRingDb?.saveUnusedRing(companion).then((value) {
+        _isRingInAdded = value > 0 ? true : false;
+        notifyListeners();
+      }).onError((error, stackTrace) {
+        _error = error.toString();
+        notifyListeners();
+      });
+    }
   }
 
   /// Saves lost ring entity [companion] data in the database.
