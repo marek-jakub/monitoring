@@ -30,6 +30,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Session-location view
   List<SessionLocationViewData> _sessionLocationViewStream = [];
+  List<String> _ringerSessions = [];
   SessionLocationViewData? _sessionLocationViewData;
 
   // Ring
@@ -198,7 +199,12 @@ class RingDataManager extends ChangeNotifier {
   List<SessionLocationViewData> get sessionLocationViewStream =>
       _sessionLocationViewStream;
 
-  /// Access to session-location view entry.
+  /// Access to session-location combined view.
+  ///
+  /// A list of joined tables session and location.
+  List<String> get ringerSessions => _ringerSessions;
+
+  /// Access to session-location view entry.ombined view
   ///
   /// An entry of joined tables session and location.
   SessionLocationViewData? get sessionLocationViewData =>
@@ -492,6 +498,19 @@ class RingDataManager extends ChangeNotifier {
       // debugPrint('session manager calling location view: $event');
       // debugPrint('=========================================');
       _isLoading = false;
+      notifyListeners();
+    });
+  }
+
+  /// A list of ringer sessions-locations combined.
+  ///
+  /// Required is [ringer_id] to filter data.
+  void getRingerSessionsLocations(String ringerId) {
+    _monRingDb?.getRingerSessionsLocations(ringerId).then((value) {
+      _ringerSessions = _updateRingerSessions(value);
+      notifyListeners();
+    }).onError((error, stackTrace) {
+      _error = error.toString();
       notifyListeners();
     });
   }
@@ -999,5 +1018,17 @@ class RingDataManager extends ChangeNotifier {
       }
     }
     return ringIds;
+  }
+
+  /// Creates a map of ringer's sessions.
+  List<String> _updateRingerSessions(List<SessionLocationViewData> list) {
+    List<String> sessions = [''];
+    for (var element in list) {
+      String session =
+          '${element.id}, ${element.date}, ${element.locationLocality ?? ''}';
+      sessions.add(session);
+    }
+    //debugPrint('In ring_data_manager, _updateRingerSessions: $sessions');
+    return sessions;
   }
 }
