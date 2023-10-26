@@ -4,6 +4,7 @@ export 'custom_dropdown_country_field.dart';
 export 'custom_dropdown_form_field.dart';
 export 'custom_dropdown_ring_field.dart';
 export 'custom_dropdown_series_field.dart';
+export 'custom_dropdown_session_field.dart';
 export 'custom_easy_autocomplete.dart';
 export 'custom_sex_checkbox_field.dart';
 export 'custom_text_form_field.dart';
