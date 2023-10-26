@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../data/monitoring_db.dart';
 import '../models/models.dart';
+import '../widgets/custom_widgets.dart';
 
 /// Screen holding information about ringing sessions.
 class SessionsScreen extends StatefulWidget {
@@ -24,10 +25,29 @@ class _SessionsScreenState extends State<SessionsScreen> {
   /// Holds id of selected session.
   int _selectedSessionId = -1;
 
+  // Session dropdown field controller
+  final TextEditingController _ringerSession = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _ringerSession.dispose();
+
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<RingDataManager>(
       builder: (context, dataManager, child) {
+        dataManager.getRingerSessionsLocations(
+            Provider.of<ProfileManager>(context, listen: false)
+                .getRinger
+                .ringerId);
         return Scaffold(
           persistentFooterButtons: [
             Row(
@@ -92,113 +112,119 @@ class _SessionsScreenState extends State<SessionsScreen> {
             child: Column(
               children: [
                 const Text('Ringing sessions'),
-                Selector<RingDataManager, List<SessionLocationViewData>>(
+                Selector<RingDataManager, List<String>>(
                   selector: (context, notifier) =>
                       // TODO: implement session location stream for a given ringer
-                      notifier.sessionLocationViewStream,
+                      //notifier.sessionLocationViewStream,
+                      notifier.ringerSessions,
                   shouldRebuild: (previous, next) => true,
                   builder: (context, sessions, child) {
-                    return Row(
-                      children: [
-                        IconButton(
-                          icon: const Icon(Icons.edit),
-                          onPressed: () {
-                            if (_selectedSessionId > -1) {
-                              dataManager
-                                  .getSessionLocationById(_selectedSessionId);
-                              dataManager.setEditSession(true);
-                            } else {
-                              ScaffoldMessenger.of(context).showMaterialBanner(
-                                MaterialBanner(
-                                  content: const Text(
-                                    'Session not selected',
-                                    style: TextStyle(color: Colors.white),
-                                  ),
-                                  backgroundColor: Colors.brown,
-                                  actions: [
-                                    TextButton(
-                                      onPressed: () {
-                                        ScaffoldMessenger.of(context)
-                                            .hideCurrentMaterialBanner();
-                                      },
-                                      child: const Text(
-                                        'Close',
-                                        style: TextStyle(color: Colors.white),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                          },
-                        ),
-                        Expanded(
-                          child: SizedBox(
-                            height: 150.0,
-                            child: ListView.builder(
-                              itemCount: sessions.length,
-                              itemBuilder: (context, index) {
-                                final session = sessions[index];
-                                return GestureDetector(
-                                  onTap: () {
-                                    setState(() {
-                                      getResponses(dataManager, session);
-                                    });
-                                  },
-                                  child: Card(
-                                    key: ValueKey(session.id),
-                                    elevation: 0,
-                                    child: Container(
-                                      decoration:
-                                          session.id == _selectedSessionId
-                                              ? const BoxDecoration(
-                                                  border: Border(
-                                                    top: BorderSide(
-                                                      color: Colors.black,
-                                                      width: 2,
-                                                    ),
-                                                    left: BorderSide(
-                                                        color: Colors.black),
-                                                    right: BorderSide(
-                                                        color: Colors.black),
-                                                    bottom: BorderSide(
-                                                      color: Colors.black,
-                                                      width: 2,
-                                                    ),
-                                                  ),
-                                                )
-                                              : const BoxDecoration(
-                                                  // border: Border(
-                                                  //   top: BorderSide(
-                                                  //       color: Colors.white,
-                                                  //       width: 2),
-                                                  //   left: BorderSide(
-                                                  //       color: Colors.white),
-                                                  //   right: BorderSide(
-                                                  //       color: Colors.white),
-                                                  //   bottom: BorderSide(
-                                                  //       color: Colors.white,
-                                                  //       width: 2),
-                                                  // ),
-                                                  ),
-                                      // color: session.id == _selectedSessionId
-                                      //     ? Colors.amber
-                                      //     : Colors.blueGrey[300],
-                                      child: Row(
-                                        children: [
-                                          Text('${session.date} - '),
-                                          Text(session.locationLocality ?? ''),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          ),
-                        ),
-                      ],
+                    return CustomDropdownSessionField(
+                      sessionController: _ringerSession,
+                      txtLabel: 'Ringing sessions',
+                      listValues: sessions,
                     );
+                    // return Row(
+                    //   children: [
+                    //     IconButton(
+                    //       icon: const Icon(Icons.edit),
+                    //       onPressed: () {
+                    //         if (_selectedSessionId > -1) {
+                    //           dataManager
+                    //               .getSessionLocationById(_selectedSessionId);
+                    //           dataManager.setEditSession(true);
+                    //         } else {
+                    //           ScaffoldMessenger.of(context).showMaterialBanner(
+                    //             MaterialBanner(
+                    //               content: const Text(
+                    //                 'Session not selected',
+                    //                 style: TextStyle(color: Colors.white),
+                    //               ),
+                    //               backgroundColor: Colors.brown,
+                    //               actions: [
+                    //                 TextButton(
+                    //                   onPressed: () {
+                    //                     ScaffoldMessenger.of(context)
+                    //                         .hideCurrentMaterialBanner();
+                    //                   },
+                    //                   child: const Text(
+                    //                     'Close',
+                    //                     style: TextStyle(color: Colors.white),
+                    //                   ),
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //           );
+                    //         }
+                    //       },
+                    //     ),
+                    //     Expanded(
+                    //       child: SizedBox(
+                    //         height: 150.0,
+                    //         child: ListView.builder(
+                    //           itemCount: sessions.length,
+                    //           itemBuilder: (context, index) {
+                    //             final session = sessions[index];
+                    //             return GestureDetector(
+                    //               onTap: () {
+                    //                 setState(() {
+                    //                   getResponses(dataManager, session);
+                    //                 });
+                    //               },
+                    //               child: Card(
+                    //                 key: ValueKey(session.id),
+                    //                 elevation: 0,
+                    //                 child: Container(
+                    //                   decoration:
+                    //                       session.id == _selectedSessionId
+                    //                           ? const BoxDecoration(
+                    //                               border: Border(
+                    //                                 top: BorderSide(
+                    //                                   color: Colors.black,
+                    //                                   width: 2,
+                    //                                 ),
+                    //                                 left: BorderSide(
+                    //                                     color: Colors.black),
+                    //                                 right: BorderSide(
+                    //                                     color: Colors.black),
+                    //                                 bottom: BorderSide(
+                    //                                   color: Colors.black,
+                    //                                   width: 2,
+                    //                                 ),
+                    //                               ),
+                    //                             )
+                    //                           : const BoxDecoration(
+                    //                               // border: Border(
+                    //                               //   top: BorderSide(
+                    //                               //       color: Colors.white,
+                    //                               //       width: 2),
+                    //                               //   left: BorderSide(
+                    //                               //       color: Colors.white),
+                    //                               //   right: BorderSide(
+                    //                               //       color: Colors.white),
+                    //                               //   bottom: BorderSide(
+                    //                               //       color: Colors.white,
+                    //                               //       width: 2),
+                    //                               // ),
+                    //                               ),
+                    //                   // color: session.id == _selectedSessionId
+                    //                   //     ? Colors.amber
+                    //                   //     : Colors.blueGrey[300],
+                    //                   child: Row(
+                    //                     children: [
+                    //                       Text('${session.date} - '),
+                    //                       Text(session.locationLocality ?? ''),
+                    //                     ],
+                    //                   ),
+                    //                 ),
+                    //               ),
+                    //             );
+                    //           },
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // );
                   },
                 ),
                 const Text('Session rings'),
