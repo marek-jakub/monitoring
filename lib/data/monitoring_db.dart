@@ -37,7 +37,13 @@ class MonRingDb extends _$MonRingDb {
 
   // SESSION - LOCATION VIEW
 
-  // TODO: implement session - location view only for sessions for given ringer.
+  /// Return all sessions in the database for a ringer identified by [ringerId].
+  Future<List<SessionLocationViewData>> getRingerSessionsLocations(
+      String ringerId) async {
+    return await (select(sessionLocationView)
+          ..where((tbl) => tbl.ringerId.equals(ringerId)))
+        .get();
+  }
 
   /// Returns a stream of list containing session - location view.
   ///
@@ -73,11 +79,11 @@ class MonRingDb extends _$MonRingDb {
   }
 
   /// Return all sessions in database for a ringer identified by [ringerId].
-  Future<List<SessionEntityData>> getRingerSessions(String ringerId) async {
-    return (select(sessionEntity)
-          ..where((tbl) => tbl.ringerId.equals(ringerId)))
-        .get();
-  }
+  // Future<List<SessionEntityData>> getRingerSessions(String ringerId) async {
+  //   return (select(sessionEntity)
+  //         ..where((tbl) => tbl.ringerId.equals(ringerId)))
+  //       .get();
+  // }
 
   /// Updates session data stored in the [companion].
   Future<bool> updateSession(SessionEntityCompanion companion) async {
