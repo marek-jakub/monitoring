@@ -22,8 +22,8 @@ class SessionsScreen extends StatefulWidget {
 }
 
 class _SessionsScreenState extends State<SessionsScreen> {
-  /// Holds id of selected session.
-  int _selectedSessionId = -1;
+  // Holds id of selected session.
+  //int _selectedSessionId = -1;
 
   // Session dropdown field controller
   final TextEditingController _ringerSession = TextEditingController();
@@ -64,7 +64,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                 ),
                 ElevatedButton(
                   onPressed: () {
-                    if (_selectedSessionId > -1) {
+                    if (_ringerSession.text != '') {
                       // Go to add_ring screen.
                       dataManager.setNewRing(true);
                     } else {
@@ -112,17 +112,57 @@ class _SessionsScreenState extends State<SessionsScreen> {
             child: Column(
               children: [
                 const Text('Ringing sessions'),
-                Selector<RingDataManager, List<String>>(
+                Selector<RingDataManager, List<SessionLocationViewData>>(
                   selector: (context, notifier) =>
                       // TODO: implement session location stream for a given ringer
                       //notifier.sessionLocationViewStream,
                       notifier.ringerSessions,
                   shouldRebuild: (previous, next) => true,
                   builder: (context, sessions, child) {
-                    return CustomDropdownSessionField(
-                      sessionController: _ringerSession,
-                      txtLabel: 'Ringing sessions',
-                      listValues: sessions,
+                    return Row(
+                      children: [
+                        IconButton(
+                          icon: const Icon(Icons.edit),
+                          onPressed: () {
+                            if (_ringerSession.text != '') {
+                              int sessionId = int.tryParse(
+                                      _ringerSession.text.split(',').first) ??
+                                  -1;
+                              dataManager.getSessionLocationById(sessionId);
+                              dataManager.setEditSession(true);
+                            } else {
+                              ScaffoldMessenger.of(context).showMaterialBanner(
+                                MaterialBanner(
+                                  content: const Text(
+                                    'Session not selected',
+                                    style: TextStyle(color: Colors.white),
+                                  ),
+                                  backgroundColor: Colors.brown,
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        ScaffoldMessenger.of(context)
+                                            .hideCurrentMaterialBanner();
+                                      },
+                                      child: const Text(
+                                        'Close',
+                                        style: TextStyle(color: Colors.white),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              );
+                            }
+                          },
+                        ),
+                        Expanded(
+                          child: CustomDropdownSessionField(
+                            sessionController: _ringerSession,
+                            txtLabel: 'Ringing sessions',
+                            sessionData: sessions,
+                          ),
+                        ),
+                      ],
                     );
                     // return Row(
                     //   children: [
@@ -376,36 +416,36 @@ class _SessionsScreenState extends State<SessionsScreen> {
     );
   }
 
-  void getResponses(
-      RingDataManager dataManager, SessionLocationViewData session) {
-    if (_selectedSessionId == session.id) {
-      // If session is selected, on next tap unselect it.
-      _selectedSessionId = -1;
-      // On deselecting session, drop current session id.
-      dataManager.setCurrentSessionId(-1);
-      // On deselecting session, drop current location id.
-      dataManager.setCurrentLocationId(-1);
-      // On deselecting session, set session tapped to false.
-      dataManager.setSessionTapped(false);
-      // On deselecting session, drop session country.
-      dataManager.setCountry('');
-    } else {
-      // If session is not selected, select it by recognizing its id.
-      _selectedSessionId = session.id;
-      // On selecting session, get stream of session, location data.
-      dataManager.getSessionLocationById(_selectedSessionId);
-      // On selecting session, set current session id.
-      dataManager.setCurrentSessionId(session.id);
-      // On selecting session, set country to session country.
-      dataManager.setCountry(session.locationCountry ?? '');
-      // On selecting session, set location id to session's location.
-      dataManager.setCurrentLocationId(session.location);
-      // On selecting session, get session's rings.
-      dataManager.getSessionRingStream(session.id);
-      // On selecting session, get session's retraps.
-      dataManager.getSessionRetrapStream(session.id);
-      // On selecting session, set session tapped to true.
-      dataManager.setSessionTapped(true);
-    }
-  }
+  // void getResponses(
+  //     RingDataManager dataManager, SessionLocationViewData session) {
+  //   if (_selectedSessionId == session.id) {
+  //     // If session is selected, on next tap unselect it.
+  //     _selectedSessionId = -1;
+  //     // On deselecting session, drop current session id.
+  //     dataManager.setCurrentSessionId(-1);
+  //     // On deselecting session, drop current location id.
+  //     dataManager.setCurrentLocationId(-1);
+  //     // On deselecting session, set session tapped to false.
+  //     dataManager.setSessionTapped(false);
+  //     // On deselecting session, drop session country.
+  //     dataManager.setCountry('');
+  //   } else {
+  //     // If session is not selected, select it by recognizing its id.
+  //     _selectedSessionId = session.id;
+  //     // On selecting session, get stream of session, location data.
+  //     dataManager.getSessionLocationById(_selectedSessionId);
+  //     // On selecting session, set current session id.
+  //     dataManager.setCurrentSessionId(session.id);
+  //     // On selecting session, set country to session country.
+  //     dataManager.setCountry(session.locationCountry ?? '');
+  //     // On selecting session, set location id to session's location.
+  //     dataManager.setCurrentLocationId(session.location);
+  //     // On selecting session, get session's rings.
+  //     dataManager.getSessionRingStream(session.id);
+  //     // On selecting session, get session's retraps.
+  //     dataManager.getSessionRetrapStream(session.id);
+  //     // On selecting session, set session tapped to true.
+  //     dataManager.setSessionTapped(true);
+  //   }
+  // }
 }

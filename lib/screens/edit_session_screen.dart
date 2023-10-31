@@ -7,7 +7,7 @@ import 'package:location/location.dart';
 import 'package:intl/intl.dart';
 
 import '../data/monitoring_db.dart';
-import '../data/data_for_autocomplete/autocomplete_data.dart';
+import '../data/data_for_autocomplete/autocomplete_data.dart' as lists;
 import '../data/data_for_autocomplete/data_validation.dart';
 import '../models/models.dart';
 
@@ -116,7 +116,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   Widget build(BuildContext context) {
     return Consumer<RingDataManager>(
       builder: (context, ringDataManager, child) {
-        countryPlaceCodes = placeCodes[ringDataManager.country] ?? [''];
+        countryPlaceCodes = lists.placeCodes[ringDataManager.country] ?? [''];
         return Scaffold(
           appBar: AppBar(
             title: const Text(
@@ -162,7 +162,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                           countryController: _countryController,
                           placeCodeController: _placeCodeController,
                           txtLabel: 'Country',
-                          listValues: countries),
+                          listValues: lists.countries),
                       CustomDropdownButtonFormField(
                         controller: _placeCodeController,
                         txtLabel: 'Place code',
@@ -188,7 +188,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                       CustomDropdownButtonFormField(
                         controller: _accuracyOfDateController,
                         txtLabel: 'Accuracy of date',
-                        listValues: accuracyOfDate,
+                        listValues: lists.accuracyOfDate,
                         // TODO: implement proper validator
                         validator:
                             _inputValidator.placeCodeValidator(['sd', 'sd']),
@@ -234,7 +234,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                       CustomDropdownButtonFormField(
                         controller: _coordAccuracyController,
                         txtLabel: 'Co-ordinates accuracy',
-                        listValues: accuracyOfCoordinates,
+                        listValues: lists.accuracyOfCoordinates,
                         // TODO: implement proper validator
                         validator:
                             _inputValidator.placeCodeValidator(['sd', 'sd']),

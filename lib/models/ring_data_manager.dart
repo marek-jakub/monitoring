@@ -30,7 +30,7 @@ class RingDataManager extends ChangeNotifier {
 
   // Session-location view
   List<SessionLocationViewData> _sessionLocationViewStream = [];
-  List<String> _ringerSessions = [];
+  List<SessionLocationViewData> _ringerSessions = [];
   SessionLocationViewData? _sessionLocationViewData;
 
   // Ring
@@ -202,7 +202,7 @@ class RingDataManager extends ChangeNotifier {
   /// Access to session-location combined view.
   ///
   /// A list of joined tables session and location.
-  List<String> get ringerSessions => _ringerSessions;
+  List<SessionLocationViewData> get ringerSessions => _ringerSessions;
 
   /// Access to session-location view entry.ombined view
   ///
@@ -507,7 +507,7 @@ class RingDataManager extends ChangeNotifier {
   /// Required is [ringer_id] to filter data.
   void getRingerSessionsLocations(String ringerId) {
     _monRingDb?.getRingerSessionsLocations(ringerId).then((value) {
-      _ringerSessions = _updateRingerSessions(value);
+      _ringerSessions = value;
       notifyListeners();
     }).onError((error, stackTrace) {
       _error = error.toString();
@@ -1018,17 +1018,5 @@ class RingDataManager extends ChangeNotifier {
       }
     }
     return ringIds;
-  }
-
-  /// Creates a map of ringer's sessions.
-  List<String> _updateRingerSessions(List<SessionLocationViewData> list) {
-    List<String> sessions = [''];
-    for (var element in list) {
-      String session =
-          '${element.id}, ${element.date}, ${element.locationLocality ?? ''}';
-      sessions.add(session);
-    }
-    //debugPrint('In ring_data_manager, _updateRingerSessions: $sessions');
-    return sessions;
   }
 }
