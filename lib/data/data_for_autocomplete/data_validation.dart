@@ -178,31 +178,29 @@ class InputValidator {
 
   // Add RING SERIES FORM input validation
 
-  // Series code
-  String? Function(String?)? seriesCodeValidator() {
-    return (String? seriesCode) {
-      if (seriesCode == null || seriesCode.isEmpty) {
-        return 'Series code should not be empty!';
-      }
-      return null;
-    };
-  }
-
   // Scheme code
   String? Function(String?)? schemeCodeValidator(List<String> schemeCodes) {
     return (String? schemeCode) {
-      if (schemeCode == null || schemeCode.isEmpty) {
-        return 'Scheme code should not be empty!';
-      } else if (!schemeCodes.contains(schemeCode)) {
+      if (!schemeCodes.contains(schemeCode)) {
         return 'Unrecognized scheme code!';
       }
       return null;
     };
   }
 
+  // Series code
+  String? Function(String?)? seriesCodeValidator(FocusNode focusNode) {
+    return (String? seriesCode) {
+      // if (seriesCode == null || seriesCode.isEmpty && !focusNode.hasFocus) {
+      //   return 'Series code should not be empty!';
+      // }
+      return null;
+    };
+  }
+
   // Series from
-  String? Function(String?)? seriesFromValidator(
-      BuildContext context, String scheme, String code, String seriesTo) {
+  String? Function(String?)? seriesFromValidator(BuildContext context,
+      String scheme, String code, String seriesTo, FocusNode focusNode) {
     RegExp seriesFromMatch = RegExp(r'^[1-9]\d*$');
 
     // Get all ringseries for given ringer and code
@@ -214,11 +212,12 @@ class InputValidator {
         Provider.of<RingDataManager>(context, listen: false).seriesRings;
 
     return (String? seriesFrom) {
-      if (seriesFrom == null || seriesFrom.isEmpty) {
-        return 'Series from should not be empty!';
-      } else if (!seriesFromMatch.hasMatch(seriesFrom)) {
+      if (seriesFrom!.isNotEmpty &&
+          !seriesFromMatch.hasMatch(seriesFrom) &&
+          !focusNode.hasFocus) {
         return 'Incorrect format!';
-      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo)) {
+      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo) &&
+          !focusNode.hasFocus) {
         return 'Series numbers collide!';
       }
       return null;
@@ -226,8 +225,8 @@ class InputValidator {
   }
 
   // Series to
-  String? Function(String?)? seriesToValidator(
-      BuildContext context, String scheme, String code, String seriesFrom) {
+  String? Function(String?)? seriesToValidator(BuildContext context,
+      String scheme, String code, String seriesFrom, FocusNode focusNode) {
     RegExp seriesToMatch = RegExp(r'^[1-9]\d*$');
 
     // Get all ringseries for given ringer and code
@@ -239,13 +238,16 @@ class InputValidator {
         Provider.of<RingDataManager>(context, listen: false).seriesRings;
 
     return (String? seriesTo) {
-      if (seriesTo == null || seriesTo.isEmpty) {
-        return 'Series to should not be empty!';
-      } else if (!seriesToMatch.hasMatch(seriesTo)) {
+      if (seriesTo!.isNotEmpty &&
+          !seriesToMatch.hasMatch(seriesTo) &&
+          !focusNode.hasFocus) {
         return 'Incorrect format!';
-      } else if (!_isSeriesToGreater(seriesFrom, seriesTo)) {
+      } else if (seriesTo.isNotEmpty &&
+          !_isSeriesToGreater(seriesFrom, seriesTo) &&
+          !focusNode.hasFocus) {
         return 'Series to is too low!';
-      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo)) {
+      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo) &&
+          !focusNode.hasFocus) {
         return 'Series numbers collide!';
       }
       return null;
