@@ -41,6 +41,7 @@ class _CustomDropdownButtonFormFieldState
             labelText: widget._label,
           ),
           validator: widget._validator,
+          //autovalidateMode: AutovalidateMode.onUserInteraction,
           menuMaxHeight: 200.0,
           onChanged: (String? value) {
             setState(() {

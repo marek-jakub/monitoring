@@ -9,16 +9,19 @@ class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
     Key? key,
     required TextEditingController controller,
+    required FocusNode focusNode,
     required String txtLabel,
     required String keyboard,
     required String? Function(String?)? validator,
   })  : _controller = controller,
+        _focusNode = focusNode,
         _label = txtLabel,
         _keyboard = keyboard,
         _validator = validator,
         super(key: key);
 
   final TextEditingController _controller;
+  final FocusNode _focusNode;
   final String _label;
   final String _keyboard;
   final String? Function(String?)? _validator;
@@ -34,6 +37,7 @@ class _CustomTextFormFieldState extends State<CustomTextFormField> {
       padding: const EdgeInsets.all(4.0),
       child: TextFormField(
         controller: widget._controller,
+        focusNode: widget._focusNode,
         keyboardType: widget._keyboard == 'text'
             ? TextInputType.text
             : TextInputType.number,
