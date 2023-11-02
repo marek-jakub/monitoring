@@ -150,6 +150,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   ),
                   CustomTextFormField(
                     controller: _localityController,
+                    focusNode: FocusNode(),
                     txtLabel: 'Locality name',
                     keyboard: 'text',
                     validator: _inputValidator.localityNameValidator(),
@@ -187,6 +188,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                       Expanded(
                         child: CustomTextFormField(
                           controller: _latController,
+                          focusNode: FocusNode(),
                           txtLabel: 'Latitude',
                           keyboard: 'number',
                           validator: _inputValidator.latValidator(),
@@ -195,6 +197,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                       Expanded(
                         child: CustomTextFormField(
                           controller: _lonController,
+                          focusNode: FocusNode(),
                           txtLabel: 'Longitude',
                           keyboard: 'number',
                           validator: _inputValidator.lonValidator(),
@@ -237,6 +240,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   ),
                   CustomTextFormField(
                     controller: _localeInfoController,
+                    focusNode: FocusNode(),
                     txtLabel: 'Locality information',
                     keyboard: 'text',
                     validator: _inputValidator.localityInfoValidator(),

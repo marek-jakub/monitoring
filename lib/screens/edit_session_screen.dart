@@ -173,6 +173,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                       ),
                       CustomTextFormField(
                         controller: _localityController,
+                        focusNode: FocusNode(),
                         txtLabel: 'Locality name',
                         keyboard: 'text',
                         // TODO: Implement proper validator.
@@ -212,6 +213,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                           Expanded(
                             child: CustomTextFormField(
                               controller: _latController,
+                              focusNode: FocusNode(),
                               txtLabel: 'Latitude',
                               keyboard: 'number',
                               // TODO: Implement proper validator.
@@ -222,6 +224,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                           Expanded(
                             child: CustomTextFormField(
                               controller: _lonController,
+                              focusNode: FocusNode(),
                               txtLabel: 'Longitude',
                               keyboard: 'number',
                               // TODO: Implement proper validator.
@@ -267,6 +270,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                       ),
                       CustomTextFormField(
                         controller: _localeInfoController,
+                        focusNode: FocusNode(),
                         txtLabel: 'Locality information',
                         keyboard: 'text',
                         // TODO: Implement proper validator.

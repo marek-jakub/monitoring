@@ -86,6 +86,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               children: [
                 CustomTextFormField(
                   controller: _ringSeriesCode,
+                  focusNode: FocusNode(),
                   txtLabel: 'Ring series',
                   keyboard: 'text',
                   // TODO: Implement proper validator.
@@ -93,6 +94,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                 ),
                 CustomTextFormField(
                   controller: _amount,
+                  focusNode: FocusNode(),
                   txtLabel: 'Amount',
                   keyboard: 'number',
                   // TODO: Implement proper validator.

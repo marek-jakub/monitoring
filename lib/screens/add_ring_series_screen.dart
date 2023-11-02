@@ -35,6 +35,11 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   final TextEditingController _ringFrom = TextEditingController();
   final TextEditingController _ringTo = TextEditingController();
 
+  // Form field focus nodes
+  FocusNode _sCode = FocusNode();
+  FocusNode _sFrom = FocusNode();
+  FocusNode _sTo = FocusNode();
+
   // Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
@@ -89,6 +94,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
           body: Column(
             children: [
               Form(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 key: _ringSeriesFormKey,
                 child: Column(
                   children: [
@@ -101,23 +107,34 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                     ),
                     CustomTextFormField(
                       controller: _seriesCode,
+                      focusNode: _sCode,
                       txtLabel: 'Series code',
                       keyboard: 'text',
-                      validator: _inputValidator.seriesCodeValidator(),
+                      validator: _inputValidator.seriesCodeValidator(_sCode),
                     ),
                     CustomTextFormField(
                       controller: _ringFrom,
+                      focusNode: _sFrom,
                       txtLabel: 'Series from',
                       keyboard: 'number',
-                      validator: _inputValidator.seriesFromValidator(context,
-                          _schemeCode.text, _seriesCode.text, _ringTo.text),
+                      validator: _inputValidator.seriesFromValidator(
+                          context,
+                          _schemeCode.text,
+                          _seriesCode.text,
+                          _ringTo.text,
+                          _sFrom),
                     ),
                     CustomTextFormField(
                       controller: _ringTo,
+                      focusNode: _sTo,
                       txtLabel: 'Series to',
                       keyboard: 'number',
-                      validator: _inputValidator.seriesToValidator(context,
-                          _schemeCode.text, _seriesCode.text, _ringFrom.text),
+                      validator: _inputValidator.seriesToValidator(
+                          context,
+                          _schemeCode.text,
+                          _seriesCode.text,
+                          _ringFrom.text,
+                          _sTo),
                     ),
                   ],
                 ),

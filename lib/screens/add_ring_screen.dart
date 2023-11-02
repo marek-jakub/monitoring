@@ -219,6 +219,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   Expanded(
                     child: CustomTextFormField(
                       controller: _ringSeriesCodeController,
+                      focusNode: FocusNode(),
                       txtLabel: 'Ring series',
                       keyboard: 'text',
                       // TODO: Implement proper validator.
@@ -228,6 +229,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                   Expanded(
                     child: CustomTextFormField(
                       controller: _ringIdNumberController,
+                      focusNode: FocusNode(),
                       txtLabel: 'ID number',
                       keyboard: 'number',
                       // TODO: Implement proper validator.
@@ -330,6 +332,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _wingLengthController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Wing Length',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -340,6 +343,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _thirdPrimaryController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Third Primary',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -350,6 +354,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _massController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Mass',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -398,6 +403,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _billLengthController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Bill Length',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -408,6 +414,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _hindClawController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Hind Claw',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -418,6 +425,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _headLengthTotalController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Total Head Length',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -513,6 +521,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _tarsusController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Tarsus',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -523,6 +532,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _tailLengthController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Tail Length',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -533,6 +543,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _tailDifferenceController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Tail Difference',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -610,6 +621,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _fatScoreController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Fat Score',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -620,6 +632,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _pectoralMuscleController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Pectoral Muscle Score',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -630,6 +643,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _primaryScoreController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Primary Score',
                                 keyboard: 'number',
                                 // TODO: Implement proper validator.
@@ -710,6 +724,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _broodPatchController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Brood Patch',
                                 keyboard: 'text',
                                 // TODO: Implement proper validator.
@@ -720,6 +735,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _primaryMoultController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Primary Moult',
                                 keyboard: 'text',
                                 // TODO: Implement proper validator.
@@ -730,6 +746,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             Expanded(
                               child: CustomTextFormField(
                                 controller: _oldGreaterCovertsController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Old Greater Coverts',
                                 keyboard: 'text',
                                 // TODO: Implement proper validator.
@@ -746,6 +763,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                               // use a dropdown with a list holding the values.
                               child: CustomTextFormField(
                                 controller: _alulaController,
+                                focusNode: FocusNode(),
                                 txtLabel: 'Alula',
                                 keyboard: 'text',
                                 // TODO: Implement proper validator.
@@ -872,6 +890,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                         ),
                         CustomTextFormField(
                           controller: _otherMarksController,
+                          focusNode: FocusNode(),
                           txtLabel: 'Other marks',
                           keyboard: 'text',
                           // TODO: Implement proper validator.
