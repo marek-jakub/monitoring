@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
-import '../data/data_for_autocomplete/data_validation.dart';
 import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
+import 'package:flutter_slidable/flutter_slidable.dart';
 
+import '../data/data_for_autocomplete/data_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_widgets.dart';
@@ -153,27 +154,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       child: const Text('Add'),
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                    child: ElevatedButton(
-                      onPressed: () {
-                        if (_ringSeriesId != -1) {
-                          deleteRingSeries(_ringSeriesId);
-                          _ringSeriesId = -1;
-                        }
-                      },
-                      child: const Text('Remove'),
-                    ),
-                  ),
-                  // Padding(
-                  //   padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                  //   child: ElevatedButton(
-                  //     onPressed: () {
-                  //       updateRingSeries(_ringSeriesId);
-                  //     },
-                  //     child: const Text('Update'),
-                  //   ),
-                  // ),
                 ],
               ),
               const SizedBox(
@@ -188,17 +168,24 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       itemCount: ringSeries.length,
                       itemBuilder: (context, index) {
                         final ringseries = ringSeries[index];
-                        return GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              _schemeCode.text = ringseries.schemeCode;
-                              _seriesCode.text = ringseries.code;
-                              _ringFrom.text = ringseries.ringfrom.toString();
-                              _ringTo.text = ringseries.ringto.toString();
-
-                              _ringSeriesId = ringseries.id;
-                            });
-                          },
+                        return Card(
+                            child: Slidable(
+                          key: const ValueKey(0),
+                          startActionPane: ActionPane(
+                            motion: const ScrollMotion(),
+                            children: [
+                              SlidableAction(
+                                onPressed: (context) {
+                                  deleteRingSeries(ringseries.id);
+                                },
+                                // TODO: Update colors for bright and dark modes.
+                                backgroundColor: Colors.red,
+                                foregroundColor: Colors.white,
+                                icon: Icons.delete,
+                                label: 'Remove',
+                              ),
+                            ],
+                          ),
                           child: Card(
                             elevation: 0,
                             child: Column(
@@ -255,7 +242,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                               ],
                             ),
                           ),
-                        );
+                        ));
                       },
                     );
                   },
@@ -315,25 +302,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     context.read<RingDataManager>().deleteRingSeries(id);
   }
 
-  /// Updated ring series information in the database.
-  // void updateRingSeries(int id) {
-  //   /// Checks for input validity
-  //   final isValid = _ringSeriesFormKey.currentState?.validate();
-
-  //   if (isValid != null && isValid) {
-  //     final ringSeriesEntity = RingseriesEntityCompanion(
-  //       id: d.Value(id),
-  //       ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
-  //       code: d.Value(_seriesCode.text),
-  //       schemeCode: d.Value(_schemeCode.text),
-  //       ringfrom: d.Value(int.parse(_ringFrom.text)),
-  //       ringto: d.Value(int.parse(_ringTo.text)),
-  //     );
-
-  //     context.read<RingDataManager>().updateRingSeries(ringSeriesEntity);
-  //   }
-  // }
-
   /// Listens to change notifier save, delete, modify ring series success
   /// or error.
   void providerListener() {
@@ -360,18 +328,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       });
       context.read<RingDataManager>().setIsRingSeriesDeleted(false);
     }
-
-    // if (_dataManager.isRingSeriesUpdated) {
-    //   listenUpdateRingSeries();
-    //   // Clear form fields to allow another entry input.
-    //   setState(() {
-    //     _seriesCode.clear();
-    //     _schemeCode.clear();
-    //     _ringFrom.clear();
-    //     _ringTo.clear();
-    //   });
-    //   context.read<RingDataManager>().setIsRingSeriesUpdated(false);
-    // }
 
     if (_dataManager.error != '') {
       listenRingSeriesError(_dataManager.error);
@@ -427,33 +383,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
       ),
     );
   }
-
-  /// Shows scaffold messenger on successfuly updated ring series data.
-  // void listenUpdateRingSeries() {
-  //   ScaffoldMessenger.of(context).showMaterialBanner(
-  //     MaterialBanner(
-  //       content: const Text(
-  //         'Ring series data updated',
-  //         style: TextStyle(color: Colors.white),
-  //       ),
-  //       backgroundColor: Colors.brown,
-  //       actions: [
-  //         TextButton(
-  //           onPressed: () {
-  //             context.read<RingDataManager>().setIsRingSeriesUpdated(false);
-  //             context.read<RingDataManager>().getRingSeriesStream(
-  //                 context.read<ProfileManager>().getRinger.ringerId);
-  //             ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-  //           },
-  //           child: const Text(
-  //             'Close',
-  //             style: TextStyle(color: Colors.white),
-  //           ),
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 
   /// Shows scaffold messenger with error on save, update or delete.
   void listenRingSeriesError(String errorMsg) {

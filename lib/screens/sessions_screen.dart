@@ -22,9 +22,6 @@ class SessionsScreen extends StatefulWidget {
 }
 
 class _SessionsScreenState extends State<SessionsScreen> {
-  // Holds id of selected session.
-  //int _selectedSessionId = -1;
-
   // Session dropdown field controller
   final TextEditingController _ringerSession = TextEditingController();
 
@@ -164,107 +161,6 @@ class _SessionsScreenState extends State<SessionsScreen> {
                         ),
                       ],
                     );
-                    // return Row(
-                    //   children: [
-                    //     IconButton(
-                    //       icon: const Icon(Icons.edit),
-                    //       onPressed: () {
-                    //         if (_selectedSessionId > -1) {
-                    //           dataManager
-                    //               .getSessionLocationById(_selectedSessionId);
-                    //           dataManager.setEditSession(true);
-                    //         } else {
-                    //           ScaffoldMessenger.of(context).showMaterialBanner(
-                    //             MaterialBanner(
-                    //               content: const Text(
-                    //                 'Session not selected',
-                    //                 style: TextStyle(color: Colors.white),
-                    //               ),
-                    //               backgroundColor: Colors.brown,
-                    //               actions: [
-                    //                 TextButton(
-                    //                   onPressed: () {
-                    //                     ScaffoldMessenger.of(context)
-                    //                         .hideCurrentMaterialBanner();
-                    //                   },
-                    //                   child: const Text(
-                    //                     'Close',
-                    //                     style: TextStyle(color: Colors.white),
-                    //                   ),
-                    //                 ),
-                    //               ],
-                    //             ),
-                    //           );
-                    //         }
-                    //       },
-                    //     ),
-                    //     Expanded(
-                    //       child: SizedBox(
-                    //         height: 150.0,
-                    //         child: ListView.builder(
-                    //           itemCount: sessions.length,
-                    //           itemBuilder: (context, index) {
-                    //             final session = sessions[index];
-                    //             return GestureDetector(
-                    //               onTap: () {
-                    //                 setState(() {
-                    //                   getResponses(dataManager, session);
-                    //                 });
-                    //               },
-                    //               child: Card(
-                    //                 key: ValueKey(session.id),
-                    //                 elevation: 0,
-                    //                 child: Container(
-                    //                   decoration:
-                    //                       session.id == _selectedSessionId
-                    //                           ? const BoxDecoration(
-                    //                               border: Border(
-                    //                                 top: BorderSide(
-                    //                                   color: Colors.black,
-                    //                                   width: 2,
-                    //                                 ),
-                    //                                 left: BorderSide(
-                    //                                     color: Colors.black),
-                    //                                 right: BorderSide(
-                    //                                     color: Colors.black),
-                    //                                 bottom: BorderSide(
-                    //                                   color: Colors.black,
-                    //                                   width: 2,
-                    //                                 ),
-                    //                               ),
-                    //                             )
-                    //                           : const BoxDecoration(
-                    //                               // border: Border(
-                    //                               //   top: BorderSide(
-                    //                               //       color: Colors.white,
-                    //                               //       width: 2),
-                    //                               //   left: BorderSide(
-                    //                               //       color: Colors.white),
-                    //                               //   right: BorderSide(
-                    //                               //       color: Colors.white),
-                    //                               //   bottom: BorderSide(
-                    //                               //       color: Colors.white,
-                    //                               //       width: 2),
-                    //                               // ),
-                    //                               ),
-                    //                   // color: session.id == _selectedSessionId
-                    //                   //     ? Colors.amber
-                    //                   //     : Colors.blueGrey[300],
-                    //                   child: Row(
-                    //                     children: [
-                    //                       Text('${session.date} - '),
-                    //                       Text(session.locationLocality ?? ''),
-                    //                     ],
-                    //                   ),
-                    //                 ),
-                    //               ),
-                    //             );
-                    //           },
-                    //         ),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // );
                   },
                 ),
                 const Text('Session rings'),
@@ -415,37 +311,4 @@ class _SessionsScreenState extends State<SessionsScreen> {
       },
     );
   }
-
-  // void getResponses(
-  //     RingDataManager dataManager, SessionLocationViewData session) {
-  //   if (_selectedSessionId == session.id) {
-  //     // If session is selected, on next tap unselect it.
-  //     _selectedSessionId = -1;
-  //     // On deselecting session, drop current session id.
-  //     dataManager.setCurrentSessionId(-1);
-  //     // On deselecting session, drop current location id.
-  //     dataManager.setCurrentLocationId(-1);
-  //     // On deselecting session, set session tapped to false.
-  //     dataManager.setSessionTapped(false);
-  //     // On deselecting session, drop session country.
-  //     dataManager.setCountry('');
-  //   } else {
-  //     // If session is not selected, select it by recognizing its id.
-  //     _selectedSessionId = session.id;
-  //     // On selecting session, get stream of session, location data.
-  //     dataManager.getSessionLocationById(_selectedSessionId);
-  //     // On selecting session, set current session id.
-  //     dataManager.setCurrentSessionId(session.id);
-  //     // On selecting session, set country to session country.
-  //     dataManager.setCountry(session.locationCountry ?? '');
-  //     // On selecting session, set location id to session's location.
-  //     dataManager.setCurrentLocationId(session.location);
-  //     // On selecting session, get session's rings.
-  //     dataManager.getSessionRingStream(session.id);
-  //     // On selecting session, get session's retraps.
-  //     dataManager.getSessionRetrapStream(session.id);
-  //     // On selecting session, set session tapped to true.
-  //     dataManager.setSessionTapped(true);
-  //   }
-  // }
 }
