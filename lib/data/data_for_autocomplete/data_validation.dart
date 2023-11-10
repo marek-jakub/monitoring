@@ -309,9 +309,9 @@ class InputValidator {
       int? f = int.tryParse(from);
       int? t = int.tryParse(to);
       var range1 = [f, t];
+
       for (var series in codeSeries) {
         var range2 = [series.ringfrom, series.ringto];
-
         // Compare two ranges
         if (range1[1]! < range2[0] || range1[0]! > range2[1]) {
           return false;

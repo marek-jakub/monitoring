@@ -146,10 +146,25 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                   Padding(
                     padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
                     child: ElevatedButton(
+                      style: _formIsFilled()
+                          ? const ButtonStyle()
+                          : ButtonStyle(
+                              textStyle: MaterialStateProperty.all<TextStyle>(
+                                const TextStyle(
+                                  fontWeight: FontWeight.w300,
+                                ),
+                              ),
+                              backgroundColor: MaterialStateProperty.all<Color>(
+                                  Colors.white54),
+                            ),
                       onPressed: () {
-                        addRingSeries();
-                        dataManager.getRingSeriesStream(
-                            context.read<ProfileManager>().getRinger.ringerId);
+                        if (_formIsFilled()) {
+                          addRingSeries();
+                          dataManager.getRingSeriesStream(context
+                              .read<ProfileManager>()
+                              .getRinger
+                              .ringerId);
+                        }
                       },
                       child: const Text('Add'),
                     ),
@@ -430,5 +445,13 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
         ],
       ),
     );
+  }
+
+  /// Return true on all form fields not being equal to ''.
+  bool _formIsFilled() {
+    return _schemeCode.text != '' &&
+        _seriesCode.text != '' &&
+        _ringFrom.text != '' &&
+        _ringTo.text != '';
   }
 }
