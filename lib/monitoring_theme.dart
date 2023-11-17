@@ -201,7 +201,7 @@ class MonitoRingTheme {
             ),
           ),
           minimumSize: MaterialStateProperty.all(
-            const Size(100, 40),
+            const Size(110, 40),
           ),
         ),
       ),
@@ -299,7 +299,7 @@ class MonitoRingTheme {
             ),
           ),
           minimumSize: MaterialStateProperty.all(
-            const Size(100, 40),
+            const Size(110, 40),
           ),
         ),
       ),
