@@ -201,23 +201,32 @@ class InputValidator {
   // Series from
   String? Function(String?)? seriesFromValidator(BuildContext context,
       String scheme, String code, String seriesTo, FocusNode focusNode) {
-    RegExp seriesFromMatch = RegExp(r'^[1-9]\d*$');
+    RegExp intMatch = RegExp(r'^[1-9]\d*$');
 
-    // Get all ringseries for given ringer and code
-    Provider.of<RingDataManager>(context, listen: false).getSeriesRings(
-        Provider.of<ProfileManager>(context, listen: false).getRinger.ringerId,
-        scheme,
-        code);
-    List<RingseriesEntityData> codeSeries =
-        Provider.of<RingDataManager>(context, listen: false).seriesRings;
+    List<RingseriesEntityData> codeSeries = [];
 
     return (String? seriesFrom) {
       if (seriesFrom!.isNotEmpty &&
-          !seriesFromMatch.hasMatch(seriesFrom) &&
+          intMatch.hasMatch(seriesFrom) &&
+          intMatch.hasMatch(seriesTo)) {
+        // Get all ringseries for given ringer and code
+        Provider.of<RingDataManager>(context, listen: false).getSeriesRings(
+            Provider.of<ProfileManager>(context, listen: false)
+                .getRinger
+                .ringerId,
+            scheme,
+            code,
+            int.parse(seriesFrom),
+            int.parse(seriesTo));
+
+        codeSeries =
+            Provider.of<RingDataManager>(context, listen: false).seriesRings;
+      }
+      if (seriesFrom.isNotEmpty &&
+          !intMatch.hasMatch(seriesFrom) &&
           !focusNode.hasFocus) {
         return 'Incorrect format!';
-      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo) &&
-          !focusNode.hasFocus) {
+      } else if (codeSeries.isNotEmpty && !focusNode.hasFocus) {
         return 'Series numbers collide!';
       }
       return null;
@@ -227,27 +236,37 @@ class InputValidator {
   // Series to
   String? Function(String?)? seriesToValidator(BuildContext context,
       String scheme, String code, String seriesFrom, FocusNode focusNode) {
-    RegExp seriesToMatch = RegExp(r'^[1-9]\d*$');
+    RegExp intMatch = RegExp(r'^[1-9]\d*$');
 
-    // Get all ringseries for given ringer and code
-    Provider.of<RingDataManager>(context, listen: false).getSeriesRings(
-        Provider.of<ProfileManager>(context, listen: false).getRinger.ringerId,
-        scheme,
-        code);
-    List<RingseriesEntityData> codeSeries =
-        Provider.of<RingDataManager>(context, listen: false).seriesRings;
+    List<RingseriesEntityData> codeSeries = [];
 
     return (String? seriesTo) {
       if (seriesTo!.isNotEmpty &&
-          !seriesToMatch.hasMatch(seriesTo) &&
+          intMatch.hasMatch(seriesTo) &&
+          intMatch.hasMatch(seriesFrom)) {
+        // Get all ringseries for given ringer and code
+        Provider.of<RingDataManager>(context, listen: false).getSeriesRings(
+            Provider.of<ProfileManager>(context, listen: false)
+                .getRinger
+                .ringerId,
+            scheme,
+            code,
+            int.parse(seriesFrom),
+            int.parse(seriesTo));
+
+        codeSeries =
+            Provider.of<RingDataManager>(context, listen: false).seriesRings;
+        debugPrint('data_validation : $codeSeries');
+      }
+      if (seriesTo!.isNotEmpty &&
+          !intMatch.hasMatch(seriesTo) &&
           !focusNode.hasFocus) {
         return 'Incorrect format!';
       } else if (seriesTo.isNotEmpty &&
           !_isSeriesToGreater(seriesFrom, seriesTo) &&
           !focusNode.hasFocus) {
         return 'Series to is too low!';
-      } else if (_seriesNumbersCollide(codeSeries, seriesFrom, seriesTo) &&
-          !focusNode.hasFocus) {
+      } else if (codeSeries.isNotEmpty && !focusNode.hasFocus) {
         return 'Series numbers collide!';
       }
       return null;
@@ -293,33 +312,6 @@ class InputValidator {
         return false;
       } else if (fromNumber < toNumber) {
         return true;
-      }
-    }
-    return false;
-  }
-
-  /// Compares series number ranges.
-  ///
-  /// Returns true if series ranges collide,
-  /// else returns false.
-  bool _seriesNumbersCollide(
-      List<RingseriesEntityData> codeSeries, String from, String to) {
-    RegExp integerMatch = RegExp(r'^[1-9]\d*$');
-    if (integerMatch.hasMatch(from) && integerMatch.hasMatch(to)) {
-      int? f = int.tryParse(from);
-      int? t = int.tryParse(to);
-      var range1 = [f, t];
-
-      for (var series in codeSeries) {
-        var range2 = [series.ringfrom, series.ringto];
-        // Compare two ranges
-        if (range1[1]! < range2[0] || range1[0]! > range2[1]) {
-          return false;
-        } else if (range1[1]! == range2[0] ||
-            range1[0]! == range2[1] ||
-            (range1[1]! >= range2[0] && range1[0]! <= range2[1])) {
-          return true;
-        }
       }
     }
     return false;

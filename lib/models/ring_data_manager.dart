@@ -821,10 +821,13 @@ class RingDataManager extends ChangeNotifier {
   }
 
   /// A list of a series rings for a ringer identified by [id], [scheme] and [code].
-  void getSeriesRings(String id, String scheme, String code) {
+  void getSeriesRings(
+      String id, String scheme, String code, int ringFrom, int ringTo) {
     _isLoading = true;
 
-    _monRingDb?.getRingerSeries(id, scheme, code).then((value) {
+    _monRingDb
+        ?.getRingerSeries(id, scheme, code, ringFrom, ringTo)
+        .then((value) {
       _seriesRings = value;
       _isLoading = false;
       notifyListeners();

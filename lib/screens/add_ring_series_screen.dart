@@ -428,7 +428,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(
         content: Text(
-          errorMsg,
+          'Unable to add rings: $errorMsg',
           style: const TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.brown,
