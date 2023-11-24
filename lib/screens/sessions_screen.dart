@@ -51,6 +51,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 ElevatedButton(
+                  key: const ValueKey('sessionButton'),
                   onPressed: () {
                     // Go to add_session_screen.
                     dataManager.setNewSession(true);

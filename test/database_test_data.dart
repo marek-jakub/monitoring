@@ -23,6 +23,8 @@ List<SessionEntityCompanion> sessions = [
 
 List<LocationEntityCompanion> locations = [
   const LocationEntityCompanion(
+    ringerId: d.Value('6000'),
+    country: d.Value('SLOVAKIA'),
     locality: d.Value('London'),
     placeCode: d.Value('GB'),
     latitude: d.Value('49.00'),
@@ -31,6 +33,8 @@ List<LocationEntityCompanion> locations = [
     localeInfo: d.Value('Nature reserve Thames'),
   ),
   const LocationEntityCompanion(
+    ringerId: d.Value('7000'),
+    country: d.Value('UNITED KINGDOM'),
     locality: d.Value('Paris'),
     placeCode: d.Value('FR'),
     latitude: d.Value('41.00'),
@@ -43,6 +47,7 @@ List<LocationEntityCompanion> locations = [
 List<RingEntityCompanion> rings = [
   const RingEntityCompanion(
     sessionId: d.Value(1),
+    ringerId: d.Value('6000'),
     primaryIdMethod: d.Value('A0'),
     ringSeriesCode: d.Value('C'),
     ringIdNumber: d.Value('12'),
@@ -85,6 +90,7 @@ List<RingEntityCompanion> rings = [
   ),
   const RingEntityCompanion(
     sessionId: d.Value(2),
+    ringerId: d.Value('7000'),
     primaryIdMethod: d.Value('B0'),
     ringSeriesCode: d.Value('D'),
     ringIdNumber: d.Value('14'),
@@ -127,6 +133,7 @@ List<RingEntityCompanion> rings = [
   ),
   const RingEntityCompanion(
     sessionId: d.Value(2),
+    ringerId: d.Value('7000'),
     primaryIdMethod: d.Value('B0'),
     ringSeriesCode: d.Value('D'),
     ringIdNumber: d.Value('15'),
@@ -172,6 +179,7 @@ List<RingEntityCompanion> rings = [
 List<RetrapEntityCompanion> retraps = [
   const RetrapEntityCompanion(
     sessionId: d.Value(1),
+    ringerId: d.Value('6000'),
     ringScheme: d.Value('GBL'),
     primaryIdMethod: d.Value('A0'),
     ringSeriesCode: d.Value('C'),
@@ -215,6 +223,7 @@ List<RetrapEntityCompanion> retraps = [
   ),
   const RetrapEntityCompanion(
     sessionId: d.Value(2),
+    ringerId: d.Value('7000'),
     ringScheme: d.Value('ITR'),
     primaryIdMethod: d.Value('B0'),
     ringSeriesCode: d.Value('D'),
@@ -258,6 +267,7 @@ List<RetrapEntityCompanion> retraps = [
   ),
   const RetrapEntityCompanion(
     sessionId: d.Value(2),
+    ringerId: d.Value('7000'),
     ringScheme: d.Value('ITR'),
     primaryIdMethod: d.Value('B0'),
     ringSeriesCode: d.Value('D'),

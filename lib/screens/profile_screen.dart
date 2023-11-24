@@ -139,6 +139,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: ListTile(
+            key: const ValueKey('logoutTile'),
             title: const Text('Logout'),
             onTap: () {
               Provider.of<ProfileManager>(context, listen: false)

@@ -87,6 +87,7 @@ class LoginScreen extends StatelessWidget {
     return SizedBox(
       height: 45,
       child: MaterialButton(
+        key: const ValueKey('entryButton'),
         color: ringsColor,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(7.0)),
         child: const Text(

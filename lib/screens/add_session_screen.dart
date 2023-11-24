@@ -116,6 +116,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
               'MonitoRing: session',
             ),
             leading: IconButton(
+              key: const ValueKey('backButton'),
               icon: const BackButtonIcon(),
               onPressed: () {
                 Provider.of<RingDataManager>(context, listen: false)
@@ -136,12 +137,14 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
               child: Column(
                 children: [
                   CustomDropdownCountryFormField(
+                    key: const ValueKey('country'),
                     countryController: _countryController,
                     placeCodeController: _placeCodeController,
                     txtLabel: 'Country',
                     listValues: countries,
                   ),
                   CustomDropdownButtonFormField(
+                    key: const ValueKey('place_code'),
                     controller: _placeCodeController,
                     txtLabel: 'Place code',
                     listValues: countryPlaceCodes,
@@ -149,6 +152,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                         _inputValidator.placeCodeValidator(countryPlaceCodes),
                   ),
                   CustomTextFormField(
+                    key: const ValueKey('locality'),
                     controller: _localityController,
                     focusNode: FocusNode(),
                     txtLabel: 'Locality name',
@@ -156,6 +160,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     validator: _inputValidator.localityNameValidator(),
                   ),
                   CustomDatePickerField(
+                    key: const ValueKey('date_picker'),
                     controller: _dateController,
                     txtLabel: 'Date',
                     callback: () {
@@ -163,6 +168,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     },
                   ),
                   CustomDropdownButtonFormField(
+                    key: const ValueKey('date_accuracy'),
                     controller: _accuracyOfDateController,
                     txtLabel: 'Accuracy of date',
                     listValues: accuracyOfDate,
@@ -187,6 +193,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     children: [
                       Expanded(
                         child: CustomTextFormField(
+                          key: const ValueKey('latitude'),
                           controller: _latController,
                           focusNode: FocusNode(),
                           txtLabel: 'Latitude',
@@ -196,6 +203,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                       ),
                       Expanded(
                         child: CustomTextFormField(
+                          key: const ValueKey('longitude'),
                           controller: _lonController,
                           focusNode: FocusNode(),
                           txtLabel: 'Longitude',
@@ -206,6 +214,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     ],
                   ),
                   CustomDropdownButtonFormField(
+                    key: const ValueKey('coordinates_accuracy'),
                     controller: _coordAccuracyController,
                     txtLabel: 'Co-ordinates accuracy',
                     listValues: accuracyOfCoordinates,
@@ -216,6 +225,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     children: [
                       Expanded(
                         child: CustomTimePickerField(
+                          key: const ValueKey('start_time'),
                           controller: _startTimeController,
                           txtLabel: 'Start time',
                           callback: () {
@@ -227,6 +237,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                       ),
                       Expanded(
                         child: CustomTimePickerField(
+                          key: const ValueKey('end_time'),
                           controller: _endTimeController,
                           txtLabel: 'End time',
                           callback: () {

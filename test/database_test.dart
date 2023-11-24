@@ -4,15 +4,15 @@ import 'package:drift/drift.dart' as d;
 
 import 'package:monitoring/data/monitoring_db.dart';
 
-import 'database_test_data.dart';
+import 'database_test_data.dart' as test_data;
 
 void main() {
   late MonRingDb monRingDb;
 
   setUp(() {
     // On testing uncomment below and comment out initializer with no paramenters.
-    //monRingDb = MonRingDb(NativeDatabase.memory());
-    monRingDb = MonRingDb();
+    monRingDb = MonRingDb(NativeDatabase.memory());
+    //monRingDb = MonRingDb();
   });
 
   tearDown(() {
@@ -21,7 +21,7 @@ void main() {
 
   group('Session data can be saved, updated, retrieved and deleted.', () {
     test('Session can be saved.', () async {
-      final id = await monRingDb.saveSession(sessions[0]);
+      final id = await monRingDb.saveSession(test_data.sessions[0]);
       final session = await monRingDb.getSession(id);
 
       expect(session.id, id);
@@ -34,7 +34,7 @@ void main() {
     });
 
     test('Another session can be saved, updated and deleted.', () async {
-      final id = await monRingDb.saveSession(sessions[1]);
+      final id = await monRingDb.saveSession(test_data.sessions[1]);
       final session = await monRingDb.getSession(id);
 
       expect(session.id, id);
@@ -74,7 +74,7 @@ void main() {
 
   group('Location data can be saved, updated, retrieved and deleted.', () {
     test('Location can be saved.', () async {
-      final id = await monRingDb.saveLocation(locations[0]);
+      final id = await monRingDb.saveLocation(test_data.locations[0]);
       final location = await monRingDb.getLocationById(id);
 
       expect(location.id, id);
@@ -87,7 +87,7 @@ void main() {
     });
 
     test('Another location can be saved, updated and deleted.', () async {
-      final id = await monRingDb.saveLocation(locations[1]);
+      final id = await monRingDb.saveLocation(test_data.locations[1]);
       final location = await monRingDb.getLocationById(id);
 
       expect(location.id, id);
@@ -101,6 +101,8 @@ void main() {
       final updated = await monRingDb.updateLocation(
         LocationEntityCompanion(
           id: d.Value(id),
+          ringerId: const d.Value('6000'),
+          country: const d.Value('SLOVAKIA'),
           locality: const d.Value('Rome'),
           placeCode: const d.Value('ITA'),
           latitude: const d.Value('36.00'),
@@ -127,7 +129,7 @@ void main() {
 
   group('Ring data can be saved, updated, retrieved and deleted.', () {
     test('Ring data can be saved.', () async {
-      final id = await monRingDb.saveRing(rings[0]);
+      final id = await monRingDb.saveRing(test_data.rings[0]);
       final ring = await monRingDb.getRing(id);
 
       expect(ring.id, id);
@@ -174,7 +176,7 @@ void main() {
     });
 
     test('Anogher ring data can be saved, updated and deleted.', () async {
-      final id = await monRingDb.saveRing(rings[1]);
+      final id = await monRingDb.saveRing(test_data.rings[1]);
       final ring = await monRingDb.getRing(id);
 
       expect(ring.id, id);
@@ -223,6 +225,7 @@ void main() {
         RingEntityCompanion(
           id: d.Value(id),
           sessionId: const d.Value(3),
+          ringerId: const d.Value('7000'),
           primaryIdMethod: const d.Value('C0'),
           ringSeriesCode: const d.Value('E'),
           ringIdNumber: const d.Value('16'),
@@ -314,21 +317,21 @@ void main() {
     });
 
     test('Stream emits list of right rings.', () async {
-      await monRingDb.saveRing(rings[0]);
-      await monRingDb.saveRing(rings[1]);
+      await monRingDb.saveRing(test_data.rings[0]);
+      await monRingDb.saveRing(test_data.rings[1]);
 
       final expectation = expectLater(
           monRingDb.watchSessionRings(2).map((ringList) => ringList.length),
           emitsInOrder([1, 2]));
 
-      await monRingDb.saveRing(rings[2]);
+      await monRingDb.saveRing(test_data.rings[2]);
       await expectation;
     });
   });
 
   group('Retrap data can be saved, updated, retrieved and deleted.', () {
     test('Retrap data can be saved.', () async {
-      final id = await monRingDb.saveRetrap(retraps[0]);
+      final id = await monRingDb.saveRetrap(test_data.retraps[0]);
       final retrap = await monRingDb.getRetrap(id);
 
       expect(retrap.id, id);
@@ -375,7 +378,7 @@ void main() {
     });
 
     test('Anogher retrap data can be saved, updated and deleted.', () async {
-      final id = await monRingDb.saveRetrap(retraps[1]);
+      final id = await monRingDb.saveRetrap(test_data.retraps[1]);
       final retrap = await monRingDb.getRetrap(id);
 
       expect(retrap.id, id);
@@ -424,6 +427,7 @@ void main() {
         RetrapEntityCompanion(
           id: d.Value(id),
           sessionId: const d.Value(3),
+          ringerId: const d.Value('7000'),
           ringScheme: const d.Value('DEB'),
           primaryIdMethod: const d.Value('C0'),
           ringSeriesCode: const d.Value('E'),
@@ -516,8 +520,8 @@ void main() {
     });
 
     test('Stream emits list of right retraps.', () async {
-      await monRingDb.saveRetrap(retraps[0]);
-      await monRingDb.saveRetrap(retraps[1]);
+      await monRingDb.saveRetrap(test_data.retraps[0]);
+      await monRingDb.saveRetrap(test_data.retraps[1]);
 
       final expectation = expectLater(
           monRingDb
@@ -525,7 +529,7 @@ void main() {
               .map((retrapList) => retrapList.length),
           emitsInOrder([1, 2]));
 
-      await monRingDb.saveRetrap(retraps[2]);
+      await monRingDb.saveRetrap(test_data.retraps[2]);
       await expectation;
     });
   });
