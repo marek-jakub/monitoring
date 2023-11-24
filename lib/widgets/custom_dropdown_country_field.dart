@@ -47,7 +47,7 @@ class _CustomDropdownCountryFormFieldState
             }
             return null;
           },
-          menuMaxHeight: 200.0,
+          menuMaxHeight: 400.0,
           onChanged: (String? value) {
             setState(() {
               widget._countryController.text = value!;

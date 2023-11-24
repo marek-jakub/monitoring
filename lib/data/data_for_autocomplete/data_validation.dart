@@ -258,7 +258,7 @@ class InputValidator {
             Provider.of<RingDataManager>(context, listen: false).seriesRings;
         debugPrint('data_validation : $codeSeries');
       }
-      if (seriesTo!.isNotEmpty &&
+      if (seriesTo.isNotEmpty &&
           !intMatch.hasMatch(seriesTo) &&
           !focusNode.hasFocus) {
         return 'Incorrect format!';

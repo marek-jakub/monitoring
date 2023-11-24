@@ -44,9 +44,6 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   // Provider and notifier access to data manager.
   late RingDataManager _dataManager;
 
-  // Ring series id
-  int _ringSeriesId = -1;
-
   /// Form field input validator.
   late InputValidator _inputValidator;
 

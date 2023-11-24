@@ -1,1 +1,2 @@
-// TODO: define integration tests.
+
+// Integration testing: see integration_test folder.

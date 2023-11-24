@@ -125,6 +125,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       mainAxisAlignment: MainAxisAlignment.end,
       children: [
         MaterialButton(
+            key: const ValueKey('skipButton'),
             child: const Text('Skip'),
             onPressed: () {
               Provider.of<MonitoRingStateManager>(context, listen: false)

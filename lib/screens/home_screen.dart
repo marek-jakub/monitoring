@@ -107,6 +107,7 @@ class _HomeState extends State<Home> {
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: IconButton(
+        key: const ValueKey('profileButton'),
         icon: const Icon(Icons.settings),
         onPressed: () {
           Provider.of<ProfileManager>(context, listen: false)
