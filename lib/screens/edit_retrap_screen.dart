@@ -7,10 +7,7 @@ import '../data/data_for_autocomplete/autocomplete_data.dart';
 import '../data/data_for_autocomplete/data_validation.dart';
 import '../models/models.dart';
 
-import '../widgets/custom_text_form_field.dart';
-import '../widgets/custom_dropdown_form_field.dart';
-import '../widgets/custom_time_picker_field.dart';
-import '../widgets/custom_typeahead_field.dart';
+import '../widgets/custom_widgets.dart';
 
 /// A form for editing, deleting retrap data stored in the database.
 class EditRetrapScreen extends StatefulWidget {
@@ -297,7 +294,7 @@ class _EditRetrapScreenState extends State<EditRetrapScreen> {
                                 ),
                               ],
                             ),
-                            CustomTypeaheadFormfield(
+                            CustomEasyAutocomplete(
                                 controller: _speciesController,
                                 txtLabel: 'Species',
                                 listValues: species),

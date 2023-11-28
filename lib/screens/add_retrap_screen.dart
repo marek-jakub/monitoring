@@ -7,10 +7,7 @@ import '../data/data_for_autocomplete/autocomplete_data.dart';
 import '../data/data_for_autocomplete/data_validation.dart';
 import '../models/models.dart';
 
-import '../widgets/custom_text_form_field.dart';
-import '../widgets/custom_dropdown_form_field.dart';
-import '../widgets/custom_time_picker_field.dart';
-import '../widgets/custom_typeahead_field.dart';
+import '../widgets/custom_widgets.dart';
 
 /// A form to input and save recaptured bird information as a retrap entity.
 class AddRetrapScreen extends StatefulWidget {
@@ -280,7 +277,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                               ),
                             ],
                           ),
-                          CustomTypeaheadFormfield(
+                          CustomEasyAutocomplete(
                               controller: _speciesController,
                               txtLabel: 'Species',
                               listValues: species),
