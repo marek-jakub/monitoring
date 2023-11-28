@@ -12,7 +12,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  google_fonts: ^4.0.4
+  google_fonts: ^6.1.0
   # provider allows alocation/disposal of resources
   provider: ^6.0.5
   # manage user login status
@@ -37,7 +37,7 @@ dependencies:
   # internationalize e.g. date
   intl: ^0.18.1
   # create custom type ahead form field
-  flutter_typeahead: ^4.6.2
+  flutter_typeahead: ^5.0.1
   # create autocomplete form field
   simple_autocomplete_formfield: ^0.3.0
   easy_autocomplete: ^1.6.0
@@ -55,7 +55,7 @@ dev_dependencies:
   integration_test:
     sdk: flutter
 
-  flutter_lints: ^2.0.0
+  flutter_lints: ^3.0.1
   build_runner: ^2.4.4
   drift_dev: ^2.8.2
   test: ^1.22.0
