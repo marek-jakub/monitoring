@@ -17,9 +17,9 @@ class Home extends StatefulWidget {
   }
 
   const Home({
-    Key? key,
+    super.key,
     required this.currentTab,
-  }) : super(key: key);
+  });
 
   /// The current screen tab.
   final int currentTab;
@@ -41,14 +41,17 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        key: const ValueKey('appBar'),
         title: const Text(
           'MonitoRing',
+          key: ValueKey('appBarTitle'),
         ),
         actions: [
           profileButton(),
         ],
       ),
       body: IndexedStack(
+        key: const ValueKey('indexedStack'),
         index: widget.currentTab,
         children: pages,
       ),
