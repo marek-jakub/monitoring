@@ -4,14 +4,13 @@ import 'package:flutter/material.dart';
 /// a label [_label] and a callback method [_callback].
 class CustomDatePickerField extends StatelessWidget {
   const CustomDatePickerField(
-      {Key? key,
+      {super.key,
       required TextEditingController controller,
       required String txtLabel,
       required VoidCallback callback})
       : _controller = controller,
         _label = txtLabel,
-        _callback = callback,
-        super(key: key);
+        _callback = callback;
 
   final TextEditingController _controller;
   final String _label;

@@ -37,9 +37,9 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   final TextEditingController _ringTo = TextEditingController();
 
   // Form field focus nodes
-  FocusNode _sCode = FocusNode();
-  FocusNode _sFrom = FocusNode();
-  FocusNode _sTo = FocusNode();
+  final FocusNode _sCode = FocusNode();
+  final FocusNode _sFrom = FocusNode();
+  final FocusNode _sTo = FocusNode();
 
   // Provider and notifier access to data manager.
   late RingDataManager _dataManager;

@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 /// a callback method [_callback], a validator [_validator].
 class CustomTimePickerField extends StatefulWidget {
   const CustomTimePickerField({
-    Key? key,
+    super.key,
     required TextEditingController controller,
     required String txtLabel,
     required VoidCallback callback,
@@ -14,8 +14,7 @@ class CustomTimePickerField extends StatefulWidget {
   })  : _controller = controller,
         _label = txtLabel,
         _callback = callback,
-        _validator = validator,
-        super(key: key);
+        _validator = validator;
 
   final TextEditingController _controller;
   final String _label;

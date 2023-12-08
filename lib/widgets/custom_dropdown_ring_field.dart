@@ -7,14 +7,13 @@ import 'package:flutter/material.dart';
 /// a label [_label] and a list of strings to be used [_listValues].
 class CustomDropdownRingField extends StatefulWidget {
   const CustomDropdownRingField({
-    Key? key,
+    super.key,
     required TextEditingController ringIdController,
     required String txtLabel,
     required List<String> listValues,
   })  : _ringIdController = ringIdController,
         _label = txtLabel,
-        _listValues = listValues,
-        super(key: key);
+        _listValues = listValues;
 
   final TextEditingController _ringIdController;
   final String _label;

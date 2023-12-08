@@ -7,14 +7,13 @@ import 'package:monitoring/models/models.dart';
 /// a label [_label] and a list of strings to be used [_listValues].
 class CustomDropdownSessionField extends StatefulWidget {
   const CustomDropdownSessionField({
-    Key? key,
+    super.key,
     required TextEditingController sessionController,
     required String txtLabel,
     required List<SessionLocationViewData> sessionData,
   })  : _sessionController = sessionController,
         _label = txtLabel,
-        _sessionData = sessionData,
-        super(key: key);
+        _sessionData = sessionData;
 
   final TextEditingController _sessionController;
   final String _label;

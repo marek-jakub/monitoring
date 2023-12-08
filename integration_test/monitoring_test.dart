@@ -12,7 +12,9 @@ void main() {
     // If logged in, it jumps to home screen directly and
     // log in throws assertion error, in this case run this log out test
     // first.
-    testWidgets('If already logged in, run this to log out.', (tester) async {
+    testWidgets(
+        'If already logged in, run this to log out. If logged out, this test will fail, which is normal.',
+        (tester) async {
       await tester.pumpWidget(const MonitoRing());
       await addDelay(4000);
       await tester.pumpAndSettle();
@@ -103,7 +105,7 @@ void main() {
           find.byKey(const ValueKey('longitude')), '48.1234');
       await addDelay(2000);
       await tester.pumpAndSettle();
-      tester.printToConsole('Added latitude.');
+      tester.printToConsole('Added longitude.');
       // Set accuracy of co-ordinates
       await tester.tap(find.byKey(const ValueKey('coordinates_accuracy')));
       await addDelay(2000);

@@ -19,9 +19,9 @@ class LoginScreen extends StatelessWidget {
   final String? username;
 
   const LoginScreen({
-    Key? key,
+    super.key,
     this.username,
-  }) : super(key: key);
+  });
 
   final Color ringsColor = const Color.fromRGBO(46, 134, 77, 1);
   final TextStyle onFocusStyle = const TextStyle(color: Colors.green);

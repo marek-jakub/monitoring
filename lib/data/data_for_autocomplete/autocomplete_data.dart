@@ -2,6 +2,7 @@
 /// Code 2020.
 ///
 /// Current access: https://euring.org/files/documents/E2020ExchangeCodeV201.pdf
+library;
 
 /// EURING Code accuracy of coordinates values.
 const List<String> accuracyOfCoordinates = <String>[

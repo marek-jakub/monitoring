@@ -113,6 +113,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     super.dispose();
   }
 
+  @override
   Widget build(BuildContext context) {
     return Consumer<RingDataManager>(
       builder: (context, ringDataManager, child) {

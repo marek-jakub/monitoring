@@ -6,7 +6,7 @@ import 'package:monitoring/models/models.dart';
 /// a label [_label] and a list of strings to be used [_listValues].
 class CustomDropdownRingSeriesField extends StatefulWidget {
   const CustomDropdownRingSeriesField({
-    Key? key,
+    super.key,
     required TextEditingController schemeCodeController,
     required TextEditingController ringSeriesController,
     required TextEditingController ringIdController,
@@ -16,8 +16,7 @@ class CustomDropdownRingSeriesField extends StatefulWidget {
         _ringSeriesController = ringSeriesController,
         _ringIdController = ringIdController,
         _label = txtLabel,
-        _listValues = listValues,
-        super(key: key);
+        _listValues = listValues;
 
   final TextEditingController _schemeCodeController;
   final TextEditingController _ringSeriesController;
