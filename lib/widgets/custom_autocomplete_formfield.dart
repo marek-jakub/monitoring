@@ -3,14 +3,13 @@ import 'package:simple_autocomplete_formfield/simple_autocomplete_formfield.dart
 
 class CustomAutocompleteFormfield extends StatefulWidget {
   const CustomAutocompleteFormfield({
-    Key? key,
+    super.key,
     required TextEditingController controller,
     required String txtLabel,
     required List<String> listValues,
   })  : _controller = controller,
         _label = txtLabel,
-        _listValues = listValues,
-        super(key: key);
+        _listValues = listValues;
 
   final TextEditingController _controller;
   final String _label;

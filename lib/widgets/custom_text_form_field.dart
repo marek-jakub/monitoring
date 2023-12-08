@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 /// and an input validator [_validator].
 class CustomTextFormField extends StatefulWidget {
   const CustomTextFormField({
-    Key? key,
+    super.key,
     required TextEditingController controller,
     required FocusNode focusNode,
     required String txtLabel,
@@ -17,8 +17,7 @@ class CustomTextFormField extends StatefulWidget {
         _focusNode = focusNode,
         _label = txtLabel,
         _keyboard = keyboard,
-        _validator = validator,
-        super(key: key);
+        _validator = validator;
 
   final TextEditingController _controller;
   final FocusNode _focusNode;

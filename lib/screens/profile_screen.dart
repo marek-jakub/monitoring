@@ -17,9 +17,9 @@ class ProfileScreen extends StatefulWidget {
   final Ringer ringer;
 
   const ProfileScreen({
-    Key? key,
+    super.key,
     required this.ringer,
-  }) : super(key: key);
+  });
 
   @override
   State<ProfileScreen> createState() => _ProfileScreenState();

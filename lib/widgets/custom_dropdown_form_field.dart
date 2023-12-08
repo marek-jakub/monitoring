@@ -7,7 +7,7 @@ import 'package:flutter/material.dart';
 /// an input validator [_validator].
 class CustomDropdownButtonFormField extends StatefulWidget {
   const CustomDropdownButtonFormField({
-    Key? key,
+    super.key,
     required TextEditingController controller,
     required String txtLabel,
     required List<String> listValues,
@@ -15,8 +15,7 @@ class CustomDropdownButtonFormField extends StatefulWidget {
   })  : _controller = controller,
         _label = txtLabel,
         _listValues = listValues,
-        _validator = validator,
-        super(key: key);
+        _validator = validator;
 
   final TextEditingController _controller;
   final String _label;

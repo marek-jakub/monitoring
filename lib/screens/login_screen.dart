@@ -19,9 +19,9 @@ class LoginScreen extends StatelessWidget {
   final String? username;
 
   const LoginScreen({
-    Key? key,
+    super.key,
     this.username,
-  }) : super(key: key);
+  });
 
   final Color ringsColor = const Color.fromRGBO(46, 134, 77, 1);
   final TextStyle onFocusStyle = const TextStyle(color: Colors.green);
@@ -40,17 +40,19 @@ class LoginScreen extends StatelessWidget {
               const SizedBox(
                 height: 200,
                 child: Image(
+                  key: ValueKey('monitoringLogo'),
                   image: AssetImage('assets/images/mon_ring_logo.png'),
                 ),
               ),
               const SizedBox(
                 height: 16.0,
               ),
-              entryTextfield(username ?? 'username'),
+              entryTextfield(
+                  key: const ValueKey('username'), username ?? 'username'),
               const SizedBox(
                 height: 16.0,
               ),
-              entryTextfield('password'),
+              entryTextfield(key: const ValueKey('password'), 'password'),
               const SizedBox(
                 height: 16.0,
               ),
@@ -63,8 +65,9 @@ class LoginScreen extends StatelessWidget {
   }
 
   /// A textfield for entering username.
-  Widget entryTextfield(String aHint) {
+  Widget entryTextfield(String aHint, {required ValueKey<String> key}) {
     return TextField(
+      key: key,
       cursorColor: ringsColor,
       decoration: InputDecoration(
         border: const OutlineInputBorder(

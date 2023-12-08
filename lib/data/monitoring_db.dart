@@ -30,7 +30,8 @@ class MonRingDb extends _$MonRingDb {
   //MonRingDb() : super(_openConnection());
 
   // The initiator with QueryExecutor is for testing purposes
-  MonRingDb(QueryExecutor e) : super(e);
+  //MonRingDb(QueryExecutor e) : super(e);
+  MonRingDb(super.e);
 
   @override
   int get schemaVersion => 1;

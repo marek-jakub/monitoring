@@ -6,14 +6,13 @@ import 'package:easy_autocomplete/easy_autocomplete.dart';
 /// [_listValues].
 class CustomEasyAutocomplete extends StatefulWidget {
   const CustomEasyAutocomplete({
-    Key? key,
+    super.key,
     required TextEditingController controller,
     required String txtLabel,
     required List<String> listValues,
   })  : _controller = controller,
         _label = txtLabel,
-        _listValues = listValues,
-        super(key: key);
+        _listValues = listValues;
 
   final TextEditingController _controller;
   final String _label;

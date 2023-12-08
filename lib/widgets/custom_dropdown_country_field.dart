@@ -6,7 +6,7 @@ import 'package:monitoring/models/models.dart';
 /// a label [_label] and a list of strings to be used [_listValues].
 class CustomDropdownCountryFormField extends StatefulWidget {
   const CustomDropdownCountryFormField({
-    Key? key,
+    super.key,
     required TextEditingController countryController,
     required TextEditingController placeCodeController,
     required String txtLabel,
@@ -14,8 +14,7 @@ class CustomDropdownCountryFormField extends StatefulWidget {
   })  : _countryController = countryController,
         _placeCodeController = placeCodeController,
         _label = txtLabel,
-        _listValues = listValues,
-        super(key: key);
+        _listValues = listValues;
 
   final TextEditingController _countryController;
   final TextEditingController _placeCodeController;
