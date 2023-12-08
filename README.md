@@ -1,6 +1,6 @@
 # MonitoRing
 
-<img src="../monitoring/assets/images/mon_ring_logo.png" align="right"
+<img src="assets/images/mon_ring_logo.png" align="right"
      alt="MonitoRing project logo." width="100" height="130">
 
 This is a student project, with the main goal of researching bird ringing data management practices and building a high-fidelity, horizontal prototype of a mobile application used in the management of bird ringing data in fieldwork conditions.
