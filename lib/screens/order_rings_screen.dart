@@ -108,7 +108,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () {
                     addOrder();
                     _dataManager.getOrderStream(
@@ -119,7 +119,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () {
                     if (_orderId != -1) {
                       deleteOrder(_orderId);
@@ -131,7 +131,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () {
                     updateOrder(_orderId);
                   },

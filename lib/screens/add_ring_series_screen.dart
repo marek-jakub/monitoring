@@ -142,7 +142,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                 children: [
                   Padding(
                     padding: const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
-                    child: ElevatedButton(
+                    child: OutlinedButton(
                       style: _formIsFilled()
                           ? const ButtonStyle()
                           : ButtonStyle(

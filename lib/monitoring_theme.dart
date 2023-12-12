@@ -182,7 +182,7 @@ class MonitoRingTheme {
     return ThemeData(
       brightness: Brightness.light,
       primarySwatch: customLightSwatch,
-      scaffoldBackgroundColor: Colors.grey[200],
+      scaffoldBackgroundColor: Colors.white,
       checkboxTheme:
           CheckboxThemeData(fillColor: MaterialStateColor.resolveWith((states) {
         return Colors.black;
@@ -191,7 +191,27 @@ class MonitoRingTheme {
         titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.black),
         centerTitle: true,
         foregroundColor: Colors.grey[800],
-        backgroundColor: Colors.white,
+        backgroundColor: Colors.grey[400],
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: MaterialStatePropertyAll(Colors.green[900]),
+        //trackOutlineColor: MaterialStatePropertyAll(Colors.green[900]),
+        //trackColor: MaterialStatePropertyAll(Colors.green[900]),
+        //overlayColor: MaterialStatePropertyAll(Colors.green[900]),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(Colors.grey[400]),
+          foregroundColor: MaterialStatePropertyAll(Colors.green[900]),
+          textStyle: MaterialStateProperty.all(
+            const TextStyle(
+              fontSize: 14,
+            ),
+          ),
+          minimumSize: MaterialStateProperty.all(
+            const Size(110, 40),
+          ),
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
@@ -286,10 +306,31 @@ class MonitoRingTheme {
         return Colors.grey;
       })),
       appBarTheme: AppBarTheme(
-        titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.white),
+        titleTextStyle: TextStyle(fontSize: 14.0, color: Colors.grey[300]),
         centerTitle: true,
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.grey[800],
+        foregroundColor: Colors.grey[300],
+        backgroundColor: Colors.grey[900],
+      ),
+      switchTheme: SwitchThemeData(
+        thumbColor: MaterialStatePropertyAll(Colors.green[900]),
+        trackColor: MaterialStatePropertyAll(Colors.grey[300]),
+        //trackOutlineColor: MaterialStatePropertyAll(Colors.green[900]),
+        //trackColor: MaterialStatePropertyAll(Colors.green[900]),
+        //overlayColor: MaterialStatePropertyAll(Colors.green[900]),
+      ),
+      outlinedButtonTheme: OutlinedButtonThemeData(
+        style: ButtonStyle(
+          backgroundColor: MaterialStatePropertyAll(Colors.green[900]),
+          foregroundColor: MaterialStatePropertyAll(Colors.grey[300]),
+          textStyle: MaterialStateProperty.all(
+            const TextStyle(
+              fontSize: 14,
+            ),
+          ),
+          minimumSize: MaterialStateProperty.all(
+            const Size(110, 40),
+          ),
+        ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ButtonStyle(
@@ -303,11 +344,11 @@ class MonitoRingTheme {
           ),
         ),
       ),
-      floatingActionButtonTheme: const FloatingActionButtonThemeData(
-        extendedTextStyle: TextStyle(
+      floatingActionButtonTheme: FloatingActionButtonThemeData(
+        extendedTextStyle: const TextStyle(
           fontSize: 14,
         ),
-        foregroundColor: Colors.white,
+        foregroundColor: Colors.grey[300],
         backgroundColor: Colors.grey,
       ),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -338,14 +379,14 @@ class MonitoRingTheme {
         shape: RoundedRectangleBorder(),
       ),
       expansionTileTheme: ExpansionTileThemeData(
-        textColor: Colors.white,
+        textColor: Colors.grey[300],
         collapsedBackgroundColor: Colors.grey[600],
         backgroundColor: Colors.grey[700],
       ),
       listTileTheme: ListTileThemeData(
         style: ListTileStyle.list,
         tileColor: Colors.grey[800],
-        textColor: Colors.white,
+        textColor: Colors.grey[300],
         titleTextStyle: const TextStyle(fontSize: 14.0),
       ),
       dropdownMenuTheme: const DropdownMenuThemeData(

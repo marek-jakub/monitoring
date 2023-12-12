@@ -28,7 +28,7 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
-              ElevatedButton(
+              OutlinedButton(
                 onPressed: () {
                   if (dataManager.currentSessionId > -1) {
                     dataManager.setNewRetrap(true);

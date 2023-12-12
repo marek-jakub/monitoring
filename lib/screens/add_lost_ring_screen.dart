@@ -131,7 +131,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(5.0, 2.0, 2.0, 2.0),
-                          child: ElevatedButton(
+                          child: OutlinedButton(
                             onPressed: () {
                               addLostRing();
                               _dataManager.getLostRingsStream(context
@@ -145,7 +145,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                         Padding(
                           padding:
                               const EdgeInsets.fromLTRB(2.0, 2.0, 2.0, 2.0),
-                          child: ElevatedButton(
+                          child: OutlinedButton(
                             onPressed: () {
                               if (_lostRingId != -1) {
                                 deleteLostRing(_lostRingId);

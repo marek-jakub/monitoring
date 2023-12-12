@@ -50,7 +50,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                ElevatedButton(
+                OutlinedButton(
                   key: const ValueKey('sessionButton'),
                   onPressed: () {
                     // Go to add_session_screen.
@@ -60,7 +60,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                       ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
                   child: const Text('Session'),
                 ),
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () {
                     if (_ringerSession.text != '') {
                       // Go to add_ring screen.
@@ -93,7 +93,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                       ElevatedButton.styleFrom(fixedSize: const Size(90, 25)),
                   child: const Text('Ring'),
                 ),
-                ElevatedButton(
+                OutlinedButton(
                   onPressed: () {
                     // Go to report_screen.
                     dataManager.setNewReport(true);

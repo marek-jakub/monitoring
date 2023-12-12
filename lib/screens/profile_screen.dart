@@ -49,7 +49,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
             children: [
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () {
                     Provider.of<RingDataManager>(context, listen: false)
                         .getRingSeriesStream(
@@ -64,7 +64,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () {
                     Provider.of<RingDataManager>(context, listen: false)
                         .getLostRingsStream(
@@ -84,7 +84,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
               ),
               Padding(
                 padding: const EdgeInsets.all(8.0),
-                child: ElevatedButton(
+                child: OutlinedButton(
                   onPressed: () {
                     Provider.of<RingDataManager>(context, listen: false)
                         .getOrderStream(

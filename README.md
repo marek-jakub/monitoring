@@ -5,7 +5,6 @@
 
 This is a student project, with the main goal of researching bird ringing data management practices and building a high-fidelity, horizontal prototype of a mobile application used in the management of bird ringing data in fieldwork conditions.
 
-
 ## Table of Contents
 
 - [MonitoRing Description](#monitoring-description)
@@ -85,7 +84,7 @@ Integration and widget tests are best run from logged out state, as checks are a
 To run widget test, apply:
 
 ```bash
-flutter test integration_test/home_screen_test.dart
+flutter test integration_test/widget_tests/home_screen_test.dart
 ```
 
 Choose from available devices.
@@ -93,7 +92,7 @@ Choose from available devices.
 To run integration test, apply:
 
 ```bash
-flutter test integration_test/monitoring_test.dart
+flutter test integration_test/integration_tests/monitoring_test.dart
 ```
 
 Choose from available devices.
