@@ -175,7 +175,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                     validator:
                         _inputValidator.accOfDateValidator(accuracyOfDate),
                   ),
-                  ElevatedButton(
+                  OutlinedButton(
                     onPressed: () async {
                       determineLatLon().then((value) {
                         LocationData? location = value;
