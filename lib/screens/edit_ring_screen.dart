@@ -96,6 +96,27 @@ class _EditRingScreenState extends State<EditRingScreen> {
   final TextEditingController _alulaController = TextEditingController();
   final TextEditingController _carpalCovertController = TextEditingController();
 
+  // Form field focus nodes
+  final FocusNode _ringSeriesNode = FocusNode();
+  final FocusNode _idNumberNode = FocusNode();
+  final FocusNode _wingLengthNode = FocusNode();
+  final FocusNode _thirdPrimaryNode = FocusNode();
+  final FocusNode _massNode = FocusNode();
+  final FocusNode _billLengthNode = FocusNode();
+  final FocusNode _hindClawNode = FocusNode();
+  final FocusNode _totalHeadLengthNode = FocusNode();
+  final FocusNode _tarsusNode = FocusNode();
+  final FocusNode _tailLengthNode = FocusNode();
+  final FocusNode _tailDifferenceNode = FocusNode();
+  final FocusNode _fatScoreNode = FocusNode();
+  final FocusNode _pectoralMuscleNode = FocusNode();
+  final FocusNode _primaryScoreNode = FocusNode();
+  final FocusNode _broodPatchNode = FocusNode();
+  final FocusNode _primaryMoultNode = FocusNode();
+  final FocusNode _oldGreaterCovertsNode = FocusNode();
+  final FocusNode _alulaNode = FocusNode();
+  final FocusNode _otherMarksNode = FocusNode();
+
   /// Current time.
   TimeOfDay? _currTime;
 
@@ -239,7 +260,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                         Expanded(
                           child: CustomTextFormField(
                             controller: _ringSeriesCodeController,
-                            focusNode: FocusNode(),
+                            focusNode: _ringSeriesNode,
                             txtLabel: 'Ring series',
                             keyboard: 'text',
                             // TODO: Implement proper validator.
@@ -249,7 +270,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                         Expanded(
                           child: CustomTextFormField(
                             controller: _ringIdNumberController,
-                            focusNode: FocusNode(),
+                            focusNode: _idNumberNode,
                             txtLabel: 'ID number',
                             keyboard: 'number',
                             // TODO: Implement proper validator.
@@ -349,7 +370,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _wingLengthController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _wingLengthNode,
                                   txtLabel: 'Wing Length',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -360,7 +381,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _thirdPrimaryController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _thirdPrimaryNode,
                                   txtLabel: 'Third Primary',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -371,7 +392,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _massController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _massNode,
                                   txtLabel: 'Mass',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -420,7 +441,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _billLengthController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _billLengthNode,
                                   txtLabel: 'Bill Length',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -431,7 +452,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _hindClawController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _hindClawNode,
                                   txtLabel: 'Hind Claw',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -442,7 +463,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _headLengthTotalController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _totalHeadLengthNode,
                                   txtLabel: 'Total Head Length',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -536,7 +557,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _tarsusController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _tarsusNode,
                                   txtLabel: 'Tarsus',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -547,7 +568,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _tailLengthController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _tailLengthNode,
                                   txtLabel: 'Tail Length',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -558,7 +579,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _tailDifferenceController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _tailDifferenceNode,
                                   txtLabel: 'Tail Difference',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -639,7 +660,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _fatScoreController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _fatScoreNode,
                                   txtLabel: 'Fat Score',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -650,7 +671,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _pectoralMuscleController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _pectoralMuscleNode,
                                   txtLabel: 'Pectoral Muscle Score',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -661,7 +682,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _primaryScoreController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _primaryScoreNode,
                                   txtLabel: 'Primary Score',
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
@@ -742,7 +763,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _broodPatchController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _broodPatchNode,
                                   txtLabel: 'Brood Patch',
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
@@ -753,7 +774,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _primaryMoultController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _primaryMoultNode,
                                   txtLabel: 'Primary Moult',
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
@@ -764,7 +785,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _oldGreaterCovertsController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _oldGreaterCovertsNode,
                                   txtLabel: 'Old Greater Coverts',
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
@@ -779,7 +800,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                               Expanded(
                                 child: CustomTextFormField(
                                   controller: _alulaController,
-                                  focusNode: FocusNode(),
+                                  focusNode: _alulaNode,
                                   txtLabel: 'Alula',
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
@@ -906,7 +927,7 @@ class _EditRingScreenState extends State<EditRingScreen> {
                           ),
                           CustomTextFormField(
                             controller: _otherMarksController,
-                            focusNode: FocusNode(),
+                            focusNode: _otherMarksNode,
                             txtLabel: 'Other marks',
                             keyboard: 'text',
                             // TODO: Implement proper validator.
