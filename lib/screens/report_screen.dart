@@ -60,7 +60,7 @@ class _ReportScreenState extends State<ReportScreen> {
               Center(
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
-                  child: ElevatedButton(
+                  child: OutlinedButton(
                     onPressed: () {
                       outputData.saveDataAsFile(context, rings, retraps);
                       saveReportInfo(rings, retraps);

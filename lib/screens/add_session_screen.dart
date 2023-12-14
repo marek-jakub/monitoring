@@ -53,6 +53,12 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
   final TextEditingController _endTimeController = TextEditingController();
   final TextEditingController _localeInfoController = TextEditingController();
 
+  // Form field focus nodes
+  final FocusNode _localityNode = FocusNode();
+  final FocusNode _latNode = FocusNode();
+  final FocusNode _lonNode = FocusNode();
+  final FocusNode _localeInfoNode = FocusNode();
+
   /// Current date.
   DateTime? _currDate;
 
@@ -154,7 +160,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   CustomTextFormField(
                     key: const ValueKey('locality'),
                     controller: _localityController,
-                    focusNode: FocusNode(),
+                    focusNode: _localityNode,
                     txtLabel: 'Locality name',
                     keyboard: 'text',
                     validator: _inputValidator.localityNameValidator(),
@@ -195,7 +201,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                         child: CustomTextFormField(
                           key: const ValueKey('latitude'),
                           controller: _latController,
-                          focusNode: FocusNode(),
+                          focusNode: _latNode,
                           txtLabel: 'Latitude',
                           keyboard: 'number',
                           validator: _inputValidator.latValidator(),
@@ -205,7 +211,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                         child: CustomTextFormField(
                           key: const ValueKey('longitude'),
                           controller: _lonController,
-                          focusNode: FocusNode(),
+                          focusNode: _lonNode,
                           txtLabel: 'Longitude',
                           keyboard: 'number',
                           validator: _inputValidator.lonValidator(),
@@ -251,7 +257,7 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                   ),
                   CustomTextFormField(
                     controller: _localeInfoController,
-                    focusNode: FocusNode(),
+                    focusNode: _localeInfoNode,
                     txtLabel: 'Locality information',
                     keyboard: 'text',
                     validator: _inputValidator.localityInfoValidator(),
