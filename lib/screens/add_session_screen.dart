@@ -187,9 +187,9 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
                         LocationData? location = value;
                         setState(() {
                           _latController.text =
-                              location?.latitude.toString() ?? '';
+                              location?.latitude?.toStringAsFixed(4) ?? '';
                           _lonController.text =
-                              location?.longitude.toString() ?? '';
+                              location?.longitude?.toStringAsFixed(4) ?? '';
                         });
                       });
                     },

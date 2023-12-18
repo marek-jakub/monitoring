@@ -156,7 +156,7 @@ class _SessionsScreenState extends State<SessionsScreen> {
                         Expanded(
                           child: CustomDropdownSessionField(
                             sessionController: _ringerSession,
-                            txtLabel: 'Ringing sessions',
+                            txtLabel: '',
                             sessionData: sessions,
                           ),
                         ),
@@ -183,114 +183,121 @@ class _SessionsScreenState extends State<SessionsScreen> {
                                         dataManager.setSelectedRingId(ring.id);
                                       },
                                       child: Card(
-                                        elevation: 0,
-                                        child: Column(
-                                          children: [
-                                            // TODO: refactor the code, create a ring card
-                                            // Text(ring.id.toString()),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text(
-                                                      'Primary ID method:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                      ring.primaryIdMethod,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text('Metal ring:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                      ring.metalRingInfo,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text('Ring series:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(
-                                                      ring.ringSeriesCode,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text('ID number:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(ring.ringIdNumber,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text('Species:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(ring.species,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text('Sex:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(ring.sex,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                            Row(
-                                              children: [
-                                                const Expanded(
-                                                  child: Text('Age:',
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                                Expanded(
-                                                  child: Text(ring.age,
-                                                      textAlign:
-                                                          TextAlign.left),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                        elevation: 2.0,
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(7.0),
+                                        ),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(8.0),
+                                          child: Column(
+                                            children: [
+                                              // TODO: refactor the code, create a ring card
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text(
+                                                        'Primary ID method:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                        ring.primaryIdMethod,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text('Metal ring:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                        ring.metalRingInfo,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text('Ring series:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                        ring.ringSeriesCode,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text('ID number:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(
+                                                        ring.ringIdNumber,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text('Species:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(ring.species,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text('Sex:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(ring.sex,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                              Row(
+                                                children: [
+                                                  const Expanded(
+                                                    child: Text('Age:',
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                  Expanded(
+                                                    child: Text(ring.age,
+                                                        textAlign:
+                                                            TextAlign.left),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
                                     );
