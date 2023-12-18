@@ -256,7 +256,6 @@ class InputValidator {
 
         codeSeries =
             Provider.of<RingDataManager>(context, listen: false).seriesRings;
-        debugPrint('data_validation : $codeSeries');
       }
       if (seriesTo.isNotEmpty &&
           !intMatch.hasMatch(seriesTo) &&
