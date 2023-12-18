@@ -25,10 +25,10 @@ class MonitoRing extends StatefulWidget {
 
 class _MonitoRingState extends State<MonitoRing> {
   // For testing purposes
-  final _monRingDb = MonRingDb(NativeDatabase.memory());
+  //final _monRingDb = MonRingDb(NativeDatabase.memory());
 
   // For app release
-  //final _monRingDb = MonRingDb();
+  final _monRingDb = MonRingDb();
   final _appStateManager = MonitoRingStateManager();
   final _profileManager = ProfileManager();
   final _ringDataManager = RingDataManager();

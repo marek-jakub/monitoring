@@ -27,11 +27,10 @@ part 'monitoring_db.g.dart';
 ])
 class MonRingDb extends _$MonRingDb {
   // The initiator for app release
-  //MonRingDb() : super(_openConnection());
+  MonRingDb() : super(_openConnection());
 
   // The initiator with QueryExecutor is for testing purposes
-  //MonRingDb(QueryExecutor e) : super(e);
-  MonRingDb(super.e);
+  //MonRingDb(super.e);
 
   @override
   int get schemaVersion => 1;
@@ -234,12 +233,12 @@ class MonRingDb extends _$MonRingDb {
     return await (select(ringseriesEntity)
           ..where((tbl) =>
               tbl.ringerId.equals(ringerId) &
-                  tbl.schemeCode.equals(scheme) &
-                  tbl.code.equals(code) &
-                  tbl.ringto.equals(ringFrom) |
-              tbl.ringfrom.equals(ringTo) |
-              (tbl.ringto.isBiggerOrEqualValue(ringFrom) &
-                  tbl.ringfrom.isSmallerOrEqualValue(ringTo))))
+              tbl.schemeCode.equals(scheme) &
+              tbl.code.equals(code) &
+              (tbl.ringto.equals(ringFrom) |
+                  tbl.ringfrom.equals(ringTo) |
+                  (tbl.ringto.isBiggerOrEqualValue(ringFrom) &
+                      tbl.ringfrom.isSmallerOrEqualValue(ringTo)))))
         .get();
   }
 

@@ -188,7 +188,7 @@ class MonitoRingTheme {
         return Colors.black;
       })),
       appBarTheme: AppBarTheme(
-        titleTextStyle: const TextStyle(fontSize: 14.0, color: Colors.black),
+        titleTextStyle: const TextStyle(fontSize: 18.0, color: Colors.black),
         centerTitle: true,
         foregroundColor: Colors.grey[800],
         backgroundColor: Colors.grey[400],
@@ -306,7 +306,7 @@ class MonitoRingTheme {
         return Colors.grey;
       })),
       appBarTheme: AppBarTheme(
-        titleTextStyle: TextStyle(fontSize: 14.0, color: Colors.grey[300]),
+        titleTextStyle: TextStyle(fontSize: 18.0, color: Colors.grey[300]),
         centerTitle: true,
         foregroundColor: Colors.grey[300],
         backgroundColor: Colors.grey[900],
@@ -314,9 +314,6 @@ class MonitoRingTheme {
       switchTheme: SwitchThemeData(
         thumbColor: MaterialStatePropertyAll(Colors.green[900]),
         trackColor: MaterialStatePropertyAll(Colors.grey[300]),
-        //trackOutlineColor: MaterialStatePropertyAll(Colors.green[900]),
-        //trackColor: MaterialStatePropertyAll(Colors.green[900]),
-        //overlayColor: MaterialStatePropertyAll(Colors.green[900]),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: ButtonStyle(
