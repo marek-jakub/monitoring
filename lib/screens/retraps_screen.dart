@@ -86,7 +86,11 @@ class _RetrapsScreenState extends State<RetrapsScreen> {
                                       dataManager.setEditRetrap(true);
                                     },
                                     child: Card(
-                                      elevation: 0,
+                                      elevation: 2.0,
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(7.0),
+                                      ),
                                       child: Column(
                                         children: [
                                           // TODO: refactor the code, create retrap card

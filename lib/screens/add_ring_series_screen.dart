@@ -180,81 +180,92 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
                       itemCount: ringSeries.length,
                       itemBuilder: (context, index) {
                         final ringseries = ringSeries[index];
-                        return Card(
-                            child: Slidable(
-                          key: const ValueKey(0),
-                          startActionPane: ActionPane(
-                            motion: const ScrollMotion(),
-                            children: [
-                              SlidableAction(
-                                onPressed: (context) {
-                                  deleteRingSeries(ringseries.id);
-                                },
-                                // TODO: Update colors for bright and dark modes.
-                                backgroundColor: Colors.red,
-                                foregroundColor: Colors.white,
-                                icon: Icons.delete,
-                                label: 'Remove',
-                              ),
-                            ],
-                          ),
+                        return Padding(
+                          padding:
+                              const EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 0.0),
                           child: Card(
-                            elevation: 0,
-                            child: Column(
+                              child: Slidable(
+                            key: const ValueKey(0),
+                            startActionPane: ActionPane(
+                              motion: const ScrollMotion(),
                               children: [
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                      child: Text('Scheme code:',
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Expanded(
-                                      child: Text(ringseries.schemeCode,
-                                          textAlign: TextAlign.left),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                      child: Text('Ring series code:',
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Expanded(
-                                      child: Text(ringseries.code,
-                                          textAlign: TextAlign.left),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                      child: Text('Series from:',
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Expanded(
-                                      child: Text(
-                                          ringseries.ringfrom.toString(),
-                                          textAlign: TextAlign.left),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                      child: Text('Series to:',
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Expanded(
-                                      child: Text(ringseries.ringto.toString(),
-                                          textAlign: TextAlign.left),
-                                    ),
-                                  ],
+                                SlidableAction(
+                                  onPressed: (context) {
+                                    deleteRingSeries(ringseries.id);
+                                  },
+                                  // TODO: Update colors for bright and dark modes.
+                                  backgroundColor: Colors.red,
+                                  foregroundColor: Colors.white,
+                                  icon: Icons.delete,
+                                  label: 'Remove',
                                 ),
                               ],
                             ),
-                          ),
-                        ));
+                            child: Card(
+                              elevation: 2.0,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(7.0),
+                              ),
+                              child: Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        const Expanded(
+                                          child: Text('Scheme code:',
+                                              textAlign: TextAlign.left),
+                                        ),
+                                        Expanded(
+                                          child: Text(ringseries.schemeCode,
+                                              textAlign: TextAlign.left),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Expanded(
+                                          child: Text('Ring series code:',
+                                              textAlign: TextAlign.left),
+                                        ),
+                                        Expanded(
+                                          child: Text(ringseries.code,
+                                              textAlign: TextAlign.left),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Expanded(
+                                          child: Text('Series from:',
+                                              textAlign: TextAlign.left),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                              ringseries.ringfrom.toString(),
+                                              textAlign: TextAlign.left),
+                                        ),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        const Expanded(
+                                          child: Text('Series to:',
+                                              textAlign: TextAlign.left),
+                                        ),
+                                        Expanded(
+                                          child: Text(
+                                              ringseries.ringto.toString(),
+                                              textAlign: TextAlign.left),
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          )),
+                        );
                       },
                     );
                   },
