@@ -138,6 +138,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
 
   @override
   void dispose() {
+    // Dispose off controllers
     _ringSchemeController.dispose();
     _primaryIDMethodController.dispose();
     _ringSeriesCodeController.dispose();
@@ -180,6 +181,27 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
     _oldGreaterCovertsController.dispose();
     _alulaController.dispose();
     _carpalCovertController.dispose();
+
+    // Dispose off focus nodes
+    _ringSeriesNode.dispose();
+    _idNumberNode.dispose();
+    _wingLengthNode.dispose();
+    _thirdPrimaryNode.dispose();
+    _massNode.dispose();
+    _billLengthNode.dispose();
+    _hindClawNode.dispose();
+    _totalHeadLengthNode.dispose();
+    _tarsusNode.dispose();
+    _tailLengthNode.dispose();
+    _tailDifferenceNode.dispose();
+    _fatScoreNode.dispose();
+    _pectoralMuscleNode.dispose();
+    _primaryScoreNode.dispose();
+    _broodPatchNode.dispose();
+    _primaryMoultNode.dispose();
+    _oldGreaterCovertsNode.dispose();
+    _alulaNode.dispose();
+    _otherMarksNode.dispose();
 
     _dataManager.removeListener(addRetrapListener);
     super.dispose();

@@ -105,6 +105,12 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     _endTimeController.dispose();
     _localeInfoController.dispose();
 
+    // Dispose off focus nodes
+    _localityNode.dispose();
+    _latNode.dispose();
+    _lonNode.dispose();
+    _localeInfoNode.dispose();
+
     // Remove session notifier listeners
     _dataManager.removeListener(providerListener);
 
