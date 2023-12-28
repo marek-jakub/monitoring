@@ -57,6 +57,12 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   final TextEditingController _endTimeController = TextEditingController();
   final TextEditingController _localeInfoController = TextEditingController();
 
+  // Form field focus nodes
+  final FocusNode _localityNode = FocusNode();
+  final FocusNode _latNode = FocusNode();
+  final FocusNode _lonNode = FocusNode();
+  final FocusNode _localeInfoNode = FocusNode();
+
   // TODO: create a pathway for user to be able to assign another location
   // to the session.
 
@@ -106,6 +112,12 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     _startTimeController.dispose();
     _endTimeController.dispose();
     _localeInfoController.dispose();
+
+    // Dispose off focus nodes
+    _localityNode.dispose();
+    _latNode.dispose();
+    _lonNode.dispose();
+    _localeInfoNode.dispose();
 
     // Remove session notifier listeners
     _dataManager.removeListener(providerListener);
@@ -174,7 +186,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                       ),
                       CustomTextFormField(
                         controller: _localityController,
-                        focusNode: FocusNode(),
+                        focusNode: _localityNode,
                         txtLabel: 'Locality name',
                         keyboard: 'text',
                         // TODO: Implement proper validator.
@@ -214,7 +226,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                           Expanded(
                             child: CustomTextFormField(
                               controller: _latController,
-                              focusNode: FocusNode(),
+                              focusNode: _latNode,
                               txtLabel: 'Latitude',
                               keyboard: 'number',
                               // TODO: Implement proper validator.
@@ -225,7 +237,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                           Expanded(
                             child: CustomTextFormField(
                               controller: _lonController,
-                              focusNode: FocusNode(),
+                              focusNode: _lonNode,
                               txtLabel: 'Longitude',
                               keyboard: 'number',
                               // TODO: Implement proper validator.
@@ -271,7 +283,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                       ),
                       CustomTextFormField(
                         controller: _localeInfoController,
-                        focusNode: FocusNode(),
+                        focusNode: _localeInfoNode,
                         txtLabel: 'Locality information',
                         keyboard: 'text',
                         // TODO: Implement proper validator.

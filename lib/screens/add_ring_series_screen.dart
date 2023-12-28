@@ -65,6 +65,12 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     _ringFrom.dispose();
     _ringTo.dispose();
 
+    // Dispose off focus nodes
+    _sCode.dispose();
+    _sFrom.dispose();
+    _ringFrom.dispose();
+    _ringTo.dispose();
+
     // Remove notifier listener.
     _dataManager.removeListener(providerListener);
 

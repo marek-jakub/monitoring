@@ -105,6 +105,12 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     _endTimeController.dispose();
     _localeInfoController.dispose();
 
+    // Dispose off focus nodes
+    _localityNode.dispose();
+    _latNode.dispose();
+    _lonNode.dispose();
+    _localeInfoNode.dispose();
+
     // Remove session notifier listeners
     _dataManager.removeListener(providerListener);
 
@@ -282,8 +288,8 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
         locality: d.Value(_localityController.text),
         country: d.Value(_countryController.text),
         placeCode: d.Value(_placeCodeController.text),
-        latitude: d.Value(_latController.text),
-        longitude: d.Value(_lonController.text),
+        latitude: d.Value(_formatLatLon(_latController.text)),
+        longitude: d.Value(_formatLatLon(_lonController.text)),
         coordinatesAccuracy: d.Value(_coordAccuracyController.text),
         localeInfo: d.Value(_localeInfoController.text),
       );
@@ -473,5 +479,9 @@ class _AddSessionScreenState extends State<AddSessionScreen> {
     locationData = await location.getLocation();
 
     return locationData;
+  }
+
+  String _formatLatLon(String value) {
+    return double.tryParse(value)!.toStringAsFixed(4);
   }
 }

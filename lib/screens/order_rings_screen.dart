@@ -162,34 +162,40 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                           });
                         },
                         child: Card(
-                          elevation: 0,
-                          child: Column(
-                            children: [
-                              Row(
-                                children: [
-                                  const Expanded(
-                                    child: Text('Ring series:',
-                                        textAlign: TextAlign.left),
-                                  ),
-                                  Expanded(
-                                    child: Text(order.ringSeriesCode,
-                                        textAlign: TextAlign.left),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Expanded(
-                                    child: Text('Amount:',
-                                        textAlign: TextAlign.left),
-                                  ),
-                                  Expanded(
-                                    child: Text(order.amount.toString(),
-                                        textAlign: TextAlign.left),
-                                  ),
-                                ],
-                              ),
-                            ],
+                          elevation: 2.0,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7.0),
+                          ),
+                          child: Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Column(
+                              children: [
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Ring series:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(order.ringSeriesCode,
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                                Row(
+                                  children: [
+                                    const Expanded(
+                                      child: Text('Amount:',
+                                          textAlign: TextAlign.left),
+                                    ),
+                                    Expanded(
+                                      child: Text(order.amount.toString(),
+                                          textAlign: TextAlign.left),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                       );

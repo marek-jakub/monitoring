@@ -261,8 +261,8 @@ class MonitoRingTheme {
       ),
       expansionTileTheme: ExpansionTileThemeData(
         textColor: Colors.black,
-        collapsedBackgroundColor: Colors.grey[300],
-        backgroundColor: Colors.grey[350],
+        collapsedBackgroundColor: Colors.grey[400],
+        backgroundColor: Colors.grey[300],
       ),
       listTileTheme: const ListTileThemeData(
         style: ListTileStyle.list,
@@ -377,8 +377,8 @@ class MonitoRingTheme {
       ),
       expansionTileTheme: ExpansionTileThemeData(
         textColor: Colors.grey[300],
-        collapsedBackgroundColor: Colors.grey[600],
-        backgroundColor: Colors.grey[700],
+        collapsedBackgroundColor: Colors.grey[700],
+        backgroundColor: Colors.grey[900],
       ),
       listTileTheme: ListTileThemeData(
         style: ListTileStyle.list,
