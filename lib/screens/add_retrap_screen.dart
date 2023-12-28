@@ -281,261 +281,188 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                     ),
                   ],
                 ),
-                ExpansionTile(
-                  title: const Text(
-                    'Body measurements',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+                  child: ExpansionTile(
+                    title: const Text(
+                      'Body measurements',
+                      style: TextStyle(
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  collapsedBackgroundColor: Colors.grey[500],
-                  backgroundColor: Colors.grey[500],
-                  children: [
-                    Form(
-                      key: _bodyMeasurementsFormKey,
-                      child: Column(
-                        children: [
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomDropdownButtonFormField(
-                                  controller: _primaryIDMethodController,
-                                  txtLabel: 'Primary ID method',
-                                  listValues: primaryIdMethod,
-                                  // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                    children: [
+                      Form(
+                        key: _bodyMeasurementsFormKey,
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomDropdownButtonFormField(
+                                    controller: _primaryIDMethodController,
+                                    txtLabel: 'Primary ID method',
+                                    listValues: primaryIdMethod,
+                                    // TODO: implement proper validator
+                                    validator: _inputValidator
+                                        .placeCodeValidator(['sd', 'sd']),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomDropdownButtonFormField(
-                                  controller: _metalRingInfoController,
-                                  txtLabel: 'Metal ring information',
-                                  listValues: metalRingInfo,
-                                  // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                Expanded(
+                                  child: CustomDropdownButtonFormField(
+                                    controller: _metalRingInfoController,
+                                    txtLabel: 'Metal ring information',
+                                    listValues: metalRingInfo,
+                                    // TODO: implement proper validator
+                                    validator: _inputValidator
+                                        .placeCodeValidator(['sd', 'sd']),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          CustomEasyAutocomplete(
-                              controller: _speciesController,
-                              txtLabel: 'Species',
-                              listValues: species),
-                          Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
+                              ],
+                            ),
+                            CustomEasyAutocomplete(
+                                controller: _speciesController,
+                                txtLabel: 'Species',
+                                listValues: species),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(5.0, 0.0, 5.0, 0.0),
                               child: Column(
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Sex',
-                                    style: TextStyle(color: Colors.grey[600]),
                                   ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text(
-                                            'F',
-                                          ),
-                                          value: _sexController.text == 'F'
-                                              ? true
-                                              : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _sexController.text =
-                                                  value! ? 'F' : '';
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                      Expanded(
-                                          child: CheckboxListTile(
-                                        title: const Text(
-                                          'M',
-                                        ),
-                                        value: _sexController.text == 'M'
-                                            ? true
-                                            : false,
-                                        controlAffinity:
-                                            ListTileControlAffinity.leading,
-                                        onChanged: (bool? value) {
-                                          setState(() {
-                                            _sexController.text =
-                                                value! ? 'M' : '';
-                                          });
-                                        },
-                                      )),
-                                      Expanded(
-                                        child: CheckboxListTile(
-                                          title: const Text(
-                                            'U',
-                                          ),
-                                          value: _sexController.text == 'U'
-                                              ? true
-                                              : false,
-                                          controlAffinity:
-                                              ListTileControlAffinity.leading,
-                                          onChanged: (bool? value) {
-                                            setState(() {
-                                              _sexController.text =
-                                                  value! ? 'U' : '';
-                                            });
-                                          },
-                                        ),
-                                      ),
-                                    ],
+                                  SexCheckboxFormField(
+                                    controller: _sexController,
+                                    validator: _inputValidator
+                                        .sexCheckboxesValidator(),
                                   ),
                                 ],
                               ),
                             ),
-                          ),
-                          CustomDropdownButtonFormField(
-                            controller: _ageController,
-                            txtLabel: 'Age',
-                            listValues: age,
-                            // TODO: implement proper validator
-                            validator: _inputValidator
-                                .placeCodeValidator(['sd', 'sd']),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _wingLengthController,
-                                  focusNode: _wingLengthNode,
-                                  txtLabel: 'Wing Length',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                            CustomDropdownButtonFormField(
+                              controller: _ageController,
+                              txtLabel: 'Age',
+                              listValues: age,
+                              // TODO: implement proper validator
+                              validator: _inputValidator
+                                  .placeCodeValidator(['sd', 'sd']),
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _wingLengthController,
+                                    focusNode: _wingLengthNode,
+                                    txtLabel: 'Wing Length',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _thirdPrimaryController,
-                                  focusNode: _thirdPrimaryNode,
-                                  txtLabel: 'Third Primary',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _thirdPrimaryController,
+                                    focusNode: _thirdPrimaryNode,
+                                    txtLabel: 'Third Primary',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _massController,
-                                  focusNode: _massNode,
-                                  txtLabel: 'Mass',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _massController,
+                                    focusNode: _massNode,
+                                    txtLabel: 'Mass',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
+                                )
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomDropdownButtonFormField(
+                                    controller: _wingPointStateController,
+                                    txtLabel: 'State of Wing Point',
+                                    listValues: stateOfWingPoint,
+                                    // TODO: implement proper validator
+                                    validator: _inputValidator
+                                        .placeCodeValidator(['sd', 'sd']),
+                                  ),
                                 ),
-                              )
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomDropdownButtonFormField(
-                                  controller: _wingPointStateController,
-                                  txtLabel: 'State of Wing Point',
-                                  listValues: stateOfWingPoint,
-                                  // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                Expanded(
+                                  child: CustomDropdownButtonFormField(
+                                    controller: _moultController,
+                                    txtLabel: 'Moult',
+                                    listValues: moult,
+                                    // TODO: implement proper validator
+                                    validator: _inputValidator
+                                        .placeCodeValidator(['sd', 'sd']),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomDropdownButtonFormField(
-                                  controller: _moultController,
-                                  txtLabel: 'Moult',
-                                  listValues: moult,
-                                  // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                Expanded(
+                                  child: CustomDropdownButtonFormField(
+                                    controller: _plumageCodeController,
+                                    txtLabel: 'Plumage code',
+                                    listValues: plumageCode,
+                                    // TODO: implement proper validator
+                                    validator: _inputValidator
+                                        .placeCodeValidator(['sd', 'sd']),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomDropdownButtonFormField(
-                                  controller: _plumageCodeController,
-                                  txtLabel: 'Plumage code',
-                                  listValues: plumageCode,
-                                  // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _billLengthController,
+                                    focusNode: _billLengthNode,
+                                    txtLabel: 'Bill Length',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _billLengthController,
-                                  focusNode: _billLengthNode,
-                                  txtLabel: 'Bill Length',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _hindClawController,
+                                    focusNode: _hindClawNode,
+                                    txtLabel: 'Hind Claw',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _hindClawController,
-                                  focusNode: _hindClawNode,
-                                  txtLabel: 'Hind Claw',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _headLengthTotalController,
+                                    focusNode: _totalHeadLengthNode,
+                                    txtLabel: 'Total Head Length',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _headLengthTotalController,
-                                  focusNode: _totalHeadLengthNode,
-                                  txtLabel: 'Total Head Length',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
-                                ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
                               child: Column(
                                 children: [
-                                  Text(
+                                  const Text(
                                     'Bill Method',
-                                    style: TextStyle(color: Colors.grey[600]),
                                   ),
                                   Row(
                                     children: [
@@ -614,56 +541,46 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                 ],
                               ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _tarsusController,
-                                  focusNode: _tarsusNode,
-                                  txtLabel: 'Tarsus',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _tarsusController,
+                                    focusNode: _tarsusNode,
+                                    txtLabel: 'Tarsus',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _tailLengthController,
-                                  focusNode: _tailLengthNode,
-                                  txtLabel: 'Tail Length',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _tailLengthController,
+                                    focusNode: _tailLengthNode,
+                                    txtLabel: 'Tail Length',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _tailDifferenceController,
-                                  focusNode: _tailDifferenceNode,
-                                  txtLabel: 'Tail Difference',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _tailDifferenceController,
+                                    focusNode: _tailDifferenceNode,
+                                    txtLabel: 'Tail Difference',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
                               child: Column(
                                 children: [
                                   Text(
@@ -728,56 +645,46 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                 ],
                               ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _fatScoreController,
-                                  focusNode: _fatScoreNode,
-                                  txtLabel: 'Fat Score',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _fatScoreController,
+                                    focusNode: _fatScoreNode,
+                                    txtLabel: 'Fat Score',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _pectoralMuscleController,
-                                  focusNode: _pectoralMuscleNode,
-                                  txtLabel: 'Pectoral Muscle Score',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _pectoralMuscleController,
+                                    focusNode: _pectoralMuscleNode,
+                                    txtLabel: 'Pectoral Muscle Score',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _primaryScoreController,
-                                  focusNode: _primaryScoreNode,
-                                  txtLabel: 'Primary Score',
-                                  keyboard: 'number',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _primaryScoreController,
+                                    focusNode: _primaryScoreNode,
+                                    txtLabel: 'Primary Score',
+                                    keyboard: 'number',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                            child: DecoratedBox(
-                              decoration: BoxDecoration(
-                                color: Colors.white,
-                                border: Border.all(
-                                    color: Colors.grey,
-                                    width: 1,
-                                    style: BorderStyle.solid),
-                                borderRadius: BorderRadius.circular(5.0),
-                              ),
+                              ],
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
                               child: Column(
                                 children: [
                                   Text(
@@ -845,73 +752,73 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                 ],
                               ),
                             ),
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _broodPatchController,
-                                  focusNode: _broodPatchNode,
-                                  txtLabel: 'Brood Patch',
-                                  keyboard: 'text',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _broodPatchController,
+                                    focusNode: _broodPatchNode,
+                                    txtLabel: 'Brood Patch',
+                                    keyboard: 'text',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _primaryMoultController,
-                                  focusNode: _primaryMoultNode,
-                                  txtLabel: 'Primary Moult',
-                                  keyboard: 'text',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _primaryMoultController,
+                                    focusNode: _primaryMoultNode,
+                                    txtLabel: 'Primary Moult',
+                                    keyboard: 'text',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _oldGreaterCovertsController,
-                                  focusNode: _oldGreaterCovertsNode,
-                                  txtLabel: 'Old Greater Coverts',
-                                  keyboard: 'text',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _oldGreaterCovertsController,
+                                    focusNode: _oldGreaterCovertsNode,
+                                    txtLabel: 'Old Greater Coverts',
+                                    keyboard: 'text',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                          Row(
-                            children: [
-                              Expanded(
-                                child: CustomTextFormField(
-                                  controller: _alulaController,
-                                  focusNode: _alulaNode,
-                                  txtLabel: 'Alula',
-                                  keyboard: 'text',
-                                  // TODO: Implement proper validator.
-                                  validator:
-                                      _inputValidator.localityNameValidator(),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: CustomTextFormField(
+                                    controller: _alulaController,
+                                    focusNode: _alulaNode,
+                                    txtLabel: 'Alula',
+                                    keyboard: 'text',
+                                    // TODO: Implement proper validator.
+                                    validator:
+                                        _inputValidator.localityNameValidator(),
+                                  ),
                                 ),
-                              ),
-                              Expanded(
-                                child: CustomDropdownButtonFormField(
-                                  controller: _carpalCovertController,
-                                  txtLabel: 'Carpal covert',
-                                  listValues: carpalCovert,
-                                  // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                Expanded(
+                                  child: CustomDropdownButtonFormField(
+                                    controller: _carpalCovertController,
+                                    txtLabel: 'Carpal covert',
+                                    listValues: carpalCovert,
+                                    // TODO: implement proper validator
+                                    validator: _inputValidator
+                                        .placeCodeValidator(['sd', 'sd']),
+                                  ),
                                 ),
-                              ),
-                            ],
-                          ),
-                        ],
+                              ],
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 ExpansionTile(
                   title: const Text(
@@ -921,8 +828,6 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  collapsedBackgroundColor: Colors.grey[300],
-                  backgroundColor: Colors.grey[300],
                   children: [
                     Form(
                       key: _circumstancesFormKey,

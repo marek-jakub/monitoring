@@ -118,13 +118,6 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                         ringIdController: _ringId,
                         txtLabel: 'Ring ID',
                         listValues: unusedRings),
-                    // CustomTextFormField(
-                    //   controller: _ringId,
-                    //   txtLabel: 'Ring ID',
-                    //   keyboard: 'text',
-                    //   // TODO: Implement proper validator.
-                    //   validator: _inputValidator.localityNameValidator(),
-                    // ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -182,34 +175,40 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                             });
                           },
                           child: Card(
-                            elevation: 0,
-                            child: Column(
-                              children: [
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                      child: Text('Ring series code:',
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Expanded(
-                                      child: Text(lostRing.ringSeriesCode,
-                                          textAlign: TextAlign.left),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    const Expanded(
-                                      child: Text('Ring ID:',
-                                          textAlign: TextAlign.left),
-                                    ),
-                                    Expanded(
-                                      child: Text(lostRing.idNumber,
-                                          textAlign: TextAlign.left),
-                                    ),
-                                  ],
-                                ),
-                              ],
+                            elevation: 2.0,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(7.0),
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      const Expanded(
+                                        child: Text('Ring series code:',
+                                            textAlign: TextAlign.left),
+                                      ),
+                                      Expanded(
+                                        child: Text(lostRing.ringSeriesCode,
+                                            textAlign: TextAlign.left),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      const Expanded(
+                                        child: Text('Ring ID:',
+                                            textAlign: TextAlign.left),
+                                      ),
+                                      Expanded(
+                                        child: Text(lostRing.idNumber,
+                                            textAlign: TextAlign.left),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         );
@@ -233,6 +232,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
     if (isValid != null && isValid) {
       final lostRingEntity = LostRingEntityCompanion(
         ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
+        schemeCode: d.Value(_schemeCode.text),
         ringSeriesCode: d.Value(_ringSeriesCode.text),
         idNumber: d.Value(_ringId.text),
       );
@@ -244,23 +244,6 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
   /// Removes lost ring information from the database.
   void deleteLostRing(int id) {
     context.read<RingDataManager>().deleteLostRing(id);
-  }
-
-  /// Updated lost ring information in the database.
-  void updateLostRing(int id) {
-    /// Checks for input validity
-    final isValid = _lostRingFormKey.currentState?.validate();
-
-    if (isValid != null && isValid) {
-      final lostRingEntity = LostRingEntityCompanion(
-        id: d.Value(id),
-        ringerId: d.Value(context.read<ProfileManager>().getRinger.ringerId),
-        ringSeriesCode: d.Value(_ringSeriesCode.text),
-        idNumber: d.Value(_ringId.text),
-      );
-
-      context.read<RingDataManager>().updateLostRing(lostRingEntity);
-    }
   }
 
   /// Listens to change notifier save, delete, modify lost ring success or error.
@@ -283,16 +266,6 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
         _ringId.clear();
       });
       context.read<RingDataManager>().setIsLostRingDeleted(false);
-    }
-
-    if (_dataManager.isLostRingUpdated) {
-      listenUpdateLostRing();
-      // Clear data to allow another entry input.
-      setState(() {
-        _ringSeriesCode.clear();
-        _ringId.clear();
-      });
-      context.read<RingDataManager>().setIsLostRingUpdated(false);
     }
 
     if (_dataManager.error != '') {
@@ -351,32 +324,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
     );
   }
 
-  /// Shows scaffold messenger on successfuly updated lost ring data.
-  void listenUpdateLostRing() {
-    ScaffoldMessenger.of(context).showMaterialBanner(
-      MaterialBanner(
-        content: const Text(
-          'Lost ring data updated',
-          style: TextStyle(color: Colors.white),
-        ),
-        backgroundColor: Colors.brown,
-        actions: [
-          TextButton(
-            onPressed: () {
-              context.read<RingDataManager>().setIsLostRingUpdated(false);
-              ScaffoldMessenger.of(context).hideCurrentMaterialBanner();
-            },
-            child: const Text(
-              'Close',
-              style: TextStyle(color: Colors.white),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  /// Shows scaffold messenger with error on save, update or delete.
+  /// Shows scaffold messenger with error on save or delete.
   void listenLostRingError(String errorMsg) {
     ScaffoldMessenger.of(context).showMaterialBanner(
       MaterialBanner(

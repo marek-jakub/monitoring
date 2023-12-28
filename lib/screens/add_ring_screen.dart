@@ -306,479 +306,493 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 listValues: age,
                 validator: _inputValidator.ageValidator(age),
               ),
-              ExpansionTile(
-                title: const Text(
-                  'Body measurements',
-                ),
-                children: [
-                  Form(
-                    key: _bodyMeasurementsFormKey,
-                    child: Column(
-                      children: [
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _wingLengthController,
-                                focusNode: _wingLengthNode,
-                                txtLabel: 'Wing Length',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _thirdPrimaryController,
-                                focusNode: _thirdPrimaryNode,
-                                txtLabel: 'Third Primary',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _massController,
-                                focusNode: _massNode,
-                                txtLabel: 'Mass',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            )
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _wingPointStateController,
-                                txtLabel: 'State of Wing Point',
-                                listValues: stateOfWingPoint,
-                                // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _moultController,
-                                txtLabel: 'Moult',
-                                listValues: moult,
-                                // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _plumageCodeController,
-                                txtLabel: 'Plumage code',
-                                listValues: plumageCode,
-                                // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _billLengthController,
-                                focusNode: _billLengthNode,
-                                txtLabel: 'Bill Length',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _hindClawController,
-                                focusNode: _hindClawNode,
-                                txtLabel: 'Hind Claw',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _headLengthTotalController,
-                                focusNode: _totalHeadLengthNode,
-                                txtLabel: 'Total Head Length',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                          child: Column(
-                            children: [
-                              const Text(
-                                'Bill Method',
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('C'),
-                                      value: _billMethodController.text == 'C'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _billMethodController.text =
-                                              value! ? 'C' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('F'),
-                                      value: _billMethodController.text == 'F'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _billMethodController.text =
-                                              value! ? 'F' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('N'),
-                                      value: _billMethodController.text == 'N'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _billMethodController.text =
-                                              value! ? 'N' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('S'),
-                                      value: _billMethodController.text == 'S'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(
-                                          () {
-                                            _billMethodController.text =
-                                                value! ? 'S' : '';
-                                          },
-                                        );
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _tarsusController,
-                                focusNode: _tarsusNode,
-                                txtLabel: 'Tarsus',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _tailLengthController,
-                                focusNode: _tailLengthNode,
-                                txtLabel: 'Tail Length',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _tailDifferenceController,
-                                focusNode: _tailDifferenceNode,
-                                txtLabel: 'Tail Difference',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                          child: Column(
-                            children: [
-                              const Text(
-                                'Tarsus Method',
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('M'),
-                                      value: _tarsusMethodController.text == 'M'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _tarsusMethodController.text =
-                                              value! ? 'M' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('S'),
-                                      value: _tarsusMethodController.text == 'S'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _tarsusMethodController.text =
-                                              value! ? 'S' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('T'),
-                                      value: _tarsusMethodController.text == 'T'
-                                          ? true
-                                          : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _tarsusMethodController.text =
-                                              value! ? 'T' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _fatScoreController,
-                                focusNode: _fatScoreNode,
-                                txtLabel: 'Fat Score',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _pectoralMuscleController,
-                                focusNode: _pectoralMuscleNode,
-                                txtLabel: 'Pectoral Muscle Score',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _primaryScoreController,
-                                focusNode: _primaryScoreNode,
-                                txtLabel: 'Primary Score',
-                                keyboard: 'number',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Padding(
-                          padding:
-                              const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
-                          child: Column(
-                            children: [
-                              const Text(
-                                'Fat Score Method',
-                              ),
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('B'),
-                                      value:
-                                          _fatScoreMethodController.text == 'B'
-                                              ? true
-                                              : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _fatScoreMethodController.text =
-                                              value! ? 'B' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('E'),
-                                      value:
-                                          _fatScoreMethodController.text == 'E'
-                                              ? true
-                                              : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _fatScoreMethodController.text =
-                                              value! ? 'E' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                  Expanded(
-                                    child: CheckboxListTile(
-                                      title: const Text('P'),
-                                      value:
-                                          _fatScoreMethodController.text == 'P'
-                                              ? true
-                                              : false,
-                                      controlAffinity:
-                                          ListTileControlAffinity.leading,
-                                      onChanged: (bool? value) {
-                                        setState(() {
-                                          _fatScoreMethodController.text =
-                                              value! ? 'P' : '';
-                                        });
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _broodPatchController,
-                                focusNode: _broodPatchNode,
-                                txtLabel: 'Brood Patch',
-                                keyboard: 'text',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _primaryMoultController,
-                                focusNode: _primaryMoultNode,
-                                txtLabel: 'Primary Moult',
-                                keyboard: 'text',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomTextFormField(
-                                controller: _oldGreaterCovertsController,
-                                focusNode: _oldGreaterCovertsNode,
-                                txtLabel: 'Old Greater Coverts',
-                                keyboard: 'text',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                          ],
-                        ),
-                        Row(
-                          children: [
-                            Expanded(
-                              // TODO: There are finite number of alula values,
-                              // use a dropdown with a list holding the values.
-                              child: CustomTextFormField(
-                                controller: _alulaController,
-                                focusNode: _alulaNode,
-                                txtLabel: 'Alula',
-                                keyboard: 'text',
-                                // TODO: Implement proper validator.
-                                validator:
-                                    _inputValidator.localityNameValidator(),
-                              ),
-                            ),
-                            Expanded(
-                              child: CustomDropdownButtonFormField(
-                                controller: _carpalCovertController,
-                                txtLabel: 'Carpal covert',
-                                listValues: carpalCovert,
-                                // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
+              Padding(
+                padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
+                child: ExpansionTile(
+                  title: const Text(
+                    'Body measurements',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
                     ),
                   ),
-                ],
+                  children: [
+                    Form(
+                      key: _bodyMeasurementsFormKey,
+                      child: Column(
+                        children: [
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _wingLengthController,
+                                  focusNode: _wingLengthNode,
+                                  txtLabel: 'Wing Length',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _thirdPrimaryController,
+                                  focusNode: _thirdPrimaryNode,
+                                  txtLabel: 'Third Primary',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _massController,
+                                  focusNode: _massNode,
+                                  txtLabel: 'Mass',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _wingPointStateController,
+                                  txtLabel: 'State of Wing Point',
+                                  listValues: stateOfWingPoint,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _moultController,
+                                  txtLabel: 'Moult',
+                                  listValues: moult,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _plumageCodeController,
+                                  txtLabel: 'Plumage code',
+                                  listValues: plumageCode,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _billLengthController,
+                                  focusNode: _billLengthNode,
+                                  txtLabel: 'Bill Length',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _hindClawController,
+                                  focusNode: _hindClawNode,
+                                  txtLabel: 'Hind Claw',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _headLengthTotalController,
+                                  focusNode: _totalHeadLengthNode,
+                                  txtLabel: 'Total Head Length',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                            child: Column(
+                              children: [
+                                const Text(
+                                  'Bill Method',
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('C'),
+                                        value: _billMethodController.text == 'C'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'C' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('F'),
+                                        value: _billMethodController.text == 'F'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'F' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('N'),
+                                        value: _billMethodController.text == 'N'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _billMethodController.text =
+                                                value! ? 'N' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('S'),
+                                        value: _billMethodController.text == 'S'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(
+                                            () {
+                                              _billMethodController.text =
+                                                  value! ? 'S' : '';
+                                            },
+                                          );
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _tarsusController,
+                                  focusNode: _tarsusNode,
+                                  txtLabel: 'Tarsus',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _tailLengthController,
+                                  focusNode: _tailLengthNode,
+                                  txtLabel: 'Tail Length',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _tailDifferenceController,
+                                  focusNode: _tailDifferenceNode,
+                                  txtLabel: 'Tail Difference',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                            child: Column(
+                              children: [
+                                const Text(
+                                  'Tarsus Method',
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('M'),
+                                        value:
+                                            _tarsusMethodController.text == 'M'
+                                                ? true
+                                                : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _tarsusMethodController.text =
+                                                value! ? 'M' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('S'),
+                                        value:
+                                            _tarsusMethodController.text == 'S'
+                                                ? true
+                                                : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _tarsusMethodController.text =
+                                                value! ? 'S' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('T'),
+                                        value:
+                                            _tarsusMethodController.text == 'T'
+                                                ? true
+                                                : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _tarsusMethodController.text =
+                                                value! ? 'T' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _fatScoreController,
+                                  focusNode: _fatScoreNode,
+                                  txtLabel: 'Fat Score',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _pectoralMuscleController,
+                                  focusNode: _pectoralMuscleNode,
+                                  txtLabel: 'Pectoral Muscle Score',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _primaryScoreController,
+                                  focusNode: _primaryScoreNode,
+                                  txtLabel: 'Primary Score',
+                                  keyboard: 'number',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Padding(
+                            padding:
+                                const EdgeInsets.fromLTRB(5.0, 5.0, 5.0, 5.0),
+                            child: Column(
+                              children: [
+                                const Text(
+                                  'Fat Score Method',
+                                ),
+                                Row(
+                                  children: [
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('B'),
+                                        value: _fatScoreMethodController.text ==
+                                                'B'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _fatScoreMethodController.text =
+                                                value! ? 'B' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('E'),
+                                        value: _fatScoreMethodController.text ==
+                                                'E'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _fatScoreMethodController.text =
+                                                value! ? 'E' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: CheckboxListTile(
+                                        title: const Text('P'),
+                                        value: _fatScoreMethodController.text ==
+                                                'P'
+                                            ? true
+                                            : false,
+                                        controlAffinity:
+                                            ListTileControlAffinity.leading,
+                                        onChanged: (bool? value) {
+                                          setState(() {
+                                            _fatScoreMethodController.text =
+                                                value! ? 'P' : '';
+                                          });
+                                        },
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _broodPatchController,
+                                  focusNode: _broodPatchNode,
+                                  txtLabel: 'Brood Patch',
+                                  keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _primaryMoultController,
+                                  focusNode: _primaryMoultNode,
+                                  txtLabel: 'Primary Moult',
+                                  keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomTextFormField(
+                                  controller: _oldGreaterCovertsController,
+                                  focusNode: _oldGreaterCovertsNode,
+                                  txtLabel: 'Old Greater Coverts',
+                                  keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Expanded(
+                                // TODO: There are finite number of alula values,
+                                // use a dropdown with a list holding the values.
+                                child: CustomTextFormField(
+                                  controller: _alulaController,
+                                  focusNode: _alulaNode,
+                                  txtLabel: 'Alula',
+                                  keyboard: 'text',
+                                  // TODO: Implement proper validator.
+                                  validator:
+                                      _inputValidator.localityNameValidator(),
+                                ),
+                              ),
+                              Expanded(
+                                child: CustomDropdownButtonFormField(
+                                  controller: _carpalCovertController,
+                                  txtLabel: 'Carpal covert',
+                                  listValues: carpalCovert,
+                                  // TODO: implement proper validator
+                                  validator: _inputValidator
+                                      .placeCodeValidator(['sd', 'sd']),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ],
+                ),
               ),
               ExpansionTile(
                 title: const Text(
                   'Circumstances',
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                  ),
                 ),
                 children: [
                   Form(
