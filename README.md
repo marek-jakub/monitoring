@@ -23,7 +23,7 @@ The application allows bird ringers:
 - enter and manage bird ringing data
 - enter and manage re-catch data
 
-The logic in the application draws heavily from EURING Exchange Code 2020. [[1]](#1) Data management relies on forms and local data persistence library. [[2]](#2) The application has been developed using the Dart language and Flutter framework. The framework has been used to allow for single codebase, to be used on Android and iOS devices.
+The logic in the application draws heavily from EURING Exchange Code 2020 [[1]](#1). Data management relies on forms and local data persistence library [[2]](#2). The application has been developed using the Dart language and Flutter framework. The framework has been used to allow for single codebase, to be used on Android and iOS devices.
 
 ### Continuous Development
 
