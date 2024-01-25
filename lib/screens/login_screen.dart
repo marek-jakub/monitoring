@@ -57,6 +57,7 @@ class LoginScreen extends StatelessWidget {
                 height: 16.0,
               ),
               entryButton(context),
+              guestButton(context),
             ],
           ),
         ),
@@ -98,8 +99,25 @@ class LoginScreen extends StatelessWidget {
           style: TextStyle(color: Colors.white),
         ),
         onPressed: () async {
+          // Provider.of<MonitoRingStateManager>(context, listen: false)
+          //     .login('mockUsername', 'mockPassword');
+        },
+      ),
+    );
+  }
+
+  /// A button to log in the application as a guest.
+  Widget guestButton(BuildContext context) {
+    return SizedBox(
+      height: 45,
+      child: TextButton(
+        key: const ValueKey('guestButton'),
+        child: const Text(
+          'Explore as Guest',
+        ),
+        onPressed: () async {
           Provider.of<MonitoRingStateManager>(context, listen: false)
-              .login('mockUsername', 'mockPassword');
+              .login('guestUsername', 'guestPassword');
         },
       ),
     );

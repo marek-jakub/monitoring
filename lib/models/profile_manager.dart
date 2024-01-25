@@ -7,7 +7,7 @@ import 'models.dart';
 /// Currently holds mock data.
 class ProfileManager extends ChangeNotifier {
   Ringer get getRinger => Ringer(
-        ringerId: '6000',
+        ringerId: 'Guest',
         darkMode: _darkMode,
       );
 
