@@ -172,27 +172,30 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                   child: Column(
                     children: [
                       CustomDropdownCountryFormField(
-                          countryController: _countryController,
-                          placeCodeController: _placeCodeController,
-                          txtLabel: 'Country',
-                          listValues: lists.countries),
+                        key: const ValueKey('country'),
+                        countryController: _countryController,
+                        placeCodeController: _placeCodeController,
+                        txtLabel: 'Country',
+                        listValues: lists.countries,
+                      ),
                       CustomDropdownButtonFormField(
+                        key: const ValueKey('place_code'),
                         controller: _placeCodeController,
                         txtLabel: 'Place code',
                         listValues: countryPlaceCodes,
-                        // TODO: implement proper validator
-                        validator:
-                            _inputValidator.placeCodeValidator(['sd', 'sd']),
+                        validator: _inputValidator
+                            .placeCodeValidator(countryPlaceCodes),
                       ),
                       CustomTextFormField(
+                        key: const ValueKey('locality'),
                         controller: _localityController,
                         focusNode: _localityNode,
                         txtLabel: 'Locality name',
                         keyboard: 'text',
-                        // TODO: Implement proper validator.
                         validator: _inputValidator.localityNameValidator(),
                       ),
                       CustomDatePickerField(
+                        key: const ValueKey('date_picker'),
                         controller: _dateController,
                         txtLabel: 'Date',
                         callback: () {
@@ -200,14 +203,14 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                         },
                       ),
                       CustomDropdownButtonFormField(
+                        key: const ValueKey('date_accuracy'),
                         controller: _accuracyOfDateController,
                         txtLabel: 'Accuracy of date',
                         listValues: lists.accuracyOfDate,
-                        // TODO: implement proper validator
-                        validator:
-                            _inputValidator.placeCodeValidator(['sd', 'sd']),
+                        validator: _inputValidator
+                            .accOfDateValidator(lists.accuracyOfDate),
                       ),
-                      ElevatedButton(
+                      OutlinedButton(
                         onPressed: () async {
                           determineLatLon().then((value) {
                             LocationData? location = value;
@@ -225,40 +228,39 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                         children: [
                           Expanded(
                             child: CustomTextFormField(
+                              key: const ValueKey('latitude'),
                               controller: _latController,
                               focusNode: _latNode,
                               txtLabel: 'Latitude',
                               keyboard: 'number',
-                              // TODO: Implement proper validator.
-                              validator:
-                                  _inputValidator.localityNameValidator(),
+                              validator: _inputValidator.latValidator(),
                             ),
                           ),
                           Expanded(
                             child: CustomTextFormField(
+                              key: const ValueKey('longitude'),
                               controller: _lonController,
                               focusNode: _lonNode,
                               txtLabel: 'Longitude',
                               keyboard: 'number',
-                              // TODO: Implement proper validator.
-                              validator:
-                                  _inputValidator.localityNameValidator(),
+                              validator: _inputValidator.lonValidator(),
                             ),
                           ),
                         ],
                       ),
                       CustomDropdownButtonFormField(
+                        key: const ValueKey('coordinates_accuracy'),
                         controller: _coordAccuracyController,
                         txtLabel: 'Co-ordinates accuracy',
                         listValues: lists.accuracyOfCoordinates,
-                        // TODO: implement proper validator
-                        validator:
-                            _inputValidator.placeCodeValidator(['sd', 'sd']),
+                        validator: _inputValidator
+                            .coordValidator(lists.accuracyOfCoordinates),
                       ),
                       Row(
                         children: [
                           Expanded(
                             child: CustomTimePickerField(
+                              key: const ValueKey('start_time'),
                               controller: _startTimeController,
                               txtLabel: 'Start time',
                               callback: () {
@@ -270,13 +272,14 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                           ),
                           Expanded(
                             child: CustomTimePickerField(
+                              key: const ValueKey('end_time'),
                               controller: _endTimeController,
                               txtLabel: 'End time',
                               callback: () {
                                 pickTime(context);
                               },
-                              // TODO: Implement proper validator.
-                              validator: _inputValidator.startTimeValidator(),
+                              validator: _inputValidator
+                                  .endTimeValidator(_startTimeController.text),
                             ),
                           ),
                         ],
@@ -286,8 +289,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
                         focusNode: _localeInfoNode,
                         txtLabel: 'Locality information',
                         keyboard: 'text',
-                        // TODO: Implement proper validator.
-                        validator: _inputValidator.localityNameValidator(),
+                        validator: _inputValidator.localityInfoValidator(),
                       ),
                     ],
                   ),
