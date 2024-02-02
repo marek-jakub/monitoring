@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbols.dart';
 import 'package:monitoring/data/data_for_autocomplete/autocomplete_data.dart';
 import 'package:monitoring/data/monitoring_db.dart';
 import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
 import 'package:flutter_slidable/flutter_slidable.dart';
 
-import '../data/data_for_autocomplete/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/ring_series_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_widgets.dart';
@@ -45,7 +46,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
   late RingDataManager _dataManager;
 
   /// Form field input validator.
-  late InputValidator _inputValidator;
+  late RingSeriesValidator _inputValidator;
 
   @override
   void initState() {
@@ -54,7 +55,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(providerListener);
 
-    _inputValidator = InputValidator();
+    _inputValidator = RingSeriesValidator();
   }
 
   @override
@@ -68,8 +69,7 @@ class _AddRingSeriesScreenState extends State<AddRingSeriesScreen> {
     // Dispose off focus nodes
     _sCode.dispose();
     _sFrom.dispose();
-    _ringFrom.dispose();
-    _ringTo.dispose();
+    _sTo.dispose();
 
     // Remove notifier listener.
     _dataManager.removeListener(providerListener);

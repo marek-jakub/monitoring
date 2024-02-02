@@ -5,7 +5,7 @@ import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
 
 import '../models/models.dart';
-import '../data/data_for_autocomplete/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/data_validation.dart';
 
 import '../widgets/custom_widgets.dart';
 
@@ -105,8 +105,7 @@ class _LostRingsScreenState extends State<LostRingsScreen> {
                       controller: _schemeCode,
                       txtLabel: 'Scheme code',
                       listValues: ringingSchemes..sort(),
-                      validator:
-                          _inputValidator.schemeCodeValidator(ringingSchemes),
+                      validator: _inputValidator.placeholderValidator(),
                     ),
                     CustomDropdownRingSeriesField(
                         schemeCodeController: _schemeCode,

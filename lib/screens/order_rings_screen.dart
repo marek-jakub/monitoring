@@ -4,7 +4,7 @@ import 'package:provider/provider.dart';
 import 'package:drift/drift.dart' as d;
 
 import '../models/models.dart';
-import '../data/data_for_autocomplete/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/data_validation.dart';
 
 import '../widgets/custom_widgets.dart';
 
@@ -90,7 +90,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                   txtLabel: 'Ring series',
                   keyboard: 'text',
                   // TODO: Implement proper validator.
-                  validator: _inputValidator.localityNameValidator(),
+                  validator: _inputValidator.placeholderValidator(),
                 ),
                 CustomTextFormField(
                   controller: _amount,
@@ -98,7 +98,7 @@ class _OrderRingsScreenState extends State<OrderRingsScreen> {
                   txtLabel: 'Amount',
                   keyboard: 'number',
                   // TODO: Implement proper validator.
-                  validator: _inputValidator.localityNameValidator(),
+                  validator: _inputValidator.placeholderValidator(),
                 ),
               ],
             ),
