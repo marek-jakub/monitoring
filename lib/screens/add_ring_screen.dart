@@ -4,7 +4,8 @@ import 'package:drift/drift.dart' as d;
 
 import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
-import '../data/data_for_autocomplete/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/ring_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_widgets.dart';
@@ -123,6 +124,9 @@ class _AddRingScreenState extends State<AddRingScreen> {
   /// Form field input validator.
   late InputValidator _inputValidator;
 
+  /// Ring input validator.
+  late RingValidator _ringValidator;
+
   @override
   void initState() {
     super.initState();
@@ -131,6 +135,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
     _dataManager.addListener(addRingListener);
 
     _inputValidator = InputValidator();
+    _ringValidator = RingValidator();
   }
 
   @override
@@ -242,7 +247,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                       controller: _primaryIDMethodController,
                       txtLabel: 'Primary ID method',
                       listValues: primaryIdMethod,
-                      validator: _inputValidator
+                      validator: _ringValidator
                           .primaryIdMethodValidator(primaryIdMethod),
                     ),
                   ),
@@ -252,7 +257,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                       txtLabel: 'Metal ring information',
                       listValues: metalRingInfo,
                       validator:
-                          _inputValidator.metalRingInfoValidator(metalRingInfo),
+                          _ringValidator.metalRingInfoValidator(metalRingInfo),
                     ),
                   ),
                 ],
@@ -266,7 +271,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                       txtLabel: 'Ring series',
                       keyboard: 'text',
                       // TODO: Implement proper validator.
-                      validator: _inputValidator.localityNameValidator(),
+                      validator: _inputValidator.placeholderValidator(),
                     ),
                   ),
                   Expanded(
@@ -276,7 +281,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                       txtLabel: 'ID number',
                       keyboard: 'number',
                       // TODO: Implement proper validator.
-                      validator: _inputValidator.localityNameValidator(),
+                      validator: _inputValidator.placeholderValidator(),
                     ),
                   ),
                 ],
@@ -295,7 +300,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                     ),
                     SexCheckboxFormField(
                       controller: _sexController,
-                      validator: _inputValidator.sexCheckboxesValidator(),
+                      validator: _ringValidator.sexCheckboxesValidator(),
                     ),
                   ],
                 ),
@@ -304,7 +309,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                 controller: _ageController,
                 txtLabel: 'Age',
                 listValues: age,
-                validator: _inputValidator.ageValidator(age),
+                validator: _ringValidator.ageValidator(age),
               ),
               Padding(
                 padding: const EdgeInsets.fromLTRB(0, 0, 0, 4),
@@ -331,7 +336,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -342,7 +347,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -353,7 +358,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               )
                             ],
@@ -366,8 +371,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   txtLabel: 'State of Wing Point',
                                   listValues: stateOfWingPoint,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -376,8 +381,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   txtLabel: 'Moult',
                                   listValues: moult,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -386,8 +391,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   txtLabel: 'Plumage code',
                                   listValues: plumageCode,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -402,7 +407,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -413,7 +418,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -424,7 +429,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -520,7 +525,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -531,7 +536,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -542,7 +547,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -623,7 +628,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -634,7 +639,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -645,7 +650,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'number',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -726,7 +731,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -737,7 +742,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -748,7 +753,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -765,7 +770,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   keyboard: 'text',
                                   // TODO: Implement proper validator.
                                   validator:
-                                      _inputValidator.localityNameValidator(),
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -774,8 +779,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                   txtLabel: 'Carpal covert',
                                   listValues: carpalCovert,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -807,8 +812,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Sexing method',
                                 listValues: sexingMethod,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                             Expanded(
@@ -817,8 +822,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Catching method',
                                 listValues: catchingMethod,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                             Expanded(
@@ -827,8 +832,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Catching lures',
                                 listValues: catchingLures,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                           ],
@@ -841,8 +846,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Condition',
                                 listValues: condition,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                             Expanded(
@@ -851,8 +856,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Status',
                                 listValues: status,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                           ],
@@ -865,8 +870,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Circumstances',
                                 listValues: circumstances,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                             Expanded(
@@ -875,8 +880,8 @@ class _AddRingScreenState extends State<AddRingScreen> {
                                 txtLabel: 'Circumstances presumed',
                                 listValues: circumstancesPresumed,
                                 // TODO: implement proper validator
-                                validator: _inputValidator
-                                    .placeCodeValidator(['sd', 'sd']),
+                                validator:
+                                    _inputValidator.placeholderValidator(),
                               ),
                             ),
                           ],
@@ -888,7 +893,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                             pickTime(context);
                           },
                           // TODO: Implement proper validator.
-                          validator: _inputValidator.startTimeValidator(),
+                          validator: _inputValidator.placeholderValidator(),
                         ),
                         CustomTextFormField(
                           controller: _otherMarksController,
@@ -896,7 +901,7 @@ class _AddRingScreenState extends State<AddRingScreen> {
                           txtLabel: 'Other marks',
                           keyboard: 'text',
                           // TODO: Implement proper validator.
-                          validator: _inputValidator.localityNameValidator(),
+                          validator: _inputValidator.placeholderValidator(),
                         ),
                       ],
                     ),

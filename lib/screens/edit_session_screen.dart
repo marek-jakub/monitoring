@@ -8,7 +8,7 @@ import 'package:intl/intl.dart';
 
 import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart' as lists;
-import '../data/data_for_autocomplete/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/session_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_widgets.dart';
@@ -85,7 +85,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
   late RingDataManager _dataManager;
 
   /// Form field input validator.
-  late InputValidator _inputValidator;
+  late SessionValidator _inputValidator;
 
   @override
   void initState() {
@@ -94,7 +94,7 @@ class _EditSessionScreenState extends State<EditSessionScreen> {
     _dataManager = Provider.of<RingDataManager>(context, listen: false);
     _dataManager.addListener(providerListener);
 
-    _inputValidator = InputValidator();
+    _inputValidator = SessionValidator();
   }
 
   @override

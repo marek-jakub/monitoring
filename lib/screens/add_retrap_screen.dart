@@ -4,7 +4,8 @@ import 'package:drift/drift.dart' as d;
 
 import '../data/monitoring_db.dart';
 import '../data/data_for_autocomplete/autocomplete_data.dart';
-import '../data/data_for_autocomplete/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/data_validation.dart';
+import '../data/data_for_autocomplete/data_validation/retrap_validation.dart';
 import '../models/models.dart';
 
 import '../widgets/custom_widgets.dart';
@@ -123,8 +124,11 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
   /// Change notifier access.
   late RingDataManager _dataManager;
 
-  /// Form field input validator.
+  /// Placeholder field input validator.
   late InputValidator _inputValidator;
+
+  /// Retrap input validator
+  late RetrapValidator _retrapValidator;
 
   @override
   void initState() {
@@ -134,6 +138,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
     _dataManager.addListener(addRetrapListener);
 
     _inputValidator = InputValidator();
+    _retrapValidator = RetrapValidator();
   }
 
   @override
@@ -242,7 +247,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         txtLabel: 'Ring series',
                         keyboard: 'text',
                         // TODO: Implement proper validator.
-                        validator: _inputValidator.localityNameValidator(),
+                        validator: _inputValidator.placeholderValidator(),
                       ),
                     ),
                     Expanded(
@@ -252,7 +257,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         txtLabel: 'ID number',
                         keyboard: 'number',
                         // TODO: Implement proper validator.
-                        validator: _inputValidator.localityNameValidator(),
+                        validator: _inputValidator.placeholderValidator(),
                       ),
                     ),
                   ],
@@ -265,8 +270,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         txtLabel: 'Ringing scheme',
                         listValues: ringingSchemes,
                         // TODO: implement proper validator
-                        validator:
-                            _inputValidator.placeCodeValidator(['sd', 'sd']),
+                        validator: _inputValidator.placeholderValidator(),
                       ),
                     ),
                     Expanded(
@@ -275,8 +279,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                         txtLabel: 'Condition',
                         listValues: condition,
                         // TODO: implement proper validator
-                        validator:
-                            _inputValidator.placeCodeValidator(['sd', 'sd']),
+                        validator: _inputValidator.placeholderValidator(),
                       ),
                     ),
                   ],
@@ -304,8 +307,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     txtLabel: 'Primary ID method',
                                     listValues: primaryIdMethod,
                                     // TODO: implement proper validator
-                                    validator: _inputValidator
-                                        .placeCodeValidator(['sd', 'sd']),
+                                    validator:
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -314,8 +317,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     txtLabel: 'Metal ring information',
                                     listValues: metalRingInfo,
                                     // TODO: implement proper validator
-                                    validator: _inputValidator
-                                        .placeCodeValidator(['sd', 'sd']),
+                                    validator:
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -334,7 +337,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   ),
                                   SexCheckboxFormField(
                                     controller: _sexController,
-                                    validator: _inputValidator
+                                    validator: _retrapValidator
                                         .sexCheckboxesValidator(),
                                   ),
                                 ],
@@ -345,8 +348,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                               txtLabel: 'Age',
                               listValues: age,
                               // TODO: implement proper validator
-                              validator: _inputValidator
-                                  .placeCodeValidator(['sd', 'sd']),
+                              validator: _inputValidator.placeholderValidator(),
                             ),
                             Row(
                               children: [
@@ -358,7 +360,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -369,7 +371,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -380,7 +382,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 )
                               ],
@@ -393,8 +395,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     txtLabel: 'State of Wing Point',
                                     listValues: stateOfWingPoint,
                                     // TODO: implement proper validator
-                                    validator: _inputValidator
-                                        .placeCodeValidator(['sd', 'sd']),
+                                    validator:
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -403,8 +405,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     txtLabel: 'Moult',
                                     listValues: moult,
                                     // TODO: implement proper validator
-                                    validator: _inputValidator
-                                        .placeCodeValidator(['sd', 'sd']),
+                                    validator:
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -413,8 +415,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     txtLabel: 'Plumage code',
                                     listValues: plumageCode,
                                     // TODO: implement proper validator
-                                    validator: _inputValidator
-                                        .placeCodeValidator(['sd', 'sd']),
+                                    validator:
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -429,7 +431,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -440,7 +442,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -451,7 +453,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -551,7 +553,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -562,7 +564,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -573,7 +575,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -655,7 +657,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -666,7 +668,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -677,7 +679,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'number',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -762,7 +764,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'text',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -773,7 +775,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'text',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -784,7 +786,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'text',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -799,7 +801,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     keyboard: 'text',
                                     // TODO: Implement proper validator.
                                     validator:
-                                        _inputValidator.localityNameValidator(),
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                                 Expanded(
@@ -808,8 +810,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                     txtLabel: 'Carpal covert',
                                     listValues: carpalCovert,
                                     // TODO: implement proper validator
-                                    validator: _inputValidator
-                                        .placeCodeValidator(['sd', 'sd']),
+                                    validator:
+                                        _inputValidator.placeholderValidator(),
                                   ),
                                 ),
                               ],
@@ -841,8 +843,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   txtLabel: 'Sexing method',
                                   listValues: sexingMethod,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -851,8 +853,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   txtLabel: 'Catching method',
                                   listValues: catchingMethod,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -861,8 +863,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   txtLabel: 'Catching lures',
                                   listValues: catchingLures,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -875,8 +877,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   txtLabel: 'Status',
                                   listValues: status,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -889,8 +891,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   txtLabel: 'Circumstances',
                                   listValues: circumstances,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                               Expanded(
@@ -899,8 +901,8 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                                   txtLabel: 'Circumstances presumed',
                                   listValues: circumstancesPresumed,
                                   // TODO: implement proper validator
-                                  validator: _inputValidator
-                                      .placeCodeValidator(['sd', 'sd']),
+                                  validator:
+                                      _inputValidator.placeholderValidator(),
                                 ),
                               ),
                             ],
@@ -912,7 +914,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                               pickTime(context);
                             },
                             // TODO: Implement proper validator.
-                            validator: _inputValidator.startTimeValidator(),
+                            validator: _inputValidator.placeholderValidator(),
                           ),
                           CustomTextFormField(
                             controller: _otherMarksController,
@@ -920,7 +922,7 @@ class _AddRetrapScreenState extends State<AddRetrapScreen> {
                             txtLabel: 'Other marks',
                             keyboard: 'text',
                             // TODO: Implement proper validator.
-                            validator: _inputValidator.localityNameValidator(),
+                            validator: _inputValidator.placeholderValidator(),
                           ),
                         ],
                       ),
