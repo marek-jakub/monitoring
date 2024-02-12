@@ -7,12 +7,15 @@ This is a student project, with the main goal of researching bird ringing data m
 
 ## Table of Contents
 
-- [MonitoRing Description](#monitoring-description)
-  - [Continuous Development](#continuous-development)
-- [Install and run](#install-and-run)
-- [How to use](#how-to-use)
-- [Testing](#testing)
-- [Licence](#licence)
+- [MonitoRing](#monitoring)
+  - [Table of Contents](#table-of-contents)
+  - [MonitoRing Description](#monitoring-description)
+    - [Continuous Development](#continuous-development)
+  - [Install and run](#install-and-run)
+  - [How to use](#how-to-use)
+  - [Testing](#testing)
+  - [Licence](#licence)
+    - [References](#references)
 
 ## MonitoRing Description
 
@@ -64,6 +67,36 @@ flutter run lib/main.dart
 The available and connected devices will be shown, with the ability to choose the appropriate one.
 
 ## How to use
+
+To explore the app, press the 'Explore as Guest' button:
+
+![Figure1 - Login page](assets/images/explanatory_screenshots/01_screenshot.png "Screenshot of the login page.")
+
+Onboarding messages can be skipped:
+
+![Figure2 - Onboarding page](assets/images/explanatory_screenshots/02_screenshot.png "Screenshot of the onboarding page.")
+
+In order to start entering bird ring data, create a ringing session:
+
+![Figure3 - Home page](assets/images/explanatory_screenshots/03_screenshot.png "Screenshot of the home page.")
+
+Fill in the form, and press the save button:
+
+![Figure4 - Session page](assets/images/explanatory_screenshots/04_screenshot.png "Screenshot of the session page.")
+
+Now, the session can be picked from among created and saved sessions:
+
+![Figure5 - Home page](assets/images/explanatory_screenshots/05_screenshot.png "Screenshot of the home page.")
+
+Any previously saved session data will be visible, to keep adding, press the 'Ring' button:
+
+![Figure6 - Home page](assets/images/explanatory_screenshots/06_screenshot.png "Screenshot of the home page.")
+
+Fill in the form and press the save button:
+
+![Figure7 - Ring page](assets/images/explanatory_screenshots/07_screenshot.png "Screenshot of the ring page.")
+
+This is an example of one of the informational loops in the application, there exist others, such as the one for adding retrap data. However, adding new features is an ongoing process, and the application in its current state cannot be considered safe for management of ringing data.
 
 ## Testing
 
