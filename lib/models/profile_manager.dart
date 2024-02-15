@@ -38,6 +38,27 @@ class ProfileManager extends ChangeNotifier {
     notifyListeners();
   }
 
+  /// Returns true if user taps on Add Ring Series.
+  bool get didSelectAddRingSeries => _didSelectAddRingSeriesPath;
+  void selectAddRingSeries(bool selected) {
+    _didSelectAddRingSeriesPath = selected;
+    notifyListeners();
+  }
+
+  /// Returns true if user taps on Add Ring Series.
+  bool get didSelectAddLostRingPath => _didSelectAddLostRingPath;
+  void selectAddLostRing(bool selected) {
+    _didSelectAddLostRingPath = selected;
+    notifyListeners();
+  }
+
+  /// Returns true if user taps on Add Ring Series.
+  bool get didSelectOrderRingsPath => _didSelectOrderRingsPath;
+  void selectOrderRings(bool selected) {
+    _didSelectOrderRingsPath = selected;
+    notifyListeners();
+  }
+
   /// A variable used in showing profile screen.
   ///
   /// If true, profile screen is shown.
@@ -52,4 +73,9 @@ class ProfileManager extends ChangeNotifier {
   ///
   /// If true, EURING code pdf file is downloaded, needs online access.
   var _tapOnEuringCode = false;
+
+  // Application current paths for navigation
+  var _didSelectAddRingSeriesPath = false;
+  var _didSelectAddLostRingPath = false;
+  var _didSelectOrderRingsPath = false;
 }

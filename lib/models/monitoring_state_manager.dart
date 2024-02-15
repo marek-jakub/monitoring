@@ -31,6 +31,20 @@ class MonitoRingStateManager extends ChangeNotifier {
   /// The value of selected tab.
   int _selectedTab = MonitoRingTab.data;
 
+  // Application current paths for navigation
+  var _didSelectRetrapsPath = false;
+  var _didSelectSearchPath = false;
+  var _didSelectMapPath = false;
+  var _didSelectAddSessionPath = false;
+  var _didSelectEditSessionPath = false;
+  var _didSelectAddRingPath = false;
+  var _didSelectEditRingPath = false;
+  var _didSelectReportPath = false;
+  var _didSelectAddRetrapPath = false;
+  var _didSelectEditReptrapPath = false;
+
+  // TODO: create path getters/setters
+
   /// Holds app state.
   final _appCache = AppCache();
 

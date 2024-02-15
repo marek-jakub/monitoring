@@ -11,8 +11,8 @@ void main() {
 
   setUp(() {
     // On testing uncomment below and comment out initializer with no parameters.
-    monRingDb = MonRingDb(NativeDatabase.memory());
-    //monRingDb = MonRingDb();
+    //monRingDb = MonRingDb(NativeDatabase.memory());
+    monRingDb = MonRingDb();
   });
 
   tearDown(() {

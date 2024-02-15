@@ -90,9 +90,21 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
     if (route.settings.name == MonitoRingPages.profilePath) {
       profileManager.tapOnProfile(false);
     }
-
+    // Return to profile
     if (route.settings.name == MonitoRingPages.euringCodePath) {
       profileManager.tapOnEuringCode(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.addRingSeriesPath) {
+      profileManager.selectAddRingSeries(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.addLostRingPath) {
+      profileManager.selectAddLostRing(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.orderRingsPath) {
+      profileManager.selectOrderRings(false);
     }
 
     return true;
@@ -106,6 +118,12 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
       return MonitoRingLink(location: MonitoRingLink.keyOnboardingPath);
     } else if (profileManager.didSelectRinger) {
       return MonitoRingLink(location: MonitoRingLink.keyProfilePath);
+    } else if (profileManager.didSelectAddRingSeries) {
+      return MonitoRingLink(location: MonitoRingLink.keyRingSeriesPath);
+    } else if (profileManager.didSelectAddLostRingPath) {
+      return MonitoRingLink(location: MonitoRingLink.keyLostRingPath);
+    } else if (profileManager.didSelectOrderRingsPath) {
+      return MonitoRingLink(location: MonitoRingLink.keyOrderRingsPath);
     } else {
       return MonitoRingLink(
           location: MonitoRingLink.keyHomePath,

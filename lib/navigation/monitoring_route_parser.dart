@@ -8,7 +8,7 @@ class MonitoRingRouteParser extends RouteInformationParser<MonitoRingLink> {
   @override
   Future<MonitoRingLink> parseRouteInformation(
       RouteInformation routeInformation) async {
-    final link = MonitoRingLink.fromLocation(routeInformation.location);
+    final link = MonitoRingLink.fromLocation(routeInformation.uri.path);
     return link;
   }
 
@@ -18,6 +18,6 @@ class MonitoRingRouteParser extends RouteInformationParser<MonitoRingLink> {
   @override
   RouteInformation restoreRouteInformation(MonitoRingLink configuration) {
     final location = configuration.toLocation();
-    return RouteInformation(location: location);
+    return RouteInformation(uri: Uri(path: location));
   }
 }
