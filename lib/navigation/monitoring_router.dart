@@ -83,16 +83,69 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
       return false;
     }
 
+    // Log out
     if (route.settings.name == MonitoRingPages.onboardingPath) {
       monStateManager.logout();
     }
-
+    // Return to home page
     if (route.settings.name == MonitoRingPages.profilePath) {
       profileManager.tapOnProfile(false);
     }
 
+    if (route.settings.name == MonitoRingPages.retrapsPath) {
+      monStateManager.goToTab(0);
+    }
+
+    if (route.settings.name == MonitoRingPages.searchPath) {
+      monStateManager.goToTab(1);
+    }
+
+    if (route.settings.name == MonitoRingPages.mapPath) {
+      monStateManager.goToTab(2);
+    }
+
+    if (route.settings.name == MonitoRingPages.addSessionPath) {
+      ringDataManager.setNewSession(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.editSessionPath) {
+      ringDataManager.setEditSession(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.addRingPath) {
+      ringDataManager.setNewRing(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.editRingPath) {
+      ringDataManager.setEditRing(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.reportPath) {
+      ringDataManager.setNewReport(false);
+    }
+    // Return to profile
     if (route.settings.name == MonitoRingPages.euringCodePath) {
       profileManager.tapOnEuringCode(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.addRingSeriesPath) {
+      ringDataManager.setNewRingSeries(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.addLostRingPath) {
+      ringDataManager.setNewLostRing(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.orderRingsPath) {
+      ringDataManager.setMakeOrder(false);
+    }
+    // Return to retraps page
+    if (route.settings.name == MonitoRingPages.addRetrapPath) {
+      ringDataManager.setNewRetrap(false);
+    }
+
+    if (route.settings.name == MonitoRingPages.editRetrapPath) {
+      ringDataManager.setEditRetrap(false);
     }
 
     return true;
@@ -106,6 +159,28 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
       return MonitoRingLink(location: MonitoRingLink.keyOnboardingPath);
     } else if (profileManager.didSelectRinger) {
       return MonitoRingLink(location: MonitoRingLink.keyProfilePath);
+    } else if (profileManager.didTapOnEuringCode) {
+      return MonitoRingLink(location: MonitoRingLink.keyEuringCodePath);
+    } else if (profileManager.didSelectAddRingSeries) {
+      return MonitoRingLink(location: MonitoRingLink.keyRingSeriesPath);
+    } else if (profileManager.didSelectAddLostRingPath) {
+      return MonitoRingLink(location: MonitoRingLink.keyLostRingPath);
+    } else if (profileManager.didSelectOrderRingsPath) {
+      return MonitoRingLink(location: MonitoRingLink.keyOrderRingsPath);
+    } else if (ringDataManager.newSession) {
+      return MonitoRingLink(location: MonitoRingLink.keyAddSessionPath);
+    } else if (ringDataManager.editSession) {
+      return MonitoRingLink(location: MonitoRingLink.keyEditSessionPath);
+    } else if (ringDataManager.newRing) {
+      return MonitoRingLink(location: MonitoRingLink.keyAddRingPath);
+    } else if (ringDataManager.editRing) {
+      return MonitoRingLink(location: MonitoRingLink.keyEditRingPath);
+    } else if (ringDataManager.newRetrap) {
+      return MonitoRingLink(location: MonitoRingLink.keyAddRetrapPath);
+    } else if (ringDataManager.editRetrap) {
+      return MonitoRingLink(location: MonitoRingLink.keyEditRetrapPath);
+    } else if (ringDataManager.newReport) {
+      return MonitoRingLink(location: MonitoRingLink.keyReportPath);
     } else {
       return MonitoRingLink(
           location: MonitoRingLink.keyHomePath,
@@ -129,7 +204,6 @@ class MonitoRingRouter extends RouterDelegate<MonitoRingLink>
         monStateManager.goToTab(configuration.currentTab ?? 0);
         profileManager.tapOnProfile(false);
         break;
-      // TODO: Add paths to session, ring
       default:
         break;
     }

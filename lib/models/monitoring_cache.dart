@@ -5,7 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 ///
 /// On user loggin out, cache values are invalidated.
 class AppCache {
-  /// Key used to access ringer's login  state.
+  /// Key used to access ringer's login state.
   static const keyRinger = 'ringer';
 
   /// Key used to access ringers onboarding state.
