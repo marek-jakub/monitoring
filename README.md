@@ -34,7 +34,7 @@ WARNING! Even though the prototype is in a working condition, with ability to ru
 
 ## Install and run
 
-The latest version of Flutter used to run and test the application is version 3.16.2, with Dart SDK version: 3.2.2.
+The latest version of Flutter used to run and test the application is version 3.16.9, with Dart SDK version: 3.2.6.
 
 After downloading the codebase and placing it at a chosen directory, the application can be run:
 
@@ -111,24 +111,6 @@ or
 ```bash
 flutter test test/unit_test.dart
 ```
-
-Integration and widget tests are best run from logged out state, as checks are applied progressively from splash screen, log in screen onwards. As the application state manager saves logged in state, running tests with logged in state as true might show failure.
-
-To run widget test, apply:
-
-```bash
-flutter test integration_test/widget_tests/home_screen_test.dart
-```
-
-Choose from available devices.
-
-To run integration test, apply:
-
-```bash
-flutter test integration_test/integration_tests/monitoring_test.dart
-```
-
-Choose from available devices.
 
 ## Licence
 

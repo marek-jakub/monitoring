@@ -13,8 +13,8 @@ void main() {
     // log in throws assertion error, in this case run this log out test
     // first.
     testWidgets(
-        'If already logged in, run this to log out. If logged out, this test will fail, which is normal.',
-        (tester) async {
+        'If already logged in, run this to log out. If logged out, '
+        'this test will fail, which is normal.', (tester) async {
       await tester.pumpWidget(const MonitoRing());
       await addDelay(4000);
       await tester.pumpAndSettle();

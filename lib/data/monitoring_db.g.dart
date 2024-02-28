@@ -79,9 +79,10 @@ class $LocationEntityTable extends LocationEntity
         localeInfo
       ];
   @override
-  String get aliasedName => _alias ?? 'location_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'location_entity';
+  String get actualTableName => $name;
+  static const String $name = 'location_entity';
   @override
   VerificationContext validateIntegrity(Insertable<LocationEntityData> instance,
       {bool isInserting = false}) {
@@ -495,9 +496,10 @@ class $LostRingEntityTable extends LostRingEntity
   List<GeneratedColumn> get $columns =>
       [id, ringerId, schemeCode, ringSeriesCode, idNumber];
   @override
-  String get aliasedName => _alias ?? 'lost_ring_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'lost_ring_entity';
+  String get actualTableName => $name;
+  static const String $name = 'lost_ring_entity';
   @override
   VerificationContext validateIntegrity(Insertable<LostRingEntityData> instance,
       {bool isInserting = false}) {
@@ -781,9 +783,10 @@ class $OrderEntityTable extends OrderEntity
   @override
   List<GeneratedColumn> get $columns => [id, ringerId, ringSeriesCode, amount];
   @override
-  String get aliasedName => _alias ?? 'order_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'order_entity';
+  String get actualTableName => $name;
+  static const String $name = 'order_entity';
   @override
   VerificationContext validateIntegrity(Insertable<OrderEntityData> instance,
       {bool isInserting = false}) {
@@ -1043,9 +1046,10 @@ class $ReportEntityTable extends ReportEntity
   List<GeneratedColumn> get $columns =>
       [id, ringerId, date, numberOfRings, numberOfRetraps, numberOfLostRings];
   @override
-  String get aliasedName => _alias ?? 'report_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'report_entity';
+  String get actualTableName => $name;
+  static const String $name = 'report_entity';
   @override
   VerificationContext validateIntegrity(Insertable<ReportEntityData> instance,
       {bool isInserting = false}) {
@@ -1383,9 +1387,10 @@ class $SessionEntityTable extends SessionEntity
   List<GeneratedColumn> get $columns =>
       [id, date, dateAccuracy, location, ringerId, startTime, endTime];
   @override
-  String get aliasedName => _alias ?? 'session_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'session_entity';
+  String get actualTableName => $name;
+  static const String $name = 'session_entity';
   @override
   VerificationContext validateIntegrity(Insertable<SessionEntityData> instance,
       {bool isInserting = false}) {
@@ -2001,9 +2006,10 @@ class $RetrapEntityTable extends RetrapEntity
         carpalCovert
       ];
   @override
-  String get aliasedName => _alias ?? 'retrap_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'retrap_entity';
+  String get actualTableName => $name;
+  static const String $name = 'retrap_entity';
   @override
   VerificationContext validateIntegrity(Insertable<RetrapEntityData> instance,
       {bool isInserting = false}) {
@@ -3795,9 +3801,10 @@ class $RingEntityTable extends RingEntity
         carpalCovert
       ];
   @override
-  String get aliasedName => _alias ?? 'ring_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ring_entity';
+  String get actualTableName => $name;
+  static const String $name = 'ring_entity';
   @override
   VerificationContext validateIntegrity(Insertable<RingEntityData> instance,
       {bool isInserting = false}) {
@@ -5300,9 +5307,10 @@ class $RingseriesEntityTable extends RingseriesEntity
   List<GeneratedColumn> get $columns =>
       [id, ringerId, code, schemeCode, ringfrom, ringto];
   @override
-  String get aliasedName => _alias ?? 'ringseries_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'ringseries_entity';
+  String get actualTableName => $name;
+  static const String $name = 'ringseries_entity';
   @override
   VerificationContext validateIntegrity(
       Insertable<RingseriesEntityData> instance,
@@ -5632,9 +5640,10 @@ class $RingsInEntityTable extends RingsInEntity
   List<GeneratedColumn> get $columns =>
       [id, ringerId, code, schemeCode, idNumber, used, lost];
   @override
-  String get aliasedName => _alias ?? 'rings_in_entity';
+  String get aliasedName => _alias ?? actualTableName;
   @override
-  String get actualTableName => 'rings_in_entity';
+  String get actualTableName => $name;
+  static const String $name = 'rings_in_entity';
   @override
   VerificationContext validateIntegrity(Insertable<RingsInEntityData> instance,
       {bool isInserting = false}) {
