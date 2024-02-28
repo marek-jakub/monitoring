@@ -4,10 +4,9 @@ class SexCheckboxFormField extends FormField<int> {
   SexCheckboxFormField({
     super.key,
     TextEditingController? controller,
-    FormFieldValidator<int>? validator,
+    super.validator,
     bool sexSelected = false,
   }) : super(
-          validator: validator,
           builder: (FormFieldState<int> state) {
             return Row(
               children: [
